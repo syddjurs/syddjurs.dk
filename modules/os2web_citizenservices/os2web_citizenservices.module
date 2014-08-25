@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Citizen Services feature.
+ */
+
+include_once 'os2web_citizenservices.features.inc';
+
+/**
+ * Implements hook_os2web_help().
+ */
+function os2web_citizenservices_os2web_help($sections) {
+
+  // Content types.
+  $sections['contenttype'] = t('<p><b>Citizenservice Links (<i>Borgerservice</i>):</b> Add a <a href="@url" target="_blank">link to an citizenservice</a>. Citizenservices can be links to quick services for citizens.</p>', array('@url' => url('node/add/os2web-citizenservices-service')));
+  return $sections;
+}

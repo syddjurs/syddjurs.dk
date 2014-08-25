@@ -1,0 +1,9 @@
+name = OS2web - Accessibility
+description = Handicap module, display site in a print version
+core = 7.x
+version = 7.x-1.0
+project = os2web_accessibility
+dependencies[] = menu
+dependencies[] = print
+dependencies[] = menu_block
+

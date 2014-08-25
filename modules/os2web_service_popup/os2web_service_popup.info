@@ -1,0 +1,6 @@
+name = OS2Web Service Popup
+description = PopUp to notify of service phone after a certain time of idle.
+core = 7.x
+package = OS2Web - Frontend
+version = 7.x-1.0
+dependencies[] = os2web_settings

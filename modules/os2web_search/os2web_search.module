@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Search feature.
+ */
+
+include_once 'os2web_search.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function os2web_search_block_info() {
+  $blocks = array();
+  $blocks['os2web_search_clear_filters'] = array(
+    'info' => t('OS2web Search - Clear filters block'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function os2web_search_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'os2web_search_clear_filters':
+      $params = drupal_get_query_parameters();
+      if (!empty($params)) {
+        $block['content'] = l(t('Clear filters'), 'search/' . arg(1) . '/' . arg(2));
+      }
+      break;
+  }
+
+  return $block;
+}

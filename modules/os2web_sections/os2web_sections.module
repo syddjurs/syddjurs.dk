@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Sektionssider feature.
+ */
+
+include_once 'os2web_sections.features.inc';
+
+/**
+ * Implements hook_os2web_help().
+ */
+function os2web_sections_os2web_help($sections) {
+
+  // Module specific.
+  $sections['contenttype'] = t('<p><b>Sections:</b> Use <a href="@url" target="_blank">Sections</a> to seperate your site, into different areas/sections. A section then have its own frontpage.</p>', array('@url' => url('node/add/os2web-sections-page')));
+
+  return $sections;
+}

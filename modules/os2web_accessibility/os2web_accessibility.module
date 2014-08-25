@@ -1,0 +1,310 @@
+<?php
+/**
+ * @file
+ * os2web_accessibility.module
+ * @author Yani Xu <yx@bellcom.dk>
+ *
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function os2web_accessibility_menu() {
+  $items['admin/config/os2web/handicap'] = array(
+    'title' => 'Handicap settings',
+    'description' => t('Setting for handicap pages'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_accessibility_setting_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  $items['handicap'] = array(
+    'title' => 'Handicap side',
+    'page callback' => 'os2web_accessibility_frontpage',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    //'type' => MENU_SUGGESTED_ITEM,
+  );
+  return $items;
+}
+/**
+ * Menu callback; presents the handicap settings page.
+ */
+function os2web_accessibility_setting_form() {
+  $form['os2web_accessibility_setting'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Handicap frontpage'),
+  );
+  $form['os2web_accessibility_setting']['os2web_accessibility_node_content'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Handicap node id'),
+    '#default_value' => variable_get('os2web_accessibility_node_content'),
+    '#size' => 3,
+    '#maxlength' => 10,
+    '#description' => t('Specify which node content show be then handicap front page.'),
+  );
+  $menu_options = array();
+  $menu_options = menu_get_menus();
+
+  $form['os2web_accessibility_setting']['os2web_accessibility_show_menus'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Menus to include in the handicap frontpage'),
+    '#default_value' => variable_get('os2web_accessibility_show_menus', array()),
+    '#options' => $menu_options,
+    '#multiple' => TRUE,
+  );
+  return system_settings_form($form);
+}
+
+function os2web_accessibility_frontpage($nid = '') {
+  $nid_setting = variable_get('os2web_accessibility_node_content',18);
+  global $base_url;
+  // Handle the query
+  $query = $_GET;
+  unset($query['q']);
+
+  module_load_include('inc', 'print', 'print.pages');
+
+  // Goto handicap node page.
+  if ($nid != "") {
+      $print_node_id = $nid;
+  }
+  // Goto handicap frontpage - node + menus.
+  else {
+    $print_node_id = $nid_setting;
+  }
+
+  $print = print_controller($print_node_id, $query, $cid, PRINT_HTML_FORMAT);
+
+  if ($print !== FALSE) {
+    $node = $print['node'];
+    if ($print_node_id == $nid_setting) {
+      $output = os2web_accessibility_site_map_menus($page = FALSE);
+    }
+    else {
+      $output = os2web_accessibility_site_map_menus($page = TRUE);
+    }
+    // Change link href to handicap/
+    $array = explode("<a",$print['content']);
+    foreach($array as $key => $value) {
+      preg_match('/href=["\']?([^"\'>]+)["\']?/', $value, $matches);
+
+      $info = parse_url($matches[1]);
+      if (isset($info['host']) && $info['host'] == $_SERVER['SERVER_NAME'] && ($info['path'] && $info['path'] != "/")) {
+        $info['path'] = substr($info['path'],1);
+        if($drupal_path = drupal_lookup_path("source", $info['path'])) {
+          $pos = substr($drupal_path,0,4);
+          if($pos === 'node') {
+            $link_value = str_replace('node/','handicap/',$drupal_path);
+          }
+          elseif ($pos === 'taxo') {
+            $link_value = "handicap/".$info['path'];
+          }
+          else {
+            $link_value = "handicap/".$drupal_path;
+          }
+        }
+        else {
+          $pos = substr($info['path'],0,4);
+          if($pos === 'node') {
+            $link_value = str_replace('node/','handicap/',$info['path']);
+          }
+          elseif ($pos === 'taxo') {
+            $alias = drupal_get_path_alias($info['path']);
+            $link_value = "handicap/".$alias;
+          }
+          else {
+            $link_value = "handicap/".$info['path'];
+          }
+        }
+
+        $pattern = $info['scheme']."://".$info['host'] . "/" .$info['path'];
+        $replace = $info['scheme']."://".$info['host']. "/".$link_value;
+        $value = str_replace($pattern,$replace,$value);
+        $array[$key] = $value;
+      }
+
+    }
+    $print['content'] =implode("<a",$array);
+
+    // Change form action to handicap/
+    $array = explode("<form",$print['content']);
+    foreach($array as $key => $value) {
+      preg_match('/action=["\']?([^"\'>]+)["\']?/', $value, $matches);
+      $value = str_replace($matches[1],"/handicap".$matches[1],$value);
+      $array[$key] = $value;
+    }
+    $print['content'] =implode("<form",$array);
+
+    //$print['site_name'] = '<a href="'.$base_url .'">' .variable_get('site_name', 'Drupal') .'</a>';
+    $print['logo'] = '<a href="'.$base_url .'"><img src="' . theme_get_setting('logo') . '" alt="logo" title="' .variable_get('site_name', 'Drupal').'"/></a>';
+
+    $right_blocks = os2web_accessibility_get_right_blocks();
+
+    $html = theme(
+      'os2web_accessibility',
+       array('handicap' => $print, 'type' => PRINT_HTML_FORMAT, 'node' => $node, 'menu'=>$output,'right_blocks' => $right_blocks)
+    );
+    drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
+    drupal_send_headers();
+    drupal_add_css(drupal_get_path('module','os2web_accessibility').'os2web_accessibility.css');
+    // delete print window open and close.
+    $html = str_replace("window.print();","",$html);
+    $html = str_replace("window.close();","",$html);
+    //$html = str_replace('<div class="print-foot" style = "width:100%">',"$output <div class='print-foot'>",$html);
+    print $html;
+  }
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function os2web_accessibility_theme() {
+  return array(
+    'print_format_link' => array(
+      'variables' => array(),
+    ),
+    'os2web_accessibility' => array(
+      'variables' => array(
+        'handicap' => array(),
+        'type' => PRINT_HTML_FORMAT,
+        'node' => NULL,
+        'menu' => NULL,
+        'right_blocks' => NULL
+      ),
+      'template' => 'os2web_accessibility',
+    ),
+  );
+}
+function os2web_accessibility_get_right_blocks(){
+  $result = 0;
+  $arg_0 = arg(0);
+  $arg_1 = arg(1);
+  $arg_2 = arg(2);
+  if((isset($arg_1) && $arg_1 == 'add') || (isset($arg_2) && $arg_2 == 'edit') ) {
+      return "";
+  }
+  if ($arg_0 === 'taxonomy' && $arg_1 === 'term') {
+      $ent = taxonomy_term_load($arg_2);
+      $field = field_get_items('taxonomy_term', $ent, 'field_os2web_base_field_contact');
+  }
+  elseif ($arg_0 === 'node') {
+    if (isset($arg_1) && is_numeric($arg_1)) {
+      $ent = node_load($arg_1);
+      $field = field_get_items('node', $ent, 'field_os2web_base_field_contact');
+    }
+  }
+  else {
+    $node = menu_get_object();
+    if($node) {
+      $field = field_get_items('node', $node,'field_os2web_base_field_contact');
+    }
+  }
+  if (isset($field[0]['nid'])) {
+    $nid = $field[0]['nid'];
+    $view = views_get_view("os2web_contact_view_contact");
+    $result = $view->preview('panel_pane_2', array($nid));
+  }
+  return $result;
+}
+
+/**
+ * Render the latest maps for all the menus.
+ *
+ * @return string
+ *   Returns HTML string of site map for menus.
+ */
+function os2web_accessibility_site_map_menus($true = FALSE) {
+  if (!$true) {
+    $menu_tmp = "os2web-menu-contentmenu";
+   // $menu_tmp = menu_block_get_current_page_menu();
+    $tree = menu_tree_all_data($menu_tmp);
+     menu_tree_trim_active_path($tree);
+
+    $tree_1 = os2web_accessibility_menu_link_add_handicap($tree);
+    $menu_display = menu_tree_output($tree_1);
+
+    $menu_html = drupal_render($menu_display);
+
+    $mids = array_filter(variable_get('os2web_accessibility_show_menus', array()));
+
+    if (!empty($mids)) {
+      foreach ($mids as $mid) {
+        if ($mid != "os2web-menu-contentmenu") {
+          $class = array();
+          $menu = menu_load($mid);
+          // Use menu_tree_all_data to retrieve the expanded tree.
+          $tree = menu_tree_all_data($mid);
+          // menu_tree_trim_active_path($tree);
+          //menu_tree_prune_active_tree($tree,1);
+          // if (module_exists('i18n_menu')) {
+           //$tree = i18n_menu_localize_tree($tree, $GLOBALS['language']->language);
+          // }
+          // Add an alter hook so other modules can manipulate the menu tree prior to rendering
+          $tree_1 = os2web_accessibility_menu_link_add_handicap($tree);
+          $menu_display = menu_tree_output($tree_1);
+
+          $menu_html .= drupal_render($menu_display);
+        }
+      }
+    }
+  }
+  else {
+    $menu_tmp = "os2web-menu-contentmenu";
+   // $menu_tmp = menu_block_get_current_page_menu();
+    $tree = menu_tree_page_data($menu_tmp);
+    menu_tree_trim_active_path($tree);
+    menu_tree_prune_active_tree($tree,'child');
+    $tree_1 = os2web_accessibility_menu_link_add_handicap($tree);
+    $menu_display = menu_tree_output($tree_1);
+
+    $menu_html = drupal_render($menu_display);
+  }
+  return $menu_html;
+}
+function os2web_accessibility_menu_link_add_handicap($tree = array()){
+  foreach ($tree as $i =>$link) {
+    foreach ($link as $key => $value) {
+      foreach ($value as $name => $v) {
+        if ($name == 'href') {
+          $pos = substr($v,0,4);
+          if($pos === 'node') {
+            if($v == 'node/add') {
+              $link_value = $v;
+            }
+            else
+              $link_value = str_replace('node/','handicap/',$v);
+          }
+          elseif ($pos === 'taxo') {
+            $alias = drupal_get_path_alias($v);
+            $link_value = "handicap/".$alias;
+          }
+          else {
+            if($v != "<nolink>") {
+              if($pos != "http")
+                $link_value = "handicap/".$v;
+              else $link_value = $v;
+            }
+            else {
+              $link_value = "handicap";
+
+            }
+          }
+          $tree[$i][$key][$name] = $link_value;
+        }
+      }
+      if($key == 'below' && !empty($key)) {
+         $tree[$i][$key] = os2web_accessibility_menu_link_add_handicap($value);
+      }
+    }
+  }
+  return $tree;
+}
+
+function os2web_accessibility_js_alter(&$javascript) {
+  //$path = current_path();
+  //$path = explode("/",$path);
+ // if ($path[0] == 'handicap') {
+    //unset($javascript['path/to/script.js']);
+  //}
+}

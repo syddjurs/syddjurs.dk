@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OS2Web Portals Citizen (Borger) feature.
+ */
+
+include_once 'os2web_portals_citizen.features.inc';

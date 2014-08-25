@@ -1,0 +1,124 @@
+<?php
+/**
+ * @file
+ * Code for the OS2web Planer i Høring feature.
+ */
+
+include_once 'os2web_hearings.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function os2web_hearings_init(){
+  drupal_add_library('system', 'ui.datepicker');
+}
+
+/*
+* Implements hook_menu()
+*/
+function os2web_hearings_menu(){
+  $items = array();
+
+  // Admin menu
+  $items['admin/config/os2web_hearings'] = array(
+    'title' => 'OS2Web Hearings',
+    'description' => 'General settings ',
+    'position' => 'right',
+    'weight' => -10,
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  $items['admin/config/os2web_hearings/settings'] = array(
+    'title' => 'OS2web Hearings',
+    'description' => 'Change settings for OS2web Hearings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_hearings_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}
+
+/*
+* Settings form callback
+*/
+function os2web_hearings_settings_form(){
+  $form['os2web_hearings_page_info_nid'] = array(
+    '#title' => t('Node id for info text on hearings page'),
+    '#default_value' => variable_get('os2web_hearings_page_info_nid'),
+    '#type' => 'textfield',
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_form_alter()
+ */
+function os2web_hearings_form_views_exposed_form_alter(&$form, &$form_state){
+  if($form['#id'] === 'views-exposed-form-os2web-hearings-page'){
+    $form['from_date']['value']['#date_format'] = 'd-m-Y';
+    $form['to_date']['value']['#date_format'] = 'd-m-Y';
+  }
+
+    // Add a little js to make the calendar icons clickable.
+    $cal_icon = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . "/images/cal.png");
+    $datepicker = '
+
+
+      (function ($) {
+        Drupal.behaviors.os2web_meetings = {
+          attach: function(context, settings) {
+                      $("#edit-from-date-value-date").datepicker({
+                                    showOn: "both",
+                                    buttonImage: "' . $cal_icon . '",
+                                    buttonImageOnly: true,
+                                    dateFormat: "dd-mm-yy"
+                      });
+                      $("#edit-to-date-value-date").datepicker({
+                                    showOn: "both",
+                                    buttonImage: "' . $cal_icon . '",
+                                    buttonImageOnly: true,
+                                    dateFormat: "dd-mm-yy"
+                      });
+            }
+          }
+        }(jQuery));';
+
+    drupal_add_js($datepicker, array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 5)
+    );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function os2web_hearings_page_alter(&$page) {
+  if (module_exists('os2web_subscription') &&
+      request_path() === 'hoeringer') {
+
+    // If the OS2web Subscription module are enabled, add a subscribe form.
+    if (os2web_subscription_category_is_enabled('os2web_hearings_hearing_case')) {
+      $page['content'][] = drupal_get_form('os2web_subscription_add_subscription_form', 'os2web_hearings_hearing_case');
+    }
+  }
+}
+
+/**
+ * Implements hook_os2web_help().
+ */
+function os2web_hearings_os2web_help($sections) {
+
+  // Content types.
+  $sections['contenttype'] = t('<p><b>Hearings (<i>Høring</i>):</b> Create a <a href="@url" target="_blank">Hearing</a> to show about your hearing times and dates.<br />Hearings are shown from the <a href="@planer-i-h-ring" target="_blank">here</a>.</p>', array('@url' => url('admin/help/os2web_borger_dk'), '@planer-i-h-ring' => '/planer-i-h-ring'));
+
+  // Importers.
+  $sections['import'] = t('<p><b>Hearings:</b> Initialize the importer for hearings at <a href="@url">the import page.</a></p>', array('@url' => 'import/os2web_hearings_feeds_import'));
+
+  return $sections;
+}

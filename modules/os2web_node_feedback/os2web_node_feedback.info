@@ -1,0 +1,22 @@
+name = OS2Web - Node feedback
+description = Activate a feedback form in OS2Web.
+core = 7.x
+package = OS2Web - Frontend
+php = 5.2.4
+version = 7.x-1.0-beta1
+project = os2web_node_feedback
+
+dependencies[] = features
+dependencies[] = feedback
+dependencies[] = strongarm
+dependencies[] = honeypot
+
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[field][] = feedback-feedback-field_feedback_email
+features[field][] = feedback-feedback-field_feedback_navn
+features[user_permission][] = access feedback form
+features[user_permission][] = administer feedback
+features[user_permission][] = view feedback messages
+features[variable][] = feedback_excluded_paths
+features[variable][] = field_bundle_settings_feedback__feedback

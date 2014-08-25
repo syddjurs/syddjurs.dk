@@ -1,0 +1,140 @@
+<?php
+/**
+ * @file os2web_contact_form.module
+ * @author Thomas Thune Hansen <tth@bellcom.dk>
+ * @copyright bellcom open source aps
+ */
+
+/*
+ * Implements hook_menu()
+ */
+
+function os2web_contact_form_menu(){
+  $items = array();
+
+  // Admin menu
+  $items['admin/config/os2web_contact_form'] = array(
+    'title' => 'OS2Web contact form',
+    'description' => 'General settings ',
+    'position' => 'right',
+    'weight' => -10,
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  $items['admin/config/os2web_contact_form/settings'] = array(
+    'title' => 'OS2web Contact Form',
+    'description' => 'Change settings for contact form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_contact_form_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}
+
+/*
+ * Implements hook_form_alter()
+ */
+function os2web_contact_form_form_alter(&$form,&$form_state, $form_id){
+  // If its the contact form, we add an extra field for the phonenumber
+  if($form_id === 'contact_site_form') {
+    // Insert rendered node in contact form
+    $node = node_load(variable_get('os2web_contact_form_nid'), '');
+
+    if(is_object($node)){
+      $node->title = NULL;
+      $form['contact_text'] = array(
+        '#type' => 'item',
+        '#markup' => drupal_render(node_view($node)),
+      );
+    }
+
+    $form['phone'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Phonenumber'),
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
+      '#attributes' => array('placeholder' => t('fx. 12121212')),
+      '#description' => t('The phonenumber where we can reach you.'),
+    );
+
+    $form['address'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Address'),
+      '#required' => TRUE,
+      '#attributes' => array('placeholder' => t('fx. Hovedgaden 77')),
+      '#description' => t('The address where you are living.'),
+    );
+
+    $form['zipcode'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Zip Code'),
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
+      '#attributes' => array('placeholder' => t('fx. 8410')),
+      '#description' => t('The zipcode in which you are living.'),
+    );
+
+    $form['city'] = array(
+      '#type' => 'textfield',
+      '#title' => t('City'),
+      '#required' => TRUE,
+      '#attributes' => array('placeholder' => t('fx. Rønde')),
+      '#description' => t('The city in which you are living.'),
+    );
+
+    // Add additional descriptions to existing fields.
+    $form['name']['#attributes'] = array('placeholder' => t('fx. Anders Andersen'));
+    $form['mail']['#attributes'] = array('placeholder' => t('fx. dinemail@eksempel.dk'));
+    $form['subject']['#description'] = t('The purpose of this message.');
+    $form['message']['#description'] = t('What are your question? Describe your question/problem here.');
+    $form['copy']['#description'] = t('When this is ticked, you will recieve a receipt of this contact on the email you have entered.');
+
+    // Reorder form items
+    $order = array(
+      'contact_text',
+      'name',
+      'mail',
+      'address',
+      'zipcode',
+      'city',
+      'phone',
+      'subject',
+      'message',
+      'copy'
+    );
+
+    foreach($order as $key => $value){
+      $form[$value]['#weight'] = $key;
+    }
+  }
+}
+
+/*
+ * Implements hook_mail_alter()
+ */
+function os2web_contact_form_mail_alter(&$message){
+  // We need to include the phonumber in the message going out
+  if($message['id'] == 'contact_page_mail'){
+    $message['body'][] = t('Phonenumber'). ': ' .  $message['params']['phone'];
+    $message['body'][] = t('Address'). ': ' .  $message['params']['address'];
+    $message['body'][] = t('Zip Code'). ': ' .  $message['params']['zipcode'];
+    $message['body'][] = t('City'). ': ' .  $message['params']['city'];
+  }
+}
+
+/*
+ * Settings form callback
+ */
+function os2web_contact_form_settings_form(){
+  $form['os2web_contact_form_nid'] = array(
+    '#title' => t('Node id for contact page'),
+    '#default_value' => variable_get('os2web_contact_form_nid', 114),
+    '#type' => 'textfield',
+  );
+
+  return system_settings_form($form);
+}

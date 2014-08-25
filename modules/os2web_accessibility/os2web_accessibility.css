@@ -1,0 +1,10 @@
+.contextual-links-wrapper {
+  display: none;
+  visibility: hidden;
+}
+.expanded ul.menu {
+  padding-left:20px;
+}
+ul.menu li {
+  font-size: 14px;
+}

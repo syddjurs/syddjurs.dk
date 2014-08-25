@@ -1,0 +1,11 @@
+#os2web_service_popup {
+  position: fixed;
+  top: 50%;
+  left: 200px;
+  width: 400px;
+  min-height: 400px;
+  background: white;
+  z-index: 100;
+  color: black;
+  padding: 30px;
+}

@@ -1,0 +1,36 @@
+name = OS2Web Mobile Theme
+description = OS2Web Mobile Bootstrap subtheme
+version = 0.1
+core = 7.x
+base theme = bootstrap
+
+regions[content] = 'Content'
+regions[mobile_content] = 'Mobile Content'
+
+stylesheets[all][] = os2web_mobile.css
+
+scripts[] = js/os2web_mobile.js
+
+plugins[panels][layouts] = panels/layouts
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+settings[toggle_logo] = '1'
+settings[toggle_name] = '0'
+settings[toggle_slogan] = '0'
+settings[toggle_node_user_picture] = '1'
+settings[toggle_comment_user_picture] = '1'
+settings[toggle_comment_user_verification] = '1'
+settings[toggle_favicon] = '1'
+settings[toggle_main_menu] = '0'
+settings[toggle_secondary_menu] = '0'
+settings[default_logo] = '1'
+settings[logo_path] = ''
+settings[logo_upload] = ''
+settings[default_favicon] = '1'
+settings[favicon_path] = ''
+settings[favicon_upload] = ''
+settings[bootstrap_rebuild_registry] = '0'
+settings[cdn_bootstrap] = '0'
+settings[cdn_jquery] = '0'
+settings[nice_menus_custom_css] = ''

@@ -1,0 +1,17 @@
+name = Syddjurs Clear Cache Rules
+description = Sletter Syddjurs views når indhold opdateres.
+core = 7.x
+package = Syddjurs
+php = 5.2.4
+version = 7.x-1.0
+project = syddjurs_clear_cache_rules
+dependencies[] = cache_actions
+dependencies[] = entity
+dependencies[] = expire
+dependencies[] = rules
+features[features_api][] = api:1
+features[rules_config][] = rules_syddjurs_cc_selfservice_cache
+features[rules_config][] = rules_syddjurs_clear_contact_cache_on_save
+features[rules_config][] = rules_syddjurs_clear_meeting_cache_on_save
+features[rules_config][] = rules_syddjurs_clear_node_references_cache_on_save
+project path = profiles/os2web/modules/

@@ -1,0 +1,30 @@
+.control-group.form-type-textfield.form-item-search-block-form.form-item {
+  width: 80%;
+}
+#edit-keys,
+#edit-search-block-form--2 {
+  width: 90%;
+}
+.goto-full {
+  width: 30%;
+}
+
+ul.nav {
+  margin: 0 0 10px 25px;
+  list-style: disc;
+}
+
+.fine-print {
+  font-size: 12px;
+}
+
+#search-block-form #edit-submit:after {
+  content: "Søg";
+}
+
+.full-width-link:before {
+    content: "Se siden i fuld bredde";
+}
+article.node iframe {
+    width: 100% !important;
+}
