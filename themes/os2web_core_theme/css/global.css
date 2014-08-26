@@ -2991,6 +2991,13 @@ div.breadcrumb.you-are-here {
   display: block;
   margin-bottom: 10px;
 }
+
+.borger_dk-region-stack2 ul {
+    padding-left: 0;
+}
+.borger_dk-region-stack2 ul li {
+    list-style: none;
+}
 #region-sidebar-second .view-id-os2web_base_panels_view_selfserv .selvbetjening-indholdsside .view-content, #region-sidebar-second .view-id-os2web_base_panels_view_selfserv .selvbetjening-indholdsside .view-header {
 	background-image: url(../images/mellemSELVindhold.png);
 	padding: 1px 0;
