@@ -61,8 +61,9 @@ jQuery(document).ready(function () {
     });
 
     jQuery('ul.nice-menu').addClass("top_menu_down");
-     jQuery('ul.nice-menu').removeClass('nice-menu');
-    jQuery('.top_menu_down li').click(function(){
+    jQuery('ul.nice-menu').removeClass('nice-menu');
+    jQuery('a[href^="http://"], a[href^="https://"]').attr('target','_blank');
+    jQuery('.top_menu_down li.menuparent').click(function(){
       jQuery('.top_menu_down li ul').hide();
 
       var $children = jQuery(this).find('ul');
@@ -79,7 +80,6 @@ jQuery(document).ready(function () {
           $children.removeClass('open');
         });*/
       }
-      return false;
     });
 
 });
