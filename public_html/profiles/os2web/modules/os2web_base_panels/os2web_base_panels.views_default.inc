@@ -2011,7 +2011,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
@@ -2308,6 +2308,7 @@ return $field==1?true:false;';
     t('Stor rotator - single2'),
     t('Alle'),
     t('frontpage Block 2 with 3 items'),
+    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>'),
     t('<div class="news-list">
    <div class="news-list-left">
       [field_os2web_base_field_rota_img]
