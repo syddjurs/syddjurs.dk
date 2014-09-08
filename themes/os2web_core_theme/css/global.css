@@ -2595,25 +2595,25 @@ ul.nice-menu-down li ul > li {
 }
 #zone-preface .block-nice-menus  { float: right;}
 #zone-preface .block-nice-menus .block-title { display: none;}
-#zone-preface  ul.nice-menu-down li.menuparent {
+#zone-preface ul.nice-menu-down li.menuparent {
   background-color: #fff;
   margin-left: 35px;
   color: #6d6e6d;
 }
-#zone-preface  ul.nice-menu-down {
+#zone-preface ul.nice-menu-down li.menuparent.first {
+  margin-left: 0;
+}
+#zone-preface ul.nice-menu-down {
   margin-right: 8px;
 }
 
 #zone-preface-wrapper {
-	/*position: absolute;
-	background-image: url("../images/syddjursWEBSTEDER-bg.png");*/
-	width: 65%;
+	width: 70%;
 	height: 35px;
 	margin: auto;
         float: right;
 }
 #zone-preface {
-	/*background-image: url("../images/syddjursWEBSTEDER.png");
 	background-repeat: no-repeat;*/
 	margin: auto;
 }
