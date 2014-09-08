@@ -56,6 +56,30 @@ function os2web_base_panels_default_panels_mini() {
     $pane->locks = array();
     $display->content['new-1'] = $pane;
     $display->panels['middle'][0] = 'new-1';
+    $pane = new stdClass();
+    $pane->pid = 'new-2';
+    $pane->panel = 'middle';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<p>Gå til <a href="/erhverv">Erhverv</a> forside</p>',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['middle'][1] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -87,7 +111,7 @@ function os2web_base_panels_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-3';
     $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-4';
@@ -105,8 +129,32 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['middle'][0] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'middle';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<p>Gå til&nbsp;<a href="/borger">Borger</a>&nbsp;forside</p>',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][1] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -138,7 +186,7 @@ function os2web_base_panels_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-5';
     $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-6';
@@ -156,8 +204,32 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][0] = 'new-3';
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][0] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'middle';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<p>Gå til <a href="/politik-og-planer">Politik og Planer</a> forside</p>',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['middle'][1] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -187,7 +259,7 @@ function os2web_base_panels_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-7';
     $pane->panel = 'center';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-4';
@@ -208,10 +280,10 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['center'][0] = 'new-4';
+    $display->content['new-7'] = $pane;
+    $display->panels['center'][0] = 'new-7';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-8';
     $pane->panel = 'center';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-5';
@@ -232,10 +304,10 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['center'][1] = 'new-5';
+    $display->content['new-8'] = $pane;
+    $display->panels['center'][1] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-9';
     $pane->panel = 'center';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-6';
@@ -256,10 +328,10 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['center'][2] = 'new-6';
+    $display->content['new-9'] = $pane;
+    $display->panels['center'][2] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-10';
     $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'os2web_base_panels_view_selfserv';
@@ -292,8 +364,8 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['center'][3] = 'new-7';
+    $display->content['new-10'] = $pane;
+    $display->panels['center'][3] = 'new-10';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -323,7 +395,7 @@ function os2web_base_panels_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-11';
     $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'nice_menus-1';
@@ -341,8 +413,8 @@ function os2web_base_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['middle'][0] = 'new-8';
+    $display->content['new-11'] = $pane;
+    $display->panels['middle'][0] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
