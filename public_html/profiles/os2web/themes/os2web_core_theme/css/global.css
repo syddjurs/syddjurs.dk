@@ -2325,7 +2325,7 @@ ul.nice-menu-down li ul > li {
 #zone-preface .block-nice-menus .block-title { display: none;}
 #zone-preface ul.nice-menu-down li.menuparent {
   background-color: #fff;
-  margin-left: 35px;
+  margin-left: 25px;
   color: #6d6e6d;
 }
 #zone-preface ul.nice-menu-down li.menuparent.first {
@@ -2336,7 +2336,7 @@ ul.nice-menu-down li ul > li {
 }
 
 #zone-preface-wrapper {
-	width: 70%;
+	width: 73%;
 	height: 35px;
 	margin: auto;
         float: right;
@@ -3164,7 +3164,8 @@ line-height: 22px;
 }
 
 #region-branding {
-	margin-left: 0;
+  margin-left: 0;
+  width: 250px;
 }
 
 .video-text {
