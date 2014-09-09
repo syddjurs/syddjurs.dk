@@ -47,7 +47,7 @@ function os2web_contact_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<a href="/kontakt" title="Gå til kontaktoversigt">Gå til kontaktoversigt</a>';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="/kontakt" title="Kontakt Kommunen">Kontakt Kommunen</a>';
   $handler->display->display_options['footer']['area']['format'] = 'php_code';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -705,7 +705,7 @@ return os2web_contact_get_block();
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('<a href="/kontakt" title="Gå til kontaktoversigt">Gå til kontaktoversigt</a>'),
+    t('<a href="/kontakt" title="Kontakt Kommunen">Kontakt Kommunen</a>'),
     t('Kontakt [title]'),
     t('<a id="tlf" href="tel:[field_os2web_contact_field_phone]" title="Telefon: [field_os2web_contact_field_phone]">[field_os2web_contact_field_phone]</a>'),
     t(' - [field_os2web_contact_field_mowcl]'),
