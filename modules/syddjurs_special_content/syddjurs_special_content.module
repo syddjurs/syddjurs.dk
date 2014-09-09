@@ -1,0 +1,23 @@
+<?php
+
+function syddjurs_special_content_get_children() {
+    $menu_tmp = 'os2web-menu-contentmenu';
+    $tree = menu_tree_page_data($menu_tmp);
+    menu_tree_trim_active_path($tree);
+    menu_tree_prune_active_tree($tree,'child');
+    $node_nids = array();
+    foreach ($tree as $key => $node) {
+      if (substr($node['link']['href'], 0, 5 ) == 'node/' && node_load(substr($node['link']['href'],5))) {
+        $node_nids[] = substr($node['link']['href'],5);
+      }
+    }
+    return $node_nids;;
+}
+
+function syddjurs_special_content_render_children($node_nids) {
+  $content = $spotboxes = entity_load('node', $node_nids);
+  $render_array = entity_view('node', $content, 'teaser');
+  return $render_array;
+
+
+}

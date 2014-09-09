@@ -1,0 +1,5 @@
+name = Syddjurs special content
+description = Display children nodes teaser view in no body content node
+core = 7.x
+version = 7.x-1.0
+project = syddjurs_special_content
