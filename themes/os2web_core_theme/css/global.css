@@ -2092,6 +2092,10 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
     height: 57px;
     font-size: 14px;
 }
+.view-os2web-kulturnaut-events-lists .views-field-title a:focus,
+.view-os2web-kulturnaut-events-lists .views-field-title a:active {
+  outline: none;
+}
 
 .view-os2web-kulturnaut-events-lists .views-field-title a:hover {
     color: #8a0153;
