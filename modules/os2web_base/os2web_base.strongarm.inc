@@ -262,7 +262,7 @@ function os2web_base_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'related_block' => array(
         'custom_settings' => TRUE,
@@ -294,6 +294,9 @@ function os2web_base_strongarm() {
       'os2web_meetings_meeting_detail_view' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'display' => array(
@@ -301,6 +304,10 @@ function os2web_base_strongarm() {
           'default' => array(
             'weight' => '7',
             'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '7',
+            'visible' => FALSE,
           ),
         ),
       ),
