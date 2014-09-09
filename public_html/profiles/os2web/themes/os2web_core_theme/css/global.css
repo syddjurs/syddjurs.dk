@@ -296,6 +296,18 @@ h2.pane-title a, h2.block-title a {
 .node-type-os2web-hearings-hearing-case .region-content-inner {
   width: 469px;
 }
+.node-children {
+  margin-bottom: 20px;
+}
+.node-children article {
+  margin: 10px 20px;
+  padding: 10px 10px;
+  background-color: #f4eded;
+  border-radius: 4px 4px;
+}
+.node-children article h3 a {
+  border-bottom: 2px solid;
+}
 
 #region-sidebar-first li.expanded, #region-sidebar-first li.collapsed, #region-sidebar-first li.leaf {padding: 0; margin: 0}
 

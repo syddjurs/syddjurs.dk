@@ -42,6 +42,35 @@ function os2web_core_theme_preprocess_html(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_page().
+ */
+function os2web_core_theme_preprocess_page(&$variables) {
+  $node = NULL;
+  if (isset($variables['node']) && !empty($variables['node']->nid)) {
+    $node = $variables['node'];
+  }
+  // If display children is been set, so get the children nodes..
+  if ($node && $display_children = field_get_items('node', $node, 'field_os2web_base_field_children')) {
+    if ($node->type == 'os2web_base_contentpage' && $display_children[0]['value'] == 1) {
+      $children = syddjurs_special_content_get_children();
+      if ($children) {
+        $children_render = syddjurs_special_content_render_children($children);
+        $variables['page']['content']['content']['content']['system_main']['nodes'][$node->nid]['node_children'] = array(
+          'node_children' => array(
+            '#markup' => drupal_render($children_render),
+          ),
+          '#theme_wrappers' => array('container'),
+          '#attributes' => array(
+            'class' => array('node-children'),
+          ),
+          '#weight' => 10,
+        );
+      }
+    }
+  }
+}
+
+/**
  *  Implements hook_menu_link().
  */
 function os2web_core_theme_menu_link(array $variables) {
