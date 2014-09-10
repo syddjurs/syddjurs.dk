@@ -2,3 +2,7 @@ logs
 sessions
 tmp
 site
+
+os2web-deploy
+apache-nutch-1.6
+migrate_map.txt
