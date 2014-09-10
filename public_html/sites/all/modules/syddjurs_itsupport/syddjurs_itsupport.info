@@ -1,0 +1,5 @@
+name = Syddjurs It-support
+description = Redirects www.syddjurs.dk/itsupport to teamviewer download
+core = 7.x
+package = Syddjurs
+
