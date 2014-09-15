@@ -112,6 +112,32 @@ function os2web_base_field_default_field_bases() {
     'type' => 'os2web_esdh_field_case_ident',
   );
 
+  // Exported field_base: 'field_os2web_base_field_children'
+  $field_bases['field_os2web_base_field_children'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2web_base_field_children',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_os2web_base_field_contact'
   $field_bases['field_os2web_base_field_contact'] = array(
     'active' => 1,
@@ -1102,30 +1128,31 @@ function os2web_base_field_default_field_bases() {
     'module' => 'node_reference',
     'settings' => array(
       'referenceable_types' => array(
-        'borger_dk_permalink' => 0,
-        'esdh_dokument' => 0,
-        'esdh_sag' => 0,
-        'files' => 0,
-        'institution' => 0,
-        'knactivity' => 0,
-        'kontaktblok' => 0,
-        'local_plan' => 0,
         'media' => 0,
-        'ofir_job' => 0,
+        'menu_page' => 0,
         'os2web_base_contentpage' => 0,
         'os2web_base_gallery' => 0,
         'os2web_base_iframe' => 0,
         'os2web_base_news' => 0,
         'os2web_base_rotating_image' => 0,
         'os2web_base_selfservice_link' => 'os2web_base_selfservice_link',
+        'os2web_borger_dk_article' => 0,
         'os2web_citizenservices_service' => 0,
+        'os2web_contact_contact' => 0,
+        'os2web_cp_service_cp_case' => 0,
+        'os2web_cp_service_cp_document' => 0,
+        'os2web_frontend_background_img' => 0,
+        'os2web_hearings_hearing' => 0,
+        'os2web_hearings_hearing_case' => 0,
+        'os2web_kulturnaut_knactivity' => 0,
+        'os2web_meeting_search_status' => 0,
+        'os2web_meetings_bullet' => 0,
+        'os2web_meetings_bullet_attach' => 0,
+        'os2web_meetings_meeting' => 0,
+        'os2web_ofir_job' => 0,
+        'os2web_sections_page' => 0,
         'os2web_spotbox_box' => 0,
         'panel' => 0,
-        'person' => 0,
-        'politician' => 0,
-        'referat' => 0,
-        'right_column' => 0,
-        'tema' => 0,
         'webform' => 0,
       ),
       'view' => array(
@@ -1358,6 +1385,39 @@ function os2web_base_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_piwik_stats'
+  $field_bases['field_piwik_stats'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_piwik_stats',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'hits' => array(
+        0 => 'nb_hits',
+        1 => 'entry_nb_actions',
+      ),
+      'rate' => array(
+        0 => 'bounce_rate',
+        1 => 'exit_rate',
+      ),
+      'visits' => array(
+        0 => 'nb_visits',
+        1 => 'entry_nb_visits',
+        2 => 'exit_nb_visits',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'piwik_stats',
+    'settings' => array(
+      'period' => 'month',
+      'show_in_statistics_page' => 1,
+    ),
+    'translatable' => 0,
+    'type' => 'piwik_stats',
   );
 
   return $field_bases;
