@@ -3,18 +3,20 @@
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
     <header>
-      <?php if ($view_mode != 'os2web_meetings_meeting_detail_view'): ?>
+      <?php if ($view_mode != 'os2web_meetings_meeting_detail_view' && !$teaser): ?>
         <h2<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+      <?php elseif ($teaser): ?>
+        <h3<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h3>
       <?php else: ?>
         <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
       <?php endif; ?>
     </header>
   <?php endif; ?>
   <div class="clearfix">
-    <?php if (!empty($content['links'])): ?>
+    <?php if (!empty($content['links']) && !$teaser): ?>
       <nav class="links node-links clearfix"><?php print render($content['links']); ?></nav>
     <?php endif; ?>
-    <?php if ($view_mode != 'os2web_meetings_meeting_detail_view' && arg(0) == 'node' && is_numeric(arg(1))): $nodeid = arg(1); ?>
+    <?php if ($view_mode != 'os2web_meetings_meeting_detail_view' && !$teaser && arg(0) == 'node' && is_numeric(arg(1))): $nodeid = arg(1); ?>
       <div class="printvenlig-side"><a target= "_blank" href="/print/<?php print $nodeid; ?>">&nbsp;</a></div>
     <?php endif; ?>
 
@@ -52,8 +54,8 @@
         </div>
       </div>
     <?php endif; ?>
-    <?php
-    print "<div class='last-updated-node'> Opdateret: " . format_date($node->changed, "short") . "</div>";
+    <?php if (!$teaser) {
+      print "<div class='last-updated-node'> Opdateret: " . format_date($node->changed, "short") . "</div>";}
     ?>
   <?php endif; ?>
 </article>

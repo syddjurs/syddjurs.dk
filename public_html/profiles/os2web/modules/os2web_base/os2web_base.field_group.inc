@@ -28,7 +28,8 @@ function os2web_base_field_group_info() {
       2 => 'field_os2web_base_field_selfserv',
       3 => 'field_os2web_base_field_rotate',
       4 => 'field_os2web_base_field_hidlinks',
-      5 => 'group_os2web_base_group_hidden',
+      5 => 'field_os2web_base_field_children',
+      6 => 'group_os2web_base_group_hidden',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -198,7 +199,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_os2web_base_group_3';
   $field_group->data = array(
     'label' => 'Skjult',
-    'weight' => '18',
+    'weight' => '12',
     'children' => array(
       0 => 'field_os2web_base_field_struct',
       1 => 'field_os2web_base_field_sourceid',
@@ -399,11 +400,11 @@ function os2web_base_field_group_info() {
     'label' => 'Taksonomi',
     'weight' => '8',
     'children' => array(
-      0 => 'field_os2web_base_field_kle_ref',
-      1 => 'field_os2web_base_field_edi_tags',
-      2 => 'field_os2web_base_field_organiz',
-      3 => 'field_os2web_base_field_loca_ref',
-      4 => 'field_os2web_base_field_politics',
+      0 => 'field_os2web_base_field_edi_tags',
+      1 => 'field_os2web_base_field_organiz',
+      2 => 'field_os2web_base_field_politics',
+      3 => 'field_os2web_base_field_kle_ref',
+      4 => 'field_os2web_base_field_loca_ref',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

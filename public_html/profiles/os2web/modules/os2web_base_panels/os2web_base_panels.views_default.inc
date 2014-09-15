@@ -1338,7 +1338,7 @@ return $field==1?true:false;';
   $handler->display->display_options['filters']['nid']['id'] = 'nid';
   $handler->display->display_options['filters']['nid']['table'] = 'node';
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
-  $handler->display->display_options['filters']['nid']['value']['value'] = '632998';
+  $handler->display->display_options['filters']['nid']['value']['value'] = '676557';
   $handler->display->display_options['displays'] = array(
     'block' => 'block',
     'panel_pane_3' => 'panel_pane_3',
@@ -2011,7 +2011,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
@@ -2308,6 +2308,7 @@ return $field==1?true:false;';
     t('Stor rotator - single2'),
     t('Alle'),
     t('frontpage Block 2 with 3 items'),
+    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>'),
     t('<div class="news-list">
    <div class="news-list-left">
       [field_os2web_base_field_rota_img]
@@ -3580,7 +3581,7 @@ return $field==1?true:false;';
   $handler->display->display_options['footer']['area']['format'] = 'blokindhold';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Forbindelse: Indhold: Selvbetjeningslinks (field_os2web_base_field_selfserv) */
+  /* Forbindelse: Indhold: Blanketter/Selvbetjening (field_os2web_base_field_selfserv) */
   $handler->display->display_options['relationships']['field_os2web_base_field_selfserv_nid']['id'] = 'field_os2web_base_field_selfserv_nid';
   $handler->display->display_options['relationships']['field_os2web_base_field_selfserv_nid']['table'] = 'field_data_field_os2web_base_field_selfserv';
   $handler->display->display_options['relationships']['field_os2web_base_field_selfserv_nid']['field'] = 'field_os2web_base_field_selfserv_nid';
