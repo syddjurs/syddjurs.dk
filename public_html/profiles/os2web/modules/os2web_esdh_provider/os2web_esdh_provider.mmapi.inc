@@ -135,8 +135,14 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       }
     }
     else {
-      // We create a new node object.
-      $node = new stdClass();
+      //check if there is an sofd version of this node (acadre and syddjurs systems only)
+      if (module_exists('os2dagsorden_esdh_provider')){
+        $committee_term = _acadre_esdh_import_term($meeting['committee'], 'os2web_meetings_tax_committee');
+        $node = os2dagsorden_esdh_provider_find_sofd_meeting($committee_term, $meeting['meeting_date_start'], $meeting['meeting_date_finish']);
+      } else {
+        // We create a new node object.
+        $node = new stdClass();
+      }
     }
 
     // Or any other content type you want.
@@ -197,9 +203,33 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     $node->field_os2web_meetings_system_id[LANGUAGE_NONE][0]['value'] = $meeting['system_id'];
     // Type import.
     $node->field_os2web_meetings_type[LANGUAGE_NONE][0]['value'] = $meeting['type'];
+    //Adding default meeting category
+    $node->field_os2web_meetings_category[LANGUAGE_NONE][0]['value']=variable_get('os2dagsorden_default_meeting_cateroty','pol');
+    //Adding participants
+    if (isset($meeting['participants'])){
+      $node->field_os2web_meetings_partic[LANGUAGE_NONE][0]['value'] = implode(variable_get('os2dagsorden_participants_delimeter', ', '), $meeting['participants']);
+      $node->field_os2web_meetings_partic[LANGUAGE_NONE][0]['format'] ='filtered_html';
+    }
+ 
+    //Adding cancelled participants
+    if (isset($meeting['participants_cancellation'])){
+      $node->field_os2web_meetings_particcanl[LANGUAGE_NONE][0]['value'] = implode(variable_get('os2dagsorden_participants_delimeter', ', '), $meeting['participants_cancellation']);
+      $node->field_os2web_meetings_particcanl[LANGUAGE_NONE][0]['format'] ='filtered_html';
+    }
+    
+     //Adding comments
+   if (isset($meeting['description'])){
+      $node->field_os2web_meetings_comments[LANGUAGE_NONE][0]['value'] = $meeting['comments'];
+    }
 
     // Make sure the committee term is created and get the term.
-    $node->field_os2web_meetings_committee[LANGUAGE_NONE][0]['tid'] = _acadre_esdh_import_term($meeting['committee'], 'os2web_meetings_tax_committee')->tid;
+    if (!$committee_term)
+      $committee_term = _acadre_esdh_import_term($meeting['committee'], 'os2web_meetings_tax_committee');
+    $node->field_os2web_meetings_committee[LANGUAGE_NONE][0]['tid'] = $committee_term->tid;
+    if (module_exists('os2dagsorden_esdh_provider')){
+      os2dagsorden_esdh_provider_committee_add_subid($committee_term, $meeting['committee_id']);
+    }
+
     $node->field_os2web_meetings_location[LANGUAGE_NONE][0]['tid'] = _acadre_esdh_import_term($meeting['location'], 'os2web_meetings_tax_location')->tid;
     // Add QBrick info @FIXME This should be in a node_save hook in qbrick
     // module.
@@ -227,11 +257,13 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     }
 
     // Delete all bullet points before importing.
-    $bullets = array_shift($node->field_os2web_meetings_bullets);
-    if (is_array($bullets)) {
-      $nids_to_delete = array();
-      foreach ($bullets as $nids) {
-        $nids_to_delete[$nids['target_id']] = $nids['target_id'];
+    if(property_exists($node,'field_os2web_meetings_bullets') && is_array($node->field_os2web_meetings_bullets)) {
+      $bullets = array_shift($node->field_os2web_meetings_bullets);
+      if (is_array($bullets)) {
+        $nids_to_delete = array();
+        foreach ($bullets as $nids) {
+          $nids_to_delete[$nids['target_id']] = $nids['target_id'];
+        }
       }
     }
 
@@ -289,14 +321,22 @@ function _os2web_esdh_provider_import_items($items) {
     $node->title = substr($item['title'],0,255);
     // Set some default values.
     node_object_prepare($node);
+    
+    if (module_exists('os2dagsorden_esdh_provider')){
+      $node = os2dagsorden_esdh_provider_bullet_add_number($node, $item['id']);
+    }
+
     if ($item['access'] === 'Lukket') {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
+      if (module_exists('os2dagsorden_esdh_provider')){
+        $node = os2dagsorden_esdh_provider_process_closed_bullet($node, $item); 
+      }
       node_submit($node);
       node_save($node);
       $nids[] = $node->nid;
     }
     else {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
       if (isset($item['movie_id']) && is_numeric($item["chapter"])) {
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['id'] = $item['movie_id'];
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['seek'] = $item["chapter"];
@@ -316,6 +356,8 @@ function _os2web_esdh_provider_import_items($items) {
         if ($enclosure['access']) {
           if ($file = _os2web_esdh_provider_import_file($enclosure)) {
             $node->field_os2web_meetings_enclosures[LANGUAGE_NONE][] = (array) $file;
+            if (module_exists('os2dagsorden_esdh_provider'))
+              $node->field_os2web_meetings_attach[LANGUAGE_NONE][]['target_id'] = os2dagsorden_esdh_provider_process_enclosure($enclosure, $file);
           }
           else {
             watchdog('acadre MM', 'There was an error importing file %uri ', array('%uri' => $enclosure['uri']), WATCHDOG_ERROR);
@@ -459,6 +501,9 @@ function _os2web_esdh_provider_import_file($file_meta) {
   $file->uid = 1;
   $file->status = FILE_STATUS_PERMANENT;
   $file = file_save($file);
+  
+  if (module_exists('os2web_pdf_conversion_manager'))
+    _os2web_pdf_conversion_manager_copy_file_to_convertion_dir($file->fid);
 
   // Schedule for PDF conversion
   // $convert = FALSE; // DEBUG.
