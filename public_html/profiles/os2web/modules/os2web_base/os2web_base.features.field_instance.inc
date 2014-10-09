@@ -929,11 +929,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 'video',
-          0 => 0,
           'audio' => 0,
           'default' => 0,
+          0 => 0,
+          'image' => 'image',
+          'video' => 'video',
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -2189,12 +2189,12 @@ function os2web_base_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'os2web_iframe_field',
         'settings' => array(
           'height' => 1200,
           'width' => 700,
         ),
-        'type' => 'text_default',
+        'type' => 'os2web_iframe_field_iframe',
         'weight' => 2,
       ),
       'related_block' => array(
