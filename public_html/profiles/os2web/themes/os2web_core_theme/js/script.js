@@ -62,7 +62,14 @@ jQuery(document).ready(function () {
 
     jQuery('ul.nice-menu').addClass("top_menu_down");
     jQuery('ul.nice-menu').removeClass('nice-menu');
-    jQuery('a[href^="http://"], a[href^="https://"]').attr('target','_blank');
+
+    // Add _blank to external links.
+    for (var links = document.links, i = 0, a; a = links[i]; i++) {
+      if (a.host !== location.host) {
+       a.target = '_blank';
+      }
+    }
+
     jQuery('.top_menu_down li.menuparent').click(function(){
       jQuery('.top_menu_down li ul').hide();
 
