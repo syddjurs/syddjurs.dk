@@ -2371,6 +2371,9 @@ ul.nice-menu-down li ul > li {
 #zone-preface ul.nice-menu li.menuparent  ul li a {color: #FFF;font-size: 15px}
 #zone-preface ul.nice-menu li.menuparent a {color:#6d6e6d;}
 
+#zone-preface ul.nice-menu-down li.menuparent  ul li a:hover {
+  border: 1px solid #fff;
+}
 #zone-preface ul.nice-menu li { background-color:  #640C3C;}
 
 #zone-preface ul.nice-menu ul { top: 30px; border: none}
@@ -2379,7 +2382,7 @@ ul.nice-menu-down li ul > li {
   position:absolute;
   top: 30px;
   padding-bottom: 0.5em;
-  min-width: 150px;
+  min-width: 230px;
   z-index: 9999;
 }
 
