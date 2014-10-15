@@ -90,3 +90,19 @@ jQuery(document).ready(function () {
 
 });
 
+// Remove mouseover a.addthis_button_compact 
+if (typeof addthis_config !== "undefined") {
+  addthis_config.ui_click = true;
+  addthis_config.ui_offset_left = -30;
+  addthis_config.ui_offset_top = -30;
+  addthis_config.ui_hover_direction = -1;
+}
+else {
+  var addthis_config = {
+    ui_click: true,
+    ui_offset_left: -30,
+    ui_offset_top: -30,
+    ui_hover_direction: -1,
+  };
+}
+
