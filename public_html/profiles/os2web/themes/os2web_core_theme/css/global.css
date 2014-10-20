@@ -1058,6 +1058,9 @@ div.panel-pane.pane-views-panes.pane-os2web-base-panels-view-meganews-panel-pane
   padding-left: 35px;
   margin-bottom: 10px;
 }
+.telfonnummer.kontaktblok-indhold {
+  margin-top: 10px;
+}
 .telfonnummer, .telfonnummer a {
   font-size: 25px;
   color: #9b185c;

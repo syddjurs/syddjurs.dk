@@ -104,7 +104,7 @@ function os2web_contact_views_default_views() {
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['alter']['text'] = '<a id="tlf" href="tel:[field_os2web_contact_field_phone]" title="Telefon: [field_os2web_contact_field_phone]">[field_os2web_contact_field_phone]</a>';
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_class'] = 'telefonnummer, kontaktblok-indhold';
+  $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_class'] = 'telfonnummer, kontaktblok-indhold';
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['type'] = 'number_unformatted';
@@ -438,7 +438,7 @@ return os2web_contact_get_block();
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['alter']['text'] = '<a id="tlf" href="tel:[field_os2web_contact_field_phone]" title="Telefon: [field_os2web_contact_field_phone]">[field_os2web_contact_field_phone]</a>';
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_class'] = 'telefonnummer, kontaktblok-indhold';
+  $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_class'] = 'telfonnummer, kontaktblok-indhold';
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_contact_field_phone']['hide_empty'] = TRUE;

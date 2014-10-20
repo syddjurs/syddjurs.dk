@@ -523,48 +523,6 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_children'
-  $field_instances['node-os2web_base_contentpage-field_os2web_base_field_children'] = array(
-    'bundle' => 'os2web_base_contentpage',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_base_field_children',
-    'label' => 'Vis underside teaser view',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_contact'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_contact'] = array(
     'bundle' => 'os2web_base_contentpage',
@@ -971,11 +929,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 'video',
-          0 => 0,
           'audio' => 0,
           'default' => 0,
+          0 => 0,
+          'image' => 'image',
+          'video' => 'video',
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -2231,12 +2189,12 @@ function os2web_base_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'os2web_iframe_field',
         'settings' => array(
           'height' => 1200,
           'width' => 700,
         ),
-        'type' => 'text_default',
+        'type' => 'os2web_iframe_field_iframe',
         'weight' => 2,
       ),
       'related_block' => array(
@@ -4470,7 +4428,6 @@ function os2web_base_field_default_field_instances() {
   t('Unikke relaterede links');
   t('Unikke relaterede temaer');
   t('Unikt indhold');
-  t('Vis underside teaser view');
   t('Vises før indholdet af iframe');
   t('Vælg billede');
   t('Vælg de spotboxe der skal vises nederst på siden.');
