@@ -78,6 +78,14 @@ function os2web_esdh_provider_form_os2web_settings_settings_form_alter(&$form, &
     '#title' => t('Enable external queue import'),
     '#default_value' => variable_get('os2web_esdh_provider_queue_enabled', FALSE),
   );
+
+  // Enable unpublishing meetings without manifests.
+  $form['os2web_esdh_provider']['os2web_meetings_unpublish_without_manifest'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Unpublish meeting nodes, that have no manifest.'),
+    '#description' => t('This is currently only tested on meetings imported with the acadre plugin'),
+    '#default_value' => variable_get('os2web_meetings_unpublish_without_manifest', FALSE),
+  );
 }
 
 /**
@@ -227,6 +235,11 @@ function os2web_esdh_provider_queue_meetings() {
       }
     }
     $queue->createItem(array('post_import_process' => TRUE));
+
+    if (variable_get('os2web_meetings_unpublish_without_manifest', FALSE)) {
+      $queue->createItem(array('unpublish_without_manifest' => TRUE, 'meetings' => $meetings));
+    }
+
     variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
 
     variable_set('os2web_esdh_provider_last_mm_import', time());
@@ -265,6 +278,10 @@ function _os2web_esdh_provider_cron_queue_worker($args) {
           $args['post_import_process'] === TRUE &&
           os2web_esdh_provider_supports('mm', 'post_import_process')) {
     os2web_esdh_provider_invoke('mm', 'post_import_process');
+  }
+  elseif (isset($args['unpublish_without_manifest'])
+    && $args['unpublish_without_manifest'] === TRUE) {
+    os2web_esdh_provider_unpublish_process($args['meetings']);
   }
 }
 
@@ -362,6 +379,50 @@ function os2web_esdh_provider_invoke() {
       '%api' => $api,
         ), WATCHDOG_ERROR);
   }
+}
+
+/**
+ * Unpublish meetings without a manifest.
+ */
+function os2web_esdh_provider_unpublish_process($meetings) {
+  $meeting_ids = array();
+
+  foreach ($meetings as $meeting) {
+    $meeting_ids[] = $meeting['id'];
+  }
+
+  // Due to the fact that the systemid is not always the number of the meeting,
+  // This is only tested and working on acadre meetings.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'os2web_meetings_meeting')
+        ->propertyCondition('status', 1);
+  if (!empty($meeting_ids)) {
+    $query->fieldCondition('field_os2web_meetings_system_id', 'value', $meeting_ids, 'NOT IN');
+  }
+  // If the meeting_ids array is empty, there are no manifests at all, in this
+  // case unpublish all meetings with a system_id (these should be the ones
+  // imported).
+  else {
+    $query->fieldCondition('field_os2web_meetings_system_id', 'value', 'NULL', '!=');
+  }
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    foreach ($result['node'] as $meeting_info) {
+      os2web_esdh_provider_unpublish_meeting($meeting_info->nid);
+    }
+  }
+}
+
+/**
+ * Unpublish meeting by nid.
+ */
+function os2web_esdh_provider_unpublish_meeting($nid) {
+  // Load, unpublish and save meeting node.
+  $meeting = node_load($nid);
+  node_unpublish_action($meeting);
+  node_save($meeting);
 }
 
 /* * *************** API METHODS BELOW HERE ************************************ */
