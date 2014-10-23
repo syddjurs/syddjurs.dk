@@ -2733,8 +2733,8 @@ div.breadcrumb.you-are-here {
 .field-name-field-os2web-base-field-selfserv a {
   color: #333;
   padding-left: 25px;
-  background: url('../images/mega_dd_arrow_right.png') no-repeat;
-  background-position: 15px;
+  background: url('../images/spotboxPILc.png') no-repeat;
+  background-position: 5px;
   display: block;
   margin-bottom: 10px;
 }
@@ -2987,10 +2987,15 @@ div.qtip { background-image: url(../images/mega_dd_bg_btm.png); background-posit
 }
 
 .node-type-os2web-base-contentpage .field-items li {
-list-style-image: url(../images/megamenu-arrow-over.png);
-color: #4A4A4A;
-font-size: 13px;
-line-height: 22px;
+  background: url(../images/purple-dot.png);
+  background-repeat: no-repeat;
+  background-position: 0% 7px;
+  background-size: 5px 5px;
+  color: #4A4A4A;
+  font-size: 13px;
+  line-height: 22px;
+  list-style: none;
+  padding-left: 15px;
 }
 
 .search-results a {
