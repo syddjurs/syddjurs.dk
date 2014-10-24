@@ -420,9 +420,17 @@ function os2web_esdh_provider_unpublish_process($meetings) {
  */
 function os2web_esdh_provider_unpublish_meeting($nid) {
   // Load, unpublish and save meeting node.
-  $meeting = node_load($nid);
-  node_unpublish_action($meeting);
-  node_save($meeting);
+  try {
+    $meeting = node_load($nid);
+    node_unpublish_action($meeting);
+    node_save($meeting);
+  }
+  catch (Exception $e) {
+    watchdog('esdh_provider', 'Could not unpublish meeting %nid, %err', array(
+        '%nid' => $nid,
+        '%err' => $e->getMessage(),
+      ), WATCHDOG_ERROR);
+  }
 }
 
 /* * *************** API METHODS BELOW HERE ************************************ */
