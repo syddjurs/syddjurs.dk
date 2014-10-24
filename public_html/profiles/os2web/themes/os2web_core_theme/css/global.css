@@ -3019,9 +3019,23 @@ div.qtip { background-image: url(../images/mega_dd_bg_btm.png); background-posit
 .search-results .search-snippet-info {
   padding-left: 0;
 }
-.page-search .content ul {
+
+ul#facetapi-facet-apachesolrsolr-block-im-field-site-structure {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+ul#facetapi-facet-apachesolrsolr-block-im-field-os2web-base-field-struc {
+  margin-left: 0;
+  margin-right: 13px;
+}
+
+.page-search .spelling-suggestions {
+  margin-left: 20px;
+}
+
+.page-search .region-content ul {
+  margin-left: 40px;
 }
 
 .block-system .search-form .form-text {
