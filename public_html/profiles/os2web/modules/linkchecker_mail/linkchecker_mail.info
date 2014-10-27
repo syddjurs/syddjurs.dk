@@ -1,0 +1,9 @@
+name = Link checker mail
+description = "Periodically send mails with the broken links in node types, blocks and fields form linkchecker module results report to admin or other users."
+configure = admin/config/content/linkchecker_mail
+core = 7.x
+dependencies = linkchecker
+version = "7.x-1.0"
+core = "7.x"
+project = "linkchecker_mail"
+datestamp = "1414065167"
