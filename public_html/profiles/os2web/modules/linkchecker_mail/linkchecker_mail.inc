@@ -243,6 +243,7 @@ function _linkchecker_mail_watch_dog($result, $to) {
         '%email' => $to
       )
     );
+    variable_set('linkchecker_mail_last_sent', REQUEST_TIME);
   }
   else {
     $msg = t('Error : Link checker mail is NOT sent to email=%email');
