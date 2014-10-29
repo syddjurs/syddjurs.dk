@@ -42,6 +42,8 @@ function linkchecker_mail_menu() {
 }
 
 function linkchecker_mail_admin_settings_form($form, $form_state) {
+  $linkchecker_mail_last_sent = variable_get('linkchecker_mail_last_sent', strtotime('1970-01-01 00:00'));
+  drupal_set_message(t('Last email sending date is ') . date('d-m-Y H:i', $linkchecker_mail_last_sent), 'status');
   $form['linkchecker_mail_tab'] = array(
     '#type' => 'vertical_tabs',
     '#weight' => 0,
@@ -125,6 +127,12 @@ function linkchecker_mail_admin_settings_form($form, $form_state) {
     '#suffix' => _linkchecker_mail_get_info_params('info'),
     '#default_value' => variable_get('linkchecker_mail_body', $default_body_text),
   );
+
+  $form['linkchecker_mail_sendmail_now'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send mail now!'),
+    '#submit' => array('linkchecker_mail_sendmail'),
+  );
   return system_settings_form($form);
 }
 
@@ -144,7 +152,6 @@ function linkchecker_mail_cron() {
   if (time() > $timestamp) {
     // Call the function to send report to roles or email address from setting form.
     linkchecker_mail_sendmail($linkchecker_mail_last_sent);
-    variable_set('linkchecker_mail_last_sent', REQUEST_TIME);
   }
 }
 
