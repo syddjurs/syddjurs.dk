@@ -336,6 +336,7 @@ div.vertical-tabs .vertical-tabs-panes .fieldset-wrapper legend {
 }
 
 #search-block-form .rel-register-link, .views-exposed-widget .rel-register-link {display: none}
+
 /*Bellcom Custom*/
 
 .views-slideshow-controls-top {
@@ -3044,6 +3045,11 @@ line-height: 22px;
 	width: 69px;
 	text-indent: -9999px;
 	background-repeat: no-repeat;
+}
+
+.spelling-suggestions .form-item dt 
+{
+	font-size: 14px;
 }
 
 
