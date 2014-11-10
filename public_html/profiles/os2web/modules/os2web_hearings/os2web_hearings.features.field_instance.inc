@@ -353,7 +353,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -392,7 +392,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -499,7 +499,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -538,7 +538,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -617,7 +617,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -846,7 +846,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -893,7 +893,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -920,6 +920,42 @@ function os2web_hearings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_piwik_stats'
+  $field_instances['node-os2web_hearings_hearing_case-field_piwik_stats'] = array(
+    'bundle' => 'os2web_hearings_hearing_case',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_piwik_stats',
+    'label' => 'Piwik Stats',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'piwik_stats',
+      'settings' => array(),
+      'type' => 'piwik_stats_hidden',
+      'weight' => 21,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
@@ -930,6 +966,7 @@ function os2web_hearings_field_default_field_instances() {
   t('KL Emneord');
   t('Møder');
   t('Organisation');
+  t('Piwik Stats');
   t('Politik');
   t('Primære billede');
   t('Resume (maks 2 linier!)');
