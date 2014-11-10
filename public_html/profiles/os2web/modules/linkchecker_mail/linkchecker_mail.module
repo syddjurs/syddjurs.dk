@@ -1,0 +1,278 @@
+<?php
+/**
+ * @file
+ * This module periodically (by cron job) sends mails with node broken links to specific users or external mail addresses.
+ * @author yx@bellcom.dk
+ */
+
+include_once 'linkchecker_mail.inc';
+include_once 'linkchecker_mail.htmlmail.inc';
+
+/**
+ * Implements hook_enable().
+ */
+function linkchecker_mail_enable() {
+    db_update('system')
+    ->fields(array('weight' => 20))
+    ->condition('type', 'module')
+    ->condition('name', 'linkchecker_mail')
+    ->execute();
+}
+/*
+ * Implements hook_uninstall().
+ */
+function linkchecker_mail_uninstall() {
+  // Unset module keys in variable mail_system
+  $mail_system = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  unset($mail_system['linkchecker_mail']);
+  variable_set('mail_system', $mail_system);
+}
+ /**
+ * Implements hook_menu().
+ */
+function linkchecker_mail_menu() {
+  $items['admin/config/content/linkchecker_mail'] = array(
+    'title' => 'Link checker mail',
+    'description' => 'Configure mail sending for link checker.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('linkchecker_mail_admin_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+function linkchecker_mail_admin_settings_form($form, $form_state) {
+  $linkchecker_mail_last_sent = variable_get('linkchecker_mail_last_sent', strtotime('1970-01-01 00:00'));
+  drupal_set_message(t('Last email sending date is ') . date('d-m-Y H:i', $linkchecker_mail_last_sent), 'status');
+  $form['linkchecker_mail_tab'] = array(
+    '#type' => 'vertical_tabs',
+    '#weight' => 0,
+  );
+  $form['linkchecker_mail_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Link checker mail'),
+    '#collapsible' => TRUE,
+    '#group' => 'linkchecker_mail_tab',
+  );
+  $options = array(
+    '0' => t('Never'),
+    '7' => t('Every week'),
+    '14' => t('Every 14 days'),
+    '30' => t('Every 30 days'),
+    '60' => t('Every 60 days'),
+  );
+  $form['linkchecker_mail_settings']['linkchecker_mail_frequency'] = array(
+    '#type' => 'select',
+    '#options' => $options,
+    '#title' => t('Link checker mail frequency'),
+    '#default_value' => variable_get('linkchecker_mail_frequency', 0),
+  );
+  // Role specific
+  $roles = user_roles(TRUE);
+  $form['linkchecker_mail_settings']['linkchecker_mail_roles'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Mail receiver - recevice all broken links'),
+    '#collapsible' => TRUE,
+    '#description' => t('Choose the roles that will receive all the broken links'),
+  );
+
+  foreach ($roles as $rid => $role) {
+    $form['linkchecker_mail_settings']['linkchecker_mail_roles']['linkchecker_mail_role_'.$rid]= array(
+      '#type' => 'checkbox',
+      '#title' => $role,
+      '#default_value' => variable_get('linkchecker_mail_role_'.$rid),
+    );
+  }
+
+  $form['linkchecker_mail_settings']['linkchecker_mail_author'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send notification to author'),
+    '#default_value' => variable_get('linkchecker_mail_author', 0),
+    '#description' => t('The author with the role selected in receive all (above) will not receive specific mail with his/her own nodes.'),
+  );
+
+  $form['linkchecker_mail_settings']['linkchecker_mail_extra'] = array(
+    '#type' => 'textfield',
+    '#title' => t('External mail addresses'),
+    '#default_value' => variable_get('linkchecker_mail_extra', ''),
+    '#description' => t('Use commas to separate values'),
+  );
+
+  //
+  $form['linkchecker_mail_content'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Link checker mail content'),
+    '#collapsible' => TRUE,
+    '#group' => 'linkchecker_mail_tab',
+  );
+  $form['linkchecker_mail_content']['linkchecker_mail_subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mail subject'),
+    '#default_value' => variable_get('linkchecker_mail_subject', 'Link checker mail - ' . variable_get('site_name')),
+  );
+  $default_body_text = '
+    <p> Hi !name, <br />
+    <br>
+    Below are the broken links from !site_name. <br />
+    <br />
+    !node_links_list <br />
+    <br />
+    -- <br />
+    !site_name
+    </p>
+  ';
+  $form['linkchecker_mail_content']['linkchecker_mail_body'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Mail body'),
+    '#suffix' => _linkchecker_mail_get_info_params('info'),
+    '#default_value' => variable_get('linkchecker_mail_body', $default_body_text),
+  );
+
+  $form['linkchecker_mail_sendmail_now'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send mail now!'),
+    '#submit' => array('linkchecker_mail_sendmail'),
+  );
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_cron().
+ */
+function linkchecker_mail_cron() {
+  $linkchecker_mail_frequency = variable_get('linkchecker_mail_frequency');
+  $linkchecker_mail_last_sent = variable_get('linkchecker_mail_last_sent', strtotime('1970-01-01 00:00:00'));
+
+  // If the frequency is set to never, so return.
+  if (!$linkchecker_mail_frequency) {
+    return;
+  }
+
+  $timestamp = $linkchecker_mail_last_sent + $linkchecker_mail_frequency * 60 * 60 * 24;
+  if (time() > $timestamp) {
+    // Call the function to send report to roles or email address from setting form.
+    linkchecker_mail_sendmail($linkchecker_mail_last_sent);
+  }
+}
+
+function linkchecker_mail_mail($key, &$message, $params) {
+  variable_set('mail_system',
+    array_merge(
+      // Previously set mail_system variable
+      variable_get('mail_system', array('default-system' => 'DefaultMailSystem')),
+      // Linkchecker_mail new key, which ADD to the previous keys
+      array( 'linkchecker_mail' => 'LinkcheckerMailSystem')
+    )
+  );
+  $options = array();
+  // if $params isnt an array, dont do anything.
+  if(!is_array($params)){
+    return;
+  }
+
+  switch ($key) {
+    // "default" case for sending mail.
+    case 'mail':
+      $params += array('tokens' => '');
+
+      // Html mail
+      if(strstr($params['format'], 'html')){
+        $headers = array(
+          'MIME-Version' => '1.0',
+          'Content-Type' => 'text/html; charset=UTF-8; format=flowed',
+          'Content-Transfer-Encoding' => '8Bit',
+          'X-Mailer' => 'Drupal'
+        );
+        foreach ($headers as $key => $value) {
+          $message['headers'][$key] = $value;
+        }
+      }
+
+      $message['subject'] = t($params['subject'], $params['tokens'], $options);
+      $message['body'][] = t($params['body'], $params['tokens'], $options);
+
+      break;
+  }
+}
+
+function linkchecker_mail_sendmail($linkchecker_mail_last_sent = 0) {
+  // Get form, language, mail params with tokens.
+  $from = variable_get('site_mail', 'admin@example.com');
+  $language = language_default();
+
+  // The default mail body with token, html format.
+  $default_body_text = '
+    <p> Hi !name, <br />
+    <br>
+    Below are the broken links from !site_name. <br />
+    <br />
+    !node_links_list <br />
+    <br />
+    -- <br />
+    !site_name </p>
+  ';
+  $body = variable_get('linkchecker_mail_body', $default_body_text);
+  $subject = variable_get('linkchecker_mail_subject', 'Link checker mail - ' . variable_get('site_name'));
+
+  // Get the html list of all broken links under each nodes.
+  // Add a link html to see more if there were over 50 links, and cut off the rest of links.
+  $node_links_list = _linkchecker_mail_get_html_table();
+  $node_ids = _linkchecker_mail_get_broken_link_node_ids();
+
+  if ($node_links_list == FALSE) {
+    return;
+  }
+  // First: get user info by roles to recevie all.
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if (variable_get('linkchecker_mail_role_'.$rid)) {
+      $linkchecker_mail_roles[$rid] = $role;
+    }
+  }
+  if (!empty($linkchecker_mail_roles)) {
+    $receivers = _linkchecker_mail_get_users_by_roles($linkchecker_mail_roles);
+
+    foreach ($receivers as $uid => $receiver) {
+      // FALSE for not external emails.
+      $token_1 = _linkchecker_mail_get_token_values(FALSE, $uid, $node_links_list);
+      $params = array('subject' => $subject, 'body' => $body, 'format' => 'html');
+      $params = array_merge(array('tokens' => $token_1), $params);
+      $result = drupal_mail('linkchecker_mail', 'mail', $receiver, $language, $params, $from, TRUE);
+
+      // Write record to dblog.
+      _linkchecker_mail_watch_dog($result, $receiver);
+
+    }
+  }
+
+  // Then, get the authors.
+  if (variable_get('linkchecker_mail_author') && count($node_ids) > 0) {
+    $author =  _linkchecker_mail_get_users_by_nodes($node_ids);
+    // Exclude if the user has a role id in $linkchecker_mail_roles.
+    foreach ($author as $uid => $receiver) {
+      // Exclude the user alread
+      if (array_key_exists($uid, $receivers)) {
+        continue;
+      }
+      $node_links_author_list = _linkchecker_mail_get_html_table($receiver);
+      $token_2 = _linkchecker_mail_get_token_values(FALSE, $uid, $node_links_author_list);
+      $params = array('subject' => $subject, 'body' => $body, 'format' => 'html');
+      $params = array_merge(array('tokens' => $token_2), $params);
+      $result = drupal_mail('linkchecker_mail', 'mail', $receiver['mail'], $language, $params, $from, TRUE);
+      _linkchecker_mail_watch_dog($result, $receiver['mail']);
+    }
+  }
+
+  // Last, get the external email address.
+  if ($emails_external = variable_get('linkchecker_mail_extra')) {
+    $email_list = explode(',', $emails_external);
+    foreach ($email_list as $key => $receiver) {
+      $token_3 = _linkchecker_mail_get_token_values(TRUE, $receiver, $node_links_list);
+      $params = array('subject' => $subject, 'body' => $body, 'format' => 'html');
+      $params = array_merge(array('tokens' => $token_3), $params);
+      $result = drupal_mail('linkchecker_mail', 'mail', $receiver, $language, $params, $from, TRUE);
+
+      _linkchecker_mail_watch_dog($result, $receiver);
+    }
+  }
+}

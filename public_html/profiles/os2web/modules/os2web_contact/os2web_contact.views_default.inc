@@ -618,7 +618,7 @@ return os2web_contact_get_block();
   $handler->display->display_options['fields']['field_os2web_contact_field_callc']['field'] = 'field_os2web_contact_field_callc';
   $handler->display->display_options['fields']['field_os2web_contact_field_callc']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_contact_field_callc']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_contact_field_callc']['alter']['text'] = '<h3>Callcenter</h3>
+  $handler->display->display_options['fields']['field_os2web_contact_field_callc']['alter']['text'] = '<h4>Callcenter</h4>
 <div class="telfonnummer"><a href="tel:87535000">87 53 50 00</a></div>
 <div class="dag">Mandag-tirsdag:</div><div class="aaben">08.30 - 15.00</div>
 <div class="dag">Onsdag:</div><div class="lukket"> Lukket</div>
