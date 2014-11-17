@@ -81,6 +81,12 @@ jQuery(document).ready(function () {
         });*/
       }
     });
+    var culture_link = jQuery('.front .view-os2web-kulturnaut-events-lists .views-field-title a');
+    culture_link.each(function() {
+      if (jQuery(this).height() > 40) { 
+        jQuery(this).css('padding-top', '0px');
+      }
+    });
 
 });
 

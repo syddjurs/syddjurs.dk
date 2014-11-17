@@ -4584,12 +4584,16 @@ ul.os2web_menus-container {
 }
 .front .view-os2web-kulturnaut-events-lists ul {
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 10px;
+  overflow: hidden;
 }
 .front .view-os2web-kulturnaut-events-lists .views-row {
   margin: 0 10px;
   border: none;
-  display: inline-block;
+  float: right;
+  max-width: 46%;
+  min-width: 40%;
+  text-align: left;
 }
 .front .view-os2web-kulturnaut-events-lists .views-row .views-field-imported-1 {
   width: auto;
