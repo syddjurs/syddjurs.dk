@@ -45,7 +45,7 @@ function _os2web_esdh_provider_status() {
     $watchdog_table = theme('table', array('header' => $watchdog_head, 'rows' => $watchdog_rows));
   }
 
-  $queue_status = '';
+  $queue_markup = '';
 
   if (variable_get('os2web_esdh_provider_queue_enabled', FALSE)) {
     // Status for external meeting importer.
@@ -54,34 +54,43 @@ function _os2web_esdh_provider_status() {
     if (!lock_acquire('os2web_esdh_provider_queue')) {
       $queue_markup = '<h2>Meeting import: running!</h2>';
     }
-
-    $queue_markup .= drupal_render(drupal_get_form('os2web_esdh_provider_queue_form'));
-    $queue_markup .= '<h3>In queue</h3>';
-
-    $queue_header = array(t('Publication id:'), t('uri'), t('Force'));
-    $queue_rows = array();
-
-    $queue = DrupalQueue::get('acadre_mm_import');
-    while($item = $queue->claimItem()) {
-      if (isset($item->data['meeting'])) {
-        $queue_rows[] = array(
-          $item->data['meeting']['id'],
-          $item->data['meeting']['uri'],
-          $item->data['force'],
-        );
-      }
-    }
-
-    $queue_status .= '<br /><hr /><br />' . $queue_markup . theme('table', array(
-        'header' => $queue_header,
-        'rows' => $queue_rows,
-        'empty' => t('Queue is empty'),
-      ));
-
-    $queue_status .= '<br /><hr /><br />';
   }
 
+  $queue_markup .= drupal_render(drupal_get_form('os2web_esdh_provider_queue_form'));
+  $queue_markup .= '<h3>In queue</h3>';
+
+  $queue_header = array(t('Publication id:'), t('uri'), t('Force'));
+  $queue_rows = array();
+
+  $queue_name = 'acadre_mm_import';
+  $query = db_select('queue', 'q')
+    ->fields('q', array('item_id', 'data', 'created'))
+    ->condition('q.name', $queue_name)
+    ->extend('PagerDefault')
+    ->limit(25)
+    ->execute();
+
+  foreach ($query as $record) {
+    $data = unserialize($record->data);
+    if (isset($data['meeting'])) {
+      $queue_rows[] = array(
+        $data['meeting']['id'],
+        $data['meeting']['uri'],
+        $data['force'],
+      );
+    }
+  }
+
+  $queue_status = '<br /><hr /><br />' . $queue_markup . theme('table', array(
+      'header' => $queue_header,
+      'rows' => $queue_rows,
+      'empty' => t('Queue is empty'),
+    ));
+
+  $queue_status .= '<br /><hr /><br />';
+
   $import_form = drupal_get_form('os2web_esdh_provider_import_form');
+
   return '<h2>' . t('ESDH Provider API plugin status') . '</h2>' .
       theme('table', array('header' => $head, 'rows' => $rows)) .
       '<h3>' . t('Last agenda import was successfully run at %time', array('%time' => format_date(variable_get('os2web_esdh_provider_last_import', 0)))) . '</h3>' .
@@ -107,10 +116,9 @@ function os2web_esdh_provider_queue_form($form_state) {
  */
 function os2web_esdh_provider_queue_form_submit(&$form, &$form_state) {
   // Empty queue.
-  $queue = DrupalQueue::get('acadre_mm_import');
-  while($item = $queue->claimItem()) {
-    $queue->deleteItem($item);
-  }
+  db_delete('queue')
+    ->condition('name', 'acadre_mm_import')
+    ->execute();
 
   drupal_set_message(t('Deleted queue'));
 }
