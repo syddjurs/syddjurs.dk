@@ -210,13 +210,13 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       $node->field_os2web_meetings_partic[LANGUAGE_NONE][0]['value'] = implode(variable_get('os2dagsorden_participants_delimeter', ', '), $meeting['participants']);
       $node->field_os2web_meetings_partic[LANGUAGE_NONE][0]['format'] ='filtered_html';
     }
- 
+
     //Adding cancelled participants
     if (isset($meeting['participants_cancellation'])){
       $node->field_os2web_meetings_particcanl[LANGUAGE_NONE][0]['value'] = implode(variable_get('os2dagsorden_participants_delimeter', ', '), $meeting['participants_cancellation']);
       $node->field_os2web_meetings_particcanl[LANGUAGE_NONE][0]['format'] ='filtered_html';
     }
-    
+
      //Adding comments
    if (isset($meeting['description'])){
       $node->field_os2web_meetings_comments[LANGUAGE_NONE][0]['value'] = $meeting['comments'];
@@ -321,22 +321,22 @@ function _os2web_esdh_provider_import_items($items) {
     $node->title = substr($item['title'],0,255);
     // Set some default values.
     node_object_prepare($node);
-    
+
     if (module_exists('os2dagsorden_esdh_provider')){
       $node = os2dagsorden_esdh_provider_bullet_add_number($node, $item['id']);
     }
 
     if ($item['access'] === 'Lukket') {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
       if (module_exists('os2dagsorden_esdh_provider')){
-        $node = os2dagsorden_esdh_provider_process_closed_bullet($node, $item); 
+        $node = os2dagsorden_esdh_provider_process_closed_bullet($node, $item);
       }
       node_submit($node);
       node_save($node);
       $nids[] = $node->nid;
     }
     else {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
       if (isset($item['movie_id']) && is_numeric($item["chapter"])) {
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['id'] = $item['movie_id'];
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['seek'] = $item["chapter"];
@@ -501,7 +501,7 @@ function _os2web_esdh_provider_import_file($file_meta) {
   $file->uid = 1;
   $file->status = FILE_STATUS_PERMANENT;
   $file = file_save($file);
-  
+
   if (module_exists('os2web_pdf_conversion_manager'))
     _os2web_pdf_conversion_manager_copy_file_to_convertion_dir($file->fid);
 
