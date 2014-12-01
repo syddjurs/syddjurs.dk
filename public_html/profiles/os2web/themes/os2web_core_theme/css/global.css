@@ -336,6 +336,7 @@ div.vertical-tabs .vertical-tabs-panes .fieldset-wrapper legend {
 }
 
 #search-block-form .rel-register-link, .views-exposed-widget .rel-register-link {display: none}
+
 /*Bellcom Custom*/
 
 .views-slideshow-controls-top {
@@ -2375,6 +2376,9 @@ ul.nice-menu-down li ul > li {
 #zone-preface ul.nice-menu li.menuparent  ul li a {color: #FFF;font-size: 15px}
 #zone-preface ul.nice-menu li.menuparent a {color:#6d6e6d;}
 
+#zone-preface ul.nice-menu-down li.menuparent  ul li a:hover {
+  border: 1px solid #fff;
+}
 #zone-preface ul.nice-menu li { background-color:  #640C3C;}
 
 #zone-preface ul.nice-menu ul { top: 30px; border: none}
@@ -2383,7 +2387,7 @@ ul.nice-menu-down li ul > li {
   position:absolute;
   top: 30px;
   padding-bottom: 0.5em;
-  min-width: 150px;
+  min-width: 230px;
   z-index: 9999;
 }
 
@@ -2730,8 +2734,8 @@ div.breadcrumb.you-are-here {
 .field-name-field-os2web-base-field-selfserv a {
   color: #333;
   padding-left: 25px;
-  background: url('../images/mega_dd_arrow_right.png') no-repeat;
-  background-position: 15px;
+  background: url('../images/spotboxPILc.png') no-repeat;
+  background-position: 5px;
   display: block;
   margin-bottom: 10px;
 }
@@ -2984,10 +2988,15 @@ div.qtip { background-image: url(../images/mega_dd_bg_btm.png); background-posit
 }
 
 .node-type-os2web-base-contentpage .field-items li {
-list-style-image: url(../images/megamenu-arrow-over.png);
-color: #4A4A4A;
-font-size: 13px;
-line-height: 22px;
+  background: url(../images/purple-dot.png);
+  background-repeat: no-repeat;
+  background-position: 0% 7px;
+  background-size: 5px 5px;
+  color: #4A4A4A;
+  font-size: 13px;
+  line-height: 22px;
+  list-style: none;
+  padding-left: 15px;
 }
 
 .search-results a {
@@ -3015,9 +3024,23 @@ line-height: 22px;
 .search-results .search-snippet-info {
   padding-left: 0;
 }
-.page-search .content ul {
+
+ul#facetapi-facet-apachesolrsolr-block-im-field-site-structure {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+ul#facetapi-facet-apachesolrsolr-block-im-field-os2web-base-field-struc {
+  margin-left: 0;
+  margin-right: 13px;
+}
+
+.page-search .spelling-suggestions {
+  margin-left: 20px;
+}
+
+.page-search .region-content ul {
+  margin-left: 40px;
 }
 
 .block-system .search-form .form-text {
@@ -3044,6 +3067,11 @@ line-height: 22px;
 	width: 69px;
 	text-indent: -9999px;
 	background-repeat: no-repeat;
+}
+
+.spelling-suggestions .form-item dt 
+{
+	font-size: 14px;
 }
 
 

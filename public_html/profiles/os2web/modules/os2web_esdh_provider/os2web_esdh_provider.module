@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Implements pluginable interface for accessing ESDH systems.
@@ -49,6 +48,7 @@ function os2web_esdh_provider_menu() {
     'access callback' => TRUE,
     'file' => 'os2web_esdh_provider.cpapi.inc',
   );
+
   return $items;
 }
 
@@ -56,12 +56,35 @@ function os2web_esdh_provider_menu() {
  * Implements hook_FORM_alter().
  */
 function os2web_esdh_provider_form_os2web_settings_settings_form_alter(&$form, &$form_state) {
+  $form['os2web_esdh_provider'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Import',
+    '#description' => 'Generelle indstillinger vedr. import',
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
   // MM configuration.
-  $form['meetings']['os2web_meetings_import_service_ip'] = array(
+  $form['os2web_esdh_provider']['os2web_meetings_import_service_ip'] = array(
     '#type' => 'textfield',
     '#title' => 'IP addresser der kan udløse import',
     '#description' => 'Komma separeret liste af ip-addresser der kan tilgå <em>admin/os2web/import/<ID></em>.',
     '#default_value' => variable_get('os2web_meetings_import_service_ip', ip_address()),
+  );
+
+  // Enable external queue import.
+  $form['os2web_esdh_provider']['os2web_esdh_provider_queue_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable external queue import'),
+    '#default_value' => variable_get('os2web_esdh_provider_queue_enabled', FALSE),
+  );
+
+  // Enable unpublishing meetings without manifests.
+  $form['os2web_esdh_provider']['os2web_meetings_unpublish_without_manifest'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Unpublish meeting nodes, that have no manifest.'),
+    '#description' => t('This is currently only tested on meetings imported with the acadre plugin'),
+    '#default_value' => variable_get('os2web_meetings_unpublish_without_manifest', FALSE),
   );
 }
 
@@ -144,7 +167,7 @@ function os2web_esdh_provider_node_delete($node) {
         node_delete($add_node->nid);
       }
     }
-    //Delete bullets from meeting.
+    // Delete bullets from meeting.
     $items = array_shift($node->field_os2web_meetings_bullets);
     if (is_array($items)) {
       foreach ($items as $nids) {
@@ -169,8 +192,13 @@ function os2web_esdh_provider_node_delete($node) {
  * Will run import on every cron.
  */
 function os2web_esdh_provider_cron() {
+  if (variable_get('os2web_esdh_provider_queue_enabled', FALSE)) {
+    return;
+  }
+
   if (os2web_esdh_provider_has_api('mm')) {
     $meetings = os2web_esdh_provider_invoke('mm', 'get_import_list');
+
     $queue = DrupalQueue::get('acadre_mm_import');
     if ($queue->numberOfItems() == 0) {
 
@@ -190,9 +218,44 @@ function os2web_esdh_provider_cron() {
 }
 
 /**
+ * Worker function that queues meetings for external import.
+ */
+function os2web_esdh_provider_queue_meetings() {
+  if (os2web_esdh_provider_has_api('mm')) {
+    $meetings = os2web_esdh_provider_invoke('mm', 'get_import_list');
+
+    $last_mm_import_time = variable_get('os2web_esdh_provider_last_mm_import', FALSE);
+
+    $queue = DrupalQueue::get('acadre_mm_import');
+
+    foreach ($meetings as $meeting) {
+      // Only import files newer than last cron job.
+      if (!$last_mm_import_time || filemtime($meeting['uri']) > $last_mm_import_time) {
+        $queue->createItem(array('meeting' => $meeting, 'force' => FALSE));
+      }
+    }
+    $queue->createItem(array('post_import_process' => TRUE));
+
+    if (variable_get('os2web_meetings_unpublish_without_manifest', FALSE)) {
+      $queue->createItem(array('unpublish_without_manifest' => TRUE, 'meetings' => $meetings));
+    }
+
+    variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
+
+    variable_set('os2web_esdh_provider_last_mm_import', time());
+  }
+}
+
+/**
  * Implements hook_cron_queue_info().
  */
 function os2web_esdh_provider_cron_queue_info() {
+  // If the external queue handler is enabled, don't let
+  // drupals cron impor the meetings.
+  if (variable_get('os2web_esdh_provider_queue_enabled', FALSE)) {
+    return array();
+  }
+
   $queues['acadre_mm_import'] = array(
     'worker callback' => '_os2web_esdh_provider_cron_queue_worker',
     'time' => 30,
@@ -215,6 +278,10 @@ function _os2web_esdh_provider_cron_queue_worker($args) {
           $args['post_import_process'] === TRUE &&
           os2web_esdh_provider_supports('mm', 'post_import_process')) {
     os2web_esdh_provider_invoke('mm', 'post_import_process');
+  }
+  elseif (isset($args['unpublish_without_manifest'])
+    && $args['unpublish_without_manifest'] === TRUE) {
+    os2web_esdh_provider_unpublish_process($args['meetings']);
   }
 }
 
@@ -311,6 +378,58 @@ function os2web_esdh_provider_invoke() {
       '%method' => $method,
       '%api' => $api,
         ), WATCHDOG_ERROR);
+  }
+}
+
+/**
+ * Unpublish meetings without a manifest.
+ */
+function os2web_esdh_provider_unpublish_process($meetings) {
+  $meeting_ids = array();
+
+  foreach ($meetings as $meeting) {
+    $meeting_ids[] = $meeting['id'];
+  }
+
+  // Due to the fact that the systemid is not always the number of the meeting,
+  // This is only tested and working on acadre meetings.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'os2web_meetings_meeting')
+        ->propertyCondition('status', 1);
+  if (!empty($meeting_ids)) {
+    $query->fieldCondition('field_os2web_meetings_system_id', 'value', $meeting_ids, 'NOT IN');
+  }
+  // If the meeting_ids array is empty, there are no manifests at all, in this
+  // case unpublish all meetings with a system_id (these should be the ones
+  // imported).
+  else {
+    $query->fieldCondition('field_os2web_meetings_system_id', 'value', 'NULL', '!=');
+  }
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    foreach ($result['node'] as $meeting_info) {
+      os2web_esdh_provider_unpublish_meeting($meeting_info->nid);
+    }
+  }
+}
+
+/**
+ * Unpublish meeting by nid.
+ */
+function os2web_esdh_provider_unpublish_meeting($nid) {
+  // Load, unpublish and save meeting node.
+  try {
+    $meeting = node_load($nid);
+    node_unpublish_action($meeting);
+    node_save($meeting);
+  }
+  catch (Exception $e) {
+    watchdog('esdh_provider', 'Could not unpublish meeting %nid, %err', array(
+        '%nid' => $nid,
+        '%err' => $e->getMessage(),
+      ), WATCHDOG_ERROR);
   }
 }
 
@@ -541,7 +660,6 @@ function o2web_esdh_provider_help($path, $arg) {
  * Implements hook_os2web_help().
  */
 function o2web_esdh_provider_os2web_help($sections) {
-
   // Module specific.
   $sections['list_of_content'] .= t('<a href="#os2web_esdh_provider">OS2web ESDH Provider</a><br />');
   $sections['o2web_esdh_provider'] = t('<h2 id="os2web_esdh_provider">The ESDH Provider:</h2>');

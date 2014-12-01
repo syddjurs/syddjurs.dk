@@ -28,6 +28,25 @@ function syddjurs_clear_cache_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_syddjurs_clear_billedekarrusel_on_save'] = entity_import('rules_config', '{ "rules_syddjurs_clear_billedekarrusel_on_save" : {
+      "LABEL" : "Syddjurs Clear billedekarrusel On Save",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "Syddjurs Cache" ],
+      "REQUIRES" : [ "rules", "cache_actions", "expire" ],
+      "ON" : [ "node_insert", "node_delete", "node_update" ],
+      "IF" : [
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : { "os2web_base_rotating_image" : "os2web_base_rotating_image" } }
+          }
+        }
+      ],
+      "DO" : [
+        { "cache_actions_action_clear_views_cache" : { "view" : { "value" : { "os2web_base_panels_view_rotating" : "os2web_base_panels_view_rotating" } } } },
+        { "expire_flush_url" : { "urls" : "\\/" } }
+      ]
+    }
+  }');
   $items['rules_syddjurs_clear_contact_cache_on_save'] = entity_import('rules_config', '{ "rules_syddjurs_clear_contact_cache_on_save" : {
       "LABEL" : "Syddjurs Clear Contact Cache On Save",
       "PLUGIN" : "reaction rule",
@@ -102,6 +121,25 @@ function syddjurs_clear_cache_rules_default_rules_configuration() {
           }
         },
         { "expire_flush_url" : { "urls" : "node\\/[node:nid]" } }
+      ]
+    }
+  }');
+  $items['rules_syddjurs_clear_nyheder_on_save'] = entity_import('rules_config', '{ "rules_syddjurs_clear_nyheder_on_save" : {
+      "LABEL" : "Syddjurs Clear nyheder On Save",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "Syddjurs Cache" ],
+      "REQUIRES" : [ "rules", "cache_actions", "expire" ],
+      "ON" : [ "node_insert", "node_delete", "node_update" ],
+      "IF" : [
+        { "node_is_of_type" : {
+            "node" : [ "node" ],
+            "type" : { "value" : { "os2web_base_news" : "os2web_base_news" } }
+          }
+        }
+      ],
+      "DO" : [
+        { "cache_actions_action_clear_views_cache" : { "view" : { "value" : { "os2web_base_panels_view_newslist" : "os2web_base_panels_view_newslist" } } } },
+        { "expire_flush_url" : { "urls" : "\\/" } }
       ]
     }
   }');
