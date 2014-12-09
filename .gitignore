@@ -3,6 +3,9 @@ sessions
 tmp
 site
 
+batch
 os2web-deploy
 apache-nutch-1.6
 migrate_map.txt
+public_html/sitemap_dagsorden.xml.gz
+public_html/sitemap_os2webscanner.xml
