@@ -437,6 +437,9 @@ function _os2web_esdh_provider_import_file($file_meta) {
     $fname = $pinfo['filename'];
   }
 
+  // Parentheses break htmlspecialchars(). So we just remove.
+  $fname = str_replace(array('(', ')'), '', $fname);
+
   $uri_out = $pinfo['dirname'] . '/' . _os2web_esdh_provider_sanetize_filename($fname . '.' . strtolower($pinfo['extension']));
   $uri_pdf = $pinfo['dirname'] . '/' . _os2web_esdh_provider_sanetize_filename($fname . '.pdf');
 
