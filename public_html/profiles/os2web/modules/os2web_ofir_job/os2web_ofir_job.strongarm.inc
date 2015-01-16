@@ -57,6 +57,12 @@ function os2web_ofir_job_strongarm() {
       'meeting_detail_view' => array(
         'custom_settings' => FALSE,
       ),
+      'os2web_meetings_meeting_detail_view' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
