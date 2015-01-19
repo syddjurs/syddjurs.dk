@@ -31,6 +31,9 @@
       hide($content['comments']);
       hide($content['links']);
       print render($content);
+      if ($teaser && $node->type == 'os2web_ofir_job') {
+         print '<div class="changed"> Opdateret: ' . date('d/m/Y - H:i', $node->changed) . '</div>';
+      }
       ?>
     </div>
   </div>
