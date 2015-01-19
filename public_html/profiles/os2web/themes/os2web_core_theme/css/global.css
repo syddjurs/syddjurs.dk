@@ -2921,7 +2921,14 @@ div.breadcrumb.you-are-here {
 .view-os2web-ofir-job-lists  h2.node-title {
     font-size: 15px;
 }
+.view-os2web-ofir-job-lists h3 {
+  font-size: 1.2em;
+}
 
+.view-os2web-ofir-job-lists article {
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid #F3F3F3;
+}
 .printvenlig-side a{
 	background-image: url(../images/print.png);
 	background-repeat: no-repeat;
