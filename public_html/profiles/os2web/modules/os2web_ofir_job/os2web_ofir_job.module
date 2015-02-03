@@ -321,9 +321,9 @@ function _os2web_ofir_job_xml_attribute($object, $attribute) {
 function _os2web_ofir_job_convert_char($string) {
 
   $find = array("&amp;Aelig;", "&amp;aelig;", "&amp;Aring;", "&amp;aring;", "&amp;Oslash;",
-    "&amp;oslash;", "&#39;", "&eacute;", '&lt;', '&gt;', '&amp;nbsp;', '&amp;rdquo;');
+    "&amp;oslash;", "&#39;", "&eacute;", '&lt;', '&gt;', '&amp;nbsp;', '&amp;rdquo;', '&quot;');
   $replace = array('Æ', 'æ', 'Å', 'å', 'Ø', 'ø',
-    "'", 'é', '<', '>', ' ', '"');
+    "'", 'é', '<', '>', ' ', '"', '"');
   $string = str_replace($find, $replace, $string);
   return $string;
 }
