@@ -1557,7 +1557,7 @@ padding-bottom: 5px
 .selvbetjening-block-forside .knapper a.kviksvar,
 .selvbetjening-block-forside .knapper a.nemindsigt {
   float: left;
-  width: 111px;
+  width: 100%;
   color: #fff;
   padding: 0;
   line-height: 40px;
@@ -1568,7 +1568,7 @@ padding-bottom: 5px
   margin-right: 4px;
 }
 .selvbetjening-block-forside .knapper a.nemindsigt {
-  background: url(../images/knapSELVBETJENING.png) 100% 0 no-repeat;
+  background: url(../images/knapAbenIndsigt.png) -3px -3px no-repeat;
 }
 .selvbetjening-block-forside .knapper a.aabenindsigt {
 	background-image: url(../images/knapSELVBETJENING-BIG.png);
