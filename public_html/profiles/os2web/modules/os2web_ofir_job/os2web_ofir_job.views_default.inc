@@ -104,7 +104,7 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Jobagent - header link';
-  $handler->display->display_options['header']['area']['content'] = '<p style="padding-top:20px; padding-bottom:20px">Ønsker du at få tilsendt fremtidige stillingsopslag pr. e-mail? <a href="http://job.ofir.dk/Templates/Advertiser.asp?aguid=7DAE0E45-E8C0-43EF-9D3C-350F69BE5C9B&method=jobagent">Klik her for at oprette en jobagent.</a><br />Er du ledig, så se mere om dine muligheder på <a href="http://www.jobcentersyddjurs.dk/" target="_blank">Jobcenter Syddjurs</a></p><br /><br />';
+  $handler->display->display_options['header']['area']['content'] = '<p style="padding-top:20px; padding-bottom:20px">Ønsker du at få tilsendt fremtidige stillingsopslag pr. e-mail? <a href="https://syddjurs.emply.net/career">Klik her for at oprette en jobagent.</a><br />Er du ledig, så se mere om dine muligheder på <a href="http://www.jobcentersyddjurs.dk/" target="_blank">Jobcenter Syddjurs</a></p><br /><br />';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['path'] = 'job-opslag';
 
@@ -141,7 +141,7 @@ function os2web_ofir_job_views_default_views() {
     t('Page'),
     t('Jobs i Syddjurs Kommune'),
     t('Jobagent - header link'),
-    t('<p style="padding-top:20px; padding-bottom:20px">Ønsker du at få tilsendt fremtidige stillingsopslag pr. e-mail? <a href="http://job.ofir.dk/Templates/Advertiser.asp?aguid=7DAE0E45-E8C0-43EF-9D3C-350F69BE5C9B&method=jobagent">Klik her for at oprette en jobagent.</a><br />Er du ledig, så se mere om dine muligheder på <a href="http://www.jobcentersyddjurs.dk/" target="_blank">Jobcenter Syddjurs</a></p><br /><br />'),
+    t('<p style="padding-top:20px; padding-bottom:20px">Ønsker du at få tilsendt fremtidige stillingsopslag pr. e-mail? <a href="https://syddjurs.emply.net/career">Klik her for at oprette en jobagent.</a><br />Er du ledig, så se mere om dine muligheder på <a href="http://www.jobcentersyddjurs.dk/" target="_blank">Jobcenter Syddjurs</a></p><br /><br />'),
     t('Block'),
     t('Jobs fra Ofir.dk:'),
   );
