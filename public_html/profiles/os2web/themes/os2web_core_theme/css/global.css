@@ -2150,18 +2150,22 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	color: #4A4A4A; font-size: 12px; line-height: 1.25
 	}
 .field-type-text-long .field-items,
-.field-type-text-long .field-items p { line-height: 1.15
+.field-type-text-long .field-items p { line-height: 19px;
 	}
 
 p.MsoNormal {
    margin: 0px;
    line-height: inherit;
 }
-
+.field-name-field-os2web-ofir-job-period,
+.field-name-field-os2web-ofir-job-text,
 .node-type-os2web-base-contentpage .field-name-body  {
   margin: 10px 10px 10px 10px;
 }
 
+.field-name-field-os2web-ofir-job-text input {
+  margin: 20px 0px;
+}
 .node-type-os2web-hearings-hearing-case .region-inner h1.title,
 .node-type-os2web-hearings-hearing-case .field-name-field-os2web-hearings-enddate,
 .node-type-os2web-hearings-hearing-case .field-name-body,
@@ -2999,6 +3003,7 @@ div.qtip { background-image: url(../images/mega_dd_bg_btm.png); background-posit
   font-size: 16px;
 }
 
+.node-type-os2web-ofir-job .field-items li,
 .node-type-os2web-base-contentpage .field-items li {
   background: url(../images/purple-dot.png);
   background-repeat: no-repeat;
