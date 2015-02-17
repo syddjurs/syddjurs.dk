@@ -301,17 +301,6 @@ function os2web_base_panels_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Indhold: Indløb / Udløb */
-  $handler->display->display_options['fields']['field_os2web_base_field_rotate']['id'] = 'field_os2web_base_field_rotate';
-  $handler->display->display_options['fields']['field_os2web_base_field_rotate']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['fields']['field_os2web_base_field_rotate']['field'] = 'field_os2web_base_field_rotate';
-  $handler->display->display_options['fields']['field_os2web_base_field_rotate']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
   /* Felt: Indhold: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -361,7 +350,6 @@ function os2web_base_panels_views_default_views() {
     t('Seneste login'),
     t('Seneste tilgang'),
     t('Titel'),
-    t('Indløb / Udløb'),
     t('Type'),
     t('Alle'),
     t('Block'),
@@ -1583,18 +1571,6 @@ return $field==1?true:false;';
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['group'] = 1;
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['group'] = 1;
   /* Filterkriterie: Indhold: Forfrem til (field_os2web_base_field_promote) */
   $handler->display->display_options['filters']['field_os2web_base_field_promote_tid']['id'] = 'field_os2web_base_field_promote_tid';
   $handler->display->display_options['filters']['field_os2web_base_field_promote_tid']['table'] = 'field_data_field_os2web_base_field_promote';
@@ -1658,18 +1634,6 @@ return $field==1?true:false;';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['value'] = '1';
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['default_date'] = 'now';
 
   /* Display: Stor rotator - single */
   $handler = $view->new_display('block', 'Stor rotator - single', 'block_1');
@@ -1774,31 +1738,6 @@ return $field==1?true:false;';
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['operator_id'] = 'field_os2web_base_field_rotate_value_op';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['label'] = 'Indløb / Udløb -  start date (field_os2web_base_field_rotate)';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['operator'] = 'field_os2web_base_field_rotate_value_op';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['identifier'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    4 => 0,
-    7 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['default_date'] = 'now';
   /* Filterkriterie: Indhold: Har taksonomiterm */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
@@ -1961,18 +1900,6 @@ return $field==1?true:false;';
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['default_date'] = 'now';
 
   /* Display: frontpage Block 2 with 3 items */
   $handler = $view->new_display('block', 'frontpage Block 2 with 3 items', 'block_3');
@@ -2135,18 +2062,6 @@ return $field==1?true:false;';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['value'] = '1';
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['default_date'] = 'now';
 
   /* Display: Stor- single-2 */
   $handler = $view->new_display('block', 'Stor- single-2', 'block_4');
@@ -2289,31 +2204,6 @@ return $field==1?true:false;';
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['operator_id'] = 'field_os2web_base_field_rotate_value_op';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['label'] = 'Indløb / Udløb -  start date (field_os2web_base_field_rotate)';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['operator'] = 'field_os2web_base_field_rotate_value_op';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['identifier'] = 'field_os2web_base_field_rotate_value';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    4 => 0,
-    7 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['default_date'] = 'now';
   /* Filterkriterie: Indhold: Har taksonomiterm */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
@@ -2340,7 +2230,6 @@ return $field==1?true:false;';
     t('Stor rotator - single'),
     t('Vise kun en ad gangen, bruges bland andet på erhvervssiden'),
     t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>'),
-    t('Indløb / Udløb -  start date (field_os2web_base_field_rotate)'),
     t('Stor rotator - single2'),
     t('Alle'),
     t('frontpage Block 2 with 3 items'),
