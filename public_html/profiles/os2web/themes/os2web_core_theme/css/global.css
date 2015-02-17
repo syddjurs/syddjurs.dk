@@ -4688,3 +4688,19 @@ ul.os2web_menus-container {
   width: 100%;
   height: auto;
 }
+
+.tablesorter th.header {
+  background-repeat: no-repeat;
+  background-position: 0 4px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.tablesorter th.headerSortUp {
+  background-image: url(../images/chevron-up.png);
+}
+
+.tablesorter th.headerSortDown {
+  background-image: url(../images/chevron-down.png);
+}
