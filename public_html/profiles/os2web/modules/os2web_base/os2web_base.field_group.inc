@@ -115,6 +115,7 @@ function os2web_base_field_group_info() {
     'children' => array(
       0 => 'field_os2web_base_field_case',
       1 => 'field_os2web_base_field_doc',
+      2 => 'field_os2web_base_field_casesort',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
