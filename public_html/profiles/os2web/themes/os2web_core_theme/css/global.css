@@ -4700,6 +4700,7 @@ ul.os2web_menus-container {
   padding-left: 15px;
   padding-bottom: 10px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .tablesorter th.headerSortUp {
