@@ -1477,14 +1477,33 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+os2web_base_panels_view_get_link_attributes($row->nid);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Felt: Indhold: Billede */
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['id'] = 'field_os2web_base_field_rota_img';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['table'] = 'field_data_field_os2web_base_field_rota_img';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['field'] = 'field_os2web_base_field_rota_img';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]">[field_os2web_base_field_rota_img]</a>';
-  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['path'] = '[field_os2web_base_field_rota_lnk]';
+  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" target=[php]>[field_os2web_base_field_rota_img]</a>';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['external'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['click_sort_column'] = 'fid';
@@ -1498,7 +1517,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> <span class="description">[body]</span></a>';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" [php]><span>[title]</span> <span class="description">[body]</span></a>';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
@@ -1571,6 +1590,18 @@ return $field==1?true:false;';
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filterkriterie: Handler mangler eller er i stykker */
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['group'] = 1;
+  /* Filterkriterie: Handler mangler eller er i stykker */
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['group'] = 1;
   /* Filterkriterie: Indhold: Forfrem til (field_os2web_base_field_promote) */
   $handler->display->display_options['filters']['field_os2web_base_field_promote_tid']['id'] = 'field_os2web_base_field_promote_tid';
   $handler->display->display_options['filters']['field_os2web_base_field_promote_tid']['table'] = 'field_data_field_os2web_base_field_promote';
@@ -1661,6 +1692,26 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_lnk']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_lnk']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_lnk']['type'] = 'link_plain';
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+os2web_base_panels_view_get_link_attributes($row->nid);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1678,7 +1729,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['field'] = 'field_os2web_base_field_rota_img';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]">[field_os2web_base_field_rota_img]</a>';
+  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" target=[php]>[field_os2web_base_field_rota_img]</a>';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['settings'] = array(
@@ -1691,7 +1742,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" target=[php]><span>[title]</span> [body]</a>';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['empty'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span></a>';
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
@@ -1939,6 +1990,26 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+os2web_base_panels_view_get_link_attributes($row->nid);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Felt: Indhold: Billede */
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['id'] = 'field_os2web_base_field_rota_img';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['table'] = 'field_data_field_os2web_base_field_rota_img';
@@ -1946,7 +2017,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]">[field_os2web_base_field_rota_img]</a>';
+  $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" target=[php]>[field_os2web_base_field_rota_img]</a>';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['path'] = '[field_os2web_base_field_rota_lnk]';
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['alter']['external'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_base_field_rota_img']['element_label_colon'] = FALSE;
@@ -1962,7 +2033,7 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[field_os2web_base_field_rota_lnk]" target=[php]><span>[title]</span><br />[body]</a>';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['body']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
@@ -2221,19 +2292,20 @@ return $field==1?true:false;';
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('<a href="[field_os2web_base_field_rota_lnk]">[field_os2web_base_field_rota_img]</a>'),
-    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> <span class="description">[body]</span></a>'),
+    t('<a href="[field_os2web_base_field_rota_lnk]" target=[php]>[field_os2web_base_field_rota_img]</a>'),
+    t('<a href="[field_os2web_base_field_rota_lnk]" [php]><span>[title]</span> <span class="description">[body]</span></a>'),
     t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span></a>'),
     t('<div class="item-bg" title=\'[field_os2web_base_field_rota_img_1]\'>[title]</div>'),
     t('Forfrem til (field_os2web_base_field_promote)'),
     t('Frontpage Block'),
     t('Stor rotator - single'),
     t('Vise kun en ad gangen, bruges bland andet på erhvervssiden'),
-    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>'),
+    t('<a href="[field_os2web_base_field_rota_lnk]" target=[php]><span>[title]</span> [body]</a>'),
     t('Stor rotator - single2'),
+    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span> [body]</a>'),
     t('Alle'),
     t('frontpage Block 2 with 3 items'),
-    t('<a href="[field_os2web_base_field_rota_lnk]"><span>[title]</span><br />[body]</a>'),
+    t('<a href="[field_os2web_base_field_rota_lnk]" target=[php]><span>[title]</span><br />[body]</a>'),
     t('<div class="news-list">
    <div class="news-list-left">
       [field_os2web_base_field_rota_img]
@@ -2466,7 +2538,7 @@ return $field==1?true:false;';
   $handler->display->display_options['footer']['area_1']['table'] = 'views';
   $handler->display->display_options['footer']['area_1']['field'] = 'area';
   $handler->display->display_options['footer']['area_1']['label'] = 'two buttons ';
-  $handler->display->display_options['footer']['area_1']['content'] = '<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87">Åben Indsigt - søg i alle kommunens sager</a></div>';
+  $handler->display->display_options['footer']['area_1']['content'] = '<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87"><strong>Åben Indsigt</strong> - søg i alle kommunens sager</a></div>';
   $handler->display->display_options['footer']['area_1']['format'] = 'full_html';
   /* Sidefod: 2 x1 links and 3 link and bottom */
   $handler->display->display_options['footer']['area']['id'] = 'area';
@@ -3732,7 +3804,7 @@ return $field==1?true:false;';
     t('sb_block_forside_att_1'),
     t('sb_block_forside_att_2'),
     t('two buttons '),
-    t('<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87">Åben Indsigt - søg i alle kommunens sager</a></div>'),
+    t('<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87"><strong>Åben Indsigt</strong> - søg i alle kommunens sager</a></div>'),
     t('<div class="item-list" style="min-height: 40px; clear:both;">
 <div class="sb-block-left"><ul class=""><li><a href="/node/632364">Digital Post</a></li></ul></div>
 <div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
