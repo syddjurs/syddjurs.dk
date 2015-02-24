@@ -781,6 +781,26 @@ os2web_spotbox_get_link_setting($row->nid);
   $handler->display->display_options['fields']['field_os2web_spotbox_url']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_spotbox_url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_spotbox_url']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+os2web_spotbox_get_link_setting($row->nid);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -900,12 +920,35 @@ os2web_spotbox_get_link_setting($row->nid);
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="news-list">
 <div class="news-list-left">
-  <a href="[field_os2web_spotbox_url]" title="[title_1]">[field_os2web_spotbox_lead_image]
+  <a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[field_os2web_spotbox_lead_image]
   <span class="zoom-icon"></span></a>
 </div>
-<div class="news-list-right">[title]<a href="[field_os2web_spotbox_url]" title="[field_os2web_spotbox_text]">[field_os2web_spotbox_text]</a></div>
+<div class="news-list-right"><h2 class="pane-title"><a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[title_1]</a></h2><a href="[field_os2web_spotbox_url]" title="[field_os2web_spotbox_text]" target=[php]>[field_os2web_spotbox_text]</a></div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Felt: Global: Kontekstuelle links */
+  $handler->display->display_options['fields']['contextual_links']['id'] = 'contextual_links';
+  $handler->display->display_options['fields']['contextual_links']['table'] = 'views';
+  $handler->display->display_options['fields']['contextual_links']['field'] = 'contextual_links';
+  $handler->display->display_options['fields']['contextual_links']['label'] = '';
+  $handler->display->display_options['fields']['contextual_links']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['contextual_links']['fields'] = array(
+    'edit_node' => 'edit_node',
+    'field_os2web_spotbox_url' => 0,
+    'title_1' => 0,
+    'body' => 0,
+    'title' => 0,
+    'field_os2web_spotbox_lead_image' => 0,
+    'field_os2web_spotbox_text' => 0,
+    'field_os2web_spotbox_ref_place' => 0,
+    'field_os2web_spotbox_promote_to' => 0,
+    'field_os2web_spotbox_ref_kle' => 0,
+    'field_os2web_spotbox_organizati' => 0,
+    'field_os2web_spotbox_politics' => 0,
+    'field_os2web_spotbox_sitestruct' => 0,
+    'field_os2web_spotbox_editor_tags' => 0,
+    'nothing' => 0,
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Kontekstuelt filter: Indhold: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -1108,18 +1151,14 @@ os2web_spotbox_get_link_setting($row->nid);
   $handler->display->display_options['fields']['contextual_links']['fields'] = array(
     'edit_node' => 'edit_node',
     'field_os2web_spotbox_url' => 'field_os2web_spotbox_url',
-    'title_1' => 'title_1',
-    'body' => 'body',
-    'field_os2web_spotbox_text' => 'field_os2web_spotbox_text',
+    'nid' => 0,
+    'php' => 0,
+    'title_1' => 0,
+    'body' => 0,
     'field_os2web_spotbox_lead_image' => 0,
     'title' => 0,
-    'field_os2web_spotbox_ref_place' => 0,
+    'field_os2web_spotbox_text' => 0,
     'field_os2web_spotbox_promote_to' => 0,
-    'field_os2web_spotbox_ref_kle' => 0,
-    'field_os2web_spotbox_organizati' => 0,
-    'field_os2web_spotbox_politics' => 0,
-    'field_os2web_spotbox_sitestruct' => 0,
-    'field_os2web_spotbox_editor_tags' => 0,
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Kontekstuelt filter: Indhold: Nid */
@@ -3544,10 +3583,10 @@ os2web_spotbox_get_link_setting($row->nid);
     t('[title]'),
     t('<div class="news-list">
 <div class="news-list-left">
-  <a href="[field_os2web_spotbox_url]" title="[title_1]">[field_os2web_spotbox_lead_image]
+  <a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[field_os2web_spotbox_lead_image]
   <span class="zoom-icon"></span></a>
 </div>
-<div class="news-list-right">[title]<a href="[field_os2web_spotbox_url]" title="[field_os2web_spotbox_text]">[field_os2web_spotbox_text]</a></div>
+<div class="news-list-right"><h2 class="pane-title"><a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[title_1]</a></h2><a href="[field_os2web_spotbox_url]" title="[field_os2web_spotbox_text]" target=[php]>[field_os2web_spotbox_text]</a></div>
 </div>'),
     t('Spotboxe / forside - 2th'),
     t('<h2 class="pane-title"><a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[title_1]</a></h2><a href="[field_os2web_spotbox_url]" title="[title_1]" target=[php]>[field_os2web_spotbox_lead_image]
