@@ -351,7 +351,7 @@ function os2web_base_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '6',
             'visible' => TRUE,
           ),
           'teaser' => array(
