@@ -351,7 +351,7 @@ function os2web_base_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '6',
+            'weight' => '7',
             'visible' => TRUE,
           ),
           'teaser' => array(
@@ -475,6 +475,12 @@ function os2web_base_strongarm() {
         'custom_settings' => FALSE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'os2web_meetings_meeting_detail_view' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -664,8 +670,9 @@ function os2web_base_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_os2web_base_contentpage';
   $strongarm->value = array(
-    0 => 'os2web-main-menu',
-    1 => 'os2web-menu-contentmenu',
+    0 => 'os2web-menu-contentmenu',
+    1 => 'os2web-main-menu',
+    2 => 'main-menu',
   );
   $export['menu_options_os2web_base_contentpage'] = $strongarm;
 

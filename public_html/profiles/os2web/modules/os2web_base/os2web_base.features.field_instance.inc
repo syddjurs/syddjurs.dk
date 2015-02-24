@@ -1242,58 +1242,6 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_rotate'
-  $field_instances['node-os2web_base_contentpage-field_os2web_base_field_rotate'] = array(
-    'bundle' => 'os2web_base_contentpage',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'related_block' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_base_field_rotate',
-    'label' => 'Indløb / Udløb',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_selfserv'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_selfserv'] = array(
     'bundle' => 'os2web_base_contentpage',
@@ -3740,13 +3688,18 @@ function os2web_base_field_default_field_instances() {
         'class' => '',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => 'user',
         'title' => '',
       ),
       'display' => array(
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'rel_remove' => 'default',
       'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -3760,65 +3713,6 @@ function os2web_base_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-os2web_base_rotating_image-field_os2web_base_field_rotate'
-  $field_instances['node-os2web_base_rotating_image-field_os2web_base_field_rotate'] = array(
-    'bundle' => 'os2web_base_rotating_image',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 4,
-      ),
-      'related_block' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_base_field_rotate',
-    'label' => 'Indløb / Udløb',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_select',
-      'weight' => 7,
     ),
   );
 
@@ -4467,7 +4361,6 @@ function os2web_base_field_default_field_instances() {
   t('Gruppe ID');
   t('Hvis du har yderligere information, links eller fakta som er unikke for denne side, kan det tilføjes i dette felt. Indholdet vises i højre kolonne sammen med siden.');
   t('Indhold');
-  t('Indløb / Udløb');
   t('Intro');
   t('Intro / Resume (maks 2 linier!)');
   t('Is subsite');
