@@ -1157,7 +1157,7 @@ return $field==1?true:false;';
   $handler->display->display_options['style_plugin'] = 'rss';
   $handler->display->display_options['row_plugin'] = 'rss_fields';
   $handler->display->display_options['row_options']['title_field'] = 'title';
-  $handler->display->display_options['row_options']['link_field'] = 'url';
+  $handler->display->display_options['row_options']['link_field'] = 'nid';
   $handler->display->display_options['row_options']['description_field'] = 'body';
   $handler->display->display_options['row_options']['creator_field'] = 'uid';
   $handler->display->display_options['row_options']['date_field'] = 'created';
@@ -1170,8 +1170,10 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['label'] = 'Link';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['text'] = 'node/[nid]';
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Primære billede */
@@ -1196,40 +1198,11 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.y';
-  /* Felt: Indhold: Resume (maks 2 linier!) */
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['id'] = 'field_os2web_base_field_summary_2';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['table'] = 'field_data_field_os2web_base_field_summary';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['field'] = 'field_os2web_base_field_summary';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['alter']['max_length'] = '80';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_summary_2']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Resume (maks 2 linier!) */
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['id'] = 'field_os2web_base_field_summary';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['table'] = 'field_data_field_os2web_base_field_summary';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['field'] = 'field_os2web_base_field_summary';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['alter']['text'] = '<div class="news-list-left"><a href="node/[nid]" title=[field_os2web_base_field_summary_2] >[field_os2web_base_field_lead_img]</a></div>
-<div class="news-list-right"><p>[created]</p><p><a href="node/[nid]" title=[field_os2web_base_field_summary_2] >[field_os2web_base_field_summary_2]</a></p></div>
-<div class="news-list-next"></div>';
-  $handler->display->display_options['fields']['field_os2web_base_field_summary']['element_label_colon'] = FALSE;
   /* Felt: Feeds item: Item URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['url']['field'] = 'url';
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
-  /* Felt: Indhold: Indhold */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['nl2br'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_plain';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1244,6 +1217,17 @@ return $field==1?true:false;';
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Felt: Indhold: Indhold */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '60',
+  );
   $handler->display->display_options['path'] = 'nyheder/feed/alle-nyheder';
 
   /* Display: Bilag */
@@ -1381,7 +1365,10 @@ return $field==1?true:false;';
 </div>
  <div class="news-list-next"></div>'),
     t('Feed'),
+    t('Link'),
+    t('node/[nid]'),
     t('Item URL'),
+    t('Indhold'),
     t('Bilag'),
   );
   $export['os2web_base_panels_view_newslist'] = $view;
@@ -1590,13 +1577,13 @@ os2web_base_panels_view_get_link_attributes($row->nid);
     'os2web_base_rotating_image' => 'os2web_base_rotating_image',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Handler mangler eller er i stykker */
+  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_os2web_base_field_rotate) */
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['id'] = 'field_os2web_base_field_rotate_value';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['table'] = 'field_data_field_os2web_base_field_rotate';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['field'] = 'field_os2web_base_field_rotate_value';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value']['group'] = 1;
-  /* Filterkriterie: Handler mangler eller er i stykker */
+  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_os2web_base_field_rotate:value2) */
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['id'] = 'field_os2web_base_field_rotate_value2';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['table'] = 'field_data_field_os2web_base_field_rotate';
   $handler->display->display_options['filters']['field_os2web_base_field_rotate_value2']['field'] = 'field_os2web_base_field_rotate_value2';
@@ -2373,7 +2360,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -2555,7 +2542,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -2667,7 +2654,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -2764,7 +2751,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -2873,7 +2860,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -2968,7 +2955,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'os2web_base_panels_view_selfserv:sb_block_portal_att_2';
   $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3080,7 +3067,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3157,7 +3144,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3257,7 +3244,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['area']['content'] = '<div class="selbetjening-bund"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3363,7 +3350,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['view_1']['view_to_insert'] = 'os2web_base_panels_view_selfserv:sb_block_portal_att_2';
   $handler->display->display_options['footer']['view_1']['inherit_arguments'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3473,7 +3460,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['area']['content'] = '<div class="selbetjening-bund"><a class="nemid" href="http://nemid.dk">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706">Borger.dk</a><a class="virkdk" href="http://virk.dk">Virk.dk</a></div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3585,7 +3572,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['relationships']['field_os2web_base_field_selfserv_nid']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_os2web_base_field_selfserv_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
@@ -3597,7 +3584,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['type'] = 'balk_custom_node_reference_nid';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['delta_limit'] = '3';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['delta_offset'] = '0';
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node_1']['id'] = 'field_os2web_base_field_ref_node_1';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node_1']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node_1']['field'] = 'field_os2web_base_field_ref_node';
@@ -3701,7 +3688,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Felt: Spotboxe Bund */
+  /* Felt: Felt: Link til side */
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['id'] = 'field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['table'] = 'field_data_field_os2web_base_field_ref_node';
   $handler->display->display_options['fields']['field_os2web_base_field_ref_node']['field'] = 'field_os2web_base_field_ref_node';
