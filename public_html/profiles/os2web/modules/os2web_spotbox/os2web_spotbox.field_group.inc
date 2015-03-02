@@ -57,6 +57,7 @@ function os2web_spotbox_field_group_info() {
     'children' => array(
       0 => 'field_os2web_spotbox_text',
       1 => 'field_os2web_spotbox_url',
+      2 => 'field_os2web_spotbox_url_setting',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

@@ -161,6 +161,10 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
   $element = array();
   switch ($display['type']) {
     case 'os2web_esdh_field_case_ident_for':
+      if ($field = field_get_items('node', $entity, 'field_os2web_base_field_casesort')) {
+        drupal_add_js(array('os2web_esdh_field' => array('sort' => $field[0]['value'])), 'setting');
+      }
+
       foreach ($items as $delta => $item) {
         if ($item['os2web_esdh_field_case_ident']) {
           $cases = array();
@@ -249,6 +253,9 @@ function theme_os2web_esdh_case($vars) {
  * Implements theme_IDENTIFIER().
  */
 function theme_os2web_esdh_document($vars) {
+  $path = libraries_get_path('tablesorter');
+  drupal_add_js($path . '/jquery.tablesorter.min.js');
+  drupal_add_js(drupal_get_path('module', 'os2web_esdh_field') . '/os2web_esdh_field.js');
 
   if (!function_exists('os2web_esdh_provider_has_api')) {
     return '';
@@ -259,18 +266,21 @@ function theme_os2web_esdh_document($vars) {
     drupal_set_message(t('Error in document lookup API. Check status.'), 'error');
     return '';
   }
+
   $id = $vars['id'];
   if (!is_array($id)) {
     $id = array($id);
   }
   $html = '';
+
   $rows = array();
   foreach ($id as $docid) {
     $file = _os2web_esdh_field_get_file_by_did($docid);
     if (is_object($file) && $document_meta = os2web_esdh_provider_invoke('cm', 'get_document', $docid)) {
       if (_os2web_esdh_field_doc_access($docid)) {
         $rows[] = array(
-          l($document_meta['title'], file_create_url($file->uri), array('attributes' => array('target' => '_blank'))) . '<span class="documentdate">' . format_date(strtotime($document_meta['last_update']), 'custom', 'd/m/Y') . '</span>',
+          l($document_meta['title'], file_create_url($file->uri), array('attributes' => array('target' => '_blank'))),
+          '<span class="documentdate">' . format_date(strtotime($document_meta['last_update']), 'custom', 'd/m/Y') . '</span>',
         );
       }
     }
@@ -285,7 +295,20 @@ function theme_os2web_esdh_document($vars) {
     }
     return $html;
   }
-  $html .= theme('table', array('rows' => $rows));
+
+  $header = array(
+    t('Dokumenttitel'),
+    t('Opdateret'),
+  );
+
+  $html .= theme_table(array(
+    'header' => $header,
+    'rows' => $rows,
+    'attributes' => array(
+      'class' => 'tablesorter',
+    ),
+  ));
+
   return $html;
 }
 /**

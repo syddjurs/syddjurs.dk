@@ -5,3 +5,16 @@
  */
 
 include_once('os2web_base_panels.features.inc');
+
+function os2web_base_panels_view_get_link_attributes($nid) {
+  $link = '';
+  if (is_numeric($nid)) {
+    $node = node_load($nid);
+    $field = field_get_items('node', $node, 'field_os2web_base_field_rota_lnk');
+    if ($field && $field[0]['attributes']['target'] === '_blank') {
+      $link = '_blank';
+    }
+  }
+  print $link;
+}
+ 

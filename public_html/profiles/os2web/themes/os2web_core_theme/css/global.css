@@ -1557,7 +1557,7 @@ padding-bottom: 5px
 .selvbetjening-block-forside .knapper a.kviksvar,
 .selvbetjening-block-forside .knapper a.nemindsigt {
   float: left;
-  width: 111px;
+  width: 100%;
   color: #fff;
   padding: 0;
   line-height: 40px;
@@ -1568,7 +1568,7 @@ padding-bottom: 5px
   margin-right: 4px;
 }
 .selvbetjening-block-forside .knapper a.nemindsigt {
-  background: url(../images/knapSELVBETJENING.png) 100% 0 no-repeat;
+  background: url(../images/knapAbenIndsigt.png) -3px -3px no-repeat;
 }
 .selvbetjening-block-forside .knapper a.aabenindsigt {
 	background-image: url(../images/knapSELVBETJENING-BIG.png);
@@ -4692,4 +4692,21 @@ ul.os2web_menus-container {
 .front .panels-flexible-region-os2web_base_panels_layout_front-right_ .spotbox .views-row img {
   width: 100%;
   height: auto;
+}
+
+.tablesorter th.header {
+  background-repeat: no-repeat;
+  background-position: 0 4px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tablesorter th.headerSortUp {
+  background-image: url(../images/chevron-up.png);
+}
+
+.tablesorter th.headerSortDown {
+  background-image: url(../images/chevron-down.png);
 }

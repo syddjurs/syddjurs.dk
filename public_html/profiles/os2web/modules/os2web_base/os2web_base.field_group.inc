@@ -83,7 +83,7 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Hentet fra kommunens sagssystem',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_os2web_base_field_case',
       1 => 'field_os2web_base_field_doc',
@@ -115,6 +115,7 @@ function os2web_base_field_group_info() {
     'children' => array(
       0 => 'field_os2web_base_field_case',
       1 => 'field_os2web_base_field_doc',
+      2 => 'field_os2web_base_field_casesort',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

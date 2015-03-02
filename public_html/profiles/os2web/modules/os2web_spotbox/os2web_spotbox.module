@@ -16,3 +16,16 @@ function os2web_spotbox_os2web_help($sections) {
 
   return $sections;
 }
+
+function os2web_spotbox_get_link_setting($nid) {
+  $link = '';
+  if (is_numeric($nid)) {
+    $node = node_load($nid);
+    $field = field_get_items('node', $node, 'field_os2web_spotbox_url_setting');
+    if ($field && $field[0]['value']) {
+      $link = '_blank';
+    }
+  }
+  print $link;
+}
+
