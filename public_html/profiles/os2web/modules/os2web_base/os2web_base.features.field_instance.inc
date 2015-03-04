@@ -532,7 +532,11 @@ function os2web_base_field_default_field_instances() {
   // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_casesort'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_casesort'] = array(
     'bundle' => 'os2web_base_contentpage',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => '0,0',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
