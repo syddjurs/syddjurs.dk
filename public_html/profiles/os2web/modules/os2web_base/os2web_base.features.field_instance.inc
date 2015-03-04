@@ -447,7 +447,7 @@ function os2web_base_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -540,7 +540,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -582,7 +582,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -620,7 +620,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -711,7 +711,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -903,7 +903,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -1025,11 +1025,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 'video',
-          0 => 0,
           'audio' => 0,
           'default' => 0,
+          0 => 0,
+          'image' => 'image',
+          'video' => 'video',
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -1052,7 +1052,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -1098,7 +1098,7 @@ function os2web_base_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_table',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -1132,11 +1132,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 0,
-          'video' => 0,
-          0 => 0,
           'audio' => 0,
           'default' => 'default',
+          0 => 0,
+          'image' => 0,
+          'video' => 0,
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -1251,9 +1251,12 @@ function os2web_base_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'full',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 3,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -1270,7 +1273,7 @@ function os2web_base_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_selfserv',
-    'label' => 'Selvbetjeningslinks',
+    'label' => 'Blanketter/Selvbetjening',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1345,7 +1348,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -1391,7 +1394,7 @@ function os2web_base_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'related_block' => array(
         'label' => 'above',
@@ -2225,12 +2228,12 @@ function os2web_base_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'os2web_iframe_field',
         'settings' => array(
           'height' => 1200,
           'width' => 700,
         ),
-        'type' => 'text_default',
+        'type' => 'os2web_iframe_field_iframe',
         'weight' => 2,
       ),
       'related_block' => array(
@@ -4347,6 +4350,7 @@ function os2web_base_field_default_field_instances() {
   t('Billede');
   t('Billeder');
   t('Billeder og video');
+  t('Blanketter/Selvbetjening');
   t('Brug ikke dette felt, brug i stedet det andet billedfelt. Du behøver ikke slette billeder der ikke skal ændres fra dette felt.');
   t('Det der vises med sort');
   t('Direkte link');
@@ -4396,7 +4400,6 @@ function os2web_base_field_default_field_instances() {
   t('Resume (maks 2 linier!)');
   t('Resume - lang overskrift');
   t('Sag');
-  t('Selvbetjeningslinks');
   t('Skal være inkl. <i>http://</i> hvis det er sider uden for sitet. Skal kun bruges til sider ser ikke kan indlejres som indhold via iframe.');
   t('Skjul relaterede links');
   t('Sortering');
