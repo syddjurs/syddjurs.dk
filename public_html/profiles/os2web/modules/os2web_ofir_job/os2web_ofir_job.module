@@ -143,11 +143,12 @@ function _os2web_ofir_job_cronbatch() {
       $any_webservice_errors = TRUE;
       continue;
     }
-    if (_os2web_ofir_job_check_existed($job)) {
-      continue;
-    }
+    // Check if the job is already imported. If it is, we will be updating the
+    // node.
+    $nid = _os2web_ofir_job_check_existed($job);
+
     $job_text = _os2web_ofir_job_parse_job_text($job);
-    os2web_ofir_job_import_job($job_text);
+    os2web_ofir_job_import_job($job_text, $nid);
     $count++;
   }
 
@@ -173,17 +174,31 @@ function _os2web_ofir_job_cronbatch() {
 /**
  * Create ofir job node.
  */
-function os2web_ofir_job_import_job($job_text) {
+function os2web_ofir_job_import_job($job_text, $nid) {
   if (!empty($job_text)) {
-    $node = new stdClass();
     $created = !empty($job_text['published']) ? strtotime($job_text['published']) : REQUEST_TIME;
-    $created = strtotime($created);
+    // Load the existing job node, if there is one.
+    if ($nid) {
+      $node = node_load($nid);
+
+      // If the job published date, is the same as the node->created, it hasn't
+      // been updated since the last update.
+      if ($node->created == $created) {
+        // And then we skip it.
+        return;
+      }
+    }
+    else {
+      // Otherwise, we just create a new one.
+      $node = new stdClass();
+      $node->validated = TRUE;
+      $node->uid = 1;
+      $node->language = 'da';
+      // Insert default value of a new node.
+      $node->type = 'os2web_ofir_job';
+    }
+
     $node->created = $created;
-    $node->validated = TRUE;
-    $node->uid = 1;
-    $node->language = 'da';
-    // Insert default value of a new node.
-    $node->type = 'os2web_ofir_job';
     $node->title = (!empty($job_text['title'])) ? $job_text['title'] : '';
 
     $text = !empty($job_text['description']) ? $job_text['description'] : '';
@@ -206,8 +221,8 @@ function os2web_ofir_job_import_job($job_text) {
     $deadline = date('Y-m-d H:i:s', strtotime($deadline));
     $node->field_os2web_ofir_job_period['und'][0]['value'] = date('Y-m-d H:i:s', strtotime($job_text['published']));
     $node->field_os2web_ofir_job_period['und'][0]['value2'] = $deadline;
+    $node->validated = TRUE;
 
-    $node = node_submit($node);
     node_save($node);
 
   }
@@ -296,13 +311,13 @@ function _os2web_ofir_job_check_existed($job) {
   }
   $ad_id = _os2web_ofir_job_xml_attribute($job->ad, 'id');
   if ($ad_id) {
-    $status = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
+    $nid = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
               ':ad_id' => $ad_id))->fetchField();
-    if (empty($status)) {
+    if (empty($nid)) {
       return FALSE;
     }
     else {
-      return TRUE;
+      return $nid;
     }
   }
   return FALSE;
