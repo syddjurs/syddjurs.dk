@@ -8,13 +8,13 @@
 /**
  * Implements hook_schema().
  */
-function os2web_qbrick_field_schema($field) {
+function os2web_nntv_field_schema($field) {
   $columns = array();
-  if ($field['type'] === 'os2web_qbrick_movie') {
+  if ($field['type'] === 'os2web_nntv_movie') {
     $columns = array(
       'seek' => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'default' => '0',
       ),
       'id' => array(

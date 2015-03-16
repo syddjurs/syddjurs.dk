@@ -303,8 +303,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_qbrickref'
-  $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_qbrickref'] = array(
+  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_nntv_ref'
+  $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_nntv_ref'] = array(
     'bundle' => 'os2web_meetings_bullet',
     'default_value' => array(
       0 => array(
@@ -317,19 +317,12 @@ function os2web_meetings_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'os2web_qbrick',
+        'module' => 'os2web_nntv',
         'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => 3,
+        'type' => 'os2web_nntv_movie_simple',
+        'weight' => 4,
       ),
       'os2web_meetings_meeting_detail_view' => array(
-        'label' => 'above',
-        'module' => 'os2web_qbrick',
-        'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => 3,
-      ),
-      'related_block' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -343,18 +336,18 @@ function os2web_meetings_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_os2web_meetings_qbrickref',
-    'label' => 'Qbrick ref',
+    'field_name' => 'field_os2web_meetings_nntv_ref',
+    'label' => 'NNTV ref',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'os2web_qbrick',
+      'module' => 'os2web_nntv',
       'settings' => array(),
-      'type' => 'os2web_qbrick_movie_simple',
-      'weight' => 4,
+      'type' => 'os2web_nntv_movie_simple',
+      'weight' => 9,
     ),
   );
 
@@ -756,6 +749,7 @@ function os2web_meetings_field_default_field_instances() {
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
         'content_taxonomy_autocomplete_new_terms' => 'allow',
+        'content_taxonomy_opt_groups' => FALSE,
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
@@ -865,23 +859,33 @@ function os2web_meetings_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_meetings_full_doc',
     'label' => 'Full doc',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt',
+      'file_extensions' => 'txt pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'file',
       'settings' => array(
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
             'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
           ),
           'source_reference' => array(
             'autocomplete' => 0,
@@ -1110,32 +1114,24 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_qbrickref'
-  $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_qbrickref'] = array(
+  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_nntv_ref'
+  $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_nntv_ref'] = array(
     'bundle' => 'os2web_meetings_meeting',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'id' => '',
+        'seek' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'os2web_qbrick',
+        'module' => 'os2web_nntv',
         'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => 4,
-      ),
-      'os2web_meetings_meeting_detail_view' => array(
-        'label' => 'hidden',
-        'module' => 'os2web_qbrick',
-        'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => 3,
-      ),
-      'related_block' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'os2web_nntv_movie_simple',
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1145,17 +1141,18 @@ function os2web_meetings_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_os2web_meetings_qbrickref',
-    'label' => 'Qbrick ref',
-    'required' => FALSE,
+    'field_name' => 'field_os2web_meetings_nntv_ref',
+    'label' => 'NNTV ref',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'os2web_qbrick',
+      'active' => 0,
+      'module' => 'os2web_nntv',
       'settings' => array(),
-      'type' => 'os2web_qbrick_movie_simple',
-      'weight' => 9,
+      'type' => 'os2web_nntv_movie_simple',
+      'weight' => 31,
     ),
   );
 
@@ -1601,7 +1598,7 @@ function os2web_meetings_field_default_field_instances() {
   t('Lokation');
   t('Meeting ID');
   t('Meeting sub ID');
-  t('Qbrick ref');
+  t('NNTV ref');
   t('Ref Attachment');
   t('Ref Bullet points');
   t('Regular');
