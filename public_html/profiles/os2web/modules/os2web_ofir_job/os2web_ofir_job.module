@@ -180,13 +180,6 @@ function os2web_ofir_job_import_job($job_text, $nid) {
     // Load the existing job node, if there is one.
     if ($nid) {
       $node = node_load($nid);
-
-      // If the job published date, is the same as the node->created, it hasn't
-      // been updated since the last update.
-      if ($node->created == $created) {
-        // And then we skip it.
-        return;
-      }
     }
     else {
       // Otherwise, we just create a new one.
