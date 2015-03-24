@@ -4,7 +4,7 @@
  * Template file for CP service overview page.
  */
 ?>
-
+<?php print $preface; ?>
 
 <?php print render($datepicker) ?>
 
