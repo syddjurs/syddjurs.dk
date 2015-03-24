@@ -16,3 +16,32 @@ function os2web_selfservicelinks_os2web_help($sections) {
 
   return $sections;
 }
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function os2web_selfservicelinks_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'feeds_tamper' && $plugin_type == 'plugins') {
+    return 'plugins';
+  }
+}
+
+/**
+ * Find term id from string with kle number.
+ */
+function os2web_selfservicelinks_find_term($string, $vid) {
+  if (preg_match('/(\d+\.\d+\.\d+)/', $string, $match)) {
+    $kle = $match[0];
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'taxonomy_term')
+      ->propertyCondition('vid', $vid)
+      ->propertyCondition('name', '%' . $kle . '%', 'LIKE');
+    $result = $query->execute();
+
+    if (!empty($result['taxonomy_term'])) {
+      return key($result['taxonomy_term']);
+    }
+  }
+  return '';
+}
