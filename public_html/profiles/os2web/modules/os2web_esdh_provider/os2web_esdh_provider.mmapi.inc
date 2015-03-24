@@ -15,7 +15,7 @@
  * @return string
  *   The formated size.
  */
-function hr_size($size) {
+function _os2web_esdh_provider_hr_size($size) {
   $unit = array('b', 'kb', 'mb', 'gb', 'tb', 'pb');
   return @round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
 }
@@ -26,9 +26,9 @@ function hr_size($size) {
  * @param string $msg
  *   The message
  */
-function err_debug($msg = FALSE) {
+function os2web_esdh_provider_log($msg = FALSE) {
   if (variable_get('os2web_esdh_provider_debug_info')) {
-    $mem = hr_size(memory_get_usage());
+    $mem = _os2web_esdh_provider_hr_size(memory_get_usage());
     $timer = number_format(timer_read('mm_import') / 1000, 2) . "sec.";
     error_log("MM Import - $msg - $mem $timer");
   }
@@ -48,10 +48,10 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     return;
   }
   timer_start('mm_import');
-  err_debug('Init.');
+  os2web_esdh_provider_log('Init.');
 
   $meetings = os2web_esdh_provider_invoke('mm', 'import_meeting', $meeting_id);
-  err_debug('Done generate meetings array from XML ' . $meeting_id['id']);
+  os2web_esdh_provider_log('Done generate meetings array from XML ' . $meeting_id['id']);
 
   $nids = array();
   $nid = NULL;
@@ -90,7 +90,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
   // the existing should be unpublished.
   if ($nid && count($meetings) === 0) {
     // Meeting needs to be unpublished.
-    err_debug('Unpublish nid: ' . $nid);
+    os2web_esdh_provider_log('Unpublish nid: ' . $nid);
     node_delete($nid);
     watchdog('acadre MM', 'Unpublished %nid .', array('%nid' => $nid), WATCHDOG_INFO);
     lock_release(__FUNCTION__ . $meeting_id['id']);
@@ -100,15 +100,15 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
   // Ideally $meetings will only have one entry.
   // But can have more if manifest is wrong.
   foreach ($meetings as $meeting) {
-    err_debug('Start import meeting ' . $meeting['system_id']);
-    err_debug('Importing meeting with ' . count($meeting['items']) . ' bullet points.');
+    os2web_esdh_provider_log('Start import meeting ' . $meeting['system_id']);
+    os2web_esdh_provider_log('Importing meeting with ' . count($meeting['items']) . ' bullet points.');
 
     // Meeting already exist.
     // Either republish, delete or skip.
     if ($nid) {
 
       if ($force) {
-        err_debug('Republish nid: ' . $nid);
+        os2web_esdh_provider_log('Republish nid: ' . $nid);
 
         $node = node_load($nid);
         watchdog('acadre MM', 'Using %nid for import.', array('%nid' => $nid), WATCHDOG_DEBUG);
@@ -118,17 +118,17 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       elseif ($meeting['type'] === 'Referat') {
         $node = node_load($nid);
         if ($node->field_os2web_meetings_type[LANGUAGE_NONE][0]['value'] !== 'Dagsorden') {
-          err_debug('Skipping nid: ' . $nid);
+          os2web_esdh_provider_log('Skipping nid: ' . $nid);
           watchdog('acadre MM', 'Meeting already imported in %nid. Skipṕing.', array('%nid' => $nid), WATCHDOG_DEBUG);
           lock_release(__FUNCTION__ . $meeting_id['id']);
           return;
         }
-        err_debug('Republish nid: ' . $nid);
+        os2web_esdh_provider_log('Republish nid: ' . $nid);
         watchdog('acadre MM', 'Using %nid for import. Type mismatch.', array('%nid' => $nid), WATCHDOG_DEBUG);
       }
       else {
         // Meeting already exists. Skip it.
-        err_debug('Skipping nid: ' . $nid);
+        os2web_esdh_provider_log('Skipping nid: ' . $nid);
         watchdog('acadre MM', 'Meeting already imported in %nid. Skipṕing.', array('%nid' => $nid), WATCHDOG_DEBUG);
         lock_release(__FUNCTION__ . $meeting_id['id']);
         return;
@@ -287,13 +287,13 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       '%mid' => $meeting['meeting_id'],
       '%nid' => $node->nid), WATCHDOG_DEBUG);
     $nids[] = $node->nid;
-    err_debug('Meeting saved. $node->nid = ' . print_r($node->nid, 1));
+    os2web_esdh_provider_log('Meeting saved. $node->nid = ' . print_r($node->nid, 1));
   }
 
   _os2web_esdh_provider_send_statusmail(t('!id successfully imported into node !nid.', array('!id' => $meeting_id['id'], '!nid' => $node->nid)));
 
   variable_set('os2web_esdh_provider_last_import', time());
-  err_debug('END import meeting ' . $meeting['system_id'] . '');
+  os2web_esdh_provider_log('END import meeting ' . $meeting['system_id'] . '');
   lock_release(__FUNCTION__ . $meeting_id['id']);
   return $nids;
 }
@@ -313,7 +313,7 @@ function _os2web_esdh_provider_import_items($items) {
   $nids = array();
   foreach ($items as $item) {
 
-    err_debug('Start import bullet point ');
+    os2web_esdh_provider_log('Start import bullet point ');
     $node = new stdClass();
     $node->type = "os2web_meetings_bullet";
     $node->language = LANGUAGE_NONE;
@@ -367,7 +367,7 @@ function _os2web_esdh_provider_import_items($items) {
       $node = node_submit($node);
       node_save($node);
       $nids[] = $node->nid;
-      err_debug('Item saved');
+      os2web_esdh_provider_log('Item saved');
     }
   }
   return $nids;
@@ -391,7 +391,7 @@ function _os2web_esdh_provider_import_bullets($bullets) {
   $nids = array();
 
   foreach ($bullets as $idx => $bullet) {
-    err_debug('Start import bullet ' . $idx . ' ');
+    os2web_esdh_provider_log('Start import bullet ' . $idx . ' ');
     $node = new stdClass();
     $node->type = "os2web_meetings_bullet_attach";
     $node->language = LANGUAGE_NONE;
@@ -407,7 +407,7 @@ function _os2web_esdh_provider_import_bullets($bullets) {
     $node = node_submit($node);
     node_save($node);
     $nids[$idx] = $node->nid;
-    err_debug('Bullet saved.');
+    os2web_esdh_provider_log('Bullet saved.');
   }
   return $nids;
 }
@@ -443,7 +443,7 @@ function _os2web_esdh_provider_import_file($file_meta) {
   $uri_out = $pinfo['dirname'] . '/' . _os2web_esdh_provider_sanetize_filename($fname . '.' . strtolower($pinfo['extension']));
   $uri_pdf = $pinfo['dirname'] . '/' . _os2web_esdh_provider_sanetize_filename($fname . '.pdf');
 
-  err_debug('Start import file ' . $uri_out . ' ');
+  os2web_esdh_provider_log('Start import file ' . $uri_out . ' ');
 
   $uri = FALSE;
   if ($uri_tmp = _os2web_esdh_provider_similar_file_exists(drupal_realpath($uri_pdf))) {
@@ -481,10 +481,10 @@ function _os2web_esdh_provider_import_file($file_meta) {
   if (file_uri_scheme($uri) != 'public') {
     watchdog('acadre MM', 'Invalid scheme for uri %uri, Possibly absolut path ? ' . $uri, array(
       '%uri', $uri), WATCHDOG_ERROR);
-    error_log("Var: \$uri = " . print_r($uri, 1));
-    error_log("Var: \$uri_in = " . print_r($uri_in, 1));
-    error_log("Var: \$uri_out = " . print_r($uri_out, 1));
-    error_log("Var: \$uri_pdf = " . print_r($uri_pdf, 1));
+    os2web_esdh_provider_log("Var: \$uri = " . print_r($uri, 1));
+    os2web_esdh_provider_log("Var: \$uri_in = " . print_r($uri_in, 1));
+    os2web_esdh_provider_log("Var: \$uri_out = " . print_r($uri_out, 1));
+    os2web_esdh_provider_log("Var: \$uri_pdf = " . print_r($uri_pdf, 1));
   }
 
   $fid = db_select('file_managed', 'fm')
@@ -517,8 +517,8 @@ function _os2web_esdh_provider_import_file($file_meta) {
       '%filename' => $file->filename, '%fid' => $file->fid), WATCHDOG_INFO);
   }
 
-  err_debug('File imported.');
-  err_debug('End Import of file');
+  os2web_esdh_provider_log('File imported.');
+  os2web_esdh_provider_log('End Import of file');
   return $file;
 }
 
@@ -535,7 +535,7 @@ function _os2web_esdh_provider_import_file($file_meta) {
  */
 function _acadre_esdh_import_term($term_name, $vocab) {
 
-  err_debug('Start import term');
+  os2web_esdh_provider_log('Start import term');
 
   // TODO: Process members of the committee.
   // FIXME: MAke vocab name configurable.

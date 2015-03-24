@@ -5,7 +5,6 @@
  * Implements API to convert files to PDF or HTML through AdLib.
  */
 
-define('ADLIB_TEST_FID', FALSE);
 define('ADLIB_HTML_IMG_FOLDER', 'public://bpimg/');
 
 /**
@@ -137,7 +136,6 @@ function os2web_adlib_api_reprocess() {
  * @author Thomas Thune Hansen <tth@bellcom.dk>
  */
 function _os2web_adlib_api_bulletpoint_finished($success, $results, $operations) {
-  error_log("reschedule finished");
   drupal_set_message(t('All bullet points have been rescheduled for conversion'));
 }
 
@@ -290,7 +288,6 @@ function os2web_adlib_api_status() {
  * Test page for abitrary test usage.
  */
 function os2web_adlib_api_page() {
-  error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' in ' . __FUNCTION__ . '()');
   $fid = 236605;
   $nid = 840980;
   // os2web_adlib_api_file_delete($fid);
@@ -306,7 +303,6 @@ function os2web_adlib_api_page() {
   // $call[] = explode('\\',$adlib->addJobFolder());
   // $call[] = $adlib->deleteJobFolder($call[0][1]);
   // $call = $adlib->getJobStatus($file->job_id);
-  // $call= file_load(ADLIB_TEST_FID);
   // $call = node_load($nid,NULL,TRUE);
   $files = db_select('file_managed', 'fm')->fields('fm')->execute();
   $rows = array();
@@ -381,7 +377,6 @@ function os2web_adlib_api_convert_to_html($fid, $nid) {
     return TRUE;
   }
   else {
-    // error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File already in queue, aborting.");
     return FALSE;
   }
 }
@@ -423,18 +418,13 @@ function os2web_adlib_api_convert_to_pdf($fid, $docref = NULL) {
         ->condition('jobtype', 0)
         ->execute();
       drupal_write_record('os2web_adlib_api_doc_files', $record);
-      if (ADLIB_TEST_FID) {
-        error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File queued for processing.");
-      }
       return TRUE;
     }
     else {
-      // error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File already in queue, aborting.");
       return FALSE;
     }
   }
   else {
-    // error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File already PDF.");
     $record = array(
       'fid' => $fid,
       'did' => $docref,
@@ -520,8 +510,6 @@ function _os2web_adlib_api_process_fid($file) {
     return;
   }
   if (!is_object($file)) {
-    error_log("Var: \$file = " . print_r($file, 1));
-    error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' - Wrong input for fid processing.');
     return;
   }
   if (!lock_acquire(__FUNCTION__ . $file->fid)) {
@@ -636,10 +624,6 @@ function _os2web_adlib_api_process_file($file) {
             drupal_write_record('file_managed', $upd_file, array('fid'));
             field_cache_clear();
             watchdog('adlib_api', 'File (fid: %fid) was converted successfully to pdf.', array('%fid' => $file->fid), WATCHDOG_INFO);
-            error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File saved, file record updated. New URI: " . $uri);
-          }
-          else {
-            error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Filesize was 0. Aborting update.");
           }
           break;
 
@@ -658,7 +642,6 @@ function _os2web_adlib_api_process_file($file) {
               'job_id' => 'Complete',
             );
             drupal_write_record('os2web_adlib_api_doc_files', $record, array('fid', 'jobtype'));
-            error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' in ' . __FUNCTION__ . '() - File converted, node updated.');
             watchdog('adlib_api', 'File (fid: %fid) was converted successfully.', array('%fid' => $file->fid), WATCHDOG_INFO);
           }
           break;
