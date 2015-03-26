@@ -25,7 +25,7 @@ Dependencies
 - node_reference
 - number
 - options
-- os2web_qbrick
+- os2web_nntv
 - page_manager
 - print
 - print_pdf

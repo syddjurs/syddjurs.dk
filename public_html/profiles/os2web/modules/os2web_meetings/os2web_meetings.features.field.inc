@@ -282,77 +282,6 @@ function os2web_meetings_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-os2web_meetings_bullet-field_os2web_meetings_qbrickref'.
-  $fields['node-os2web_meetings_bullet-field_os2web_meetings_qbrickref'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_os2web_meetings_qbrickref',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'os2web_qbrick',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'os2web_qbrick_movie',
-    ),
-    'field_instance' => array(
-      'bundle' => 'os2web_meetings_bullet',
-      'default_value' => array(
-        0 => array(
-          'id' => '',
-          'seek' => '0',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'os2web_qbrick',
-          'settings' => array(),
-          'type' => 'os2web_qbrick_movie_simple',
-          'weight' => '3',
-        ),
-        'os2web_meetings_meeting_detail_view' => array(
-          'label' => 'above',
-          'module' => 'os2web_qbrick',
-          'settings' => array(),
-          'type' => 'os2web_qbrick_movie_simple',
-          'weight' => '3',
-        ),
-        'related_block' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_os2web_meetings_qbrickref',
-      'label' => 'Qbrick ref',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'os2web_qbrick',
-        'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => '4',
-      ),
-    ),
-  );
-
   // Exported field: 'node-os2web_meetings_bullet-field_os2web_meetings_attach'.
   $fields['node-os2web_meetings_bullet-field_os2web_meetings_attach'] = array(
     'field_config' => array(
@@ -1823,71 +1752,6 @@ function os2web_meetings_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-os2web_meetings_meeting-field_os2web_meetings_qbrickref'.
-  $fields['node-os2web_meetings_meeting-field_os2web_meetings_qbrickref'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_os2web_meetings_qbrickref',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'os2web_qbrick',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'os2web_qbrick_movie',
-    ),
-    'field_instance' => array(
-      'bundle' => 'os2web_meetings_meeting',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'os2web_qbrick',
-          'settings' => array(),
-          'type' => 'os2web_qbrick_movie_simple',
-          'weight' => '4',
-        ),
-        'os2web_meetings_meeting_detail_view' => array(
-          'label' => 'hidden',
-          'module' => 'os2web_qbrick',
-          'settings' => array(),
-          'type' => 'os2web_qbrick_movie_simple',
-          'weight' => '3',
-        ),
-        'related_block' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_os2web_meetings_qbrickref',
-      'label' => 'Qbrick ref',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'os2web_qbrick',
-        'settings' => array(),
-        'type' => 'os2web_qbrick_movie_simple',
-        'weight' => '9',
-      ),
-    ),
-  );
-
   // Exported field: 'node-os2web_meetings_meeting-field_os2web_meetings_bullets'.
   $fields['node-os2web_meetings_meeting-field_os2web_meetings_bullets'] = array(
     'field_config' => array(
@@ -2445,7 +2309,6 @@ function os2web_meetings_field_default_fields() {
   t('Lokation');
   t('Meeting ID');
   t('Meeting sub ID');
-  t('Qbrick ref');
   t('Ref Attachment');
   t('Ref Bullet points');
   t('Regular');

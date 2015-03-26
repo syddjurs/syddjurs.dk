@@ -355,12 +355,6 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Handler mangler eller er i stykker */
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['label'] = 'Video fra mødet:';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['hide_empty'] = TRUE;
   /* Felt: Indhold: Slet-link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
@@ -512,7 +506,7 @@ print("<div class=\\"indicator-has-notes\\"></div>");
 
   /* Display: Video */
   $handler = $view->new_display('attachment', 'Video', 'attachment_1');
-  $handler->display->display_options['display_description'] = 'QBrick video for mødet';
+  $handler->display->display_options['display_description'] = 'Video for mødet';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -581,7 +575,6 @@ print("<div class=\\"indicator-has-notes\\"></div>");
     'php' => 'title',
     'field_os2web_meetings_attach' => 'title',
     'nothing_1' => 'nothing_1',
-    'field_os2web_meetings_qbrickref' => 'field_os2web_meetings_qbrickref',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -625,13 +618,6 @@ print("<div class=\\"indicator-has-notes\\"></div>");
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'field_os2web_meetings_qbrickref' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 1,
     ),
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -911,7 +897,6 @@ echo \'<span class="bullet-point-print-link"></span>\';
     'php' => 'title',
     'field_os2web_meetings_attach' => 'title',
     'nothing_1' => 'nothing_1',
-    'field_os2web_meetings_qbrickref' => 'field_os2web_meetings_qbrickref',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -955,13 +940,6 @@ echo \'<span class="bullet-point-print-link"></span>\';
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'field_os2web_meetings_qbrickref' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 1,
     ),
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -1113,13 +1091,6 @@ echo \'<span class="bullet-point-print-link"></span>\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Handler mangler eller er i stykker */
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['relationship'] = 'field_os2web_meetings_bullets_target_id';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Type */
   $handler->display->display_options['fields']['field_os2web_meetings_type']['id'] = 'field_os2web_meetings_type';
   $handler->display->display_options['fields']['field_os2web_meetings_type']['table'] = 'field_data_field_os2web_meetings_type';
@@ -1252,7 +1223,6 @@ echo \'<span class="bullet-point-print-link"></span>\';
     t('Samlet dokument'),
     t('Download hele referatet som samlet dokument'),
     t('Video'),
-    t('QBrick video for mødet'),
     t('<h2 class="pane-title">Video fra mødet</h2>'),
     t('Bullet points'),
     t('Indhold entity refereret fra field_os2web_meetings_bullets'),
