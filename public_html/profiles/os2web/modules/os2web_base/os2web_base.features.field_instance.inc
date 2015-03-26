@@ -532,11 +532,7 @@ function os2web_base_field_default_field_instances() {
   // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_casesort'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_casesort'] = array(
     'bundle' => 'os2web_base_contentpage',
-    'default_value' => array(
-      0 => array(
-        'value' => '0,0',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -556,7 +552,7 @@ function os2web_base_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_casesort',
     'label' => 'Sortering',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
