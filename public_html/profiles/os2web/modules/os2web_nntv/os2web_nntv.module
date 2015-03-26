@@ -42,8 +42,9 @@ function os2web_nntv_update_meeting($nid) {
     // Get current field contents.
     $field = field_get_items('node', $meeting, 'field_os2web_meetings_nntv_ref');
 
-    // If there isn't any og the field is empty, update it.
-    if (!$field || !$field[0]['id']) {
+    // If there isn't any or the field is empty, update it. Also update, if it
+    // is a different id.
+    if (!$field || !$field[0]['id'] || $field[0]['id'] != $movie_info['movie_id']) {
       $meeting->field_os2web_meetings_nntv_ref[LANGUAGE_NONE][0]['id'] = $movie_info['movie_id'];
 
       node_save($meeting);
@@ -112,8 +113,7 @@ function _os2web_nntv_get_movie_info($nid) {
 
   $url = $search_url . rawurlencode($committee . ' ' . $date);
   $xml = simplexml_load_file($url);
-
-  $movie_id = (string) ($xml->Videos->Video['id']);
+  $movie_id = (string) ($xml->Videos->Video->VideoName);
 
   if ($movie_id) {
     $tmp_chapters = $xml->xpath('//Videos/Video/Chapters/Chapter');
@@ -246,7 +246,7 @@ function os2web_nntv_field_formatter_view($entity_type, $entity, $field, $instan
     case 'os2web_nntv_movie_simple':
       foreach ($items as $delta => $item) {
         if ($item['id']) {
-          $embed_url = 'http://media.videotool.dk/?vn=260_2015030306351381106095622509';
+          $embed_url = 'http://media.videotool.dk/?vn=' . $item['id'];
           $script = <<<EOF
             <iframe src="$embed_url" id="videotool_player" width="562" height="316"></iframe>
             <script>
