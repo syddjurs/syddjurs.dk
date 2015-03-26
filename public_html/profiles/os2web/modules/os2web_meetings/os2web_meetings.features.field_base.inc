@@ -637,20 +637,20 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_qbrickref'
-  $field_bases['field_os2web_meetings_qbrickref'] = array(
+  // Exported field_base: 'field_os2web_meetings_nntv_ref'
+  $field_bases['field_os2web_meetings_nntv_ref'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_os2web_meetings_qbrickref',
+    'field_name' => 'field_os2web_meetings_nntv_ref',
     'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
-    'module' => 'os2web_qbrick',
+    'module' => 'os2web_nntv',
     'settings' => array(),
     'translatable' => 0,
-    'type' => 'os2web_qbrick_movie',
+    'type' => 'os2web_nntv_movie',
   );
 
   // Exported field_base: 'field_os2web_meetings_searchdata'

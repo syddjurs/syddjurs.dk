@@ -355,7 +355,7 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Qbrick ref */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
@@ -525,14 +525,13 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Qbrick ref */
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['click_sort_column'] = 'seek';
+  /* Felt: Indhold: NNTV ref */
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['id'] = 'field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['table'] = 'field_data_field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['field'] = 'field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['click_sort_column'] = 'seek';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
@@ -553,11 +552,13 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2web_meetings_meeting' => 'os2web_meetings_meeting',
   );
-  /* Filterkriterie: Indhold: Qbrick ref (field_os2web_meetings_qbrickref:id) */
-  $handler->display->display_options['filters']['field_os2web_meetings_qbrickref_id']['id'] = 'field_os2web_meetings_qbrickref_id';
-  $handler->display->display_options['filters']['field_os2web_meetings_qbrickref_id']['table'] = 'field_data_field_os2web_meetings_qbrickref';
-  $handler->display->display_options['filters']['field_os2web_meetings_qbrickref_id']['field'] = 'field_os2web_meetings_qbrickref_id';
-  $handler->display->display_options['filters']['field_os2web_meetings_qbrickref_id']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filterkriterie: Indhold: NNTV ref (field_os2web_meetings_nntv_ref:id) */
+  $handler->display->display_options['filters']['field_os2web_meetings_nntv_ref_id']['id'] = 'field_os2web_meetings_nntv_ref_id';
+  $handler->display->display_options['filters']['field_os2web_meetings_nntv_ref_id']['table'] = 'field_data_field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['filters']['field_os2web_meetings_nntv_ref_id']['field'] = 'field_os2web_meetings_nntv_ref_id';
+  $handler->display->display_options['filters']['field_os2web_meetings_nntv_ref_id']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_os2web_meetings_nntv_ref_id']['group'] = 2;
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
@@ -768,15 +769,15 @@ echo \'<span class="bullet-point-print-link"></span>\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Indhold: Qbrick ref */
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['relationship'] = 'field_os2web_meetings_bullets_target_id';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['click_sort_column'] = 'seek';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['type'] = 'os2web_qbrick_movie_seek';
+  /* Felt: Indhold: NNTV ref */
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['id'] = 'field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['table'] = 'field_data_field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['field'] = 'field_os2web_meetings_nntv_ref';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['relationship'] = 'field_os2web_meetings_bullets_target_id';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['click_sort_column'] = 'seek';
+  $handler->display->display_options['fields']['field_os2web_meetings_nntv_ref']['type'] = 'os2web_nntv_movie_seek';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
@@ -1067,9 +1068,9 @@ echo \'<span class="bullet-point-print-link"></span>\';
   $handler->display->display_options['fields']['php']['alter']['rel'] = 'lightframe';
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
-if (function_exists("os2web_print_send_to_friend_os2web_meetings_bullet_access"))
+if (function_exists("os2web_print_send_to_friend_bullet_point_access"))
 {
-if (os2web_print_send_to_friend_os2web_meetings_bullet_access($row->nid)){
+if (os2web_print_send_to_friend_bullet_point_access($row->nid)){
 echo \'<span class="bullet-point-send-to-friend"></span>\';
 }
 }
@@ -1087,9 +1088,9 @@ echo \'<span class="bullet-point-send-to-friend"></span>\';
   $handler->display->display_options['fields']['php_1']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
-if (function_exists("os2web_print_send_to_friend_os2web_meetings_bullet_access"))
+if (function_exists("os2web_print_send_to_friend_bullet_point_access"))
 {
-if (os2web_print_send_to_friend_os2web_meetings_bullet_access($row->nid)){
+if (os2web_print_send_to_friend_bullet_point_access($row->nid)){
 echo \'<span class="bullet-point-print-link"></span>\';
 }
 }
@@ -1112,15 +1113,13 @@ echo \'<span class="bullet-point-print-link"></span>\';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Indhold: Qbrick ref */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['id'] = 'field_os2web_meetings_qbrickref';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['table'] = 'field_data_field_os2web_meetings_qbrickref';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['field'] = 'field_os2web_meetings_qbrickref';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['relationship'] = 'field_os2web_meetings_bullets_target_id';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['click_sort_column'] = 'seek';
-  $handler->display->display_options['fields']['field_os2web_meetings_qbrickref']['type'] = 'os2web_qbrick_movie_seek';
   /* Felt: Indhold: Type */
   $handler->display->display_options['fields']['field_os2web_meetings_type']['id'] = 'field_os2web_meetings_type';
   $handler->display->display_options['fields']['field_os2web_meetings_type']['table'] = 'field_data_field_os2web_meetings_type';
@@ -2295,6 +2294,7 @@ return TRUE;
   );
   $handler->display->display_options['filters']['field_os2web_meetings_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_os2web_meetings_date_value']['default_date'] = 'now -1 month';
+  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['year_range'] = '2007:+3';
   /* Filterkriterie: Indhold: Date - slutdato (field_os2web_meetings_date:value2) */
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['id'] = 'field_os2web_meetings_date_value2';
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['table'] = 'field_data_field_os2web_meetings_date';
@@ -2317,6 +2317,7 @@ return TRUE;
   );
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['year_range'] = '2007:+3';
   /* Filterkriterie: Indhold: Committee (field_os2web_meetings_committee) */
   $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['id'] = 'field_os2web_meetings_committee_tid';
   $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['table'] = 'field_data_field_os2web_meetings_committee';

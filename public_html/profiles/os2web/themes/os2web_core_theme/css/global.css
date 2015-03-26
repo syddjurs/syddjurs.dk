@@ -4062,8 +4062,8 @@ th.views-field-field-os2web-meetings-date {
     clear: left;
 }
 
-.view-os2web-meetings-meeting-details .view-display-id-attachment_2 td.views-field-field-os2web-meetings-qbrickref,
-.view-display-id-attachment_5 td.views-field-field-os2web-meetings-qbrickref {
+.view-os2web-meetings-meeting-details .view-display-id-attachment_2 td.views-field-field-os2web-meetings-nntv-ref,
+.view-display-id-attachment_5 td.views-field-field-os2web-meetings-nntv-ref {
     position: absolute;
     left: 675px;
     margin-top: 2px;
