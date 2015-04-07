@@ -67,7 +67,7 @@ function os2web_cp_service_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => 'Gå tilbage',
       'title' => '',
-      'body' => '<p><a class="button go-back-button os2web_cp_service_button" href="javascript:history.go(-1)">Gå tilbage til søgning</a></p>',
+      'body' => '<p><a class="button go-back-button os2web_cp_service_button" href="javascript:(!document.referrer)?location.href=\'/aaben-indsigt\':history.go(-1);">Gå tilbage til søgning</a></p>',
       'format' => 'full_html',
       'substitute' => 1,
     );
