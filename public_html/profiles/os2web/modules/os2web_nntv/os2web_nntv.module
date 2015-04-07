@@ -44,7 +44,7 @@ function os2web_nntv_update_meeting($nid) {
 
     // If there isn't any or the field is empty, update it. Also update, if it
     // is a different id.
-    if (!$field || !$field[0]['id'] || $field[0]['id'] != $movie_info['movie_id']) {
+    if ((!$field || !$field[0]['id'] || $field[0]['id'] != $movie_info['movie_id']) && !empty($movie_info['chapters'])) {
       $meeting->field_os2web_meetings_nntv_ref[LANGUAGE_NONE][0]['id'] = $movie_info['movie_id'];
 
       node_save($meeting);
