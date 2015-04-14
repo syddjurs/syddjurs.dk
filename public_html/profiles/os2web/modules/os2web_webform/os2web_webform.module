@@ -118,9 +118,9 @@ function os2web_webform_form_alter(&$form, &$form_state, $form_id) {
       break;
 
     case strstr($form_id, 'webform_client_form'):
-     $nid = $form['details']['nid']['#value'];
-     $via_https = db_query("SELECT via_https FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['details']['nid']['#value']))->fetchField(); 
-      if ($via_https) {
+      $nid = $form['details']['nid']['#value'];
+      $via_https = db_query("SELECT via_https FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['details']['nid']['#value']))->fetchField(); 
+      if ($via_https && !isset($_SERVER['HTTPS'])) {
         $string = str_replace('http://', 'https://', $GLOBALS['base_url']);
         drupal_goto($string . '/node/' . $nid);
       }
