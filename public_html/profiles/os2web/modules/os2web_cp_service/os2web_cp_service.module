@@ -40,7 +40,165 @@ function os2web_cp_service_menu() {
     'access callback' => TRUE,
   );
 
+  $items['seneste-dokumenter'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'Senest journaliserede dokumenter',
+    'page callback' => 'os2web_cp_service_page',
+    'access callback' => TRUE,
+  );
+
+  $items['admin/config/os2web/cp-document-page'] = array(
+    'title' => 'Instillinger for "seneste-dokumenter" side.',
+    'description' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('os2web_cp_service_page_settings'),
+    'access arguments' => array('administer site configuration'),
+  );
+
   return $items;
+}
+
+/**
+ * Form callback for cp service page settings.
+ */
+function os2web_cp_service_page_settings() {
+  $form = array();
+
+  $form['os2web_cp_service_page_preface'] = array(
+    '#type' => 'textarea',
+    '#title' => 'Tekst til "Seneste dokumenter" side, vises før dato formularen',
+    '#default_value' => variable_get('os2web_cp_service_page_preface', ''),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Page callback for overview.
+ */
+function os2web_cp_service_page() {
+  drupal_set_title('Senest journaliserede dokumenter');
+  $variables = array();
+
+  // @TODO: Remove this
+  setlocale(LC_TIME, "da_DK.utf8");
+
+  if (!isset($_SESSION['os2web_cp_service_date'])) {
+    $_SESSION['os2web_cp_service_date'] = strtotime("yesterday");
+  }
+  $date = $_SESSION['os2web_cp_service_date'];
+
+  $variables['preface'] = variable_get('os2web_cp_service_page_preface', '');
+  $variables['date_string'] = strftime('%A d. %e %B %Y', $date);
+  $variables['datepicker'] = drupal_get_form('os2web_cp_service_datepicker');
+  $variables['document_table'] = os2web_cp_service_page_document_table($date);
+
+  return theme('os2web_cp_service_page', $variables);
+}
+
+/**
+ * Render table with documents for specified date.
+ */
+function os2web_cp_service_page_document_table($date) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'os2web_cp_service_cp_document')
+    ->fieldCondition('field_os2web_cp_service_date', 'value', date('Y-m-d', $date));
+  $result = $query->execute();
+
+  $rows = array();
+
+  foreach (node_load_multiple(array_keys($result['node'])) as $node) {
+    $document_number = '';
+    $case_number = '';
+    $case_name = '';
+    $document_fileid = '';
+
+    if ($field = field_get_items('node', $node, 'field_os2web_cp_service_doc_id')) {
+      $document_number = $field[0]['value'];
+    }
+
+    if ($field = field_get_items('node', $node, 'field_os2web_cp_service_case_id')) {
+      $case_number = $field[0]['value'];
+
+      $case_name = os2web_cp_service_get_case_name($case_number);
+    }
+
+    if ($field = field_get_items('node', $node, 'field_os2web_cp_service_file_id')) {
+      $document_fileid = $field[0]['value'];
+    }
+
+    $rows[] = array(
+      $document_number,
+      l($node->title, 'os2web/service/gf/v1/' . $document_fileid),
+      l($case_number, 'sag/' . $case_number, array('attributes' => array('class' => 'qtip-this', 'title' => $case_name))),
+    );
+  }
+
+  $variables['header'] = array(
+    t('Dokumentnummer'),
+    t('Dokumentnavn'),
+    t('Sagsnummer'),
+  );
+
+  $variables['empty'] = t('Der er ingen dokumenter for den ønskede dato.');
+  $variables['rows'] = $rows;
+
+  return theme('table', $variables);
+}
+
+/**
+ * Get the title of a case, by it's id.
+ */
+function os2web_cp_service_get_case_name($case_number) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'os2web_cp_service_cp_case')
+    ->fieldCondition('field_os2web_cp_service_case_id', 'value', $case_number);
+  $result = $query->execute();
+
+  if ($result['node']) {
+    $node = node_load(key($result['node']));
+    return $node->title;
+  }
+  return '';
+}
+
+/**
+ * Datepicker form.
+ */
+function os2web_cp_service_datepicker($form, &$form_state) {
+  $form['datepicker'] = array(
+    '#type' => 'date_popup',
+    '#date_format' => 'd-m-Y',
+    '#default_value' => date('Y-m-d', $_SESSION['os2web_cp_service_date']),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Skift dato'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for datepicker.
+ */
+function os2web_cp_service_datepicker_submit(&$form, &$form_state) {
+  $_SESSION['os2web_cp_service_date'] = strtotime($form_state['values']['datepicker']);
+  drupal_goto('seneste-dokumenter/' . md5($_SESSION['os2web_cp_service_date']));
+}
+
+/**
+ * Implements hook_theme().
+ */
+function os2web_cp_service_theme($existing, $type, $theme, $path) {
+  return array(
+    'os2web_cp_service_page' => array(
+      'template' => 'os2web-cp-service-page',
+    ),
+  );
 }
 
 /**

@@ -4710,3 +4710,14 @@ ul.os2web_menus-container {
 .tablesorter th.headerSortDown {
   background-image: url(../images/chevron-down.png);
 }
+
+.page-seneste-dokumenter .container-inline-date {
+  display: inline-block;
+  float: left;
+}
+
+.page-seneste-dokumenter .form-submit {
+  display: inline-block;
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
