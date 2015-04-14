@@ -1116,7 +1116,6 @@ function os2web_borger_dk_import_menu_now_form_submit($form, &$form_state) {
     $total = count($menu_items_availlable);
    // $menu_name = $form['build_borger_menu_under_menu']['#value'];
     $menu_name = variable_get('build_borger_menu_under_menu');
-    //error_log(' menu name  =>'.print_r($menu_name,TRUE), 3, '/home/yani/workspace/drupal/menu_structure.log');
 
     os2web_borger_dk_create_custom_menu($menu_items_availlable, $total, $parent_array, $menu_name);
   }
@@ -1157,8 +1156,6 @@ function os2web_borger_dk_create_custom_menu($menu_items_availlable, $total, $pa
   $operations[] = array();
   // Then import the menu from Borger.dk and tag all imported articles.
   $operations[] = array('_os2web_borger_dk_menus_cronbatch_wrapper', array($total));
-
-  //error_log('os2web_borger_dk_import_now_form_submit created this batch-setup: '. print_r($batch, TRUE) ."\n\n", 3, '/srv/www/log/borger_dk_batch.log');
 
   $groups = array_chunk($menu_items_availlable, 10);
   foreach ($groups as $gid => $group) {
@@ -1223,7 +1220,6 @@ function _os2web_borger_dk_import_menu_items($group, $total, $parent_array,$menu
       // If the menu link is NOT existed.
       $existing_parent = db_query('SELECT * FROM {menu_links} WHERE link_title= :link_title AND menu_name = :menu_name',
                                  array('link_title' => $parent_array[$item_pID], 'menu_name' => $menu_name))->fetchAssoc();
-      //error_log(' existing =>'.print_r($existing_parent,TRUE), 3, '/home/yani/workspace/drupal/menu_structure.log');
       if ($existing_parent && !$mlid) {
         // Create a menu page for the Menu item (path)
         $nid = _os2web_borger_dk_create_menu_page($item);
@@ -1390,7 +1386,6 @@ function os2web_borger_dk_import_articles_now_form_submit($form, &$form_state) {
       'finished' => 'os2web_borger_dk_batch_article_import_finished',
     );
 
-    //error_log('os2web_borger_dk_import_now_form_submit created this batch-setup: '. print_r($batch, TRUE) ."\n\n", 3, '/srv/www/log/borger_dk_batch.log');
     // Finally we execute the batch process(es).
     batch_set($batch);
 }
@@ -1553,7 +1548,6 @@ function os2web_borger_dk_create_borger_dk_menu_now_form_submit($form, &$form_st
     // Then import the menu from Borger.dk and tag all imported articles.
     $operations[] = array('_os2web_borger_dk_create_menustructure_cronbatch_wrapper', array($total));
 
-    //error_log('os2web_borger_dk_import_now_form_submit created this batch-setup: '. print_r($batch, TRUE) ."\n\n", 3, '/srv/www/log/borger_dk_batch.log');
     foreach ($menu_items_availlable as $item) {
       $operations[] = array('_os2web_borger_dk_create_borger_dk_meun_structure', array($item, $total, $menu_name));
     }
@@ -1716,7 +1710,6 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
     // TODO: list links for menu page.here!
     $node_id = $pid['link_path'];
     $node_id = substr($node_id, 5, strlen($node_id)-1);
-    //error_log(' menu nid*** =>'.print_r($pid['link_path'],TRUE), 3, '/home/yani/workspace/drupal/menu_structure.log');
 
     $body_content = '';
     $children = db_query('SELECT * FROM {menu_links} WHERE plid= :plid AND menu_name = :menu_name',
@@ -1724,7 +1717,6 @@ function _os2web_borger_dk_create_borger_dk_meun_structure($item, $total, $menu_
     if ($children) {
       foreach ($children as $child) {
         $body_content = $body_content . "<p><a href= '". $child->link_path ."'> " . $child->link_title ." </a>" . "\n";
-        //  error_log(' Children_item =>  '.print_r($child, TRUE), 3, '/home/yani/workspace/drupal/menu_structure.log');
       }
 
       if (!empty($node_id)) {
@@ -2591,9 +2583,6 @@ function _os2web_borger_dk_tag_borger_dk_articles($menu = array(), $update_items
             if ($aid && isset($update_items[$aid])) {
               $node = node_load($update_items[$aid]);
               $node->field_os2web_borger_dk_formterm['und'][$tid] = (array) $term;
-
-              //$log = '_os2web_borger_dk_tag_borger_dk_articles tagging node with id: '. $node->nid .', with this tag: '.print_r($term, TRUE) ."\n===================\n";
-              //error_log($log ."\n\n", 3, '/home/peter/bellcom/log/debug_menu_tagging_1.log');
 
               node_save($node);
             }

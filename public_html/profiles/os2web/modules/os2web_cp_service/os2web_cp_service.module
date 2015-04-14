@@ -307,12 +307,12 @@ function os2web_gf_service_handler($file_id) {
       }
     }
     else {
-      error_log(basename(__FILE__) . ':' . __LINE__ . ' Settings are wrong.');
+      watchdog('os2web_cp_service', 'Settings are wrong.', array(), WATCHDOG_ERROR);
     }
 
   }
   else {
-    error_log(basename(__FILE__) . ':' . __LINE__ . ' No URL found in variable DB');
+    watchdog('os2web_cp_service', 'No URL found in variable DB', array(), WATCHDOG_ERROR);
   }
 
   // If we come to this line, show an error.
@@ -516,7 +516,7 @@ function os2web_cp_service_create_case(array $data) {
     return TRUE;
   }
   catch (Exception $e) {
-    error_log('Error on save: ' . print_r($e->getMessage(), 1));
+    watchdog('os2web_cp_service', 'Error on save: %message', array('%message' => print_r($e->getMessage(), 1)));
     return FALSE;
   }
 }
@@ -726,7 +726,7 @@ function os2web_cp_service_create_document(array $data) {
     curl_close($cache_trigger);
   }
   catch (Exception $e) {
-    error_log('Error on save: ' . print_r($e->getMessage(), 1));
+    watchdog('os2web_cp_service', 'Error on save: %message', array('%message' => print_r($e->getMessage(), 1)));
     return FALSE;
   }
 
@@ -845,7 +845,7 @@ function os2web_cp_service_delete($guid) {
     return TRUE;
   }
   catch (Exception $e) {
-    error_log('Error on delete: ' . print_r($e->getMessage(), 1));
+    watchdog('os2web_cp_service', 'Error on delete: %message', array('%message' => print_r($e->getMessage(), 1)));
     return FALSE;
   }
 }

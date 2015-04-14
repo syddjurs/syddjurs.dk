@@ -181,7 +181,7 @@ class AcadrePWS {
         }
         catch (SoapFault $sf) {
           $trace = $this->clientSearch->__getLastRequest();
-          error_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $trace = ' . print_r($trace, 1));
+          os2web_acadre_esdh_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $trace = ' . print_r($trace, 1));
           $result = $sf;
         }
       }
@@ -246,7 +246,7 @@ class AcadrePWS {
       }
       catch (SoapFault $exc) {
         // TODO: Handle exception better...
-        error_log("Var: \$exc = " . print_r($exc, 1));
+        os2web_acadre_esdh_log("Var: \$exc = " . print_r($exc, 1));
         return FALSE;
       }
     }
@@ -284,7 +284,7 @@ class AcadrePWS {
           cache_set(__FUNCTION__ . $id, $result, 'cache_os2web_pws', time() + PWS_CACHE_TIMEOUT);
         }
         catch (SoapFault $sf) {
-          error_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $sf = ' . print_r($sf, 1));
+          os2web_acadre_esdh_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $sf = ' . print_r($sf, 1));
           return FALSE;
         }
       }
@@ -515,7 +515,7 @@ class AcadrePWS {
         }
       }
       catch (SoapFault $sf) {
-        error_log("Var: \$sf = " . print_r($sf, 1));
+        os2web_acadre_esdh_log("Var: \$sf = " . print_r($sf, 1));
       }
     }
     return $result;
@@ -545,7 +545,6 @@ class AcadrePWS {
     // Cache files unless there is a newer version available.
     $fid = os2web_adlib_api_get_fid($ref);
     if ($fid > 0 && ($result = file_load($fid)) && is_file(drupal_realpath($result->uri))) {
-      // error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: File cached.");
       $ctime = filectime(drupal_realpath($result->uri));
       $info = $this->getDocInfo($id);
       if (is_object($info)) {
@@ -558,11 +557,10 @@ class AcadrePWS {
 
     // Clean up failed files.
     if (is_object($result) && !is_file(drupal_realpath($result->uri))) {
-      error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' Failed file ' . $result->filename);
+      os2web_acadre_esdh_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' Failed file ' . $result->filename);
       file_delete($result, TRUE);
     }
 
-    error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Fetching file from WS. Ref: $ref");
     if ($this->getClient()) {
       $request = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -604,7 +602,7 @@ class AcadrePWS {
           }
         }
         else {
-          error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' - Error parse output from WS.');
+          os2web_acadre_esdh_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' - Error parse output from WS.');
           return FALSE;
         }
       }

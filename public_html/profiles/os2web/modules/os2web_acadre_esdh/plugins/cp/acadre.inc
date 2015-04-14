@@ -35,7 +35,9 @@ function os2web_acadre_esdh_cp_handle_request() {
   // Remove illegal XML characters.
   $data = preg_replace('/\&\#..F/', '', $HTTP_RAW_POST_DATA);
 
-  file_unmanaged_save_data($data, 'public://soap/request-' . time() . '-' . uniqid() . '.xml', FILE_EXISTS_REPLACE);
+  if (variable_get('os2web_esdh_cp_provider_save_request', FALSE)) {
+    file_unmanaged_save_data($data, 'public://soap/request-' . time() . '-' . uniqid() . '.xml', FILE_EXISTS_REPLACE);
+  }
 
   ini_set("soap.wsdl_cache_enabled", "1");
   $server = new SoapServer('http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 's' : '') . '://' . $_SERVER['SERVER_NAME'] . '/' . request_path() . '/?wsdl', array());

@@ -85,3 +85,51 @@ function os2web_base_cron() {
 function _os2web_base_cron_shutdown() {
   file_unmanaged_save_data(variable_get('cron_last'), 'public://os2web_cron_last', FILE_EXISTS_REPLACE);
 }
+
+/**
+ * Implements hook_node_update().
+ */
+function os2web_base_node_update($node) {
+  // Delete files from old node revisions. -->
+  //
+  // Wrap updated and original node.
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $original_wrapper = entity_metadata_wrapper('node', $node->original);
+
+  // Fetch all fields for the node type, and iterate over them. To get all
+  // file references.
+  $fields = field_info_instances('node', $node->type);
+  foreach ($fields as $field => $field_data) {
+    if (!isset($original_wrapper->{$field})) {
+      continue;
+    }
+    $current_files = array();
+    $original_files = array();
+    // Get files that were attached to the original node (before update).
+    foreach ($original_wrapper->{$field}->value() as $file) {
+      if ($file['fid']) {
+        $original_files[] = $file['fid'];
+      }
+    }
+    // Stop if there were no files previously attached.
+    if (empty($original_files)) {
+      continue;
+    }
+    // Get files currently attached to the node (after update).
+    foreach ($wrapper->{$field}->value() as $file) {
+      if ($file['fid']) {
+        $current_files[] = $file['fid'];
+      }
+    }
+    // Delete files that were in the original node but were removed during
+    // this update.
+    $deleted_files = array_diff($original_files, $current_files);
+    foreach ($deleted_files as $fid) {
+      if ($file = file_load($fid)) {
+        file_usage_delete($file, 'file', 'node', $node->nid);
+        file_delete($file);
+      }
+    }
+  }
+  // <-- Delete files from old node revisions.
+}

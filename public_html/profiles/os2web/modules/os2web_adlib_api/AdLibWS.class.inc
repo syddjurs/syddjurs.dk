@@ -41,7 +41,6 @@ class AdLibWS {
    */
   public function __construct() {
     if (ADLIB_DISABLED) {
-      // error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' - AdLib presently disabled.');
       return;
     }
     if (!isset($this->client)) {
@@ -129,7 +128,7 @@ class AdLibWS {
       if ($msg == '') {
         $msg = 'Unknown reason.';
       }
-      error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Failed to add job. Reason: " . $msg);
+      watchdog('os2web_adlib_api', 'Failed to add job. Reason: %msg', array('%msg' => $msg));
       return FALSE;
     }
   }
@@ -234,14 +233,12 @@ class AdLibWS {
     }
     if ($return->status === '') {
       $message = (string) $return->result->ServerInfo[0]->Error['Message'];
-      error_log(basename(__FILE__) . ':' . __LINE__ . ' AdLib Error: ' . $message);
+      watchdog('os2web_adlib_api', 'Adblib Error: %message', array('%message' => $message));
       $return->status = 'Not Available';
     }
     elseif ($return->status === 'Pending') {
-      // error_log("ConnectorStatus is " . $return->result->CurrentJobStatus['ConnectorStatus']);
     }
     else {
-      // error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Looked up status for job: " . $id . " Status: " . $return->status);
     }
     return $return;
   }
@@ -300,7 +297,7 @@ class AdLibWS {
       $folder = $this->addJobFolder();
     }
     if (!$folder) {
-      error_log('MARK - ' . basename(__FILE__) . ':' . __LINE__ . ' in ' . __FUNCTION__ . '() - Adding folder failed.');
+      watchdog('os2web_adlib_api', 'Adding folder failed');
       return FALSE;
     }
     $payload = '
@@ -313,7 +310,7 @@ class AdLibWS {
         ))->AddJobFilesAsStreamResult;
     $status = (string) simplexml_load_string($result)->System['Status'];
     if (strcmp($status, 'Success') == 0) {
-      error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Uploaded file: " . $filename);
+      watchdog('os2web_adlib_api', 'Uploaded file: %filename', array('%filename' => $filename));
       return array(
         'basefolder' => $folder,
         'in_folder' => $folder . '\\Input',
@@ -325,7 +322,6 @@ class AdLibWS {
       );
     }
     else {
-      error_log(basename(__FILE__) . ':' . __LINE__ . " jm@bellcom.dk: Failed to upload: " . $filename);
       watchdog('adlib_api', 'Upload of %filename failed with message: %msg', array('%file' => $filename, '%msg' => $result), WATCHDOG_ERROR);
       $folder = explode('\\', $folder);
       $this->deleteJobFolder($folder[1]);

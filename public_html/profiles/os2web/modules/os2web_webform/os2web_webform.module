@@ -45,7 +45,6 @@ function os2web_webform_theme($existing, $type, $theme, $path) {
 function os2web_webform_download_request_page($nid, $sid) {
   // Get the submission array.
   $submission = webform_menu_submission_load($sid, $nid);
-  error_log("Var: \$submission = " . print_r($submission, 1));
 
   // Process the submission.
   $data = os2web_webform_process_submission($submission, node_load($nid));
@@ -101,10 +100,6 @@ function os2web_webform_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_node_presave().
  */
 function os2web_webform_node_presave($node) {
-  /*  if ($node->type === 'webform') {
-  //  error_log("Var: \$node = " . print_r($node, 1));
-  //  }
-  //  if (($node->type === 'webform') && ($node->webform['redirect_url'] === "<confirmation>")) { */
   if (($node->type === 'webform')) {
     $node->webform['redirect_url'] = 'node/%nid/submission/%sid/download';
   }

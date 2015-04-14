@@ -129,3 +129,20 @@ function os2web_acadre_esdh_os2web_help($sections) {
   $sections['configuration'] .= t('<p><a href="@url" target="_blank">See the advanced documentation for acadre</a></p>', array('@url' => url('admin/help/os2web_acadre_esdh')));
   return $sections;
 }
+
+/**
+ * Error logging.
+ */
+function os2web_acadre_esdh_log($message) {
+  if (variable_get('os2web_esdh_cp_provider_debug_info', FALSE)) {
+    // Save log messages to a different file.
+    $destination = variable_get('os2web_esdh_cp_provider_log', FALSE);
+    if ($destination) {
+      error_log($message, 3, $destination);
+    }
+    else {
+      // If no other file is specified, save it to the normal php error log.
+      error_log($message);
+    }
+  }
+}

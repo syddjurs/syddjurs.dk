@@ -67,7 +67,7 @@ class TraenPublishingDestinationSystemService {
   // *********** PUBLIC API ***************//
 
   public function RecievedEntityLayout($data) {
-    error_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $data = ' . print_r($data, 1));
+    os2web_acadre_esdh_log(basename(__FILE__) . ':' . __LINE__ . ' Var: $data = ' . print_r($data, 1));
     return FALSE;
   }
 
@@ -106,7 +106,7 @@ class TraenPublishingDestinationSystemService {
         break;
 
       default:
-        error_log(__FUNCTION__ . ' unknown EntityName');
+        os2web_acadre_esdh_log(basename(__FILE__) . ': ' . __LINE__ . ': ' .  __FUNCTION__ . ' unknown EntityName');
         $type = 'unknown';
     }
     $function = 'os2web_cp_service_create_' . $type;
@@ -155,7 +155,5 @@ class TraenPublishingDestinationSystemService {
 
   public function __call($name, $arguments) {
     watchdog('os2web_acadre_esdh', 'Unsupported request recieved: %req', array('%req' => $name), WATCHDOG_NOTICE);
-    error_log(basename(__FILE__) . ':' . __LINE__ . " Unsupported request recieved: $name");
   }
-
 }

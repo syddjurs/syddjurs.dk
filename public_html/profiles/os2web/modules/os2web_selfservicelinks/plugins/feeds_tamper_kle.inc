@@ -1,8 +1,9 @@
 <?php
 /**
  * @file
- * Do super awesome thing.
+ * Feeds tamper plugin, find a kle taxonomy term from a kle number.
  */
+
 $plugin = array(
   'form' => 'os2web_selfservicelinks_find_kle_form',
   // Optional validation callback.
@@ -12,6 +13,9 @@ $plugin = array(
   'category' => 'KLE',
 );
 
+/**
+ * Configure form for feeds tamper.
+ */
 function os2web_selfservicelinks_find_kle_form($importer, $element_key, $settings) {
   $form = array();
   $form['help']['#markup'] = t('Find term id for kle term from supplied string');
@@ -22,8 +26,6 @@ function os2web_selfservicelinks_find_kle_form($importer, $element_key, $setting
     $vocabulary_options[$vocabulary->vid] = $vocabulary->name;
   }
 
-  error_log(print_r($vocabularies, 1));
-
   $form['vid'] = array(
     '#title' => t('Vocabulary id'),
     '#type' => 'select',
@@ -33,7 +35,9 @@ function os2web_selfservicelinks_find_kle_form($importer, $element_key, $setting
   return $form;
 }
 
+/**
+ * Callback, doing the actual tampering.
+ */
 function os2web_selfservicelinks_find_kle_callback($source, $item_key, $element_key, &$field, $settings) {
   $field = os2web_selfservicelinks_find_term($field, $settings['vid']);
-  error_log($field);
 }
