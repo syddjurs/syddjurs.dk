@@ -52,9 +52,6 @@ function os2web_webform_download_request_page($nid, $sid) {
   // Process the data throught the theme layer.
   $output = theme("confirmation_page", $data);
 
-  // TODO: Send the mail.
-  /* reg_send_email("confirmation", $data); */
-
   return $output;
 }
 
@@ -91,17 +88,98 @@ function os2web_webform_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'webform_configure_form':
       // Deny acces to redirection setup.
-      $form['submission']['redirection']['#access'] = FALSE;
+      $form['submission']['redirection']['redirect_url']['#default_value'] = 'node/[node:nid]/submission/[submission:sid]/download';
+      $items = os2web_webform_get_form_components($form['#node']);
+      $field_elements = db_query("SELECT field_settings FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['nid']['#value']))->fetchField();
+      $field_elements = unserialize($field_elements);
+
+      $default = array();
+      if (empty($field_elements)) {
+        foreach ($items as $cid => $value) {
+          $default[$cid] = $cid;
+        }
+      }
+      $form['advanced']['save_elements'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Select the elements that should be saved in database'),
+        '#description' => t('Check here, if you want to save some elements to the database'),
+        '#options' => $items,
+        '#default_value' => empty($field_elements) ? $default : $field_elements,
+      );
+
+      $via_https = db_query("SELECT via_https FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['nid']['#value']))->fetchField();
+
+      $form['advanced']['send_via_https'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Webform send via HTTPS'),
+        '#default_value' => $via_https,
+      );
+      $form['#submit'][] = 'os2web_webform_configure_save';
+      break;
+
+    case strstr($form_id, 'webform_client_form'):
+     $nid = $form['details']['nid']['#value'];
+     $via_https = db_query("SELECT via_https FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['details']['nid']['#value']))->fetchField(); 
+      if ($via_https) {
+        $string = str_replace('http://', 'https://', $GLOBALS['base_url']);
+        drupal_goto($string . '/node/' . $nid);
+      }
+      $form['#submit'][] = 'os2web_webform_save_element';
       break;
   }
 }
-
 /**
- * Implements hook_node_presave().
+ * Save webform configuration
  */
-function os2web_webform_node_presave($node) {
-  if (($node->type === 'webform')) {
-    $node->webform['redirect_url'] = 'node/%nid/submission/%sid/download';
+function os2web_webform_configure_save($form, &$form_state) {
+  $https = $form_state['values']['send_via_https'];
+  $nid = $form_state['values']['nid'];
+  $elements = $form_state['values']['save_elements'];
+  $elements = serialize($elements);
+
+  if (!isset($https)) {
+    $https = 0;
+  }
+
+  db_merge('os2web_webform_settings')
+    ->key(array('nid' => $nid))
+    ->fields(array(
+      'nid' => $nid,
+      'via_https' => $https,
+      'field_settings'=> $elements
+     ))
+    ->execute();
+}
+
+function os2web_webform_get_form_components($node) {
+  $components = $node->webform['components'];
+  $items = array();
+  foreach ($components as $key => $component) {
+    if ($component['type'] == 'markup') {
+      continue;
+    }
+    $items[$component['cid']] = $component['name'];
+  }
+  return $items;
+}
+
+function os2web_webform_save_element($form, &$form_state) {
+  $sid = $form_state['values']['details']['sid'];
+  $new = $form_state['values']['details']['is_new'];
+  $nid = $form_state['values']['details']['nid'];
+
+  $field_elements = db_query("SELECT field_settings FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' =>  $nid))->fetchField();
+  if (!empty($field_elements)) {
+    $field_elements = unserialize($field_elements);
+
+    foreach ($field_elements as $cid => $value) {
+      if (!$value) {
+        db_delete('webform_submitted_data')
+          ->condition('sid', $sid)
+          ->condition('cid', $cid)
+          ->execute();
+      }
+    }
   }
 }
 
@@ -149,4 +227,15 @@ function os2web_webform_os2web_help($sections) {
   $sections['contenttype'] = t('<p><b>Webform:</b> Create a <a href="@url" target="_blank">Webform</a> to be able to give your visitors questionaries. Add multiple types of questions to an Webform, an publish it. After saving the webform, you can setup to recieve an email on every submission  under the tab [Webform] -> [Email], as a bonus you can also send a thank you email to the visitor after it is submitted.<br /> When your visitors submit an reply to your webform, it will be saved to a list under [Result] on the Webform. Additionally you can download the complete list of submissions under the tab [Result] -> [Download]</p>', array('@url' => 'node/add/webform'));
 
   return $sections;
+}
+
+/**
+ * Create new database table {os2web_webform_settings}.
+ */
+function os2web_webform_update_7101() {
+  $schema = os2web_webform_schema_7101();
+  $name = 'os2web_webform_settings';
+  $table = $schema[$name]; // table definition schema
+  db_create_table($name, $table);
+  return;
 }

@@ -102,5 +102,6 @@ function _webform_display_markup($component, $value, $format = 'html') {
 function theme_webform_display_markup($variables) {
   // Markup components are not displayed but can be by overriding this theme
   // function.
-  return '';
+  $element = $variables['element'];
+  return $element['#value'];
 }

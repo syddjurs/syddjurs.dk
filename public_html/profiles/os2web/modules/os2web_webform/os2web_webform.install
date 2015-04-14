@@ -1,0 +1,40 @@
+<?php
+/**
+ * Implementation of hook_schema().
+ *
+ * To safely manage updates, this should just call the current schema by update number
+ */
+function os2web_webform_schema() {
+  return os2web_webform_schema_7101();
+}
+
+/**
+ * Internal implementation of hook_schema() for update 7100 and above
+ */
+function os2web_webform_schema_7101() {
+  $schema['os2web_webform_settings'] = array(
+    'description' => 'Elements that should be saved in database.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The node Id.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'field_settings' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+        'description' => 'Field settings of the article item. Which fields are visible',
+      ),
+      'via_https' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Webform via https or not',
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  return $schema;
+}
