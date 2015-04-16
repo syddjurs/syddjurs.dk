@@ -107,7 +107,7 @@ function os2web_base_node_update($node) {
     $original_files = array();
     // Get files that were attached to the original node (before update).
     foreach ($original_wrapper->{$field}->value() as $file) {
-      if ($file['fid']) {
+      if (is_array($file) && $file['fid']) {
         $original_files[] = $file['fid'];
       }
     }
@@ -117,7 +117,7 @@ function os2web_base_node_update($node) {
     }
     // Get files currently attached to the node (after update).
     foreach ($wrapper->{$field}->value() as $file) {
-      if ($file['fid']) {
+      if (is_array($file) && $file['fid']) {
         $current_files[] = $file['fid'];
       }
     }
