@@ -747,7 +747,7 @@ echo \'<span class="bullet-point-print-link"></span>\';
   $handler->display->display_options['fields']['title']['ui_name'] = 'Bullet point title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [field_os2web_meetings_bul_closed] [php] [php_1]';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title][field_os2web_meetings_bul_closed] [php] [php_1]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['title']['alter']['link_class'] = 'agenda-bullet-list';
@@ -1209,7 +1209,6 @@ echo \'<span class="bullet-point-print-link"></span>\';
     t('Faldende'),
     t('Meetings bullet points'),
     t('bullet point attachments'),
-    t('Video fra mødet:'),
     t('Slet'),
     t('Alle'),
     t('Page'),
@@ -1223,6 +1222,7 @@ echo \'<span class="bullet-point-print-link"></span>\';
     t('Samlet dokument'),
     t('Download hele referatet som samlet dokument'),
     t('Video'),
+    t('Video for mødet'),
     t('<h2 class="pane-title">Video fra mødet</h2>'),
     t('Bullet points'),
     t('Indhold entity refereret fra field_os2web_meetings_bullets'),
@@ -1233,7 +1233,7 @@ echo \'<span class="bullet-point-print-link"></span>\';
     t('<strong style="float: right;margin-left:1em">([field_os2web_meetings_bul_closed])</strong>'),
     t('Send to friend link'),
     t('Print bullet point link'),
-    t('[title] [field_os2web_meetings_bul_closed] [php] [php_1]'),
+    t('[title][field_os2web_meetings_bul_closed] [php] [php_1]'),
     t('<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>'),
     t('Tillæg'),
     t('<h2 class="pane-title">Tillæg</h2>'),
@@ -1241,6 +1241,7 @@ echo \'<span class="bullet-point-print-link"></span>\';
     t('Lokation'),
     t('Bullet points - Tillæg'),
     t('<div class="clearfix"><h2 class="pane-title" style="float:left">Tillægs[field_os2web_meetings_type]</h2><div style="float:right;margin: 10px 30px 0 0"><span>[field_os2web_meetings_full_doc]</span></div></div>'),
+    t('[title] [field_os2web_meetings_bul_closed] [php] [php_1]'),
     t('<div class="agenda-item">[field_os2web_meetings_attach][field_os2web_meetings_enclosures] </div>'),
     t('Samlet tillæg'),
     t('Bilag 4'),

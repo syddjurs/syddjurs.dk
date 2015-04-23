@@ -6,6 +6,9 @@
  * depends on a plugin to do the actual filereads
  */
 
+module_load_include('inc', 'os2web_esdh_provider', 'includes/os2web_esdh_provider.queue');
+$PROCESSING_MEETING = 0;
+$PROCESSING_BP = 0;
 /**
  * Get human size.
  *
@@ -58,8 +61,9 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
 
   // Do an initially check on if there are any approved meetings.
   if (count($meetings) === 0) {
-    watchdog('acadre MM', 'There was no meetings to import. See if all manifests are OK? ', WATCHDOG_WARNING);
-    _os2web_esdh_provider_send_statusmail(t('There was no meetings to import for meeting !id. See if all manifests are OK?', array('!id' => $meeting_id['id'])), TRUE);
+   // watchdog('acadre MM', 'There was no meetings to import. See if all manifests are OK? ', WATCHDOG_WARNING);
+    watchdog('acadre MM', '[XML_ID: !id]  There was no meetings to import. See if all manifests are OK? ', array('!id' => $PROCESSING_MEETING_ID), WATCHDOG_WARNING);
+    _os2web_esdh_provider_send_statusmail(t('There was no meetings to import for meeting !id. See if all manifests are OK?', array('!id' => $PROCESSING_MEETING_ID)), TRUE);
     lock_release(__FUNCTION__ . $meeting_id['id']);
     return;
   }
@@ -78,11 +82,30 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
         ->execute();
       if (isset($result['node'])) {
         $nid = array_shift($result['node'])->nid;
+        watchdog('acadre MM', '[XML_ID: !id ] Found existing meeting node nid: !nid', array('!id' => $PROCESSING_MEETING_ID, '!nid' => $nid), WATCHDOG_DEBUG);
       }
     }
-
+   
+    os2web_esdh_provider_index_meeting($nid, $meeting_id, $meetings[$i]);
+    
     if ($meetings[$i]['publish'] === FALSE) {
+     watchdog('acadre MM', '[XML_ID: !id] Agenda !meeting_sub_id will NOT be published. [publish]=!publish, [access]=!access',
+        array('!id' => $PROCESSING_MEETING_ID,
+               '!meeting_sub_id' => $meetings[$i]['meeting_sub_id'],
+               '!publish' => intval($meetings[$i]['publish']),
+               '!access' => $meetings[$i]['agenda_access'],
+         ),
+         WATCHDOG_INFO);   
       unset($meetings[$i]);
+    }
+    else {
+        watchdog('acadre MM', '[XML_ID: !id] Agenda !meeting_sub_id is allowed be published. [publish]=!publish, [access]=!access',
+           array('!id' => $PROCESSING_MEETING_ID,
+               '!meeting_sub_id' => $meetings[$i]['meeting_sub_id'],
+               '!publish' => intval($meetings[$i]['publish']),
+               '!access' => $meetings[$i]['agenda_access'],
+         ),
+         WATCHDOG_INFO);
     }
   }
 
@@ -91,10 +114,17 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
   if ($nid && count($meetings) === 0) {
     // Meeting needs to be unpublished.
     os2web_esdh_provider_log('Unpublish nid: ' . $nid);
-    node_delete($nid);
-    watchdog('acadre MM', 'Unpublished %nid .', array('%nid' => $nid), WATCHDOG_INFO);
-    lock_release(__FUNCTION__ . $meeting_id['id']);
-    return;
+     // Meeting needs to be unpublished.
+     watchdog('acadre MM', '[XML_ID: !id] Starting unpublishing of nid: !nid', array('!id' => $PROCESSING_MEETING_ID, '!nid' => $nid), WATCHDOG_DEBUG);
+     node_delete($nid);
+     watchdog('acadre MM', '[XML_ID: !id] Unpublished !nid .', array('!id' => $PROCESSING_MEETING_ID, '!nid' => $nid), WATCHDOG_NOTICE);
+     lock_release(__FUNCTION__ . $meeting_id['id']);
+     watchdog('acadre MM', '[XML_ID: !id] Finished meeting import', array('!id' => $PROCESSING_MEETING_ID), WATCHDOG_NOTICE);
+     return;
+    //node_delete($nid);
+    //watchdog('acadre MM', 'Unpublished %nid .', array('%nid' => $nid), WATCHDOG_INFO);
+    //lock_release(__FUNCTION__ . $meeting_id['id']);
+   // return;
   }
 
   // Ideally $meetings will only have one entry.
@@ -102,7 +132,9 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
   foreach ($meetings as $meeting) {
     os2web_esdh_provider_log('Start import meeting ' . $meeting['system_id']);
     os2web_esdh_provider_log('Importing meeting with ' . count($meeting['items']) . ' bullet points.');
-
+    watchdog('acadre MM', '[XML_ID: !id] Start import agenda !meeting_sub_id with !number bullets, force: !force',
+        array('!id' => $PROCESSING_MEETING_ID, '!meeting_sub_id' => $meeting['meeting_sub_id'], '!number' => count($meeting['items']), '!force' => intval($force)), WATCHDOG_DEBUG);
+ 
     // Meeting already exist.
     // Either republish, delete or skip.
     if ($nid) {
@@ -131,6 +163,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
         os2web_esdh_provider_log('Skipping nid: ' . $nid);
         watchdog('acadre MM', 'Meeting already imported in %nid. Skipṕing.', array('%nid' => $nid), WATCHDOG_DEBUG);
         lock_release(__FUNCTION__ . $meeting_id['id']);
+        os2web_esdh_provider_index_meeting_update_committee_tid($meeting_id['id'], $meeting['meeting_sub_id'], $node->field_os2web_meetings_committee['und'][0]['tid']);
         return;
       }
     }
@@ -229,7 +262,9 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     if (module_exists('os2dagsorden_esdh_provider')){
       os2dagsorden_esdh_provider_committee_add_subid($committee_term, $meeting['committee_id']);
     }
-
+    
+    os2web_esdh_provider_index_meeting_update_committee_tid($meeting_id['id'], $meeting['meeting_sub_id'], $committee_term->tid);
+     
     $node->field_os2web_meetings_location[LANGUAGE_NONE][0]['tid'] = _acadre_esdh_import_term($meeting['location'], 'os2web_meetings_tax_location')->tid;
     // Add QBrick info @FIXME This should be in a node_save hook in qbrick
     // module.
@@ -309,10 +344,12 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
  *   List of imported node ids
  */
 function _os2web_esdh_provider_import_items($items) {
+    
+  global $PROCESSING_MEETING_ID, $PROCESSING_BP;
 
   $nids = array();
   foreach ($items as $item) {
-
+    $PROCESSING_BP = $item['sysid'];
     os2web_esdh_provider_log('Start import bullet point ');
     $node = new stdClass();
     $node->type = "os2web_meetings_bullet";
@@ -327,7 +364,7 @@ function _os2web_esdh_provider_import_items($items) {
     }
 
     if ($item['access'] === 'Lukket') {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
       if (module_exists('os2dagsorden_esdh_provider')){
         $node = os2dagsorden_esdh_provider_process_closed_bullet($node, $item);
       }
@@ -336,7 +373,7 @@ function _os2web_esdh_provider_import_items($items) {
       $nids[] = $node->nid;
     }
     else {
-      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 1;
+      $node->field_os2web_meetings_bul_closed[LANGUAGE_NONE][]['value'] = 0;
       if (isset($item['movie_id']) && is_numeric($item["chapter"])) {
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['id'] = $item['movie_id'];
         $node->field_os2web_meetings_qbrickref[LANGUAGE_NONE][0]['seek'] = $item["chapter"];
@@ -360,7 +397,10 @@ function _os2web_esdh_provider_import_items($items) {
               $node->field_os2web_meetings_attach[LANGUAGE_NONE][]['target_id'] = os2dagsorden_esdh_provider_process_enclosure($enclosure, $file);
           }
           else {
-            watchdog('acadre MM', 'There was an error importing file %uri ', array('%uri' => $enclosure['uri']), WATCHDOG_ERROR);
+           // watchdog('acadre MM', 'There was an error importing file %uri ', array('%uri' => $enclosure['uri']), WATCHDOG_ERROR);
+           watchdog('acadre MM', '[XML_ID: !id] [BP: !sysid] There was an error importing file !uri ',
+              array('!id' => $PROCESSING_MEETING_ID, '!sysid' => $PROCESSING_BP, '!uri' => $enclosure['uri']), WATCHDOG_ERROR);
+           
           }
         }
       }
@@ -384,6 +424,8 @@ function _os2web_esdh_provider_import_items($items) {
  *   List of imported node ids
  */
 function _os2web_esdh_provider_import_bullets($bullets) {
+    
+  global $PROCESSING_MEETING_ID, $PROCESSING_BP;
 
   // Since we need to run this often,
   // we reset the execution timer to avoid timeouts.
