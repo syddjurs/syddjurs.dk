@@ -58,26 +58,9 @@ function os2web_subscription_menu() {
 
   $items['admin/config/os2web_subscription/settings'] = array(
     'title' => 'OS2web Subscriptions',
-    'type' => MENU_NORMAL_ITEM | MENU_LOCAL_TASK,
     'description' => 'Change settings for Subscriptions',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('os2web_subscription_settings_form'),
-    'access arguments' => array('administer site configuration'),
-  );
-
-  $items['admin/config/os2web_subscription/manage_subscriptions'] = array(
-    'title' => 'Manage Subscriptions',
-    'type' => MENU_LOCAL_TASK,
-    'description' => 'Add or remove subscriptions',
-    'page callback' => 'os2web_subscription_list',
-    'access arguments' => array('administer site configuration'),
-  );
-
-  $items['admin/config/os2web_subscription/manage_subscriptions/%'] = array(
-    'title' => 'Manage Subscription',
-    'description' => 'Add or remove subscriptions',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('os2web_subscription_manage_subscription_form', 4),
     'access arguments' => array('administer site configuration'),
   );
 
@@ -124,105 +107,11 @@ function os2web_subscription_settings_form() {
         '#title' => $category,
         '#default_value' => variable_get('os2web_subscription_title_' . $category, ''),
       );
-
-      $form['os2web_subscription_categories_title_group']['os2web_subscription_active_' . $category] = array(
-        '#type' => 'checkbox',
-        '#title' => 'Enabled',
-        '#default_value' => variable_get('os2web_subscription_active_' . $category, ''),
-      );
     }
   }
 
   return system_settings_form($form);
 }
-
-function os2web_subscription_list(){
-  $html = '';
-
-  //display table
-  $header = array(
-    array(
-      'data' => t('Email'),
-      'field' => 't.email',
-    ),
-  );
-
-  $query = db_select('os2web_subscription_subscriptions', 't')->distinct()->extend('TableSort');
-  $query->fields('t', array('email'));
-
-  $result = $query->orderByHeader($header)->execute();
-
-  $rows = array();
-  foreach ($result as $row) {
-      $data = array();
-      $data[] = $row->email;
-      $data[] .= l('Edit', 'admin/config/os2web_subscription/manage_subscriptions/' . $row->email);
-      $rows[] = array('data' => $data, 'class' => array('row_phrase'), 'data-id' => array($row->id));
-  }
-
-  $header[] = array('data' => 'Edit');
-
-  // Build the table for the nice output.
-  $build['tablesort_table'] = array(
-    '#theme' => 'table',
-    '#header' => $header,
-    '#rows' => $rows,
-  );
-  $html .= drupal_render($build);
-
-  return $html;
-}
-
-function os2web_subscription_manage_subscription_form($form, &$form_submit, $email){
-  $form[] = array(
-    '#markup' => '<h1>' . $email . '</h1>',
-  );
-  
-  $user_subscriptions = db_select('os2web_subscription_subscriptions', 't')
-  ->fields('t', array('category'))
-  ->condition('email', $email)
-  ->execute()
-  ->fetchCol();
-  
-  $form['email'] = array(
-    '#type' => 'hidden',
-    '#value' => $email
-  );
-
-  $categories = module_invoke_all('os2web_subscription_categories');
-  foreach ($categories as $category) {
-    if (variable_get('os2web_subscription_active_' . $category, FALSE)){
-      $form['os2web_subscription_enabled_types_group'][$category] = array(
-	'#type' => 'checkbox',
-	'#title' => variable_get('os2web_subscription_title_' . $category, $category),
-	'#default_value' => in_array($category, $user_subscriptions),
-      );
-    }
-  }
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save subscriptions'),
-  );
-
-  return $form;
-}
-
-function os2web_subscription_manage_subscription_form_submit($form, &$form_state){
-  $email = $form_state['values']['email'];
-
-  $categories = module_invoke_all('os2web_subscription_categories');
-  foreach ($categories as $category) {
-    if ($form_state['values'][$category]){
-      os2web_subscription_add_subscription($email, $category, 1);
-      drupal_set_message('enabled ' .$category);
-    } else {
-      os2web_subscription_delete_subscripion_by_email_and_category($email, $category);
-      drupal_set_message('disabled ' .$category);
-    }
-  }
-}
-
 
 /**
  * Page callback to unsubscribe an email an category.
@@ -337,13 +226,11 @@ function os2web_subscription_list_subscriptions_form($form, &$form_submit) {
   );
 
   foreach ($categories as $category) {
-    if (variable_get('os2web_subscription_active_' . $category, FALSE)){
-      $form['os2web_subscription_enabled_types_group'][$category] = array(
-	'#type' => 'checkbox',
-	'#title' => variable_get('os2web_subscription_title_' . $category, $category),
-	'#default_value' => FALSE,
-      );
-    }
+    $form['os2web_subscription_enabled_types_group'][$category] = array(
+      '#type' => 'checkbox',
+      '#title' => variable_get('os2web_subscription_title_' . $category, $category),
+      '#default_value' => FALSE,
+    );
   }
 
   $form['submit'] = array(
@@ -656,7 +543,7 @@ function os2web_subscription_os2web_subscription_categories() {
  * @param string $category
  *   The category.
  */
-function os2web_subscription_add_subscription($email, $category, $status = 0) {
+function os2web_subscription_add_subscription($email, $category) {
   $subscription = db_select('os2web_subscription_subscriptions', 's')
     ->fields('s', array('email'))
     ->condition('email', $email)
@@ -669,7 +556,6 @@ function os2web_subscription_add_subscription($email, $category, $status = 0) {
         'email' => $email,
         'category' => $category,
         'code' => md5(uniqid($email, TRUE)),
-	'status' => $status,
         'last_updated' => date("Y-m-d H:i:s", time()),
       ))
       ->execute();
@@ -723,21 +609,6 @@ function os2web_subscription_delete_subscription($code) {
 function os2web_subscription_delete_subscriptions($email) {
   return db_delete('os2web_subscription_subscriptions')
     ->condition('email', $email)
-    ->execute();
-}
-
-/**
- * Helper function to delete subscription by email and category.
- *
- * @param string $email
- *   The email.
- * @param string $category
- *   The category.
- */
-function os2web_subscription_delete_subscripion_by_email_and_category($email, $category) {
-  return db_delete('os2web_subscription_subscriptions')
-    ->condition('email', $email)
-    ->condition('category', $category)
     ->execute();
 }
 
