@@ -448,7 +448,9 @@ function os2web_subscription_add_subscription_form($form, &$form_submit, $catego
   if (is_array($category)) {
     $options = array();
     foreach ($category as $single_category) {
-      $options[$single_category] = variable_get('os2web_subscription_title_' . $single_category, $single_category);
+      if (variable_get('os2web_subscription_active_' . $single_category, FALSE)){
+	$options[$single_category] = variable_get('os2web_subscription_title_' . $single_category, $single_category);
+      }
     }
     $form['os2web_subscription_group']['category'] = array(
       '#type' => 'checkboxes',
