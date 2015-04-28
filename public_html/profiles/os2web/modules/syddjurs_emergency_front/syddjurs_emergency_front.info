@@ -1,0 +1,3 @@
+name = Syddjurs Beredskabsforside
+description = Tilbyder en speciel forside, hvis der er beredskabsmeddelelser
+core = 7.x

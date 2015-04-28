@@ -22,7 +22,11 @@ module_load_include('inc', 'os2web_mobile', 'os2web_mobile.menu_blocks');
 function os2web_mobile_init() {
   // Detect mobile domain and redirect to correct frontpage.
   if (_os2web_mobile_is_mobile() && drupal_is_front_page()) {
-    drupal_goto(variable_get('os2web_mobile_mobile_frontpage', 'mobile'));
+    $path = variable_get('os2web_mobile_mobile_frontpage', 'mobile');
+
+    if (current_path() != $path) {
+      drupal_goto($path);
+    }
   }
 
   drupal_add_js(drupal_get_path('module', 'os2web_mobile') . '/os2web_mobile.js');

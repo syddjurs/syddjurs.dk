@@ -1,0 +1,122 @@
+<?php
+/**
+ * @file
+ * syddjurs_emergency_front.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function syddjurs_emergency_front_menu() {
+  $items['admin/config/system/syddjurs_emergency_front'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('syddjurs_emergency_front_settings'),
+    'title' => 'Syddjurs Beredsskabsforside',
+    'description' => 'Ændre indstillinger for syddjurs beredsskabsforside.',
+    'access arguments' => array('administer site configuration'),
+  );
+
+  $items['beredsskabsmeddelelse'] = array(
+    'page callback' => 'syddjurs_emergency_front_page',
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+ * Settings page callback.
+ */
+function syddjurs_emergency_front_settings() {
+  $form = array();
+
+  $form['syddjurs_emergency_front_enable'] = array(
+    '#title' => t('Aktiver'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('syddjurs_emergency_front_enable'),
+  );
+
+  $form['syddjurs_emergency_front_title'] = array(
+    '#title' => t('Overskrift'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('syddjurs_emergency_front_title'),
+  );
+
+  $form['syddjurs_emergency_front_message'] = array(
+    '#title' => t('Meddelelse'),
+    '#type' => 'text_format',
+    '#default_value' => variable_get('syddjurs_emergency_front_message', array('value' => ''))['value'],
+  );
+
+  $form = system_settings_form($form);
+  $form['#submit'][] = 'syddjurs_emergency_front_settings_submit';
+  return $form;
+}
+
+/**
+ * Extra submithandler for settings page.
+ */
+function syddjurs_emergency_front_settings_submit(&$form, &$form_state) {
+  if ($form_state['values']['syddjurs_emergency_front_enable'] && !$form['syddjurs_emergency_front_enable']['#default_value']) {
+    $old_paths['site_frontpage'] = variable_get('site_frontpage');
+    $old_paths['os2web_mobile_mobile_frontpage'] = variable_get('os2web_mobile_mobile_frontpage');
+
+    if ($old_paths['site_frontpage'] != 'beredsskabsmeddelelse') {
+      variable_set('syddjurs_emergency_front_old_paths', $old_paths);
+
+      // Set emergency page as frontpage.
+      variable_set('site_frontpage', 'beredsskabsmeddelelse');
+      variable_set('os2web_mobile_mobile_frontpage', 'beredsskabsmeddelelse');
+    }
+  }
+  if (!$form_state['values']['syddjurs_emergency_front_enable'] && $form['syddjurs_emergency_front_enable']['#default_value']) {
+    $old_paths = variable_get('syddjurs_emergency_front_old_paths');
+
+    if (is_array($old_paths)) {
+      variable_set('site_frontpage', $old_paths['site_frontpage']);
+      variable_set('os2web_mobile_mobile_frontpage', $old_paths['os2web_mobile_mobile_frontpage']);
+    }
+  }
+
+  // Clear cache for frontpage, using expire module hook.
+  cache_clear_all();
+
+  $full_urls = array_merge(array('', 'beredsskabsmeddelelse'), array_values($old_paths));
+  $modules = module_implements('expire_cache');
+  foreach ($modules as $module) {
+    module_invoke($module, 'expire_cache', $full_urls);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function syddjurs_emergency_front_theme() {
+  return array(
+    'syddjurs_emergency_page' => array(
+      'template' => 'syddjurs-emergency-page',
+    ),
+  );
+}
+
+/**
+ * Page callback for emergency page.
+ */
+function syddjurs_emergency_front_page() {
+  $old_paths = variable_get('syddjurs_emergency_front_old_paths');
+
+  if (function_exists('_os2web_mobile_is_mobile') && _os2web_mobile_is_mobile()) {
+    $frontpage = $old_paths['os2web_mobile_mobile_frontpage'];
+  }
+  else {
+    $frontpage = $old_paths['site_frontpage'];
+  }
+
+  $vars['site_name'] = variable_get('site_name');
+  $vars['frontpage'] = $frontpage;
+  $vars['title'] = variable_get('syddjurs_emergency_front_title');
+  $vars['message'] = variable_get('syddjurs_emergency_front_message');
+
+  print theme('syddjurs_emergency_page', $vars);
+  drupal_exit();
+}
