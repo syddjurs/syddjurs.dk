@@ -190,7 +190,6 @@ features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_logo
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_ref_focu
 features[field_instance][] = taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_ref_node
-features[filter][] = blokindhold
 features[filter][] = php_code
 features[filter][] = plain_text
 features[filter][] = raw

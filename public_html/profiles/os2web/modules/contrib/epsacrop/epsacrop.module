@@ -509,7 +509,7 @@ function epsacrop_form_field_ui_field_edit_form_alter(&$form, $form_state) {
       if (!empty($styles)) {
         $options = array();
         foreach ($styles as $style_name => $style) {
-          $options[$style_name] = $style['label'];
+          $options[$style_name] = $style['name'];
         }
 
         $form['instance']['settings']['epsacrop'] = array(
