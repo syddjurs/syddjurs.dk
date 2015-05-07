@@ -4,7 +4,7 @@
  * @file
  * Calls Taxon and displays the resulting tags.
  *
- * The Taxo web service must be installed, see the Taxon manual at www.taxon.dk.
+ * The Taxon web service must be installed, see the Taxon manual at www.taxon.dk.
  *
  * taxon_taxonomy.module manage general hooks of module.
  */
@@ -460,122 +460,143 @@ function _taxon_taxonomy_proxy() {
   curl_close($ch);
 
   // Convert the JSON.
-  $classes = json_decode($taxonomy_taxon_json, true);
+  $result = json_decode($taxonomy_taxon_json, true);
 
   $result_text = "";
 
-  // Print the result, if any
-  if (count($classes) > 0) {
-    $message_text_set = false;
-    $threshold_not_met = false;
-
-    // Check for weight threshold
-    $threshold_weight = variable_get('taxon_taxonomy_threshold_weight');
-
-    if ($threshold_weight > 0) {
-      $top_result = reset($classes);
-
-      if ($threshold_weight > $top_result['scoreTotal']) {
-        $result_text = "Note: " . variable_get('taxon_taxonomy_threshold_weight_text') . "\n";
-
-        $message_text_set = true;
-        $threshold_not_met = true;
-      }
-    }
-
-    // Check for confidenceCoefficient threshold
-    $threshold_confidenceCoefficient = variable_get('taxon_taxonomy_threshold_confidenceCoefficient');
-
-    if ($threshold_confidenceCoefficient > 0) {
-      $top_result = reset($classes);
-
-      if ($threshold_confidenceCoefficient > $top_result['scoreConfidenceCoefficient']) {
-        if ($message_text_set) {
-          $result_text .= "Note: " . variable_get('taxon_taxonomy_threshold_confidenceCoefficient_text') . "\n";
-        }
-        else {
-          $result_text = variable_get('taxon_taxonomy_threshold_confidenceCoefficient_text');
-        }
-
-        $message_text_set = true;
-        $threshold_not_met = true;
-      }
-    }
-
-    if ($threshold_not_met) {
-      $threshold_loop_up = variable_get('taxon_taxonomy_threshold_loop_up');
-
-      if ($threshold_loop_up) {
-        // Loop up the results to the JavaScript function.
-        $looped_up_classes = array();
-
-        foreach ($classes as $classid => $class) {
-          $parent_classid = preg_replace("/\.[^\.]+$/", "", $classid);
-
-          if (isset($looped_up_classes[$parent_classid])) {
-            $looped_up_classes[$parent_classid]['count']++;
-          }
-          else {
-            $looped_up_classes[$parent_classid]['title'] = "$classid " . $class['title'];
-            $looped_up_classes[$parent_classid]['count'] = 1;
-          }
-        }
-
-        $drupal_name = variable_get('taxon_taxonomy_drupal_name', "kle");
-        $taxonomy_name_load = taxonomy_vocabulary_machine_name_load($drupal_name);
-        $taxonomy_vid = $taxonomy_name_load->vid;
-
-        foreach ($looped_up_classes as $parent_classid => $class) {
-          if ($class['count'] > 1) {
-            // Get the full title of the class from the taxonomy table
-            $class_name = db_query("SELECT name FROM {taxonomy_term_data} WHERE vid = :vid AND name LIKE :classid LIMIT 1", array(':vid' => $taxonomy_vid, ':classid' => "$parent_classid.00 %"))->fetchField();
-
-            if ($message_text_set) {
-              $result_text = "$class_name\n";
-
-              $message_text_set = false;
-            }
-            else {
-              $result_text .= "$class_name\n";
-            }
-          }
-          else {
-            if ($message_text_set) {
-              $result_text = $class['title'] . "\n";
-
-              $message_text_set = false;
-            }
-            else {
-              $result_text .= $class['title'] . "\n";
-            }            
-          }
-        }
-      }
+  if(($result == null) || ($result['status']['status'] == 'Error')) {
+    if($result == null) {
+      // The result is not JSON, so print it
+      $result_text = "Note: $taxonomy_taxon_json"; // Taxon 2.x
     }
     else {
-      // Get the classes (if any) to exclude from the result
-      $exclude_classes_string  = variable_get('taxon_taxonomy_exclude_classes');
+      $result_text = "Note: " . $result['status']['errors'][0]['errorText']; // Taxon 3.x
+    }
+  }
+  else {
+    $classes = array();
 
-      $exclude_classes = array();
+    // Check for Taxon 2.x or Taxon 3.x result
+    if(! isset($result['classes'])) {
+      $classes = $result; // Taxon 2.x
+    }
+    else {
+      $classes = $result['classes']; // Taxon 3.x
+    }
 
-      if (preg_match_all("/([0-9\.]+)/", $exclude_classes_string, $matches)) {
-        $exclude_classes = $matches[1];
+    // Print the result, if any
+    if (count($classes) > 0) {
+      $message_text_set = false;
+      $threshold_not_met = false;
+
+      // Check for weight threshold
+      $threshold_weight = variable_get('taxon_taxonomy_threshold_weight');
+
+      if ($threshold_weight > 0) {
+        $top_result = reset($classes);
+
+        if ($threshold_weight > $top_result['scoreTotal']) {
+          $result_text = "Note: " . variable_get('taxon_taxonomy_threshold_weight_text') . "\n";
+
+          $message_text_set = true;
+          $threshold_not_met = true;
+        }
       }
 
-      // Return the result in text to the JavaScript function.
-      foreach ($classes as $classid => $class) {
-        foreach($exclude_classes as $exclude_classid) {
-          if (preg_match("/^$exclude_classid/", $classid)) {
-            // Exclude the result and continue the outer foreach
-            continue 2;
+      // Check for confidenceCoefficient threshold
+      $threshold_confidenceCoefficient = variable_get('taxon_taxonomy_threshold_confidenceCoefficient');
+
+      if ($threshold_confidenceCoefficient > 0) {
+        $top_result = reset($classes);
+
+        if ($threshold_confidenceCoefficient > $top_result['scoreConfidenceCoefficient']) {
+          if ($message_text_set) {
+            $result_text .= "Note: " . variable_get('taxon_taxonomy_threshold_confidenceCoefficient_text') . "\n";
+          }
+          else {
+            $result_text = variable_get('taxon_taxonomy_threshold_confidenceCoefficient_text');
+          }
+
+          $message_text_set = true;
+          $threshold_not_met = true;
+        }
+      }
+
+      if ($threshold_not_met) {
+        $threshold_loop_up = variable_get('taxon_taxonomy_threshold_loop_up');
+
+        if ($threshold_loop_up) {
+          // Loop up the results to the JavaScript function.
+          $looped_up_classes = array();
+
+          foreach ($classes as $classid => $class) {
+            $parent_classid = preg_replace("/\.[^\.]+$/", "", $classid);
+
+            if (isset($looped_up_classes[$parent_classid])) {
+              $looped_up_classes[$parent_classid]['count']++;
+            }
+            else {
+              $looped_up_classes[$parent_classid]['title'] = "$classid " . $class['title'];
+              $looped_up_classes[$parent_classid]['count'] = 1;
+            }
+          }
+
+          $drupal_name = variable_get('taxon_taxonomy_drupal_name', "kle");
+          $taxonomy_name_load = taxonomy_vocabulary_machine_name_load($drupal_name);
+          $taxonomy_vid = $taxonomy_name_load->vid;
+
+          foreach ($looped_up_classes as $parent_classid => $class) {
+            if ($class['count'] > 1) {
+              // Get the full title of the class from the taxonomy table
+              $class_name = db_query("SELECT name FROM {taxonomy_term_data} WHERE vid = :vid AND name LIKE :classid LIMIT 1", array(':vid' => $taxonomy_vid, ':classid' => "$parent_classid.00 %"))->fetchField();
+
+              if ($message_text_set) {
+                $result_text = "$class_name\n";
+
+                $message_text_set = false;
+              }
+              else {
+                $result_text .= "$class_name\n";
+              }
+            }
+            else {
+              if ($message_text_set) {
+                $result_text = $class['title'] . "\n";
+
+                $message_text_set = false;
+              }
+              else {
+                $result_text .= $class['title'] . "\n";
+              }            
+            }
           }
         }
+      }
+      else {
+        // Get the classes (if any) to exclude from the result
+        $exclude_classes_string  = variable_get('taxon_taxonomy_exclude_classes');
 
-        $classtitle = $class['title'];
+        $exclude_classes = array();
 
-        $classtitle = html_entity_decode($classtitle);
+        if (preg_match_all("/([0-9\.]+)/", $exclude_classes_string, $matches)) {
+          $exclude_classes = $matches[1];
+        }
 
-        $result_text .= "$classid $classtitle\n";
+        // Return the result in text to the JavaScript function.
+        foreach ($classes as $classid => $class) {
+          foreach($exclude_classes as $exclude_classid) {
+            if (preg_match("/^$exclude_classid/", $classid)) {
+              // Exclude the result and continue the outer foreach
+              continue 2;
+            }
+          }
+
+          $classtitle = $class['title'];
+
+          $classtitle = html_entity_decode($classtitle);
+
+          $result_text .= "$classid $classtitle\n";
+        }
       }
     }
   }
