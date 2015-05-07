@@ -1,6 +1,6 @@
 /*
   File name: taxon_taxonomy.js
-  Version:   2.2
+  Version:   3.0
 
   Description:
   taxon_taxonomy is the proxy to allow Drupal to communicate
@@ -8,7 +8,7 @@
 */
 
 /*
-  taxon_taxonomy is free software: you can redistribute it and/or modify
+  taxon_taxonomy.js is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
@@ -69,6 +69,7 @@
           $(taxonomy_tag_name).after("<div> <input style = 'margin-top:10px;' id = 'taxon-classify-button' class = 'form-submit ajax-processed' type='button' value='" + taxonomy_button_text + "'></div>");
         }
 
+        // Get the text from the textarea
         $('div').find('#taxon-classify-button').click(function() {
           $('div').find('#taxon-classify-button').attr('value', taxonomy_button_text_wait);
           $('div').find('#taxon-classify-button').after("<img id = 'taxon-wait-cursor' src = '" + taxonomy_waiticon_image + "'>");
@@ -125,9 +126,16 @@
           $.post("/taxon-taxonomy", { taxonomy: taxonomy_name, text: text }, function(data) {
             $('#taxon-classify-button').before("<div id = 'taxon-results'> </div>");
 
-            var classids_string = $(taxonomy_tag_name).val();
+            var classids_string = "," + $(taxonomy_tag_name).val() + ",";
 
-            var classids = classids_string.split(/\s*,\s*/);
+            var classids = [];
+
+            var re = /\,\s*([0-9][0-9\.]*(?:[0-9]| ))/g;
+            var match = {};
+
+            while (match = re.exec(classids_string)) {
+              classids.push(match[1].replace(/^\s+|\s+$/g, ''));
+            }
 
             var lines = data.split("\n");
 
@@ -140,38 +148,38 @@
                   $('#taxon-results').append(append_text);
                 }
                 else {
-                // Get the ID
-                var matches = lines[line].match(/^([0-9\.]+)/);
+                  // Get the ID
+                  var matches = lines[line].match(/^([0-9\.]+)/);
 
-                // For CSS and files names we need to convert . to -
-                var id = "";
+                  // For CSS and files names we need to convert . to -
+                  var id = "";
+                  var css_id = "";
 
-                if (matches != null)
-                {
-                  id = matches[0];
-                  id = id.replace(/\./g, "-");
-                }
-
-                if (jQuery.inArray(lines[line], classids) != -1) {
-                  // The classid is selected in the dropdown
-                  var append_text = "<div class = 'taxon-results-result'><span class = 'taxon-state'><img src = '" + taxonomy_selected_image + "' class = 'state'></span><input style = 'margin-top:10px;' id = 'taxon-classify-" + line + "' class = 'taxon-result' type='button' value='" + lines[line] + "'>";
-
-                  if (taxonomy_help_texts != "") {
-                    append_text += "<span id = '" + id + "' class = 'taxon-help'><img src = '" + taxonomy_help_image + "' class = 'help'></span></div>";
+                  if (matches != null) {
+                    id = matches[0];
+                    css_id = id.replace(/\./g, "-");
                   }
 
-                  $('#taxon-results').append(append_text);
-                }
-                else {
-                  // The classid is NOT selected in the dropdown
-                  var append_text = "<div class = 'taxon-results-result'><span class = 'taxon-state'><img src = '" + taxonomy_not_selected_image + "' class = 'state'></span><input style = 'margin-top:10px;' id = 'taxon-classify-" + line + "' class = 'taxon-result' type='button' value='" + lines[line] + "'>";
+                  if (jQuery.inArray(id, classids) != -1) {
+                    // The classid is selected in the dropdown
+                    var append_text = "<div class = 'taxon-results-result'><span class = 'taxon-state'><img src = '" + taxonomy_selected_image + "' class = 'state'></span><input style = 'margin-top:10px;' id = 'taxon-classify-" + line + "' class = 'taxon-result' type='button' value='" + lines[line] + "'>";
 
-                  if (taxonomy_help_texts != "") {
-                   append_text += "<span id = '" + id + "' class = 'taxon-help'><img src = '" + taxonomy_help_image + "' class = 'help'></span></div>";
+                    if (taxonomy_help_texts != "") {
+                      append_text += "<span id = '" + css_id + "' class = 'taxon-help'><img src = '" + taxonomy_help_image + "' class = 'help'></span></div>";
+                    }
+
+                    $('#taxon-results').append(append_text);
                   }
+                  else {
+                    // The classid is NOT selected in the dropdown
+                    var append_text = "<div class = 'taxon-results-result'><span class = 'taxon-state'><img src = '" + taxonomy_not_selected_image + "' class = 'state'></span><input style = 'margin-top:10px;' id = 'taxon-classify-" + line + "' class = 'taxon-result' type='button' value='" + lines[line] + "'>";
 
-                  $('#taxon-results').append(append_text);
-                }
+                    if (taxonomy_help_texts != "") {
+                     append_text += "<span id = '" + css_id + "' class = 'taxon-help'><img src = '" + taxonomy_help_image + "' class = 'help'></span></div>";
+                    }
+
+                    $('#taxon-results').append(append_text);
+                  }
                 }
               }
             }
@@ -180,35 +188,40 @@
               if ($(this).siblings("span").children(".state").attr('src') != taxonomy_selected_image) {
                 // Add the class
                 $(this).siblings("span").children(".state").attr('src', taxonomy_selected_image);
-                var classid = $(this).val();
+                
+                var class_title = $(this).val();
 
                 var classes = $(taxonomy_tag_name).val();
 
                 if (classes == "") {
-                  $(taxonomy_tag_name).val(classid);
+                  $(taxonomy_tag_name).val(class_title);
                 }
                 else {
-                  $(taxonomy_tag_name).val(classes + "," + classid);
+                  $(taxonomy_tag_name).val(classes + "," + class_title);
                 }
               }
               else {
                 // Remove the class
                 $(this).siblings("span").children(".state").attr('src', taxonomy_not_selected_image);
 
-                var classid = $(this).val();
+                var class_title = $(this).val();
+
+                // Get the class ID
+                var re = new RegExp("^([0-9\.]+).*$");
+                var classid = class_title.replace(re, "$1");
 
                 var classes = $(taxonomy_tag_name).val();
 
                 // Start
-                var re = new RegExp("^[ ]*" + classid + " *\,? *");
+                var re = new RegExp("^[ ]*" + classid + " [^\,]+\,? *");
                 classes = classes.replace(re, "");
 
                 // Middle
-                var re = new RegExp(" *, *" + classid + " *\, *");
+                var re = new RegExp(" *, *" + classid + " [^\,]+\, *");
                 classes = classes.replace(re, ",");
 
                 // End
-                var re = new RegExp(" *, *" + classid + " *$");
+                var re = new RegExp(" *, *" + classid + " .+$");
                 classes = classes.replace(re, "");
 
                 $(taxonomy_tag_name).val(jQuery.trim(classes));
@@ -234,21 +247,25 @@
                 // Remove the class
                 $(this).children(".state").attr('src', taxonomy_not_selected_image);
 
-                var classid = $(this).siblings("input").val();
+                var class_title = $(this).siblings("input").val();
+
+                // Get the class ID
+                var re = new RegExp("^([0-9\.]+).*$");
+                var classid = class_title.replace(re, "$1");
 
                 var classes = $(taxonomy_tag_name).val();
 
                 // Start
-                var re = new RegExp("^\s*" + classid + "\s*\,?\s*");
-                var classes = classes.replace(re, "");
+                var re = new RegExp("^[ ]*" + classid + " [^\,]+\,? *");
+                classes = classes.replace(re, "");
 
                 // Middle
-                var re = new RegExp("\s*,\s*" + classid + "\s*\,\s*");
-                var classes = classes.replace(re, ",");
+                var re = new RegExp(" *, *" + classid + " [^\,]+\, *");
+                classes = classes.replace(re, ",");
 
                 // End
-                var re = new RegExp("\s*,\s*" + classid + "$");
-                var classes = classes.replace(re, "");
+                var re = new RegExp(" *, *" + classid + " .+$");
+                classes = classes.replace(re, "");
 
                 $(taxonomy_tag_name).val(classes);
               }
@@ -262,7 +279,9 @@
               var width = $(this).width() + 30;
               var id_text = $(this).siblings("input").attr('value');
 
-              var url = taxonomy_help_texts + "/" + id + ".html";
+              id = id.replace(/\./g, "-");
+
+              var url = location.protocol + "//" + location.host + taxonomy_help_texts + "/" + id + ".html";
 
               // Get the text for the dialog from the server
               $.ajax({
@@ -318,12 +337,25 @@
         });
 
         $(taxonomy_tag_name).change(function () {
-          var classids_string = $(this).val();
+          var classids_string = "," + $(taxonomy_tag_name).val() + ",";
 
-          var classids = classids_string.split(/\s*,\s*/);
+          var classids = [];
+
+          var re = /\,\s*([0-9][0-9\.]*(?:[0-9]| ))/g;
+          var match = {};
+
+          while (match = re.exec(classids_string)) {
+            classids.push(match[1].replace(/^\s+|\s+$/g, ''));
+          }
 
           $("#taxon-results input").each(function () {
-            if (jQuery.inArray($(this).val(), classids) != -1) {
+            var class_title = $(this).val();
+
+            // Get the class ID
+            var re = new RegExp("^([0-9\.]+).*$");
+            var classid = class_title.replace(re, "$1");
+
+            if(jQuery.inArray(classid, classids) != -1) {
               $(this).siblings("span").children(".state").attr('src', taxonomy_selected_image);
             }
             else {
