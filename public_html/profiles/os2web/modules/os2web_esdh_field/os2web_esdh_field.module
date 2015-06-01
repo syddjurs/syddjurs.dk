@@ -11,6 +11,46 @@ define('ACADRE_CM_ACCESS_OPEN_DOCUMENT', '3');
 /* Field information hooks */
 
 /**
+ * Implements hook_menu().
+ */
+function os2web_esdh_field_menu() {
+  $items = array();
+
+  $items['admin/config/services/esdh_import'] = array(
+    'title'            => 'ESDH Import',
+    'description'      => 'Settings for ESDH Import',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('esdh_settings'),
+    'access arguments' => array('administrator'),
+  );
+
+  return $items;
+}
+
+/**
+ * ESDH settings form
+ */
+function esdh_settings() {
+  $form['esdh_document_check_settings']['esdh_check_start'] = array(
+    '#title' => t('Start ESDH checks at hour'),
+    '#type' => 'select',
+    '#description' => t('The hour (0-23) to allow the first check to run.'),
+    '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23),
+    '#default_value' => variable_get('esdh_check_start', 0),
+  );
+  
+  $form['esdh_document_check_settings']['esdh_check_end'] = array(
+    '#title' => t('Stop ESDH checks at hour'),
+    '#type' => 'select',
+    '#description' => t('The hour (0-23) to allow the last check to run.'),
+    '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23),
+    '#default_value' => variable_get('esdh_check_end', 0),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
  * Implements hook_field_info().
  */
 function os2web_esdh_field_field_info() {
@@ -458,6 +498,16 @@ function _os2web_esdh_field_update_cm_documents_from_pws($node) {
  * Implements hook_cron().
  */
 function os2web_esdh_field_cron() {
+
+  // Make sure import only runs during the specified time window
+  $current_timestamp = time();
+  $cron_start        = mktime(0, 0, 0) + (60 * 60 * variable_get('esdh_check_start'));
+  $cron_end          = mktime(0, 0, 0) + (60 * 60 * variable_get('esdh_check_end'));
+  
+  if ($current_timestamp < $cron_start && $current_timestamp > $cron_end) {
+    return;
+  }
+
   // Check for correct api and required functions are implemented.
   if (!os2web_esdh_provider_has_api('cm')) {
     return;

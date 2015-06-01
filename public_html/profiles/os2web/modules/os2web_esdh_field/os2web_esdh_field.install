@@ -118,3 +118,12 @@ function os2web_esdh_field_update_7003() {
     db_create_table('os2web_esdh_field_cm_documents', $schema);
   }
 }
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function os2web_esdh_field_uninstall() {
+  variable_del('esdh_check_start');
+  variable_del('esdh_check_end');
+}
