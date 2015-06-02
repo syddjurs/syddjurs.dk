@@ -124,6 +124,7 @@ function os2web_esdh_field_update_7003() {
  * Implements hook_uninstall().
  */
 function os2web_esdh_field_uninstall() {
+  variable_del('esdh_limit_cron');
   variable_del('esdh_check_start');
-  variable_del('esdh_check_end');
+  variable_del('esdh_last_run');
 }
