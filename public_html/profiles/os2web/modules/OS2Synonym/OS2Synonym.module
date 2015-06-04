@@ -57,6 +57,14 @@ function OS2Synonym_menu() {
     'type'             => MENU_CALLBACK,
   );
 
+  $items['OS2Synonym_send_solr'] = array(
+      'title'            => 'OS2Synonym send to Solr',
+      'description'      => '',
+      'page callback'    => '_OS2Synonym_send_solr',
+      'access arguments' => array('access content'),
+      'type'             => MENU_CALLBACK,
+  );
+
   $items['admin/config/content/OS2Synonym'] = array(
     'title' => 'OS2Synonym',
     'description' => 'Configuration for the OS2Synonym module.',
@@ -104,7 +112,6 @@ function OS2Synonym_help($path, $arg) {
  * The administration form.
  */
 function OS2Synonym_admin_form($form, &$form_state) {
-  $file_name = variable_get('OS2Synonym_Solr_filename', "synonyms.txt");
 
   $form['OS2Synonym_Solr_filename'] = array(
     '#type' => 'textfield',
@@ -113,38 +120,29 @@ function OS2Synonym_admin_form($form, &$form_state) {
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
-    '#default_value' => $file_name,
+    '#default_value' => variable_get('OS2Synonym_Solr_filename', "synonyms.txt"),
   );
 
-  $import_url = variable_get('OS2Synonym_import_url', "");
+  $form['OS2Synonym_Solr_core_reload_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('The Solr core reload URL'),
+    '#description' => t('Example http://localhost:8983/solr/admin/cores?action=RELOAD&core=collection1'),
+    '#size' => 60,
+    '#maxlength' => 255,
+    '#default_value' => variable_get('OS2Synonym_Solr_core_reload_url', ''),
+  );
 
   $form['OS2Synonym_import_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('The URL of the shared SOLR synonyms text file'),
-    '#description' => t('The URL of the shared SOLR synonyms text file.'),
+    '#title' => t('The URL of the shared Solr synonyms text file'),
+    '#description' => htmlspecialchars(t('The URL of the shared Solr synonyms text file. For example http://<servername>/OS2Synonym_download')),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
-    '#default_value' => $import_url,
+    '#default_value' => variable_get('OS2Synonym_import_url', ""),
   );
 
-  // Submit button.
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save settings'),
-  );
-
-  return $form;
-}
-
-/**
- * Save configuration settings for OS2Synonym module.
- */
-function OS2Synonym_admin_form_submit($form, &$form_state) {
-  variable_set('OS2Synonym_Solr_filename', $form_state['values']['OS2Synonym_Solr_filename']);
-  variable_set('OS2Synonym_import_url', $form_state['values']['OS2Synonym_import_url']);
-
-  drupal_set_message(t('The settings have been saved'));
+  return system_settings_form($form);
 }
 
 /**
@@ -330,6 +328,46 @@ function _OS2Synonym_API() {
   return;
 }
 
+function _OS2Synonym_send_solr() {
+
+  // Store synonyms in SOLR synonym file
+  $synonym_filename = variable_get('OS2Synonym_Solr_filename', FALSE);
+
+  if (! $synonym_filename) {
+     // Report some error to user via Drupal...
+    return;
+  }
+
+  // Get synonyms from database
+  $synonym_lines = variable_get('OS2Synonym_synonyms_json', array());
+  $synonym_text = implode("\n", $synonym_lines);
+  $synonym_text .= "\n";
+
+  // Write synonyms file
+  if (! file_put_contents($synonym_filename, $synonym_text)) {
+    //Report some error to user via Drupal...
+    return;
+  }
+
+  _OS2Synonym_reload_solr_core();
+}
+
+/**
+ * Reload Solr core
+ */
+function _OS2Synonym_reload_solr_core() {
+
+  $reload_url = variable_get('OS2Synonym_Solr_core_reload_url', FALSE);
+
+  if (! $reload_url) {
+    return FALSE;
+  }
+
+  // Call the URL
+  file_get_contents($reload_url);
+  return TRUE;
+}
+
 function buildBodyContent($imported_lines = array()) {
   $html = "";
 
@@ -371,6 +409,7 @@ function buildBodyContent($imported_lines = array()) {
   $html .= "</div>";
   
   $html .= "<div id = 'OS2Synonym-external-actions'>";
+  $html .= "  <input type = 'submit' id = 'OS2Synonym-actions-send-solr' class = 'OS2Synonym-actions-button-right' value = '" . t("Send til SOLR") . "'>";
   $html .= "  <input type = 'submit' id = 'OS2Synonym-actions-export' class = 'OS2Synonym-actions-button-right' value = '" . t("Export") . "'>";
   $html .= "  <input type = 'submit' id = 'OS2Synonym-actions-import-url' class = 'OS2Synonym-actions-button-right' value = '" . t("Import from url") . "'>";
   $html .= "  <input type = 'submit' id = 'OS2Synonym-actions-import-file' class = 'OS2Synonym-actions-button-right' value = '" . t("Import from file") . "'>";

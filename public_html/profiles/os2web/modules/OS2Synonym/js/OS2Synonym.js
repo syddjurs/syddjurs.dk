@@ -122,7 +122,16 @@
           alert("Some changes have not been saved. Please save changes before exporting");
         }
         else {
-          window.location.replace("/OS2Synonym_download"); 
+          window.location.replace("/OS2Synonym_download");
+        }
+      });
+
+      $("#OS2Synonym-actions-send-solr").click(function() {
+        if($("#OS2Synonym-actions-save").hasClass("OS2Synonym-actions-button")) {
+          alert("Some changes have not been saved. Please save changes before sending to SOLR");
+        }
+        else {
+            $.get( "/OS2Synonym_send_solr", function() {});
         }
       });
 
