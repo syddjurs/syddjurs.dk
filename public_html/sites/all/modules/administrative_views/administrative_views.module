@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Administrative views feature.
+ */
+
+include_once 'administrative_views.features.inc';
