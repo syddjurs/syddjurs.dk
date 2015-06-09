@@ -153,6 +153,8 @@ function _os2web_esdh_provider_import_access() {
  * Implements hook_node_delete().
  */
 function os2web_esdh_provider_node_delete($node) {
+  module_load_include('inc', 'os2web_esdh_provider', 'includes/os2web_esdh_provider.queue');
+  
   if ($node->type === 'os2web_meetings_meeting') {
     // Remove any addenums relating to this node.
     $query = new EntityFieldQuery();
@@ -174,6 +176,11 @@ function os2web_esdh_provider_node_delete($node) {
         node_delete($nids['target_id']);
       }
     }
+    $meeting_xmlid = $node->field_os2web_meetings_system_id['und'][0]['value'];
+    $agenda_sysid = $node->field_os2web_meetings_sub_id['und'][0]['value'];
+
+    os2web_esdh_provider_index_meeting_update_status($meeting_xmlid , $agenda_sysid , IMPORT_STATUS_DELETED);
+    os2web_esdh_provider_index_meeting_update_nid($meeting_xmlid, $agenda_sysid, 0);
   }
   if ($node->type === 'os2web_meetings_bullet') {
     // Delete bullet attachments from meeting.
@@ -195,7 +202,7 @@ function os2web_esdh_provider_cron() {
   if (variable_get('os2web_esdh_provider_queue_enabled', FALSE)) {
     return;
   }
-
+ error_log('here');
   if (os2web_esdh_provider_has_api('mm')) {
     $meetings = os2web_esdh_provider_invoke('mm', 'get_import_list');
 
@@ -204,12 +211,12 @@ function os2web_esdh_provider_cron() {
 
       $current_timestamp = time();
       $last_mm_import_time = variable_get('os2web_esdh_provider_last_mm_import', FALSE);
-
+    
       foreach ($meetings as $meeting) {
         // Only import files newer than last cron job.
-        if (!$last_mm_import_time || filemtime($meeting['uri']) > $last_mm_import_time) {
+        //if (!$last_mm_import_time || filemtime($meeting['uri']) > $last_mm_import_time) {
           $queue->createItem(array('meeting' => $meeting, 'force' => FALSE));
-        }
+        //}
       }
       $queue->createItem(array('post_import_process' => TRUE));
       variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
@@ -230,9 +237,9 @@ function os2web_esdh_provider_queue_meetings() {
 
     foreach ($meetings as $meeting) {
       // Only import files newer than last cron job.
-      if (!$last_mm_import_time || filemtime($meeting['uri']) > $last_mm_import_time) {
+    //  if (!$last_mm_import_time || filemtime($meeting['uri']) > $last_mm_import_time) {
         $queue->createItem(array('meeting' => $meeting, 'force' => FALSE));
-      }
+      //}
     }
     $queue->createItem(array('post_import_process' => TRUE));
 
@@ -240,7 +247,7 @@ function os2web_esdh_provider_queue_meetings() {
       $queue->createItem(array('unpublish_without_manifest' => TRUE, 'meetings' => $meetings));
     }
 
-    variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
+   // variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
 
     variable_set('os2web_esdh_provider_last_mm_import', time());
   }
