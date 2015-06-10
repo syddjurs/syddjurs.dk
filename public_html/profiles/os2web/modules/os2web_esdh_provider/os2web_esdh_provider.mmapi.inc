@@ -52,6 +52,8 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
   }
   timer_start('mm_import');
   os2web_esdh_provider_log('Init.');
+  global $PROCESSING_MEETING_ID, $PROCESSING_MEETING_ACCESS;
+  $PROCESSING_MEETING_ID = $meeting_id['id'];
 
   $meetings = os2web_esdh_provider_invoke('mm', 'import_meeting', $meeting_id);
   os2web_esdh_provider_log('Done generate meetings array from XML ' . $meeting_id['id']);
