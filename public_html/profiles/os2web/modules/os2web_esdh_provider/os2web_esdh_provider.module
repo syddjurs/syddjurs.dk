@@ -202,12 +202,11 @@ function os2web_esdh_provider_cron() {
   if (variable_get('os2web_esdh_provider_queue_enabled', FALSE)) {
     return;
   }
- error_log('here');
   if (os2web_esdh_provider_has_api('mm')) {
     $meetings = os2web_esdh_provider_invoke('mm', 'get_import_list');
 
     $queue = DrupalQueue::get('acadre_mm_import');
-    if ($queue->numberOfItems() == 0) {
+    //if ($queue->numberOfItems() == 0) {
 
       $current_timestamp = time();
       $last_mm_import_time = variable_get('os2web_esdh_provider_last_mm_import', FALSE);
@@ -220,7 +219,7 @@ function os2web_esdh_provider_cron() {
       }
       $queue->createItem(array('post_import_process' => TRUE));
       variable_set('os2web_esdh_provider_last_mm_import', $current_timestamp);
-    }
+    //}
   }
 }
 
