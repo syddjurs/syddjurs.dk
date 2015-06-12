@@ -274,6 +274,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Brugernavn';
   /* Felt: Indhold: Link tekst */
   $handler->display->display_options['fields']['field_os2web_spotbox_text']['id'] = 'field_os2web_spotbox_text';
   $handler->display->display_options['fields']['field_os2web_spotbox_text']['table'] = 'field_data_field_os2web_spotbox_text';
@@ -354,7 +355,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['uid']['group'] = 1;
   $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Navn';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Brugernavn';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
   $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
   $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
@@ -365,8 +366,6 @@ function administrative_views_views_default_views() {
     7 => 0,
     3 => 0,
     5 => 0,
-    8 => 0,
-    9 => 0,
   );
   $handler->display->display_options['filters']['uid']['expose']['reduce'] = TRUE;
   /* Filterkriterie: Indhold: Har taksonomitermer (med dybde) */
@@ -441,6 +440,7 @@ function administrative_views_views_default_views() {
 [created] '),
     t('Spotboksnavn'),
     t('Spotbokse'),
+    t('Brugernavn'),
     t('Selvbetjeningslinks'),
     t('Selvbetjeningslinks-liste'),
   );
@@ -773,7 +773,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Forfatter';
+  $handler->display->display_options['fields']['name']['label'] = 'Brugernavn';
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -818,7 +818,7 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['filters']['uid']['group'] = 1;
   $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Navn';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Brugernavn';
   $handler->display->display_options['filters']['uid']['expose']['description'] = 'Eks på brugernavn: obn';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
   $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
@@ -939,11 +939,10 @@ function administrative_views_views_default_views() {
     t('forfatter'),
     t('Type'),
     t('Titel'),
-    t('Forfatter'),
+    t('Brugernavn'),
     t('Opdateringsdato'),
     t('Redigér-link'),
     t('Udgivet'),
-    t('Navn'),
     t('Eks på brugernavn: obn'),
     t('KLE'),
     t('ID'),
