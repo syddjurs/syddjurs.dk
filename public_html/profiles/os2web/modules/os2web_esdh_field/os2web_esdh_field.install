@@ -65,6 +65,9 @@ function os2web_esdh_field_schema() {
       )
     ),
   );
+
+  $schema['cache_os2web_esdh_field'] = drupal_get_schema_unprocessed('system', 'cache');
+
   return $schema;
 }
 
@@ -117,6 +120,15 @@ function os2web_esdh_field_update_7003() {
     $schema = drupal_get_schema('os2web_esdh_field_cm_documents', TRUE);
     db_create_table('os2web_esdh_field_cm_documents', $schema);
   }
+}
+
+/**
+ * Install the cache table.
+ */
+function os2web_esdh_field_update_7004() {
+  $schema = drupal_get_schema_unprocessed('system', 'cache');
+
+  db_create_table('cache_os2web_esdh_field', $schema);
 }
 
 

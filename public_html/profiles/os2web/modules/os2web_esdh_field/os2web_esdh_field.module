@@ -28,6 +28,13 @@ function os2web_esdh_field_menu() {
 }
 
 /**
+ * Implements hook_flush_caches().
+ */
+function os2web_esdh_field_flush_caches() {
+  return array('cache_os2web_esdh_field');
+}
+
+/**
  * ESDH settings form
  */
 function esdh_settings() {
@@ -65,7 +72,29 @@ function esdh_settings() {
     '#markup' => $esdh_last_run,
   );
 
+  $form['os2web_esdh_field_cache_expire'] = array(
+    '#title' => t('Expiration in seconds for ESDH data cache'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('os2web_esdh_field_cache_expire', 10),
+    '#description' => t('How long should the data be saved for cached requests'),
+  );
+
+  $form['clear_cache'] = array(
+    '#type' => 'submit',
+    '#submit' => array('os2web_esdh_field_clear_cache'),
+    '#value' => t('Clear cached data'),
+    '#description' => t('This does only clear ESDH field cache'),
+  );
+
   return system_settings_form($form);
+}
+
+/**
+ * Clear cache callback.
+ */
+function os2web_esdh_field_clear_cache() {
+  cache_clear_all("*", "cache_os2web_esdh_field", "*");
+  drupal_set_message(t('ESDH field cache has been cleared'));
 }
 
 /**
@@ -286,11 +315,29 @@ function theme_os2web_esdh_case($vars) {
   $docids = array();
   try {
     foreach ($ids as $id) {
-      if (_os2web_esdh_field_case_access($id)) {
-        $docids = array_merge($docids, os2web_esdh_provider_invoke('cm', 'get_case_docs', $id));
+      // Try to fetch cached data for the case.
+      $cache_name = 'case:' . $id;
+      $data = cache_get($cache_name, 'cache_os2web_esdh_field');
+
+      // Use the cached data, if it's not expired.
+      if (is_object($data) && $data->expire > time()) {
+        $docids = array_merge($docids, $data->data);
+      }
+
+      // Fetch fresh data.
+      else {
+        if (_os2web_esdh_field_case_access($id)) {
+          $return = os2web_esdh_provider_invoke('cm', 'get_case_docs', $id);
+
+          $expire = time() + variable_get('os2web_esdh_field_cache_expire', 10);
+          cache_set($cache_name, $return, 'cache_os2web_esdh_field', $expire);
+
+          $docids = array_merge($docids, $return);
+        }
       }
     }
-  } catch (Exception $e) {
+  }
+  catch (Exception $e) {
     // Show a polite message if the connection to Acadre is broken.
     $markup = '<div class="messages error"><ul><li>';
     $markup .= t('There was a problem connecting to the case service provider. Sorry for the inconvenience.');
@@ -302,6 +349,7 @@ function theme_os2web_esdh_case($vars) {
     );
     return render($page);
   }
+
   $html = theme('os2web_esdh_document', array('id' => $docids, 'iscase' => TRUE));
   return $html;
 }
@@ -333,16 +381,36 @@ function theme_os2web_esdh_document($vars) {
   $rows = array();
   foreach ($id as $docid) {
     $file = _os2web_esdh_field_get_file_by_did($docid);
-    if (is_object($file) && $document_meta = os2web_esdh_provider_invoke('cm', 'get_document', $docid)) {
-      if (_os2web_esdh_field_doc_access($docid)) {
-        $rows[] = array(
-          l($document_meta['title'], file_create_url($file->uri), array('attributes' => array('target' => '_blank'))),
-          '<span class="documentdate">' . format_date(strtotime($document_meta['last_update']), 'custom', 'd/m/Y') . '</span>',
-        );
+    // If the file exists, fetch the document metadata.
+    if (is_object($file)) {
+      $cache_name = 'document_meta:' . $docid;
+      $data = cache_get($cache_name, 'cache_os2web_esdh_field');
+
+      // Try using cache.
+      if (is_object($data) && $data->expire > time()) {
+        $document_meta = $data->data;
+      }
+      // Fetch fresh data.
+      else {
+        $document_meta = os2web_esdh_provider_invoke('cm', 'get_document', $docid);
+
+        $expire = time() + variable_get('os2web_esdh_field_cache_expire', 10);
+        cache_set($cache_name, $document_meta, 'cache_os2web_esdh_field', $expire);
+      }
+
+      if ($document_meta) {
+        if (_os2web_esdh_field_doc_access($docid, $document_meta)) {
+
+          $rows[] = array(
+            l($document_meta['title'], file_create_url($file->uri), array('attributes' => array('target' => '_blank'))),
+            '<span class="documentdate">' . format_date(strtotime($document_meta['last_update']), 'custom', 'd/m/Y') . '</span>',
+          );
+        }
       }
     }
+    // If the file is not fetched yet, add it to cron. Document will available
+    // when the files are present.
     else {
-      // Add the documet to be updated trough cron.
       _os2web_esdh_field_add_to_cron($docid);
     }
   }
@@ -402,8 +470,10 @@ function _os2web_esdh_field_case_access($caseid) {
  * @return bool
  *   True on access granted
  */
-function _os2web_esdh_field_doc_access($docid) {
-  $doc = os2web_esdh_provider_invoke('cm', 'get_document', $docid);
+function _os2web_esdh_field_doc_access($docid, $doc = NULL) {
+  if (!$doc) {
+    $doc = os2web_esdh_provider_invoke('cm', 'get_document', $docid);
+  }
   $access_grant = array(
     'accesscode' => 'KK',
     'publication' => ACADRE_CM_ACCESS_OPEN_DOCUMENT,
