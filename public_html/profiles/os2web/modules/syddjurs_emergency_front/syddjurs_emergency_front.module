@@ -42,10 +42,11 @@ function syddjurs_emergency_front_settings() {
     '#default_value' => variable_get('syddjurs_emergency_front_title'),
   );
 
+  $var = variable_get('syddjurs_emergency_front_message', array('value' => ''));
   $form['syddjurs_emergency_front_message'] = array(
     '#title' => t('Meddelelse'),
     '#type' => 'text_format',
-    '#default_value' => variable_get('syddjurs_emergency_front_message', array('value' => ''))['value'],
+    '#default_value' => $var['value'],
   );
 
   $form = system_settings_form($form);
