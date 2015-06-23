@@ -6,6 +6,44 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function os2web_nntv_menu() {
+  $items['node/%node/nntv_video'] = array(
+    'page callback' => 'os2web_nntv_import_video_for_meeting',
+    'page arguments' => array(1),
+    'access callback' => 'os2web_nntv_access_import',
+    'access arguments' => array(1),
+    'title' => 'Importer video',
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for importing video for a meeting.
+ */
+function os2web_nntv_import_video_for_meeting($node) {
+  if (is_object($node) && $node->type == 'os2web_meetings_meeting') {
+    // Force import of video.
+    os2web_nntv_update_meeting($node->nid, TRUE);
+    drupal_goto('node/' . $node->nid);
+  }
+}
+
+/**
+ * Access callback for video import menu item.
+ */
+function os2web_nntv_access_import($node) {
+  if (is_object($node) && $node->type == 'os2web_meetings_meeting' && node_access('update', $node)) {
+    // If the current user is allowed to edit the node, grant permissions to
+    // import the video aswell.
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
  * Implements hook_cron().
  */
 function os2web_nntv_cron() {
@@ -31,7 +69,7 @@ function os2web_nntv_cron() {
 /**
  * Update a meeting node with video reference.
  */
-function os2web_nntv_update_meeting($nid) {
+function os2web_nntv_update_meeting($nid, $force = FALSE) {
   // Get info for the meeting.
   $movie_info = _os2web_nntv_get_movie_info($nid);
 
@@ -44,8 +82,9 @@ function os2web_nntv_update_meeting($nid) {
 
     // If there isn't any or the field is empty, update it. Also update, if it
     // is a different id.
-    if ((!$field || !$field[0]['id'] || $field[0]['id'] != $movie_info['movie_id']) && !empty($movie_info['chapters'])) {
+    if ($force || ((!$field || !$field[0]['id'] || $field[0]['id'] != $movie_info['movie_id']) && !empty($movie_info['chapters']))) {
       $meeting->field_os2web_meetings_nntv_ref[LANGUAGE_NONE][0]['id'] = $movie_info['movie_id'];
+      $meeting->field_os2web_meetings_nntv_ref[LANGUAGE_NONE][0]['seek'] = 0;
 
       node_save($meeting);
 
