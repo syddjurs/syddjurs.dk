@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Implementation of hook_menu
+ *
+ * @return list of links
+ */
+function os2web_admin_suite_menu() {
+    $items = array();
+    
+    $items['os2web/admin_suite/update_closed_bp'] = array(
+        'type' => MENU_CALLBACK,
+        'page callback' => 'os2web_admin_suite_update_closed_bp',
+        'access arguments' => array('administer os2web'),
+    );
+    
+   	
+    return $items;
+    
+}
+
+
+function os2web_admin_suite_update_closed_bp(){
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', array('os2web_meetings_bullet'));
+   
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid){        
+        $operations[] = array('os2web_admin_suite_change_closed_bp_process', array($nid));
+    }
+  } 
+   
+   $batch = array(
+    'operations' => $operations,
+    'finished' => 'os2web_admin_suite_update_finished'    
+    
+  );
+  
+  
+ batch_set($batch);     
+ batch_process();
+}
+
+function os2web_admin_suite_change_closed_bp_process($nid, &$context){
+   $bp = node_load($nid);
+       if ($bp->field_os2web_meetings_bul_closed['und'][0]['value']==1)
+            $bp->field_os2web_meetings_bul_closed['und'][0]['value']=0;
+        else 
+            $bp->field_os2web_meetings_bul_closed['und'][0]['value']=1;
+   node_save($bp);
+        
+}
+
+function os2web_admin_suite_update_finished($success, $results, $operations) {
+ error_log('All bullet points have been updated');
+ 
+}
