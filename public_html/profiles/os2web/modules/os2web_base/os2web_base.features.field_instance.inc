@@ -1038,11 +1038,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 'video',
-          0 => 0,
           'audio' => 0,
           'default' => 0,
+          0 => 0,
+          'image' => 'image',
+          'video' => 'video',
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -1145,11 +1145,11 @@ function os2web_base_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 0,
-          'video' => 0,
-          0 => 0,
           'audio' => 0,
           'default' => 'default',
+          0 => 0,
+          'image' => 0,
+          'video' => 0,
         ),
         'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
@@ -1252,6 +1252,58 @@ function os2web_base_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_rotate'
+  $field_instances['node-os2web_base_contentpage-field_os2web_base_field_rotate'] = array(
+    'bundle' => 'os2web_base_contentpage',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'related_block' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_rotate',
+    'label' => 'Indløb / Udløb',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 16,
     ),
   );
 
@@ -2921,11 +2973,17 @@ function os2web_base_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_lead_img',
     'label' => 'Primære billede',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'alt_field_required' => 0,
       'default_image' => 0,
+      'epsacrop' => array(
+        'styles' => array(
+          'indholdsside' => 0,
+          'os2web_base_style_image' => 0,
+        ),
+      ),
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '10 MB',
@@ -2940,31 +2998,21 @@ function os2web_base_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
+          'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
-          0 => 'image',
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
-        'browser_plugins' => array(),
-        'collapsible' => 2,
-        'croparea' => '500x500',
-        'enforce_minimum' => 1,
-        'enforce_ratio' => 1,
-        'filefield_sources' => array(
-          'filefield_sources' => array(),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
+        'browser_plugins' => array(
+          'media_internet' => 0,
+          'upload' => 0,
+          'youtube' => 0,
         ),
-        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
-        'resolution' => '214x116',
       ),
       'type' => 'media_generic',
       'weight' => -1,
@@ -3732,6 +3780,65 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-os2web_base_rotating_image-field_os2web_base_field_rotate'
+  $field_instances['node-os2web_base_rotating_image-field_os2web_base_field_rotate'] = array(
+    'bundle' => 'os2web_base_rotating_image',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 4,
+      ),
+      'related_block' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_rotate',
+    'label' => 'Indløb / Udløb',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-os2web_base_rotating_image-field_os2web_base_field_struct'
   $field_instances['node-os2web_base_rotating_image-field_os2web_base_field_struct'] = array(
     'bundle' => 'os2web_base_rotating_image',
@@ -4378,6 +4485,7 @@ function os2web_base_field_default_field_instances() {
   t('Gruppe ID');
   t('Hvis du har yderligere information, links eller fakta som er unikke for denne side, kan det tilføjes i dette felt. Indholdet vises i højre kolonne sammen med siden.');
   t('Indhold');
+  t('Indløb / Udløb');
   t('Intro');
   t('Intro / Resume (maks 2 linier!)');
   t('Is subsite');
