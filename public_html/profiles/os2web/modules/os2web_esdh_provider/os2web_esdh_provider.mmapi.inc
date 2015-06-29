@@ -444,7 +444,7 @@ function _os2web_esdh_provider_import_bullets($bullets) {
     // Set some default values.
     node_object_prepare($node);
     // Let's add body field.
-    $node->field_os2web_meetings_bpa_body[$node->language][0]['value'] = $bullet['body'];
+    $node->field_os2web_meetings_bpa_body[$node->language][0]['value'] = check_markup($bullet['body'], 'os2web_html_purifier', '', FALSE);
     // If field has a format, you need to define it.
     // Here we define a default filtered_html format for a body field.
     $node->field_os2web_meetings_bpa_body[$node->language][0]['format'] = _os2web_esdh_provider_bpa_body_format();
