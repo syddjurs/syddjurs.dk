@@ -272,8 +272,8 @@ function os2web_meetings_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Lukket punkt.',
-        1 => '',
+        0 => '',
+        1 => 'Lukket punkt.',
       ),
       'allowed_values_function' => '',
     ),
