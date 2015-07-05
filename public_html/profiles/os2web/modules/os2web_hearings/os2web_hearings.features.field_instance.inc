@@ -342,6 +342,88 @@ function os2web_hearings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_base_case_no'
+  $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_case_no'] = array(
+    'bundle' => 'os2web_hearings_hearing_case',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Indtast sagsnummer. Bruges i forbindelse med arkivering til Acadre. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_case_no',
+    'label' => 'Sagsnummer',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'blokindhold' => 'blokindhold',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'os2web_html_purifier' => 'os2web_html_purifier',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'raw' => 'raw',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'blokindhold' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -10,
+            ),
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'os2web_html_purifier' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -6,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+            'raw' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
@@ -681,6 +763,48 @@ function os2web_hearings_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_base_send_to_acadre'
+  $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_send_to_acadre'] = array(
+    'bundle' => 'os2web_hearings_hearing_case',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_send_to_acadre',
+    'label' => 'Send til Acadre ved publisering',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_hearings_enddate'
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_enddate'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
@@ -836,52 +960,6 @@ function os2web_hearings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_hearings_startdate'
-  $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_startdate'] = array(
-    'bundle' => 'os2web_hearings_hearing_case',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_hearings_startdate',
-    'label' => 'Startdato',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'Y-m-d H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_select',
-      'weight' => 15,
-    ),
-  );
-
   // Exported field_instance: 'node-os2web_hearings_hearing_case-field_os2web_hearings_type'
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_type'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
@@ -963,6 +1041,7 @@ function os2web_hearings_field_default_field_instances() {
   t('Filer');
   t('Høringsfrist / Klagefrist');
   t('Indhold');
+  t('Indtast sagsnummer. Bruges i forbindelse med arkivering til Acadre. ');
   t('KL Emneord');
   t('Møder');
   t('Organisation');
@@ -970,6 +1049,8 @@ function os2web_hearings_field_default_field_instances() {
   t('Politik');
   t('Primære billede');
   t('Resume (maks 2 linier!)');
+  t('Sagsnummer');
+  t('Send til Acadre ved publisering');
   t('Slutdato');
   t('Startdato');
   t('Stikord');
