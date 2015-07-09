@@ -124,7 +124,7 @@ class TraenPublishingDestinationSystemService {
       }
 
       // If there only are ONE rule, xml will not return an array.
-      if (!is_array($data->entityItem->TriggerRules)) {
+      if (!is_array($data->entityItem->TriggerRules->TriggerRule)) {
         $rule = $data->entityItem->TriggerRules->TriggerRule;
         if ($rule->ID && trim($rule->Name)) {
           $publication['rules'][$rule->ID] = array(
@@ -134,7 +134,7 @@ class TraenPublishingDestinationSystemService {
         }
       }
       else {
-        foreach ($data->entityItem->TriggerRules as $rule) {
+        foreach ($data->entityItem->TriggerRules->TriggerRule as $rule) {
           if (trim($rule->ID) && trim($rule->Name) && trim($rule->Tag)) {
             $publication['rules'][$rule->ID] = array(
               'name' => $rule->Name,
