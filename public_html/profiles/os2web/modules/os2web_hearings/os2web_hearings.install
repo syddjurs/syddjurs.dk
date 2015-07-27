@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function os2web_hearings_uninstall() {
+  variable_del('os2web_hearings_email_to_acadre');
+}
