@@ -10,7 +10,7 @@
 function os2web_base_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access site-wide contact form.
+  // Exported permission: 'access site-wide contact form'.
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',
     'roles' => array(
@@ -20,7 +20,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: access user contact forms.
+  // Exported permission: 'access user contact forms'.
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
     'roles' => array(
@@ -29,7 +29,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: administer contact forms.
+  // Exported permission: 'administer contact forms'.
   $permissions['administer contact forms'] = array(
     'name' => 'administer contact forms',
     'roles' => array(
@@ -39,7 +39,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: administer content types.
+  // Exported permission: 'administer content types'.
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
     'roles' => array(
@@ -49,7 +49,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer filters.
+  // Exported permission: 'administer filters'.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
     'roles' => array(
@@ -59,7 +59,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: administer image styles.
+  // Exported permission: 'administer image styles'.
   $permissions['administer image styles'] = array(
     'name' => 'administer image styles',
     'roles' => array(
@@ -69,7 +69,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'image',
   );
 
-  // Exported permission: bypass node access.
+  // Exported permission: 'bypass node access'.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
     'roles' => array(
@@ -79,7 +79,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: use text format filtered_html.
+  // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
@@ -91,7 +91,7 @@ function os2web_base_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: use text format full_html.
+  // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
     'roles' => array(
