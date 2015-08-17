@@ -147,7 +147,7 @@
 
               $text = '';
               foreach ($item->getElementsByTagName('div')->item(0)->childNodes as $articletext) {
-                $text .= $doc->saveHTML($articletext);
+                $text .= str_replace('&#13;', '', $doc->saveXML($articletext, LIBXML_NOEMPTYTAG));
               }
               $microno++;
 
