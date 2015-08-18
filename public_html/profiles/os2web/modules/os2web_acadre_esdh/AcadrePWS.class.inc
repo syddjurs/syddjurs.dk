@@ -298,7 +298,10 @@ class AcadrePWS {
       else {
         // Something is wrong, we are trying to use a string which is not XML.
         // This could be because of some error in Acadre.
-        $err_message = t('A malformed XML document was recieved from Acadre, doing an GetAllDocuments call.');
+        $err_message = t('A malformed XML document was recieved from Acadre, doing an GetAllDocuments call. CaseID: !id', array('!id' => $id));
+        // Save error to watchdog aswell.
+        watchdog('acadre_pws', $err_message . '- in ' . __FUNCTION__, NULL, WATCHDOG_WARNING);
+
         foreach(libxml_get_errors() as $error) {
           $err_message .= "\n" . $error;
         }
