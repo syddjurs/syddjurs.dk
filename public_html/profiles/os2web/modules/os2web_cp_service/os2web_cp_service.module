@@ -354,6 +354,7 @@ function os2web_cp_service_alter_configuration($key, $value) {
  *   TRUE on successful content creation.
  */
 function os2web_cp_service_create_case(array $data) {
+  watchdog('os2web_cp_service', 'Preparing to create cp case', array());
   // Prepare data.
   $data = array_replace_recursive(os2web_cp_service_default_case(), $data);
 
@@ -409,6 +410,8 @@ function os2web_cp_service_create_case(array $data) {
       $node->title = (string) !empty($data['fields']['Sagstitel'])?$data['fields']['Sagstitel'] : $data['fields']['Officiel titel'];
       break;
   }
+
+  watchdog('os2web_cp_service', 'Create CP Case: %title', array('%title' => $node->title));
 
   // Has all fields of a node type "case".
   $node_fields = field_info_instances('node', 'os2web_cp_service_cp_case');
