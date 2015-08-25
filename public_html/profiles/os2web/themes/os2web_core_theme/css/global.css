@@ -2914,6 +2914,7 @@ div.breadcrumb.you-are-here {
   font-size: 13px;
   padding: 22px 0 15px 6px;
   font-style: italic;
+  line-height: 150%;
 }
 
 .view-os2web-ofir-job-lists .last-updated-node {
