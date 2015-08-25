@@ -1275,8 +1275,7 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-os2web_base_contentpage-field_os2web_base_field_rotate'
+  // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_rotate'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_rotate'] = array(
     'bundle' => 'os2web_base_contentpage',
     'deleted' => 0,
@@ -1328,8 +1327,7 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-os2web_base_contentpage-field_os2web_base_field_selfserv'
+  // Exported field_instance: 'node-os2web_base_contentpage-field_os2web_base_field_selfserv'
   $field_instances['node-os2web_base_contentpage-field_os2web_base_field_selfserv'] = array(
     'bundle' => 'os2web_base_contentpage',
     'default_value' => NULL,
@@ -3754,8 +3752,7 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-os2web_base_rotating_image-field_os2web_base_field_rotate'
+  // Exported field_instance: 'node-os2web_base_rotating_image-field_os2web_base_field_rotate'
   $field_instances['node-os2web_base_rotating_image-field_os2web_base_field_rotate'] = array(
     'bundle' => 'os2web_base_rotating_image',
     'deleted' => 0,
@@ -3814,8 +3811,7 @@ function os2web_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-os2web_base_rotating_image-field_os2web_base_field_struct'
+  // Exported field_instance: 'node-os2web_base_rotating_image-field_os2web_base_field_struct'
   $field_instances['node-os2web_base_rotating_image-field_os2web_base_field_struct'] = array(
     'bundle' => 'os2web_base_rotating_image',
     'default_value' => NULL,
