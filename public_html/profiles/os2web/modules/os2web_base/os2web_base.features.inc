@@ -153,8 +153,8 @@ function os2web_base_image_default_styles() {
       1 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 460,
-          'height' => 260,
+          'width' => 670,
+          'height' => 292,
         ),
         'weight' => 1,
       ),
