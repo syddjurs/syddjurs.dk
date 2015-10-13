@@ -131,11 +131,12 @@ function os2web_esdh_field_update_7004() {
   db_create_table('cache_os2web_esdh_field', $schema);
 }
 
-
 /**
- * Implements hook_uninstall().
+ * Remove Acadre and cache tables.
  */
-function os2web_esdh_field_uninstall() {
+function os2web_esdh_field_update_7005() {
+  drupal_uninstall_schema('os2web_esdh_field');
+  db_drop_table('cache_os2web_esdh_field');
   variable_del('esdh_limit_cron');
   variable_del('esdh_check_start');
   variable_del('esdh_last_run');

@@ -11,93 +11,6 @@ define('ACADRE_CM_ACCESS_OPEN_DOCUMENT', '3');
 /* Field information hooks */
 
 /**
- * Implements hook_menu().
- */
-function os2web_esdh_field_menu() {
-  $items = array();
-
-  $items['admin/config/services/esdh_import'] = array(
-    'title'            => 'ESDH Import',
-    'description'      => 'Settings for ESDH Import',
-    'page callback'    => 'drupal_get_form',
-    'page arguments'   => array('esdh_settings'),
-    'access arguments' => array('administrator'),
-  );
-
-  return $items;
-}
-
-/**
- * Implements hook_flush_caches().
- */
-function os2web_esdh_field_flush_caches() {
-  return array('cache_os2web_esdh_field');
-}
-
-/**
- * ESDH settings form
- */
-function esdh_settings() {
-
-  $form['esdh_limit_cron'] = array(
-    '#title' => t('Limit ESDH Control to run only once per day'),
-    '#default_value' => variable_get('esdh_limit_cron', FALSE),
-    '#type' => 'checkbox',
-  );
-
-  $form['esdh_check'] = array(
-    '#type' => 'container',
-    '#states' => array(
-      'visible' => array(
-        ':input[name="esdh_limit_cron"]' => array('checked' => TRUE),
-      ),
-    ),
-  );
-
-  $form['esdh_check']['esdh_check_start'] = array(
-    '#title' => t('Start ESDH checks at hour'),
-    '#type' => 'select',
-    '#description' => t('The hour (0-23) to allow the check to run.'),
-    '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23),
-    '#default_value' => variable_get('esdh_check_start', 0),
-  );
-
-  $esdh_last_run = variable_get('esdh_last_run', 0);
-  $esdh_last_run = ($esdh_last_run != 0 ? format_date($esdh_last_run, 'long') : 'never');
-
-  $form['last_run'] = array(
-    '#type' => 'markup',
-    '#prefix' => '<p>ESDH checks was last run: ',
-    '#suffix' => '</p>',
-    '#markup' => $esdh_last_run,
-  );
-
-  $form['os2web_esdh_field_cache_expire'] = array(
-    '#title' => t('Expiration in seconds for ESDH data cache'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_esdh_field_cache_expire', 10),
-    '#description' => t('How long should the data be saved for cached requests'),
-  );
-
-  $form['clear_cache'] = array(
-    '#type' => 'submit',
-    '#submit' => array('os2web_esdh_field_clear_cache'),
-    '#value' => t('Clear cached data'),
-    '#description' => t('This does only clear ESDH field cache'),
-  );
-
-  return system_settings_form($form);
-}
-
-/**
- * Clear cache callback.
- */
-function os2web_esdh_field_clear_cache() {
-  cache_clear_all("*", "cache_os2web_esdh_field", "*");
-  drupal_set_message(t('ESDH field cache has been cleared'));
-}
-
-/**
  * Implements hook_field_info().
  */
 function os2web_esdh_field_field_info() {
@@ -299,58 +212,19 @@ function os2web_esdh_field_theme() {
  */
 function theme_os2web_esdh_case($vars) {
 
-  if (!function_exists('os2web_esdh_provider_has_api')) {
-    return '';
+  $html = '';
+
+  // Query CP Document for document matching case id(s).
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'os2web_cp_service_cp_document')
+    ->fieldCondition('field_os2web_cp_service_case_id', 'value', $vars['id'], 'IN');
+  $result = $query->execute();
+
+  if (count($result > 0)) {
+    $document_nodes = node_load_multiple(array_keys($result['node']));
+    $html = theme('os2web_esdh_document', array('id' => $document_nodes, 'iscase' => TRUE));
   }
-
-  // Check for correct api and required functions are implemented.
-  if (!os2web_esdh_provider_has_api('cm')) {
-    drupal_set_message(t('Error in case lookup API. Check status.'), 'error');
-    return '';
-  }
-  $ids = $vars['id'];
-  if (!is_array($ids)) {
-    $ids = array($ids);
-  }
-  $docids = array();
-  try {
-    foreach ($ids as $id) {
-      // Try to fetch cached data for the case.
-      $cache_name = 'case:' . $id;
-      $data = cache_get($cache_name, 'cache_os2web_esdh_field');
-
-      // Use the cached data, if it's not expired.
-      if (is_object($data) && $data->expire > time()) {
-        $docids = array_merge($docids, $data->data);
-      }
-
-      // Fetch fresh data.
-      else {
-        if (_os2web_esdh_field_case_access($id)) {
-          $return = os2web_esdh_provider_invoke('cm', 'get_case_docs', $id);
-
-          $expire = time() + variable_get('os2web_esdh_field_cache_expire', 10);
-          cache_set($cache_name, $return, 'cache_os2web_esdh_field', $expire);
-
-          $docids = array_merge($docids, $return);
-        }
-      }
-    }
-  }
-  catch (Exception $e) {
-    // Show a polite message if the connection to Acadre is broken.
-    $markup = '<div class="messages error"><ul><li>';
-    $markup .= t('There was a problem connecting to the case service provider. Sorry for the inconvenience.');
-    $markup .= '</li></ul></div>';
-
-    $page['region'] = array(
-      '#type' => 'markup',
-      '#markup' => $markup,
-    );
-    return render($page);
-  }
-
-  $html = theme('os2web_esdh_document', array('id' => $docids, 'iscase' => TRUE));
   return $html;
 }
 
@@ -358,6 +232,9 @@ function theme_os2web_esdh_case($vars) {
  * Implements theme_IDENTIFIER().
  */
 function theme_os2web_esdh_document($vars) {
+
+  $html = '';
+
   $path = libraries_get_path('tablesorter');
   drupal_add_js($path . '/jquery.tablesorter.min.js');
   drupal_add_js(drupal_get_path('module', 'os2web_esdh_field') . '/os2web_esdh_field.js');
@@ -366,59 +243,43 @@ function theme_os2web_esdh_document($vars) {
     return '';
   }
 
-  // Check for correct api and required functions are implemented.
-  if (!os2web_esdh_provider_has_api('cm')) {
-    drupal_set_message(t('Error in document lookup API. Check status.'), 'error');
-    return '';
+  // Query for CP document matching document id
+  if (!isset($vars['iscase'])) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'os2web_cp_service_cp_document')
+      ->fieldCondition('field_os2web_cp_service_doc_id', 'value', $vars['id'], 'IN');
+    $result = $query->execute();
+
+    $vars['id'] = node_load_multiple(array_keys($result['node']));
+  }
+
+  // If no documents attached, show error message
+  if (count($vars['id']) == 0) {
+    if (isset($vars['iscase'])) {
+      $html .= '<p>' . t('This case contains no public documents.') . '</p>';
+    }
+    return $html;
   }
 
   $id = $vars['id'];
   if (!is_array($id)) {
     $id = array($id);
   }
-  $html = '';
 
-  $rows = array();
+  // Create $rows array for use in table formatter
   foreach ($id as $docid) {
-    $file = _os2web_esdh_field_get_file_by_did($docid);
-    // If the file exists, fetch the document metadata.
-    if (is_object($file)) {
-      $cache_name = 'document_meta:' . $docid;
-      $data = cache_get($cache_name, 'cache_os2web_esdh_field');
+    $file_id = field_get_items('node', $docid, 'field_os2web_cp_service_file_id');
 
-      // Try using cache.
-      if (is_object($data) && $data->expire > time()) {
-        $document_meta = $data->data;
-      }
-      // Fetch fresh data.
-      else {
-        $document_meta = os2web_esdh_provider_invoke('cm', 'get_document', $docid);
+    // Display created date if edited date is not set.
+    $created_date = field_get_items('node', $docid, 'field_os2web_cp_service_date');
+    $edited_date = field_get_items('node', $docid, 'field_os2web_cp_service_edited');
+    $display_date = (is_array($edited_date) ? $edited_date : $created_date);
 
-        $expire = time() + variable_get('os2web_esdh_field_cache_expire', 10);
-        cache_set($cache_name, $document_meta, 'cache_os2web_esdh_field', $expire);
-      }
-
-      if ($document_meta) {
-        if (_os2web_esdh_field_doc_access($docid, $document_meta)) {
-
-          $rows[] = array(
-            l($document_meta['title'], file_create_url($file->uri), array('attributes' => array('target' => '_blank'))),
-            '<span class="documentdate">' . format_date(strtotime($document_meta['last_update']), 'custom', 'd/m/Y') . '</span>',
-          );
-        }
-      }
-    }
-    // If the file is not fetched yet, add it to cron. Document will available
-    // when the files are present.
-    else {
-      _os2web_esdh_field_add_to_cron($docid);
-    }
-  }
-  if (count($rows) == 0) {
-    if (isset($vars['iscase'])) {
-      $html .= '<p>' . t('This case contains no public documents.') . '</p>';
-    }
-    return $html;
+    $rows[] = array(
+      l($docid->title, 'os2web/service/gf/v1/' . $file_id[0]['safe_value'], array('attributes' => array('target' => '_blank'))),
+      '<span class="documentdate">' . format_date(strtotime($display_date[0]['value']), 'custom', 'd/m/Y') . '</span>',
+    );
   }
 
   $header = array(
@@ -435,388 +296,6 @@ function theme_os2web_esdh_document($vars) {
   ));
 
   return $html;
-}
-/**
- * Checks access conditions for a case.
- *
- * @param int $caseid
- *   Case id
- *
- * @return bool
- *   True on access granted
- */
-function _os2web_esdh_field_case_access($caseid) {
-  $case = os2web_esdh_provider_invoke('cm', 'get_case_data', $caseid);
-  if (FALSE === $case) {
-    return FALSE;
-  }
-  $access_grant = array(
-    'accesscode' => 'KK',
-    'restricted' => ACADRE_CM_ACCESS_OPEN_CASE,
-  );
-  $access = array(
-    'accesscode' => $case['access_code'],
-    'restricted' => $case['restricted_from_public'],
-  );
-  return _os2web_esdh_field_array_compare($access, $access_grant);
-}
-
-/**
- * Checks access conditions for a document.
- *
- * @param int $docid
- *   Document id
- *
- * @return bool
- *   True on access granted
- */
-function _os2web_esdh_field_doc_access($docid, $doc = NULL) {
-  if (!$doc) {
-    $doc = os2web_esdh_provider_invoke('cm', 'get_document', $docid);
-  }
-  $access_grant = array(
-    'accesscode' => 'KK',
-    'publication' => ACADRE_CM_ACCESS_OPEN_DOCUMENT,
-    'lockstatus' => TRUE,
-  );
-  $access = array(
-    'accesscode' => $doc['access_code'],
-    'publication' => $doc['publication_indicator'],
-    'lockstatus' => $doc['lock_status'],
-  );
-  return _os2web_esdh_field_array_compare($access, $access_grant);
-}
-
-/**
- * Helper function that compares two arrays.
- * @access protected
- *
- * @param array $a1
- *   First array
- * @param array $a2
- *   Second array
- *
- * @return bool
- *   True if all keys in $a1 is equivilent in $a2
- */
-function _os2web_esdh_field_array_compare(array $a1, array $a2) {
-  $result = TRUE;
-  foreach ($a1 as $key => $value) {
-    if (isset($a2[$key]) && $a2[$key] === $value) {
-      $result = $result && TRUE;
-    }
-    else {
-      $result = $result && FALSE;
-    }
-  }
-  return $result;
-}
-
-/**
- * Implements hook_node_insert().
- */
-function os2web_esdh_field_node_insert($node)
-{
-  if(!empty($node->field_os2web_base_field_case)) {
-    _os2web_esdh_field_update_cm_documents_from_pws($node);
-  }
-}
-
-/**
- * Implements hook_node_update().
- */
-function os2web_esdh_field_node_update($node)
-{
-  if(!empty($node->field_os2web_base_field_case)) {
-    _os2web_esdh_field_update_cm_documents_from_pws($node);
-  }
-}
-
-/**
- * Helper function to call the PWS and put documents in queue for updates.
- *
- * @param  Object $node
- *   The node.
- */
-function _os2web_esdh_field_update_cm_documents_from_pws($node) {
-  // Check for correct api and required functions are implemented.
-  if (!os2web_esdh_provider_has_api('cm')) {
-    return;
-  }
-
-  $cases = explode(',', preg_replace('/\s+/', '', $node->field_os2web_base_field_case[LANGUAGE_NONE][0]['os2web_esdh_field_case_ident']));
-  $documents = explode(',', preg_replace('/\s+/', '', $node->field_os2web_base_field_doc[LANGUAGE_NONE][0]['os2web_esdh_field_doc_ident']));
-
-  // Translate the document to correct ID.
-  foreach ($documents as &$document) {
-    // Translate the SSSSSS/YY serial into database identifier.
-    if (!is_numeric($document)) {
-      $document = ops2web_acadre_esdh_lookup_doc($doc_id);
-    }
-  }
-
-  foreach ($cases as $key => $case_id) {
-    try {
-      $case = os2web_esdh_provider_invoke('cm', 'get_case_data', $case_id);
-
-      if (!$case) {
-        // Ignore failed case lookups.
-        continue;
-      }
-
-      if (_os2web_esdh_field_case_access($case_id)) {
-        // Document has the appropiate access settings.
-        $documents = array_merge($documents, os2web_esdh_provider_invoke('cm', 'get_case_docs', $case_id));
-      }
-    } catch(Exception $e) {
-      watchdog('os2web_esdh_field', $e, NULL, WATCHDOG_ERROR);
-    }
-  }
-
-  $documents = array_filter($documents);
-
-  if (count($documents)) {
-    foreach ($documents as $document_id) {
-      _os2web_esdh_field_add_to_cron($document_id);
-    }
-  }
-}
-
-/**
- * Implements hook_cron().
- */
-function os2web_esdh_field_cron() {
-
-  // Check if job run limitation is enabled
-  if (variable_get('esdh_limit_cron')) {
-
-    $esdh_last_run     = variable_get('esdh_last_run', FALSE);
-    $today_midnight    = strtotime('today');
-    $tomorrow_midnight = strtotime('today + 1 day');
-    $now               = time();
-    $job_start_time    = $today_midnight + (60 * 60 * variable_get('esdh_check_start', 0));
-
-    // Check if job has already run today
-    if (($esdh_last_run >= $today_midnight) && ($esdh_last_run <= $tomorrow_midnight)) {
-
-      // Job has already run. Return and do nothing.
-      return;
-    }
-
-    // Job haven't run today. Check if the time is later than the user specified time
-    if ($now <= $job_start_time) {
-
-      // We're earlier than the user specified time. Return and do nothing.
-      return;
-    }
-  }
-
-  // We're good to continue.
-  // Save the timestamp for when cron was last run
-  variable_set('esdh_last_run', time());
-
-  // Check for correct api and required functions are implemented.
-  if (!os2web_esdh_provider_has_api('cm')) {
-    return;
-  }
-
-  _os2web_esdh_field_add_all_documents_to_requeue();
-
-  // Get documents which needs updating and put them in a queue.
-  $queue = DrupalQueue::get('os2web_esdh_field_cm_doc_queue');
-
-  if ($queue->numberOfItems() == 0) {
-    $query = db_select('os2web_esdh_field_cm_documents', 'd')
-      ->fields('d')
-      ->condition('job_info', 'update')
-      ->orderBy('d.last_updated', 'DESC')
-      ->range(0, 100);
-    $documents = $query->execute()->fetchAll(PDO::FETCH_ASSOC);
-    watchdog('os2web_esdh_field', 'Adding %count documents to update queue.', array('%count' => count($documents)), WATCHDOG_INFO);
-    if (count($documents)) {
-      foreach ($documents as $document) {
-        $queue->createItem($document);
-      }
-    }
-  }
-}
-
-function _os2web_esdh_field_add_all_documents_to_requeue() {
-  // Check for correct api and required functions are implemented.
-  if (!os2web_esdh_provider_has_api('cm')) {
-    return;
-  }
-
-  // 1.
-  // Get all documents we now, and ask CM of new ones..
-  $old_documents = db_select('os2web_esdh_field_cm_documents', 'd')
-    ->condition('job_info', 'update', '!=')
-    ->fields('d')
-    ->execute()
-    ->fetchAll(PDO::FETCH_ASSOC);
-
-  $old_cases = db_select('field_data_field_os2web_base_field_case', 'd')
-    ->fields('d', array('field_os2web_base_field_case_os2web_esdh_field_case_ident'))
-    ->execute()
-    ->fetchAll(PDO::FETCH_ASSOC);
-
-  $document_to_update = array();
-
-  foreach ($old_documents as $old_document) {
-    $document_to_update[$old_document['did']] = $old_document['last_updated'];
-  }
-
-  foreach ($old_cases as $old_case) {
-    $case_ids = explode(',', preg_replace('/\s+/', '', $old_case['field_os2web_base_field_case_os2web_esdh_field_case_ident']));
-    foreach ($case_ids as $case_id) {
-      if (!empty($case_id)) {
-        // Get all cases documents from CM. If any new are added, they are also
-        // added to the queue.
-        $retrived_documents = os2web_esdh_provider_invoke('cm', 'get_case_docs', $case_id);
-        foreach ($retrived_documents as $retrived_document) {
-          if (!isset($document_to_update[$retrived_document])) {
-            $document_to_update[$retrived_document] = '1970-01-01 00:00:00';
-          }
-        }
-      }
-    }
-  }
-
-  // 2.
-  // Get all meta data for every document we now.
-  $newest_documents = array();
-  $esdh_documents = os2web_esdh_provider_invoke('cm', 'get_documents', array_keys($document_to_update));
-
-  // 3. Update all documents which has a newer version.
-  foreach ($esdh_documents as $esdh_document) {
-    if(isset($document_to_update[$esdh_document->DocumentIdentifier]) &&
-       strtotime($document_to_update[$esdh_document->DocumentIdentifier]) < strtotime($esdh_document->ChangedDateTime) &&
-       _os2web_esdh_field_doc_access($esdh_document->DocumentIdentifier) &&
-       _os2web_esdh_field_case_access($esdh_document->CaseFileReference)) {
-
-      _os2web_esdh_field_add_to_cron($esdh_document->DocumentIdentifier);
-    }
-  }
-}
-
-/**
- * Implements hook_cron_queue_info().
- */
-function os2web_esdh_field_cron_queue_info() {
-  $queues['os2web_esdh_field_cm_doc_queue'] = array(
-    'worker callback' => '_os2web_esdh_field_update_document',
-    'time' => 300,
-  );
-  return $queues;
-}
-
-/**
- * Cron worker function to update a document from Acadre PWS.
- * @param  array $document
- *   The document
- */
-function _os2web_esdh_field_update_document($document) {
-  if (isset($document['did'])) {
-
-    $doc = os2web_esdh_provider_invoke('cm', 'get_document', $document['did']);
-    if (_os2web_esdh_field_doc_access($document['did'])) {
-      // Only show public documents.
-      if (($doc !== FALSE) && _os2web_esdh_field_case_access($doc['case_reference'])) {
-        $file = os2web_esdh_provider_invoke('cm', 'get_document_file', $document['did']);
-        if (isset($file->fid)) {
-          db_update('os2web_esdh_field_cm_documents')
-            ->fields(array(
-              'fid' => $file->fid,
-              'job_info' => 'updated',
-              'last_updated' => date("Y-m-d H:i:s", time()),
-            ))
-            ->condition('did', $document['did'])
-            ->execute();
-
-          watchdog('os2web_esdh_field', 'Document (did: %did, fid: %fid) was updated from ESDH.', array('%did' => $document['did'], '%fid' => $file->fid), WATCHDOG_INFO);
-          return TRUE;
-        }
-      }
-    }
-    _os2web_esdh_field_delete_doc_by_did($document['did']);
-    watchdog('os2web_esdh_field', 'Document (did: %did) deleted fom queue.', array('%did' => $document['did']), WATCHDOG_INFO);
-  }
-}
-
-/**
- * Helper function to get the file instance of a document.
- *
- * @param  [int] $document_id The document ID
- * @return Object             The drupal file Object.
- */
-function _os2web_esdh_field_get_file_by_did($document_id) {
-
-  $doc_in_db = _os2web_esdh_field_get_doc_by_did($document_id);
-
-  if ($doc_in_db && !empty($doc_in_db['fid'])) {
-    return file_load($doc_in_db['fid']);
-  }
-  return NULL;
-}
-
-/**
- * Helper function to get the document by document id.
- *
- * @param  [int] $document_id The document ID
- * @return array             The document.
- */
-function _os2web_esdh_field_get_doc_by_did($document_id) {
-  $doc_in_db = db_select('os2web_esdh_field_cm_documents', 'd')
-    ->fields('d')
-    ->condition('did', $document_id)
-    ->execute()
-    ->fetchAssoc();
-
-  return $doc_in_db;
-}
-
-/**
- * Helper function to delete an document from out table.
- *
- * @param  [int] $document_id The document ID
- */
-function _os2web_esdh_field_delete_doc_by_did($document_id) {
-  $doc_in_db = db_delete('os2web_esdh_field_cm_documents')
-    ->condition('did', $document_id)
-    ->execute();
-}
-
-/**
- * Helper function to add an document to the cron table.
- *
- * If the entry allready exists it will be updated to be processed again.
- *
- * @param  int $document_id
- *   The document ID
- */
-function _os2web_esdh_field_add_to_cron($document_id)
-{
-  $doc_in_db = db_select('os2web_esdh_field_cm_documents', 'd')
-    ->fields('d')
-    ->condition('did', $document_id)
-    ->execute()
-    ->fetchAssoc();
-  if (!$doc_in_db) {
-    db_insert('os2web_esdh_field_cm_documents')->fields(array('did', 'job_info'))
-      ->values(array(
-        'did' => $document_id,
-        'job_info' => 'update'
-      ))
-      ->execute();
-  }
-  else {
-    db_update('os2web_esdh_field_cm_documents')
-      ->fields(array(
-        'job_info' => 'update',
-      ))
-      ->condition('did', $document_id)
-      ->execute();
-  }
 }
 
 /**
