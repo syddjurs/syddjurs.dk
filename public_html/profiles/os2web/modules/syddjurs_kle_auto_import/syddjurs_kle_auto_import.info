@@ -1,0 +1,4 @@
+name = KLE Auto Updater
+description = Automatically updates KLE terms from remote XML file.
+core = 7.x
+
