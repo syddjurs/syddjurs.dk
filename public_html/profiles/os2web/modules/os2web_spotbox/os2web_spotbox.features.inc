@@ -7,16 +7,13 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function os2web_spotbox_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function os2web_spotbox_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -25,7 +22,7 @@ function os2web_spotbox_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function os2web_spotbox_views_api() {
+function os2web_spotbox_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -37,16 +34,8 @@ function os2web_spotbox_image_default_styles() {
 
   // Exported image style: os2web_spotbox_image_300.
   $styles['os2web_spotbox_image_300'] = array(
-    'name' => 'os2web_spotbox_image_300',
     'effects' => array(
       16 => array(
-        'label' => 'Skalér og beskær',
-        'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 300,
@@ -59,16 +48,8 @@ function os2web_spotbox_image_default_styles() {
 
   // Exported image style: os2web_spotbox_image_right.
   $styles['os2web_spotbox_image_right'] = array(
-    'name' => 'os2web_spotbox_image_right',
     'effects' => array(
       7 => array(
-        'label' => 'Skalér',
-        'help' => 'Skalering bevarer billedets højde-bredde-forhold. Hvis kun den ene dimension angives vil den anden blive beregnet.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 230,
@@ -78,13 +59,6 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 1,
       ),
       9 => array(
-        'label' => 'Beskær',
-        'help' => 'Beskæring fjerner dele af billedet for at give det de angivne dimensioner.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
         'name' => 'image_crop',
         'data' => array(
           'width' => 230,
@@ -98,16 +72,8 @@ function os2web_spotbox_image_default_styles() {
 
   // Exported image style: os2web_spotbox_image_spot5.
   $styles['os2web_spotbox_image_spot5'] = array(
-    'name' => 'os2web_spotbox_image_spot5',
     'effects' => array(
       1 => array(
-        'label' => 'Skalér og beskær',
-        'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 290,
@@ -120,16 +86,8 @@ function os2web_spotbox_image_default_styles() {
 
   // Exported image style: os2web_spotbox_image_tall.
   $styles['os2web_spotbox_image_tall'] = array(
-    'name' => 'os2web_spotbox_image_tall',
     'effects' => array(
       1 => array(
-        'label' => 'Beskær',
-        'help' => 'Beskæring fjerner dele af billedet for at give det de angivne dimensioner.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
         'name' => 'image_crop',
         'data' => array(
           'width' => 230,
@@ -143,16 +101,8 @@ function os2web_spotbox_image_default_styles() {
 
   // Exported image style: os2web_spotbox_image_video_front.
   $styles['os2web_spotbox_image_video_front'] = array(
-    'name' => 'os2web_spotbox_image_video_front',
     'effects' => array(
       8 => array(
-        'label' => 'Skalér',
-        'help' => 'Skalering bevarer billedets højde-bredde-forhold. Hvis kun den ene dimension angives vil den anden blive beregnet.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 310,
@@ -162,13 +112,6 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 1,
       ),
       10 => array(
-        'label' => 'Beskær',
-        'help' => 'Beskæring fjerner dele af billedet for at give det de angivne dimensioner.',
-        'effect callback' => 'image_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_crop_form',
-        'summary theme' => 'image_crop_summary',
-        'module' => 'image',
         'name' => 'image_crop',
         'data' => array(
           'width' => 310,
@@ -197,5 +140,6 @@ function os2web_spotbox_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
