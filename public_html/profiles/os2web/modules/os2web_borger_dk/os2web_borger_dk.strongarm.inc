@@ -92,6 +92,12 @@ function os2web_borger_dk_strongarm() {
       'meeting_detail_view' => array(
         'custom_settings' => FALSE,
       ),
+      'os2web_meetings_meeting_detail_view' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -99,7 +105,7 @@ function os2web_borger_dk_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '13',
         ),
       ),
       'display' => array(),
