@@ -175,7 +175,7 @@ function os2web_portals_citizen_default_page_manager_handlers() {
       'use_pager' => 0,
       'pager_id' => '0',
       'override_title' => 1,
-      'override_title_text' => '<a>Aktuelt</a>',
+      'override_title_text' => 'Aktuelt',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -264,7 +264,7 @@ function os2web_portals_citizen_default_page_manager_handlers() {
       'url' => '',
       'display' => 'blok_kulturnaut_indholdsside',
       'override_title' => 1,
-      'override_title_text' => '<a>DET SKER</a>',
+      'override_title_text' => 'DET SKER',
     );
     $pane->cache = array();
     $pane->style = array(
