@@ -30,6 +30,16 @@ function os2web_settings_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
+      'os2web_cpr_filter' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(
+          'modulus11_check' => 1,
+          'date_check' => 1,
+          'replace_all_dash' => 1,
+          'dummy_value' => 'XXXXXX-XXXX',
+        ),
+      ),
     ),
   );
 
@@ -41,25 +51,8 @@ function os2web_settings_filter_default_formats() {
     'status' => 1,
     'weight' => -9,
     'filters' => array(
-      'filter_url' => array(
-        'weight' => -48,
-        'status' => 1,
-        'settings' => array(
-          'filter_url_length' => 72,
-        ),
-      ),
-      'filter_autop' => array(
-        'weight' => -46,
-        'status' => 1,
-        'settings' => array(),
-      ),
       'media_filter' => array(
         'weight' => -45,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'filter_htmlcorrector' => array(
-        'weight' => -42,
         'status' => 1,
         'settings' => array(),
       ),

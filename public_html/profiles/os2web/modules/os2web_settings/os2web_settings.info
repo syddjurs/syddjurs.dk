@@ -2,7 +2,6 @@ name = OS2Web Settings
 description = Settings page on Admin. General Settings for OS2Web projects.
 core = 7.x
 package = OS2Web - Backend
-php = 5.2.4
 version = 7.x-1.0-beta1
 project = os2web_settings
 dependencies[] = better_formats
@@ -16,19 +15,23 @@ dependencies[] = media_internet
 dependencies[] = media_youtube
 dependencies[] = node
 dependencies[] = os2web_base
+dependencies[] = os2web_cpr_filter
 dependencies[] = pathauto
 dependencies[] = print
+dependencies[] = rules
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = workbench
 <<<<<<< HEAD
 dependencies[] = workbench_media
-dependencies[] = rules
-=======
+<<<<<<< HEAD
+features[user_permission][] = access workbench
 >>>>>>> develop
 datestamp = 1338117520
+>>>>>>> develop
+features[variable][] = cache_lifetime
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[filter][] = filtered_html
 features[filter][] = full_html
 features[user_permission][] = access content
@@ -50,12 +53,6 @@ features[user_permission][] = show format tips
 features[user_permission][] = show more format tips link
 features[user_permission][] = view own unpublished content
 features[user_permission][] = view revisions
-<<<<<<< HEAD
-features[user_permission][] = access workbench
-features[user_permission][] = administer workbench
-=======
->>>>>>> develop
-features[variable][] = cache_lifetime
 features[variable][] = cookiecontrol_fulltext
 features[variable][] = cookiecontrol_hideonaccept
 features[variable][] = cookiecontrol_onaccept

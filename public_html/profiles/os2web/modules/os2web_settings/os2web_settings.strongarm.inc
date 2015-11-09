@@ -13,13 +13,6 @@ function os2web_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'cache_lifetime';
-  $strongarm->value = '300';
-  $export['cache_lifetime'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'cookiecontrol_fulltext';
   $strongarm->value = '<p>Nogle cookies på hjemmsiden er vigtige for at sitet fungerer som forventet. De bruges for eksempel når du indsender en formular eller på anden måde får en personlig respons fra hjemmesiden.</p><p>Vi bruger også ikke essentielle cookies til, anonymt, at spore brugen af hjemmesiden. Hvis du ikke er interesseret i at vi bruger disse kan vi undlade at gemme nogen former for cookies. Men vi kan så ikke garantere at sitet fungerer fuldt ud.</p>';
   $export['cookiecontrol_fulltext'] = $strongarm;
@@ -49,7 +42,7 @@ function os2web_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cookiecontrol_privacynode';
-  $strongarm->value = '2942';
+  $strongarm->value = '296593';
   $export['cookiecontrol_privacynode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -63,7 +56,7 @@ function os2web_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cookiecontrol_startopen';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['cookiecontrol_startopen'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -119,7 +112,7 @@ function os2web_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_short';
-  $strongarm->value = 'Y-m-d H:i';
+  $strongarm->value = 'd-m-Y H:i';
   $export['date_format_short'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -252,7 +245,7 @@ function os2web_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'linkchecker_cleanup_links_last';
-  $strongarm->value = 1337260201;
+  $strongarm->value = 1447020901;
   $export['linkchecker_cleanup_links_last'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -261,7 +254,8 @@ function os2web_settings_strongarm() {
   $strongarm->name = 'linkchecker_disable_link_check_for_urls';
   $strongarm->value = 'example.com
 example.net
-example.org';
+example.org
+http://www.syddjurs.dk/Portaler/';
   $export['linkchecker_disable_link_check_for_urls'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -322,12 +316,15 @@ example.org';
     'tite_removal' => 'tite_removal',
     'filter_html' => 0,
     'media_filter' => 0,
-    'ds_code' => 0,
-    'float_filter' => 0,
+    'lightbox_disable_iframe_filter' => 0,
     'filter_url' => 0,
     'filter_htmlcorrector' => 0,
-    'php_code' => 0,
-    'balk_custom_migrate' => 0,
+    'lightbox2_gd_filter' => 0,
+    'lightbox2_filter' => 0,
+    'lightbox_iframe_filter' => 0,
+    'lightbox_modal_filter' => 0,
+    'lightbox_slideshow_filter' => 0,
+    'lightbox_video_filter' => 0,
     'filter_html_escape' => 0,
   );
   $export['linkchecker_filter_blacklist'] = $strongarm;
@@ -338,6 +335,7 @@ example.org';
   $strongarm->name = 'linkchecker_ignore_response_codes';
   $strongarm->value = '200
 206
+301
 302
 304
 401
@@ -363,37 +361,32 @@ example.org';
   $strongarm->api_version = 1;
   $strongarm->name = 'linkchecker_scan_nodetypes';
   $strongarm->value = array(
-    'contentpage' => 'contentpage',
-    'news' => 'news',
-    'selvbetjeningslinks' => 'selvbetjeningslinks',
+    'os2web_base_contentpage' => 'os2web_base_contentpage',
+    'os2web_base_news' => 'os2web_base_news',
     'os2web_spotbox_box' => 'os2web_spotbox_box',
-    'os2web_cp_case' => 0,
-    'os2web_cp_document' => 0,
-    'baggrund' => 0,
-    'rotating_image' => 0,
-    'borger_dk_permalink' => 0,
+    'os2web_frontend_background_img' => 0,
+    'os2web_base_rotating_image' => 0,
+    'os2web_borger_dk_article' => 0,
     'os2web_citizenservices_service' => 0,
-    'os2web_meeting_bullet_point' => 0,
-    'os2web_meeting_bullet_attachment' => 0,
-    'files' => 0,
-    'galleri' => 0,
-    'right_column' => 0,
-    'institution' => 0,
-    'kontaktblok' => 0,
+    'os2web_meetings_bullet' => 0,
+    'os2web_meetings_bullet_attach' => 0,
+    'os2web_cp_service_cp_case' => 0,
+    'os2web_cp_service_cp_document' => 0,
+    'os2web_base_gallery' => 0,
+    'os2web_hearings_hearing_case' => 0,
+    'os2web_contact_contact' => 0,
     'os2web_kulturnaut_knactivity' => 0,
-    'local_plan' => 0,
     'media' => 0,
-    'os2web_meeting_meeting' => 0,
+    'os2web_meetings_meeting' => 0,
+    'os2web_meeting_search_status' => 0,
     'os2web_ofir_job' => 0,
     'panel' => 0,
-    'person' => 0,
-    'politician' => 0,
-    'referat' => 0,
+    'os2web_hearings_hearing' => 0,
     'os2web_sections_page' => 0,
-    'speaker_paper' => 0,
-    'tema' => 0,
+    'os2web_base_selfservice_link' => 0,
     'webform' => 0,
-    'iframe_selvbetjeningsl_sning_mm' => 0,
+    'os2web_base_iframe' => 0,
+    'menu_page' => 0,
   );
   $export['linkchecker_scan_nodetypes'] = $strongarm;
 
@@ -653,7 +646,7 @@ example.org';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nice_menus_name_1';
-  $strongarm->value = 'Nice menu 1';
+  $strongarm->value = 'Nice menu';
   $export['nice_menus_name_1'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -709,7 +702,7 @@ example.org';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_transliterate';
-  $strongarm->value = FALSE;
+  $strongarm->value = 1;
   $export['pathauto_transliterate'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -737,7 +730,7 @@ example.org';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_pdf_tool';
-  $strongarm->value = 'profiles/os2web/modules/contrib/print/dompdf/dompdf_config.inc.php';
+  $strongarm->value = 0;
   $export['print_pdf_pdf_tool'] = $strongarm;
 
   $strongarm = new stdClass();
