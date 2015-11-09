@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function os2web_citizenservices_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function os2web_citizenservices_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -17,7 +16,7 @@ function os2web_citizenservices_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function os2web_citizenservices_views_api() {
+function os2web_citizenservices_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -29,16 +28,8 @@ function os2web_citizenservices_image_default_styles() {
 
   // Exported image style: os2web_citizenservices_image.
   $styles['os2web_citizenservices_image'] = array(
-    'name' => 'os2web_citizenservices_image',
     'effects' => array(
       12 => array(
-        'label' => 'Skalér og beskær',
-        'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 159,
@@ -66,5 +57,6 @@ function os2web_citizenservices_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

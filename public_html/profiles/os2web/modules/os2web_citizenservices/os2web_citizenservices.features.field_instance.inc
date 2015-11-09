@@ -10,7 +10,8 @@
 function os2web_citizenservices_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2web_citizenservices_service-field_os2web_citizenservices_img'
+  // Exported field_instance:
+  // 'node-os2web_citizenservices_service-field_os2web_citizenservices_img'
   $field_instances['node-os2web_citizenservices_service-field_os2web_citizenservices_img'] = array(
     'bundle' => 'os2web_citizenservices_service',
     'deleted' => 0,
@@ -84,7 +85,8 @@ function os2web_citizenservices_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_citizenservices_service-field_os2web_citizenservices_url'
+  // Exported field_instance:
+  // 'node-os2web_citizenservices_service-field_os2web_citizenservices_url'
   $field_instances['node-os2web_citizenservices_service-field_os2web_citizenservices_url'] = array(
     'bundle' => 'os2web_citizenservices_service',
     'default_value' => NULL,

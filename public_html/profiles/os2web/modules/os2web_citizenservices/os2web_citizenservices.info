@@ -1,7 +1,6 @@
 name = OS2Web Citizen Services (Borgerservices)
 core = 7.x
 package = OS2Web - Frontend
-php = 5.2.4
 version = 7.x-1.0-beta1
 project = os2web_citizenservices
 dependencies[] = ctools
@@ -13,7 +12,7 @@ dependencies[] = text
 dependencies[] = views
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[field_base][] = field_os2web_citizenservices_img
 features[field_base][] = field_os2web_citizenservices_url
 features[field_instance][] = node-os2web_citizenservices_service-field_os2web_citizenservices_img
