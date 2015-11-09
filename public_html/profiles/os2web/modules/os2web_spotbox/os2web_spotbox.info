@@ -1,7 +1,6 @@
 name = OS2Web Spotbokse
 core = 7.x
 package = OS2Web - Frontend
-php = 5.2.4
 version = 7.x-1.0-beta1
 project = os2web_spotbox
 dependencies[] = ctools
@@ -25,7 +24,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = file_entity:file_default_displays:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[field_base][] = field_os2web_spotbox_big_image
 features[field_base][] = field_os2web_spotbox_editor_tags
 features[field_base][] = field_os2web_spotbox_focus_sect
