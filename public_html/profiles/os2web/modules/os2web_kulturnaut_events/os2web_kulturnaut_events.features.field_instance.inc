@@ -10,7 +10,8 @@
 function os2web_kulturnaut_events_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_date'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_date'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_date'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -72,7 +73,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_descrip'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_descrip'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_descrip'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -123,7 +125,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_genre'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_genre'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_genre'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -169,7 +172,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_homepage'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_homepage'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_homepage'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -215,7 +219,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_longdesc'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_longdesc'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_longdesc'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -266,7 +271,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_price'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_price'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_price'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -312,7 +318,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_saddress'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_saddress'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_saddress'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -358,7 +365,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sarrang'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sarrang'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sarrang'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -404,7 +412,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_scity'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_scity'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_scity'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -450,7 +459,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_shomepag'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_shomepag'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_shomepag'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -496,7 +506,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sname'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sname'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_sname'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -542,7 +553,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_szip'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_szip'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_szip'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -588,7 +600,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_target'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_target'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_target'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -634,7 +647,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_time'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_time'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_time'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
@@ -680,7 +694,8 @@ function os2web_kulturnaut_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_url'
+  // Exported field_instance:
+  // 'node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_url'
   $field_instances['node-os2web_kulturnaut_knactivity-field_os2web_kulturnaut_url'] = array(
     'bundle' => 'os2web_kulturnaut_knactivity',
     'default_value' => NULL,
