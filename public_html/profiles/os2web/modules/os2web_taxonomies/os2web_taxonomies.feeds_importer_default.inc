@@ -120,6 +120,10 @@ function os2web_taxonomies_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'xml',
         'direct' => 1,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -219,11 +223,13 @@ function os2web_taxonomies_feeds_importer_default() {
         ),
         'update_existing' => '2',
         'input_format' => 'full_html',
+        'skip_hash_check' => 0,
+        'bundle' => 'os2web_taxonomies_tax_kle',
       ),
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '-1',
+    'import_period' => '2419200',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,
