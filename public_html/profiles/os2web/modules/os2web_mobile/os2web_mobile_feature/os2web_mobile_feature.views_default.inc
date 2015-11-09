@@ -78,57 +78,53 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Billede */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_rotate_image']['id'] = 'field_rotate_image';
   $handler->display->display_options['fields']['field_rotate_image']['table'] = 'field_data_field_rotate_image';
   $handler->display->display_options['fields']['field_rotate_image']['field'] = 'field_rotate_image';
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'rotating_image' => 'rotating_image',
   );
-  /* Filterkriterie: Indhold: Forfrem til (field_promoteto) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_promoteto_tid']['id'] = 'field_promoteto_tid';
   $handler->display->display_options['filters']['field_promoteto_tid']['table'] = 'field_data_field_promoteto';
   $handler->display->display_options['filters']['field_promoteto_tid']['field'] = 'field_promoteto_tid';
   $handler->display->display_options['filters']['field_promoteto_tid']['value'] = array(
     12264 => '12264',
   );
-  $handler->display->display_options['filters']['field_promoteto_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_promoteto_tid']['vocabulary'] = 'forfrem_til';
-  /* Filterkriterie: Indhold: Indløb / Udløb -  startdato (field_rotate_publish) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_rotate_publish_value']['id'] = 'field_rotate_publish_value';
   $handler->display->display_options['filters']['field_rotate_publish_value']['table'] = 'field_data_field_rotate_publish';
   $handler->display->display_options['filters']['field_rotate_publish_value']['field'] = 'field_rotate_publish_value';
   $handler->display->display_options['filters']['field_rotate_publish_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_rotate_publish_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Indløb / Udløb - slutdato (field_rotate_publish:value2) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_rotate_publish_value2']['id'] = 'field_rotate_publish_value2';
   $handler->display->display_options['filters']['field_rotate_publish_value2']['table'] = 'field_data_field_rotate_publish';
   $handler->display->display_options['filters']['field_rotate_publish_value2']['field'] = 'field_rotate_publish_value2';
   $handler->display->display_options['filters']['field_rotate_publish_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_rotate_publish_value2']['default_date'] = 'now';
 
   /* Display: Liste */
   $handler = $view->new_display('block', 'Liste', 'block');
@@ -147,7 +143,7 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Opdateringsdato */
+  /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
@@ -158,7 +154,7 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['changed']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'd.m.Y';
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -167,14 +163,14 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -240,16 +236,14 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_rotating_link']['id'] = 'field_rotating_link';
   $handler->display->display_options['fields']['field_rotating_link']['table'] = 'field_data_field_rotating_link';
   $handler->display->display_options['fields']['field_rotating_link']['field'] = 'field_rotating_link';
   $handler->display->display_options['fields']['field_rotating_link']['label'] = '';
   $handler->display->display_options['fields']['field_rotating_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_rotating_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_rotating_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_rotating_link']['type'] = 'link_plain';
-  /* Felt: Indhold: Billede */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_rotate_image']['id'] = 'field_rotate_image';
   $handler->display->display_options['fields']['field_rotate_image']['table'] = 'field_data_field_rotate_image';
   $handler->display->display_options['fields']['field_rotate_image']['field'] = 'field_rotate_image';
@@ -259,13 +253,7 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['field_rotate_image']['alter']['path'] = '[field_rotating_link]';
   $handler->display->display_options['fields']['field_rotate_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_rotate_image']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_rotate_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_rotate_image']['type'] = 'image_url';
-  $handler->display->display_options['fields']['field_rotate_image']['settings'] = array(
-    'image_style' => 'mobile_focus_active',
-    'image_link' => '',
-  );
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -276,7 +264,7 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Indhold: Indhold */
+  /* Field: Content: Indhold */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -287,7 +275,7 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '150';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
-  /* Felt: Indhold: Billede */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_rotate_image_1']['id'] = 'field_rotate_image_1';
   $handler->display->display_options['fields']['field_rotate_image_1']['table'] = 'field_data_field_rotate_image';
   $handler->display->display_options['fields']['field_rotate_image_1']['field'] = 'field_rotate_image';
@@ -297,12 +285,6 @@ function os2web_mobile_feature_views_default_views() {
   $handler->display->display_options['fields']['field_rotate_image_1']['alter']['text'] = '<img src="[field_rotate_image_1]"/>';
   $handler->display->display_options['fields']['field_rotate_image_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_rotate_image_1']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_rotate_image_1']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_rotate_image_1']['type'] = 'image_url';
-  $handler->display->display_options['fields']['field_rotate_image_1']['settings'] = array(
-    'image_style' => 'mobile_focus_thumb',
-    'image_link' => '',
-  );
   $translatables['os2web_mobile_news'] = array(
     t('Master'),
     t('I fokus'),
@@ -312,9 +294,10 @@ function os2web_mobile_feature_views_default_views() {
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('Billede'),
+    t('Broken handler field_data_field_rotate_image.field_rotate_image'),
     t('Liste'),
     t('Nyheder'),
+    t('more'),
     t('Fokus'),
     t('<img src="[field_rotate_image]" />'),
     t('<div class="slideshow-container"><a href="[field_rotating_link]"><span class="slideshow-title">[title]</span>[body]</a></div>'),
