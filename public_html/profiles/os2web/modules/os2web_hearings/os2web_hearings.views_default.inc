@@ -76,18 +76,18 @@ function os2web_hearings_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Overskrift: Global: Tekstområde */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<a href="/hoeringer" title="Høring og afgørelser"><h2 class="pane-title">Høringer og afgørelser</h2></a>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
-  /* Felt: Indhold: Type */
+  /* Field: Content: Type */
   $handler->display->display_options['fields']['field_os2web_hearings_type']['id'] = 'field_os2web_hearings_type';
   $handler->display->display_options['fields']['field_os2web_hearings_type']['table'] = 'field_data_field_os2web_hearings_type';
   $handler->display->display_options['fields']['field_os2web_hearings_type']['field'] = 'field_os2web_hearings_type';
   $handler->display->display_options['fields']['field_os2web_hearings_type']['label'] = 'Fase';
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -95,7 +95,7 @@ function os2web_hearings_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Slutdato */
+  /* Field: Content: Slutdato */
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['id'] = 'field_os2web_hearings_enddate';
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['table'] = 'field_data_field_os2web_hearings_enddate';
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['field'] = 'field_os2web_hearings_enddate';
@@ -107,23 +107,23 @@ function os2web_hearings_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sorteringskriterie: Indhold: Startdato (field_os2web_hearings_startdate) */
+  /* Sort criterion: Content: Startdato (field_os2web_hearings_startdate) */
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['id'] = 'field_os2web_hearings_startdate_value';
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['table'] = 'field_data_field_os2web_hearings_startdate';
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['field'] = 'field_os2web_hearings_startdate_value';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -135,7 +135,7 @@ function os2web_hearings_views_default_views() {
   $handler = $view->new_display('page', 'Høringer', 'page');
   $handler->display->display_options['display_description'] = 'Search/overview page for hearings';
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Overskrift: Global: PHP */
+  /* Header: Global: PHP */
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
@@ -150,14 +150,14 @@ if(is_object($node)){
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -165,7 +165,7 @@ if(is_object($node)){
     'os2web_hearings_hearing_case' => 'os2web_hearings_hearing_case',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Slutdato (field_os2web_hearings_enddate) */
+  /* Filter criterion: Content: Slutdato (field_os2web_hearings_enddate) */
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value_1']['id'] = 'field_os2web_hearings_enddate_value_1';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value_1']['table'] = 'field_data_field_os2web_hearings_enddate';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value_1']['field'] = 'field_os2web_hearings_enddate_value';
@@ -186,7 +186,7 @@ if(is_object($node)){
     5 => 0,
   );
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value_1']['form_type'] = 'date_text';
-  /* Filterkriterie: Indhold: Slutdato (field_os2web_hearings_enddate) */
+  /* Filter criterion: Content: Slutdato (field_os2web_hearings_enddate) */
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['id'] = 'field_os2web_hearings_enddate_value';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['table'] = 'field_data_field_os2web_hearings_enddate';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['field'] = 'field_os2web_hearings_enddate_value';
@@ -207,7 +207,7 @@ if(is_object($node)){
     5 => 0,
   );
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['form_type'] = 'date_text';
-  /* Filterkriterie: Indhold: Type (field_os2web_hearings_type) */
+  /* Filter criterion: Content: Type (field_os2web_hearings_type) */
   $handler->display->display_options['filters']['field_os2web_hearings_type_value']['id'] = 'field_os2web_hearings_type_value';
   $handler->display->display_options['filters']['field_os2web_hearings_type_value']['table'] = 'field_data_field_os2web_hearings_type';
   $handler->display->display_options['filters']['field_os2web_hearings_type_value']['field'] = 'field_os2web_hearings_type_value';
@@ -243,14 +243,14 @@ if(is_object($node)){
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Sidefod: Global: Tekstområde */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<a href="/hoeringer" title="Høring og afgørelser">Se alle i høring</a>';
   $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -259,7 +259,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -286,7 +286,7 @@ if(is_object($node)){
     t('Frist'),
     t('Høringer'),
     t('Search/overview page for hearings'),
-    t('mere'),
+    t('more'),
     t('Fra'),
     t('Til'),
     t('Status'),
@@ -335,7 +335,7 @@ if(is_object($node)){
   $handler->display->display_options['style_options']['wrapper_class'] = 'os2web_hearing';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Overskrift: Planer i Høring */
+  /* Header: Planer i Høring */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
@@ -344,7 +344,7 @@ if(is_object($node)){
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<h3>Planer i høring</h3>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Sidefod: Global: Tekstområde */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
@@ -352,7 +352,7 @@ if(is_object($node)){
   $handler->display->display_options['footer']['area']['empty'] = TRUE;
   $handler->display->display_options['footer']['area']['content'] = '<span class="foroffase"><a href="/foroffentlighed">> I foroffentlighedsfase</a></span><span class="vedtagne"><a href="/lokalplaner">> Vedtagne</a></span><span class="alle"><a href="/planforslag">> Se alle</a></span>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
-  /* Felt: Indhold: Slutdato */
+  /* Field: Content: Slutdato */
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['id'] = 'field_os2web_hearings_enddate';
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['table'] = 'field_data_field_os2web_hearings_enddate';
   $handler->display->display_options['fields']['field_os2web_hearings_enddate']['field'] = 'field_os2web_hearings_enddate';
@@ -366,7 +366,7 @@ if(is_object($node)){
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: URL */
+  /* Field: Content: URL */
   $handler->display->display_options['fields']['field_os2web_hearings_url']['id'] = 'field_os2web_hearings_url';
   $handler->display->display_options['fields']['field_os2web_hearings_url']['table'] = 'field_data_field_os2web_hearings_url';
   $handler->display->display_options['fields']['field_os2web_hearings_url']['field'] = 'field_os2web_hearings_url';
@@ -374,7 +374,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['field_os2web_hearings_url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_hearings_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_hearings_url']['type'] = 'text_plain';
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -386,7 +386,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Indhold: Oprettelsesdato */
+  /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -395,7 +395,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'kun_dato';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd.m.Y';
-  /* Felt: Feeds item: Import date */
+  /* Field: Feeds item: Import date */
   $handler->display->display_options['fields']['imported']['id'] = 'imported';
   $handler->display->display_options['fields']['imported']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['imported']['field'] = 'imported';
@@ -406,7 +406,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['imported']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['imported']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['imported']['date_format'] = 'os2web_base_date_only';
-  /* Felt: Indhold: Startdato */
+  /* Field: Content: Startdato */
   $handler->display->display_options['fields']['field_os2web_hearings_startdate']['id'] = 'field_os2web_hearings_startdate';
   $handler->display->display_options['fields']['field_os2web_hearings_startdate']['table'] = 'field_data_field_os2web_hearings_startdate';
   $handler->display->display_options['fields']['field_os2web_hearings_startdate']['field'] = 'field_os2web_hearings_startdate';
@@ -418,7 +418,7 @@ if(is_object($node)){
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -429,7 +429,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['nothing']['element_class'] = 'aktiv-hearing';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
@@ -438,7 +438,7 @@ if(is_object($node)){
   $handler->display->display_options['fields']['nothing_1']['element_type'] = 'span';
   $handler->display->display_options['fields']['nothing_1']['element_class'] = 'er-i-hearing';
   $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = FALSE;
-  /* Felt: Global: Kontekstuelle links */
+  /* Field: Global: Contextual Links */
   $handler->display->display_options['fields']['contextual_links']['id'] = 'contextual_links';
   $handler->display->display_options['fields']['contextual_links']['table'] = 'views';
   $handler->display->display_options['fields']['contextual_links']['field'] = 'contextual_links';
@@ -453,31 +453,31 @@ if(is_object($node)){
     'nothing' => 0,
     'nothing_1' => 0,
   );
-  /* Sorteringskriterie: Indhold: Startdato (field_os2web_hearings_startdate) */
+  /* Sort criterion: Content: Startdato (field_os2web_hearings_startdate) */
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['id'] = 'field_os2web_hearings_startdate_value';
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['table'] = 'field_data_field_os2web_hearings_startdate';
   $handler->display->display_options['sorts']['field_os2web_hearings_startdate_value']['field'] = 'field_os2web_hearings_startdate_value';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2web_hearings_hearing' => 'os2web_hearings_hearing',
   );
-  /* Filterkriterie: Indhold: Slutdato (field_os2web_hearings_enddate) */
+  /* Filter criterion: Content: Slutdato (field_os2web_hearings_enddate) */
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['id'] = 'field_os2web_hearings_enddate_value';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['table'] = 'field_data_field_os2web_hearings_enddate';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['field'] = 'field_os2web_hearings_enddate_value';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_os2web_hearings_enddate_value']['default_date'] = 'now -1 day';
-  /* Filterkriterie: Indhold: Startdato (field_os2web_hearings_startdate) */
+  /* Filter criterion: Content: Startdato (field_os2web_hearings_startdate) */
   $handler->display->display_options['filters']['field_os2web_hearings_startdate_value']['id'] = 'field_os2web_hearings_startdate_value';
   $handler->display->display_options['filters']['field_os2web_hearings_startdate_value']['table'] = 'field_data_field_os2web_hearings_startdate';
   $handler->display->display_options['filters']['field_os2web_hearings_startdate_value']['field'] = 'field_os2web_hearings_startdate_value';
@@ -576,7 +576,7 @@ if(is_object($node)){
     t('<h3>Planer i høring</h3>'),
     t('Sidefod'),
     t('<span class="foroffase"><a href="/foroffentlighed">> I foroffentlighedsfase</a></span><span class="vedtagne"><a href="/lokalplaner">> Vedtagne</a></span><span class="alle"><a href="/planforslag">> Se alle</a></span>'),
-    t('Titel'),
+    t('Title'),
     t('[title] - [field_os2web_hearings_enddate]'),
     t('[created]'),
     t('Startdato'),
@@ -585,6 +585,7 @@ if(is_object($node)){
 [field_os2web_hearings_enddate]'),
     t('I høring'),
     t('Page'),
+    t('more'),
     t('Feed'),
     t('Block'),
   );
