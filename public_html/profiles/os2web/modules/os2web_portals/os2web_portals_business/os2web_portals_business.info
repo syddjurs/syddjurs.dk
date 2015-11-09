@@ -1,7 +1,6 @@
 name = OS2Web Portals Business (Erhverv)
 core = 7.x
 package = OS2Web - Portals
-php = 5.2.4
 version = 7.x-1.0-beta1
 project = os2web_portals_business
 dependencies[] = ctools
@@ -9,5 +8,5 @@ dependencies[] = os2web_base_panels
 dependencies[] = os2web_spotbox
 dependencies[] = page_manager
 features[ctools][] = page_manager:pages_default:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[page_manager_handlers][] = term_view_panel_context_2
