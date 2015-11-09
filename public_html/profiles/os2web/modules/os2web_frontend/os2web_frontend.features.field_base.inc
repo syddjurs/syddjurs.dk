@@ -17,14 +17,6 @@ function os2web_frontend_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2web_frontend_bg_file',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -47,7 +39,6 @@ function os2web_frontend_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_piwik',
-    'foreign keys' => array(),
     'indexes' => array(
       'hits' => array(
         0 => 'nb_hits',
