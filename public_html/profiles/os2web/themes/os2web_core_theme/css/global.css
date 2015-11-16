@@ -431,13 +431,17 @@ div.vertical-tabs .vertical-tabs-panes .fieldset-wrapper legend {
 }
 .front .custom-slideshow img {
   width: 100%;
-  height: inherit;
 }
+
+.front .custom-slideshow .view-content {
+  position: relative
+}
+
 .front .custom-slideshow .views-field-body {
   background-color: #fff;
-  bottom: 120px;
+  bottom: 20px;
   width: 440px;
-  position: relative;
+  position: absolute;
   z-index: 998;
   border-radius: 0 4px 4px 0;
 }
@@ -449,14 +453,10 @@ div.vertical-tabs .vertical-tabs-panes .fieldset-wrapper legend {
 .front .custom-slideshow {
   float: none;
   width: 670px;
-  height: 292px;
-  overflow: hidden;
   border-radius: 4px;
 }
 .custom-slideshow .views-field-body a {
   display: block;
-  margin-top: -78px;
-  position: relative;
   padding: 8px 8px 8px 20px;
 }
 
@@ -467,7 +467,7 @@ div.vertical-tabs .vertical-tabs-panes .fieldset-wrapper legend {
   font-size: 17px;
   color: #4B4B4B;
 }
-.custom-slideshow .views-field-body a span.description:after {
+.custom-slideshow .views-field-body a span.description:before {
   content: "";
   background: url(../images/slide-arrow.png) no-repeat;
   height: 11px;

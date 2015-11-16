@@ -117,7 +117,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_attach'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet-field_os2web_meetings_attach'
   $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_attach'] = array(
     'bundle' => 'os2web_meetings_bullet',
     'default_value' => NULL,
@@ -166,18 +167,19 @@ function os2web_meetings_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_buttons',
       'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_bul_closed'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet-field_os2web_meetings_bul_closed'
   $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_bul_closed'] = array(
     'bundle' => 'os2web_meetings_bullet',
     'default_value' => array(
@@ -232,7 +234,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_enclosures'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet-field_os2web_meetings_enclosures'
   $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_enclosures'] = array(
     'bundle' => 'os2web_meetings_bullet',
     'deleted' => 0,
@@ -303,7 +306,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet-field_os2web_meetings_nntv_ref'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet-field_os2web_meetings_nntv_ref'
   $field_instances['node-os2web_meetings_bullet-field_os2web_meetings_nntv_ref'] = array(
     'bundle' => 'os2web_meetings_bullet',
     'default_value' => array(
@@ -351,7 +355,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_body'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_body'
   $field_instances['node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_body'] = array(
     'bundle' => 'os2web_meetings_bullet_attach',
     'default_value' => NULL,
@@ -404,7 +409,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_file'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_file'
   $field_instances['node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_file'] = array(
     'bundle' => 'os2web_meetings_bullet_attach',
     'deleted' => 0,
@@ -469,7 +475,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_id'
+  // Exported field_instance:
+  // 'node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_id'
   $field_instances['node-os2web_meetings_bullet_attach-field_os2web_meetings_bpa_id'] = array(
     'bundle' => 'os2web_meetings_bullet_attach',
     'default_value' => NULL,
@@ -527,7 +534,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_abbr'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_abbr'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_abbr'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -584,7 +592,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_addendum'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_addendum'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_addendum'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -638,7 +647,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_bullets'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_bullets'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_bullets'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -703,7 +713,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_committee'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_committee'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_committee'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -749,7 +760,6 @@ function os2web_meetings_field_default_field_instances() {
       'settings' => array(
         'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
         'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'content_taxonomy_opt_groups' => FALSE,
         'size' => 60,
       ),
       'type' => 'autocomplete_deluxe_taxonomy',
@@ -757,7 +767,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_date'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_date'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_date'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -830,7 +841,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_full_doc'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_full_doc'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_full_doc'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'deleted' => 0,
@@ -859,33 +871,23 @@ function os2web_meetings_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_meetings_full_doc',
     'label' => 'Full doc',
-    'required' => 0,
+    'required' => FALSE,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt pdf',
+      'file_extensions' => 'txt',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
       'module' => 'file',
       'settings' => array(
         'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
+          'filefield_sources' => array(),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
             'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
           ),
           'source_reference' => array(
             'autocomplete' => 0,
@@ -898,7 +900,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_hex'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_hex'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_hex'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -949,7 +952,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_id'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_id'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_id'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1007,7 +1011,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_is_regular'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_is_regular'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_is_regular'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => array(
@@ -1061,7 +1066,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_location'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_location'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_location'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1114,7 +1120,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_nntv_ref'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_nntv_ref'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_nntv_ref'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => array(
@@ -1156,7 +1163,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_searchdata'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_searchdata'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_searchdata'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'deleted' => 0,
@@ -1210,7 +1218,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_status'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_status'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_status'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1264,7 +1273,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_sub_id'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_sub_id'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_sub_id'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1310,7 +1320,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_system_id'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_system_id'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_system_id'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1363,7 +1374,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_meetings_meeting-field_os2web_meetings_type'
+  // Exported field_instance:
+  // 'node-os2web_meetings_meeting-field_os2web_meetings_type'
   $field_instances['node-os2web_meetings_meeting-field_os2web_meetings_type'] = array(
     'bundle' => 'os2web_meetings_meeting',
     'default_value' => NULL,
@@ -1406,7 +1418,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_acadrename'
+  // Exported field_instance:
+  // 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_acadrename'
   $field_instances['taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_acadrename'] = array(
     'bundle' => 'os2web_meetings_tax_committee',
     'default_value' => NULL,
@@ -1440,7 +1453,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_commiteeid'
+  // Exported field_instance:
+  // 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_commiteeid'
   $field_instances['taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_commiteeid'] = array(
     'bundle' => 'os2web_meetings_tax_committee',
     'default_value' => NULL,
@@ -1480,7 +1494,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_date_valid'
+  // Exported field_instance:
+  // 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_date_valid'
   $field_instances['taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_date_valid'] = array(
     'bundle' => 'os2web_meetings_tax_committee',
     'default_value' => NULL,
@@ -1528,7 +1543,8 @@ function os2web_meetings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_ext_url'
+  // Exported field_instance:
+  // 'taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_ext_url'
   $field_instances['taxonomy_term-os2web_meetings_tax_committee-field_os2web_meetings_ext_url'] = array(
     'bundle' => 'os2web_meetings_tax_committee',
     'default_value' => NULL,

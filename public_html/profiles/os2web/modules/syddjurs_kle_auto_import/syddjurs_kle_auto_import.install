@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function syddjurs_kle_auto_import_uninstall() {
+  variable_del('syddjurs_kle_auto_import_url');
+  variable_del('syddjurs_kle_auto_import_last_run');
+  variable_del('syddjurs_kle_auto_import_next_run');
+  variable_del('syddjurs_kle_auto_import_destination_url');
+  variable_del('syddjurs_kle_auto_import_schedule');
+}

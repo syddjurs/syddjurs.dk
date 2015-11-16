@@ -40,6 +40,7 @@ Drupal.behaviors.os2web_menus = {
 
     // Hack to split menus in mega menu into several columns.
     // This will only work with a 4 column target.
+    // Disabled for node edit, fixes VXY-462-27673
     jQuery('.megamenu-panel ul.menu').each(function() {
       var $parent = jQuery(this).parent();
 
