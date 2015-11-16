@@ -11,17 +11,7 @@
 # Ignored: http://example.com/site/robots.txt
 #
 # For more information about the robots.txt standard, see:
-# http://www.robotstxt.org/wc/robots.html
-#
-# For syntax checking, see:
-# http://www.sxw.org.uk/computing/robots/check.html
-
-User-agent: c81e728d9d4c2f636f067f89cc14862c
-Disallow:
-
-# OS2Webscanner (TEST - kbha@syddjurs.dk)
-User-agent: eccbc87e4b5ce2fe28308fd9f2a7baf3
-Disallow:
+# http://www.robotstxt.org/robotstxt.html
 
 User-agent: *
 Crawl-delay: 10
@@ -55,10 +45,6 @@ Disallow: /user/register/
 Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
-Disallow: /aaben-indsigt/
-Disallow: /sag/
-Disallow: /dokument/
-Disallow: /os2web/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
@@ -69,4 +55,3 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
-Disallow: */pws_documents/
