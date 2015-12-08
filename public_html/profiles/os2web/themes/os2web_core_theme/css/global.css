@@ -2598,7 +2598,10 @@ ul.nice-menu-down li ul > li {
 }
 
 .inverse.contact-phonenumber-items {
-  margin-top: 15px;
+	margin-top: 15px;
+	padding-left: 15px;
+	padding-top: 5px
+  
 }
 
 .section-footer .phonenumber-item {
