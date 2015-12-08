@@ -185,12 +185,6 @@ function os2web_frontend_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-51',
         ),
-        'views-18f59ce05ca3e305f3453541d5330659' => array(
-          'module' => 'views',
-          'delta' => '18f59ce05ca3e305f3453541d5330659',
-          'region' => 'sidebar_second',
-          'weight' => '-50',
-        ),
         'menu-os2web-menu-business-shortcuts' => array(
           'module' => 'menu',
           'delta' => 'os2web-menu-business-shortcuts',
@@ -207,6 +201,50 @@ function os2web_frontend_context_default_contexts() {
   t('Globale højre blokke');
   t('OS2Web - Blokke');
   $export['os2web_frontend_context_global'] = $context;
+    
+  
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'os2web_frontend_context_klelinks_global';
+  $context->description = 'Globale KLE links blok';
+  $context->tag = 'OS2Web - Blokke';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'os2web_base_contentpage' => 'os2web_base_contentpage',
+        'os2web_base_gallery' => 'os2web_base_gallery',
+        'os2web_base_iframe' => 'os2web_base_iframe',
+        'os2web_base_news' => 'os2web_base_news',
+        'os2web_hearings_hearing_case' => 'os2web_hearings_hearing_case',
+        'os2web_meetings_meeting' => 'os2web_meetings_meeting',
+        'os2web_sections_page' => 'os2web_sections_page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-18f59ce05ca3e305f3453541d5330659' => array(
+          'module' => 'views',
+          'delta' => '18f59ce05ca3e305f3453541d5330659',
+          'region' => 'sidebar_second',
+          'weight' => '-50',
+        ),
+
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Globale KLE links blok');
+  $export['os2web_frontend_context_klelinks_global'] = $context;
+    
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
