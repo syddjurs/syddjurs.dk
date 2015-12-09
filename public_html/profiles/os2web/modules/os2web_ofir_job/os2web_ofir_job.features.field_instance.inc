@@ -160,7 +160,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_period'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_job_period'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_period'] = array(
     'bundle' => 'os2web_ofir_job',
     'deleted' => 0,

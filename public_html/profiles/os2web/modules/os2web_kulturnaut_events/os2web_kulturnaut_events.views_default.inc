@@ -48,7 +48,7 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: feeds item: maaned */
+  /* Field: feeds item: maaned */
   $handler->display->display_options['fields']['imported']['id'] = 'imported';
   $handler->display->display_options['fields']['imported']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['imported']['field'] = 'imported';
@@ -58,7 +58,7 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['fields']['imported']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['imported']['date_format'] = 'custom';
   $handler->display->display_options['fields']['imported']['custom_date_format'] = 'M';
-  /* Felt: feeds item: dato */
+  /* Field: feeds item: dato */
   $handler->display->display_options['fields']['imported_1']['id'] = 'imported_1';
   $handler->display->display_options['fields']['imported_1']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['imported_1']['field'] = 'imported';
@@ -73,12 +73,12 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['fields']['imported_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['imported_1']['date_format'] = 'custom';
   $handler->display->display_options['fields']['imported_1']['custom_date_format'] = 'd';
-  /* Felt: Indhold: Hjemmeside */
+  /* Field: Content: Hjemmeside */
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['id'] = 'field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['table'] = 'field_data_field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['field'] = 'field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['exclude'] = TRUE;
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -92,19 +92,19 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -139,7 +139,7 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Dato */
+  /* Field: Content: Dato */
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date_1']['id'] = 'field_os2web_kulturnaut_date_1';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date_1']['table'] = 'field_data_field_os2web_kulturnaut_date';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date_1']['field'] = 'field_os2web_kulturnaut_date';
@@ -153,7 +153,7 @@ function os2web_kulturnaut_events_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: feeds item: maaned */
+  /* Field: feeds item: maaned */
   $handler->display->display_options['fields']['imported']['id'] = 'imported';
   $handler->display->display_options['fields']['imported']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['imported']['field'] = 'imported';
@@ -165,7 +165,7 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['fields']['imported']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['imported']['date_format'] = 'custom';
   $handler->display->display_options['fields']['imported']['custom_date_format'] = 'M';
-  /* Felt: Indhold: Dato */
+  /* Field: Content: Dato */
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date']['id'] = 'field_os2web_kulturnaut_date';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date']['table'] = 'field_data_field_os2web_kulturnaut_date';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_date']['field'] = 'field_os2web_kulturnaut_date';
@@ -179,7 +179,7 @@ function os2web_kulturnaut_events_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: feeds item: dato */
+  /* Field: feeds item: dato */
   $handler->display->display_options['fields']['imported_1']['id'] = 'imported_1';
   $handler->display->display_options['fields']['imported_1']['table'] = 'feeds_item';
   $handler->display->display_options['fields']['imported_1']['field'] = 'imported';
@@ -195,12 +195,12 @@ function os2web_kulturnaut_events_views_default_views() {
   $handler->display->display_options['fields']['imported_1']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['imported_1']['date_format'] = 'custom';
   $handler->display->display_options['fields']['imported_1']['custom_date_format'] = 'd';
-  /* Felt: Indhold: Hjemmeside */
+  /* Field: Content: Hjemmeside */
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['id'] = 'field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['table'] = 'field_data_field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['field'] = 'field_os2web_kulturnaut_homepage';
   $handler->display->display_options['fields']['field_os2web_kulturnaut_homepage']['exclude'] = TRUE;
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -239,6 +239,7 @@ function os2web_kulturnaut_events_views_default_views() {
     t('<a href=[field_os2web_kulturnaut_homepage] title=[title]>[title]</a>'),
     t('[title]'),
     t('Page'),
+    t('more'),
     t('Blok - indholdsside'),
     t('Blok - forside'),
     t('[field_os2web_kulturnaut_date_1]'),

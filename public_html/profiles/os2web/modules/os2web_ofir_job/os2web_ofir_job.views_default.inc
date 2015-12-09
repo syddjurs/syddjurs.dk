@@ -53,25 +53,25 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = FALSE;
-  /* Felt: Indhold: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Indhold: Ansøgningsfrist - slutdato (field_os2web_ofir_job_period:value2) */
+  /* Sort criterion: Content: Ansøgningsfrist - end date (field_os2web_ofir_job_period:value2) */
   $handler->display->display_options['sorts']['field_os2web_ofir_job_period_value2']['id'] = 'field_os2web_ofir_job_period_value2';
   $handler->display->display_options['sorts']['field_os2web_ofir_job_period_value2']['table'] = 'field_data_field_os2web_ofir_job_period';
   $handler->display->display_options['sorts']['field_os2web_ofir_job_period_value2']['field'] = 'field_os2web_ofir_job_period_value2';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -79,14 +79,14 @@ function os2web_ofir_job_views_default_views() {
     'os2web_ofir_job' => 'os2web_ofir_job',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filterkriterie: Indhold: Ansøgningsfrist -  startdato (field_os2web_ofir_job_period) */
+  /* Filter criterion: Content: Ansøgningsfrist -  start date (field_os2web_ofir_job_period) */
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['id'] = 'field_os2web_ofir_job_period_value';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['table'] = 'field_data_field_os2web_ofir_job_period';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['field'] = 'field_os2web_ofir_job_period_value';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['group'] = 1;
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value']['default_date'] = 'now';
-  /* Filterkriterie: Indhold: Ansøgningsfrist - slutdato (field_os2web_ofir_job_period:value2) */
+  /* Filter criterion: Content: Ansøgningsfrist - end date (field_os2web_ofir_job_period:value2) */
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['id'] = 'field_os2web_ofir_job_period_value2';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['table'] = 'field_data_field_os2web_ofir_job_period';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['field'] = 'field_os2web_ofir_job_period_value2';
@@ -99,7 +99,7 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['title'] = 'Jobs i Syddjurs Kommune';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Overskrift: Global: Tekstområde */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
@@ -140,6 +140,7 @@ function os2web_ofir_job_views_default_views() {
     t('sidste »'),
     t('Page'),
     t('Jobs i Syddjurs Kommune'),
+    t('more'),
     t('Jobagent - header link'),
     t('<p style="padding-top:20px; padding-bottom:20px">Ønsker du at få tilsendt fremtidige stillingsopslag pr. e-mail? <a href="https://syddjurs.emply.net/career">Klik her for at oprette en jobagent.</a><br />Er du ledig, så se mere om dine muligheder på <a href="http://www.jobcentersyddjurs.dk/" target="_blank">Jobcenter Syddjurs</a></p><br /><br />'),
     t('Block'),
