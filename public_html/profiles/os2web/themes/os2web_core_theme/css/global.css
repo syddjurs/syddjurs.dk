@@ -2939,6 +2939,11 @@ div.breadcrumb.you-are-here {
 .view-os2web-ofir-job-lists article .changed {
   margin-bottom: 5px;
 }
+
+.view-os2web-ofir-job-header-image .views-field {
+  margin-bottom: 20px;
+}
+
 .printvenlig-side a{
 	background-image: url(../images/print.png);
 	background-repeat: no-repeat;
@@ -3087,7 +3092,7 @@ ul#facetapi-facet-apachesolrsolr-block-im-field-os2web-base-field-struc {
 	background-repeat: no-repeat;
 }
 
-.spelling-suggestions .form-item dt 
+.spelling-suggestions .form-item dt
 {
 	font-size: 14px;
 }
