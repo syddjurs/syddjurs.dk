@@ -115,6 +115,9 @@ function os2web_ofir_job_cron() {
       _os2web_ofir_job_cronbatch();
     }
   }
+
+  // Check for expired job postings.
+  os2web_ofir_job_unpublish_expired();
 }
 
 /**
@@ -143,12 +146,11 @@ function _os2web_ofir_job_cronbatch() {
       $any_webservice_errors = TRUE;
       continue;
     }
-    // Check if the job is already imported. If it is, we will be updating the
-    // node.
-    $nid = _os2web_ofir_job_check_existed($job);
-
+    if (_os2web_ofir_job_check_existed($job)) {
+      continue;
+    }
     $job_text = _os2web_ofir_job_parse_job_text($job);
-    os2web_ofir_job_import_job($job_text, $nid);
+    os2web_ofir_job_import_job($job_text);
     $count++;
   }
 
@@ -174,38 +176,97 @@ function _os2web_ofir_job_cronbatch() {
 /**
  * Create ofir job node.
  */
-function os2web_ofir_job_import_job($job_text, $nid) {
-  if (!empty($job_text)) {
-    $created = !empty($job_text['published']) ? strtotime($job_text['published']) : REQUEST_TIME;
-    // Load the existing job node, if there is one.
-    if ($nid) {
-      $node = node_load($nid);
-    }
-    else {
-      // Otherwise, we just create a new one.
-      $node = new stdClass();
-      $node->validated = TRUE;
-      $node->uid = 1;
-      $node->language = 'da';
-      // Insert default value of a new node.
-      $node->type = 'os2web_ofir_job';
-    }
+function os2web_ofir_job_import_job($job_text) {
 
-    $node->created = $created;
+  if (!empty($job_text)) {
+    $node = new stdClass();
+    $node->created = !empty($job_text['published']) ? strtotime($job_text['published']) : REQUEST_TIME;
+    $node->validated = TRUE;
+    $node->uid = 1;
+    $node->language = 'da';
+    // Insert default value of a new node.
+    $node->type = 'os2web_ofir_job';
     $node->title = (!empty($job_text['title'])) ? $job_text['title'] : '';
 
-    $text = !empty($job_text['description']) ? $job_text['description'] : '';
+    if (!empty($job_text['description'])) {
+      $node->field_os2web_ofir_job_text['und'][0]['value'] = $job_text['description'];
+      $node->field_os2web_ofir_job_text['und'][0]['safe_value'] = $job_text['description'];
+      $node->field_os2web_ofir_job_text['und'][0]['format'] = 'full_html';
+    }
 
-    $text .= !empty($job_text['department_name']) ? '<br /><strong>Afdeling : </strong>' . $job_text['department_name'] : '';
-    $text .= !empty($job_text['category']) ? '<br /><strong>Stillingskategori : </strong>' . $job_text['category'] : '';
-    $text .= !empty($job_text['contact_person']) ? '<br /><strong>Kontaktperson : </strong>' . $job_text['contact_person'] : '';
-    $text .= !empty($job_text['contact_no']) ? '<br /><strong>Telefon : </strong>' . $job_text['contact_no'] : '';
-    $open_link = "'" . $job_text['apply_link'] . "'";
-    $text .= !empty($job_text['apply_link']) ? '<br /><input type="button" value="Send ansøgning" onclick="window.open(' . $open_link . ');">' : '';
+    if (!empty($job_text['shorttext'])) {
+      $node->field_os2web_ofir_job_text['und'][0]['summary'] = $job_text['shorttext'];
+    }
 
-    $node->field_os2web_ofir_job_text['und'][0]['value'] = $text;
-    $node->field_os2web_ofir_job_text['und'][0]['safe_value'] = $text;
-    $node->field_os2web_ofir_job_text['und'][0]['format'] = 'full_html';
+    // Department needs to be created as a term before inserting value into node
+    if (!empty($job_text['department_name'])) {
+
+      // Create category term if it doesn't already exists
+      $tid = _os2web_ofir_job_insert_term($job_text['department_name'], 'os2web_taxonomies_tax_org');
+
+      if ($tid) {
+        $node->field_os2web_ofir_department['und'][0]['tid'] = $tid;
+      }
+    }
+
+    // Design needs to be created as a term before inserting value into node
+    if (!empty($job_text['design'])) {
+      // Create design term if it doesn't already exists
+      $tid = _os2web_ofir_job_insert_term($job_text['design'], 'os2web_job_designs');
+
+      if ($tid) {
+        $node->field_os2web_ofir_design['und'][0]['tid'] = $tid;
+      }
+    }
+
+    // Category needs to be created as a term before inserting value into node
+    if (!empty($job_text['category'])) {
+
+      // Create category term if it doesn't already exists
+      $tid = _os2web_ofir_job_insert_term($job_text['category'], 'os2web_job_categories');
+
+      if ($tid) {
+        $node->field_os2web_ofir_category['und'][0]['tid'] = $tid;
+      }
+    }
+
+    if (!empty($job_text['contact_person'])) {
+      $node->field_os2web_ofir_contact_person['und'][0]['value'] = $job_text['contact_person'];
+      $node->field_os2web_ofir_contact_person['und'][0]['safe_value'] = $job_text['contact_person'];
+    }
+
+    if (!empty($job_text['contact_no'])) {
+      $node->field_os2web_ofir_contact_no['und'][0]['value'] = $job_text['contact_no'];
+      $node->field_os2web_ofir_contact_no['und'][0]['safe_value'] = $job_text['contact_no'];
+    }
+
+    if (!empty($job_text['job_desc'])) {
+      $node->field_os2web_ofir_job_desc['und'][0]['value'] = $job_text['job_desc'];
+      $node->field_os2web_ofir_job_desc['und'][0]['safe_value'] = $job_text['job_desc'];
+    }
+
+    if (!empty($job_text['work_hours'])) {
+      $node->field_os2web_ofir_work_hours['und'][0]['value'] = $job_text['work_hours'];
+      $node->field_os2web_ofir_work_hours['und'][0]['safe_value'] = $job_text['work_hours'];
+    }
+
+    if (!empty($job_text['job_type'])) {
+      $node->field_os2web_ofir_job_type['und'][0]['value'] = $job_text['job_type'];
+      $node->field_os2web_ofir_job_type['und'][0]['safe_value'] = $job_text['job_type'];
+    }
+
+    if (!empty($job_text['job_start_time'])) {
+      $node->field_os2web_ofir_job_start_time['und'][0]['value'] = $job_text['job_start_time'];
+      $node->field_os2web_ofir_job_start_time['und'][0]['safe_value'] = $job_text['job_start_time'];
+    }
+
+    if (!empty($job_text['apply_link'])) {
+   //   $open_url = "'" . $job_text['apply_link'] . "'";
+   //   $apply_link = '<br /><input type="button" value="Send ansøgning" onclick="window.open(' . $open_url . ');">';
+
+      $node->field_os2web_ofir_apply_link['und'][0]['value'] = $job_text['apply_link'];
+      $node->field_os2web_ofir_apply_link['und'][0]['safe_value'] = $job_text['apply_link'];
+    }
 
     $node->field_os2web_ofir_job_ad_id['und'][0]['value'] = (!empty($job_text['ad_id'])) ? $job_text['ad_id'] : '';
     $node->field_os2web_ofir_job_ad_id['und'][0]['safe_value'] = (!empty($job_text['ad_id'])) ? $job_text['ad_id'] : '';
@@ -214,12 +275,38 @@ function os2web_ofir_job_import_job($job_text, $nid) {
     $deadline = date('Y-m-d H:i:s', strtotime($deadline));
     $node->field_os2web_ofir_job_period['und'][0]['value'] = date('Y-m-d H:i:s', strtotime($job_text['published']));
     $node->field_os2web_ofir_job_period['und'][0]['value2'] = $deadline;
-    $node->validated = TRUE;
 
     node_save($node);
-
   }
 }
+
+function _os2web_ofir_job_insert_term($design, $vocab_name) {
+
+  // Check if design already exists in vocabulary
+  $term_array = taxonomy_get_term_by_name($design, $vocab_name);
+  if (count($term_array) > 0) {
+    $term = reset($term_array);
+    return $term->tid;
+  }
+
+  // Term doesn't already exist. Check if vocabulary exists
+  $vocab = taxonomy_vocabulary_machine_name_load($vocab_name);
+
+  if (!$vocab) {
+    watchdog('os2web_ofir_job', 'Vocabulary ofir_job_designs doesn\'t exist. Can\'t create ' .
+      $design . 'in ' . $vocab_name . '!', WATCHDOG_WARNING);
+    return FALSE;
+  }
+
+  // Insert new term
+  $term = (object) array(
+    'name' => $design,
+    'vid' => $vocab->vid,
+  );
+  taxonomy_term_save($term);
+  return $term->tid;
+}
+
 /**
  * SOAP function GetProjects.
  */
@@ -276,19 +363,27 @@ function _os2web_ofir_job_GetProjects($wsdl, $api_key, $media_id) {
 function _os2web_ofir_job_parse_job_text($xml) {
   // This function can parse a ofir job XML-feed and extract
   // all the field values we want for our Drupal-nodes.
-  $ofir_job['title'] = $xml->ad->header;
-  $ofir_job['ad_id'] = _os2web_ofir_job_xml_attribute($xml->ad, 'id');
-  $ofir_job['published'] = _os2web_ofir_job_xml_attribute($xml, 'published');
-  $ofir_job['deadline'] = _os2web_ofir_job_xml_attribute($xml, 'deadline');
-  $ofir_job['description'] = _os2web_ofir_job_convert_char((string) $xml->ad->description);
+  $ofir_job['title']           = $xml->ad->header;
+  $ofir_job['ad_id']           = _os2web_ofir_job_xml_attribute($xml->ad, 'id');
+  $ofir_job['published']       = _os2web_ofir_job_xml_attribute($xml, 'published');
+  $ofir_job['deadline']        = _os2web_ofir_job_xml_attribute($xml, 'deadline');
+  $ofir_job['description']     = html_entity_decode((string) $xml->ad->description);
+  $ofir_job['shorttext']        = html_entity_decode((string) $xml->ad->shorttext);
   $ofir_job['department_name'] = _os2web_ofir_job_xml_attribute($xml, 'department_name');
-  $apply_link = _os2web_ofir_job_xml_attribute($xml, 'apply_link');
-  $apply_link = str_replace('vacancyAd', 'vacancyapply', $apply_link);
-  $ofir_job['apply_link'] = $apply_link;
+  $ofir_job['design']          = _os2web_ofir_job_xml_attribute($xml->ad, 'design');
+  $apply_link                  = _os2web_ofir_job_xml_attribute($xml, 'apply_link');
+  $apply_link                  = str_replace('vacancyAd', 'vacancyapply', $apply_link);
+  $ofir_job['apply_link']      = $apply_link;
 
-  $ofir_job['category'] = (string) $xml->ad->facts->fact;
-  $ofir_job['contact_person'] = (string) $xml->ad->facts->fact[3];
-  $ofir_job['contact_no'] = (string) $xml->ad->facts->fact[4];
+  // Facts
+  // @todo: If order of elements changes in array, data will not be mapped correctly to fields!!
+  $ofir_job['job_desc']       = (string) $xml->ad->facts->fact[0];
+  $ofir_job['work_hours']     = (string) $xml->ad->facts->fact[1];
+  $ofir_job['job_type']       = (string) $xml->ad->facts->fact[2];
+  $ofir_job['category']       = (string) $xml->ad->facts->fact[1];
+  $ofir_job['job_start_time'] = (string) $xml->ad->facts->fact[0];
+  $ofir_job['contact_person'] = (string) $xml->ad->facts->fact[4];
+  $ofir_job['contact_no']     = (string) $xml->ad->facts->fact[5];
   return $ofir_job;
 }
 
@@ -304,13 +399,13 @@ function _os2web_ofir_job_check_existed($job) {
   }
   $ad_id = _os2web_ofir_job_xml_attribute($job->ad, 'id');
   if ($ad_id) {
-    $nid = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
+    $status = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
               ':ad_id' => $ad_id))->fetchField();
-    if (empty($nid)) {
+    if (empty($status)) {
       return FALSE;
     }
     else {
-      return $nid;
+      return TRUE;
     }
   }
   return FALSE;
@@ -323,15 +418,35 @@ function _os2web_ofir_job_xml_attribute($object, $attribute) {
     return (string) $object[$attribute];
   }
 }
-/**
- * Convert char in job description.
- */
-function _os2web_ofir_job_convert_char($string) {
 
-  $find = array("&amp;Aelig;", "&amp;aelig;", "&amp;Aring;", "&amp;aring;", "&amp;Oslash;",
-    "&amp;oslash;", "&#39;", "&eacute;", '&lt;', '&gt;', '&amp;nbsp;', '&amp;rdquo;', '&quot;');
-  $replace = array('Æ', 'æ', 'Å', 'å', 'Ø', 'ø',
-    "'", 'é', '<', '>', ' ', '"', '"');
-  $string = str_replace($find, $replace, $string);
-  return $string;
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function os2web_ofir_job_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['field_os2web_ofir_category_tid']['#options']['All'] = t('Alle stillingskategorier');
+}
+
+/**
+ * Unpublishes job postings, where application date is expired.
+ */
+function os2web_ofir_job_unpublish_expired() {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'os2web_ofir_job')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_os2web_ofir_job_period', 'value2', date('c'), '<');
+  $result = $query->execute();
+
+  // If results were found, unpublish nodes
+  if (isset($result['node'])) {
+
+    $nodes = node_load_multiple(array_keys($result['node']));
+
+    foreach ($nodes as $node) {
+      $node->status = 0;
+      node_save($node);
+    }
+  }
 }

@@ -4,7 +4,7 @@ OS2Web Ofir Job Integration
 Description
 -----------
 This module provides a feed of jobs from the website Ofir.dk.
-Includes an feed importer into a contenttype, and shows them via an view.
+Includes an feed importer into a content type, and shows them via an view.
 
 Dependencies
 -----------
@@ -25,7 +25,7 @@ Setup the importer to a specific url using the xpathfetcher by going to: ?q=impo
 Installation
 -----------
 This module should reside in the modules directory of the installation,
-most commonly profiles/os2web/modules/, but alternativly in sites/all/modules
+most commonly profiles/os2web/modules/, but alternatively in sites/all/modules
 (This could be for development purposes).
 
 See https://github.com/syddjurs/os2web/wiki for further instructions.
@@ -54,5 +54,5 @@ Additional Info
 This repository should be governed using Git Flow. for more information see
 http://nvie.com/posts/a-successful-git-branching-model/
 
-Note: This module is still dependant on modules in the full OS2Web suite
-(https://github.com/OS2web/os2web), as the seperation of those are still WIP.
+Note: This module is still dependent on modules in the full OS2Web suite
+(https://github.com/OS2web/os2web), as the separation of those are still WIP.

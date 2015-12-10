@@ -30,6 +30,8 @@
       hide($content['comments']);
       hide($content['links']);
       print render($content);
+      $emply_block = module_invoke('views','block_view','a65df961171e0f41166a39fbc1e50015');
+      print render($emply_block['content']);
       if ($teaser) {
          print '<div class="changed"> Opdateret: ' . date('d/m/Y - H:i', $node->changed) . '</div>';
       }
