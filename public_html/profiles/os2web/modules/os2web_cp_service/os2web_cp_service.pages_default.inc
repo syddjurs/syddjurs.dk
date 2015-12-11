@@ -276,7 +276,7 @@ function os2web_cp_service_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => 'Beskrivende tekst',
       'title' => '',
-      'body' => '<p>Søg i sagssystemet efter sager og dokumenter. Du kan søge efter specifikke ord i en angiven tidsinterval.</p>',
+      'body' => '<p>Søg i sagssystemet efter sager og dokumenter. Du kan søge efter specifikke ord i en angiven tidsinterval. Sagerne på det tekniske område findes elektronisk fra 2008 og frem.</p><p>Vær opmærksom på at der er en forsinkelse på minimum et døgn fra journalisering til publicering. Udtages et dokument af den automatiske sikkerhedskontrol, for at undgå publicering af person følsomme data, vil forsinkelsen være længere.</p>',
       'format' => 'filtered_html',
       'substitute' => TRUE,
     );
@@ -293,6 +293,27 @@ function os2web_cp_service_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'center';
+    $pane->type = 'block';
+    $pane->subtype = 'os2web_cp_service-os2web_cp_service_counter';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['center'][1] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
+    $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'os2web_cp_service_cp_case_search-panel_pane_1';
     $pane->shown = TRUE;
@@ -304,12 +325,12 @@ function os2web_cp_service_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['center'][1] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['center'][2] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-3';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['os2web_cp_service_cp_case_search_panel'] = $page;

@@ -1136,3 +1136,64 @@ function os2web_cp_service_get_extension_from_mime($mime) {
   $pieces = explode('/', $mime);
   return array_pop($pieces);
 }
+
+/**
+ * Implements hook_block_info().
+ */
+function os2web_cp_service_block_info() {
+  $blocks = array();
+  $blocks['os2web_cp_service_counter'] = array(
+    'info' => t('Open Insight document and case counter'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function os2web_cp_service_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'os2web_cp_service_counter':
+      $block['content'] = _os2web_cp_service_block_counter_view();
+      break;
+  }
+  return $block;
+}
+
+function _os2web_cp_service_block_counter_view() {
+
+  // Query cases and documents
+  $count_cases     =  _os2web_cp_service_count_nodes('os2web_cp_service_cp_case');
+  $count_documents =  _os2web_cp_service_count_nodes('os2web_cp_service_cp_document');
+
+  $string = t('Du kan nu søge i !cases sager og !documents dokumenter.', array(
+    '!cases' => '<span title="Samlet antal sager i Åben Indsigt" style="background: #9b185c; color: #fff; padding: 3px;">' . number_format($count_cases, 0, '', '.') . '</span>',
+    '!documents' => '<span title="Samlet antal dokumenter i Åben Indsigt" style="background: #9b185c; color: #fff; padding: 3px;">' . number_format($count_documents, 0, '', '.') . '</span>',
+    )
+  );
+
+  $render_array = array(
+    '#type' => 'markup',
+    '#markup' => $string,
+    '#prefix' => '<p style="margin-bottom: 30px;">',
+    '#suffix' => '</p>',
+  );
+  return $render_array;
+}
+
+/**
+ * Returns a count of published nodes of a given node type.
+ */
+function _os2web_cp_service_count_nodes($type) {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $type)
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->count();
+
+  return $query->execute();
+}
