@@ -37,6 +37,7 @@ function os2web_webform_user_default_permissions() {
     'name' => 'access own webform submissions',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'webform',
