@@ -3,10 +3,14 @@
  * @file os2web_ofir_job.install
  */
 
-/**
- * Implements hook_taxonomies_enable().
- */
-function os2web_ofir_job_enable() {
-  //Set default Ofir feed url
 
+/**
+ * Implements hook_uninstall().
+ */
+function os2web_ofir_job_uninstall() {
+  variable_del('os2web_ofir_job_webservice');
+  variable_del('os2web_ofir_job_apiKey');
+  variable_del('os2web_ofir_job_mediaId');
+  variable_del('os2web_ofir_job_import_period');
+  variable_del('os2web_ofir_job_last_import');
 }
