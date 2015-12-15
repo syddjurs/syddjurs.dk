@@ -10,7 +10,8 @@
 function os2web_ofir_job_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_apply_link'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_apply_link'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_apply_link'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -143,7 +144,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_contact_no'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_contact_no'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_contact_no'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -231,7 +233,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_contact_person'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_contact_person'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_contact_person'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -446,94 +449,6 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_desc'
-  $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_desc'] = array(
-    'bundle' => 'os2web_ofir_job',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'spotbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_ofir_job_desc',
-    'label' => 'Stillingsbetegnelse',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'blokindhold' => 'blokindhold',
-          'emails' => 'emails',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'raw' => 'raw',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'blokindhold' => array(
-              'weight' => -7,
-            ),
-            'emails' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'php_code' => array(
-              'weight' => -6,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-            'raw' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_logo'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_logo'] = array(
     'bundle' => 'os2web_ofir_job',
@@ -616,7 +531,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_period'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_job_period'
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_period'] = array(
     'bundle' => 'os2web_ofir_job',
     'deleted' => 0,
@@ -678,94 +594,6 @@ function os2web_ofir_job_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_start_time'
-  $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_start_time'] = array(
-    'bundle' => 'os2web_ofir_job',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'spotbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_ofir_job_start_time',
-    'label' => 'Tiltrædelse',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'blokindhold' => 'blokindhold',
-          'emails' => 'emails',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'raw' => 'raw',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'blokindhold' => array(
-              'weight' => -7,
-            ),
-            'emails' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'php_code' => array(
-              'weight' => -6,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-            'raw' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 14,
     ),
   );
 
@@ -858,183 +686,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_type'
-  $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_type'] = array(
-    'bundle' => 'os2web_ofir_job',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'spotbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_ofir_job_type',
-    'label' => 'Stillingstype',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'blokindhold' => 'blokindhold',
-          'emails' => 'emails',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'raw' => 'raw',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'blokindhold' => array(
-              'weight' => -7,
-            ),
-            'emails' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'php_code' => array(
-              'weight' => -6,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-            'raw' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_work_hours'
-  $field_instances['node-os2web_ofir_job-field_os2web_ofir_work_hours'] = array(
-    'bundle' => 'os2web_ofir_job',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'spotbox' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_ofir_work_hours',
-    'label' => 'Arbejdstid',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'blokindhold' => 'blokindhold',
-          'emails' => 'emails',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'raw' => 'raw',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'blokindhold' => array(
-              'weight' => -7,
-            ),
-            'emails' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'php_code' => array(
-              'weight' => -6,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-            'raw' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'taxonomy_term-os2web_job_designs-field_os2web_job_image'
+  // Exported field_instance:
+  // 'taxonomy_term-os2web_job_designs-field_os2web_job_image'
   $field_instances['taxonomy_term-os2web_job_designs-field_os2web_job_image'] = array(
     'bundle' => 'os2web_job_designs',
     'deleted' => 0,
@@ -1116,17 +769,13 @@ function os2web_ofir_job_field_default_field_instances() {
   t('Ad id');
   t('Ansøgningsfrist');
   t('Apply Link');
-  t('Arbejdstid');
   t('Beskrivelse');
   t('Billede');
   t('Design');
   t('Kontaktperson');
   t('Logo');
-  t('Stillingsbetegnelse');
   t('Stillingskategori');
-  t('Stillingstype');
   t('Telefonnummer');
-  t('Tiltrædelse');
 
   return $field_instances;
 }
