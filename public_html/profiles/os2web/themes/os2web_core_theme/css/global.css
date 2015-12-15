@@ -2922,6 +2922,10 @@ div.breadcrumb.you-are-here {
   border-bottom: 1px solid #4c4c4c;
 }
 
+.view-job-liste .views-row {
+  border-bottom: 1px solid #4c4c4c;
+}
+
 .view-job-liste .field-name-field-os2web-ofir-category,
 .view-job-liste header,
 .view-job-liste .changed {
@@ -4737,4 +4741,9 @@ ul.os2web_menus-container {
   display: inline-block;
   margin-top: 25px;
   margin-bottom: 35px;
+}
+
+/* Webform action buttons */
+.webform-submission-actions li {
+  margin-right: 10px;
 }
