@@ -10,6 +10,17 @@
 function os2web_base_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access PDF version'.
+  $permissions['access PDF version'] = array(
+    'name' => 'access PDF version',
+    'roles' => array(
+      'Administrator' => 'Administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'print_pdf',
+  );
+
   // Exported permission: 'access site-wide contact form'.
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',

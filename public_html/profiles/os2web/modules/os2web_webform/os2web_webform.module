@@ -55,6 +55,11 @@ function os2web_webform_download_request_page($nid, $sid) {
   return $output;
 }
 
+function os2web_webform_confirmation_page($nid, $sid) {
+  return 'webform confirmation page';
+}
+
+
 /**
  * Function to process a submission.
  */
@@ -87,8 +92,6 @@ function os2web_webform_process_submission(&$submission, $node) {
 function os2web_webform_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'webform_configure_form':
-      // Deny acces to redirection setup.
-      $form['submission']['redirection']['redirect_url']['#default_value'] = 'node/[node:nid]/submission/[submission:sid]/download';
       $items = os2web_webform_get_form_components($form['#node']);
       $field_elements = db_query("SELECT field_settings FROM {os2web_webform_settings} WHERE nid = :nid", array(':nid' => $form['nid']['#value']))->fetchField();
       $field_elements = unserialize($field_elements);
@@ -125,6 +128,7 @@ function os2web_webform_form_alter(&$form, &$form_state, $form_id) {
         drupal_goto($string . '/node/' . $nid);
       }
       $form['#submit'][] = 'os2web_webform_save_element';
+      $form['#validate'][] = 'os2web_webform_store_fields';
       break;
   }
 }
@@ -162,6 +166,15 @@ function os2web_webform_get_form_components($node) {
   }
   return $items;
 }
+
+function os2web_webform_store_fields($form, &$form_state) {
+  // Store all form values in session, so they can be retrieved later. This will make it possible to print
+  // all values, even if some are not stored in the database.
+  $nid = $form_state['values']['details']['nid'];
+  $_SESSION['webform'][$nid] = $form_state['values'];
+  unset($_SESSION['submission_id']);
+}
+
 
 function os2web_webform_save_element($form, &$form_state) {
   $sid = $form_state['values']['details']['sid'];
