@@ -264,6 +264,15 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Overskrift: Global: Ufiltreret tekst */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['label'] = 'Læs også';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="panel-heading">
+  <h3 class="panel-title">Læs også</h3>
+</div>';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Felt: Indhold: Stillingsbetegnelse */
   $handler->display->display_options['fields']['field_os2web_ofir_job_desc']['id'] = 'field_os2web_ofir_job_desc';
   $handler->display->display_options['fields']['field_os2web_ofir_job_desc']['table'] = 'field_data_field_os2web_ofir_job_desc';
