@@ -8,12 +8,14 @@
 include_once 'os2web_meetings.features.inc';
 
 /**
- * Implements hook_init().
+ * Implements hook_preprocess_page().
  */
-function os2web_meetings_init(){
-  drupal_add_css(drupal_get_path('module', 'os2web_meetings') . '/css/os2web_meetings.css', array('group' => CSS_THEME, 'every_page' => FALSE));
-  drupal_add_js(drupal_get_path('module', 'os2web_meetings') . '/js/os2web_meetings.js');
-  drupal_add_library('system', 'ui.datepicker');
+function os2web_meetings_preprocess_page(&$vars) {
+  if (isset($vars['node']) && $vars['node']->type == 'os2web_meetings_meeting') {
+    drupal_add_js(drupal_get_path('module', 'os2web_meetings') . '/js/os2web_meetings.js');
+    drupal_add_css(drupal_get_path('module', 'os2web_meetings') . '/css/os2web_meetings.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+    drupal_add_library('system', 'ui.datepicker');
+  }
 }
 
 /**
