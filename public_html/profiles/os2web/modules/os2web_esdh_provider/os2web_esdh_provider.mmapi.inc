@@ -444,7 +444,7 @@ function _os2web_esdh_provider_import_bullets($bullets) {
     // Set some default values.
     node_object_prepare($node);
     // Let's add body field.
-    $node->field_os2web_meetings_bpa_body[$node->language][0]['value'] = check_markup($bullet['body'], 'os2web_html_purifier', '', FALSE);
+    $node->field_os2web_meetings_bpa_body[$node->language][0]['value'] = os2web_esdh_provider_filter_html_tags($bullet['body']);//check_markup($bullet['body'], 'os2web_html_purifier', '', FALSE);
     // If field has a format, you need to define it.
     // Here we define a default filtered_html format for a body field.
     $node->field_os2web_meetings_bpa_body[$node->language][0]['format'] = _os2web_esdh_provider_bpa_body_format();
@@ -839,4 +839,63 @@ function _os2web_esdh_provider_bpa_body_format() {
     }
   }
   return $cache;
+}
+
+function os2web_esdh_provider_filter_html_tags($data) {    
+    $tags = explode(',', variable_get('os2dagsorden_filtered_tags', ''));
+    foreach ($tags as $tag) {
+        preg_match_all('#<' . $tag . '(.*?)>(.*?)</' . $tag . '>#is', $data, $matches);
+        foreach ($matches[0] as $match) {
+            $filtred_data = preg_replace('#style="(.*?)"#is', "", $match);
+            $data = str_replace($match, $filtred_data, $data);
+        }
+    }
+           
+    //remove all a tags with attribute Name="Acadre.. 
+   // $data = preg_replace("/(<a name=Acadre(.*?)>((.*?)(\\s*?))+<\\/a>\\s*)+/", '', $data);
+   /* preg_match_all('/<a name=Acadre.*?>(.*?)<\\/a>\\s*+/',$data, $aTags);     
+    for ($i = 0; $i < count($aTags); $i++) 
+      $data = preg_replace("/(<a name=Acadre(.*?)>((.*?)(\\s*?))+<\\/a>\\s*)+/", $aTags[$i][1], $data);
+    */
+    while(preg_match('/(<a name=Acadre(.*?)>((.*?\\s*?))+<\\/a>\\s*)+/',$data, $aTags)>0){   
+       $str = _os2web_esdh_provider_strip_only($aTags[0],  'a');
+       $data = str_replace($aTags[0],$str, $data);
+     }
+    $stripped_tags = explode(',', variable_get('os2dagsorden_stripped_tags', ''));
+    $data = _os2web_esdh_provider_strip_only($data,  $stripped_tags);
+       
+    //remove all img tags that link missing files
+    $data =  _os2web_esdh_provider_remove_img_tags($data);
+    //replace all <p></p> and <p>&nbsp;</p> tags with <br />  
+    $data = preg_replace('#(<p>((<span>)*?)(|&nbsp;)((<\/span>)*?)<\/p>\s*)+#i', '<br />', $data);
+    return $data;
+}
+
+function _os2web_esdh_provider_remove_img_tags($data){
+  preg_match_all('/<img[^>]+>/i',$data, $imgTags); 
+  for ($i = 0; $i < count($imgTags[0]); $i++) {
+    // get the source string
+     preg_match('/src="([^"]+)/i',$imgTags[0][$i], $imgage);
+  
+     $file_headers = @get_headers($imgage[0]);
+     if($file_headers=== FALSE or $file_headers[0] == 'HTTP/1.0 404 Not Found')       {
+         $data = str_replace($imgTags[0][$i], "",  $data);
+     }  
+   }
+  
+  return $data;
+}
+
+function _os2web_esdh_provider_strip_only($str, $tags, $stripContent = false) {
+    $content = '';
+    if(!is_array($tags)) {
+        $tags = (strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : array($tags));
+        if(end($tags) == '') array_pop($tags);
+    }
+    foreach($tags as $tag) {
+        if ($stripContent)
+             $content = '(.+</'.$tag.'[^>]*>|)';
+         $str = preg_replace('#</?'.$tag.'[^>]*>'.$content.'#is', '', $str);
+    }
+    return $str;
 }
