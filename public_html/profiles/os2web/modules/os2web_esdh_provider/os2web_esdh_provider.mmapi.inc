@@ -842,7 +842,7 @@ function _os2web_esdh_provider_bpa_body_format() {
 }
 
 function os2web_esdh_provider_filter_html_tags($data) {    
-    $tags = explode(',', variable_get('os2dagsorden_filtered_tags', ''));
+    $tags = explode(',', variable_get('os2web_esdh_provider_filtered_tags', ''));
     foreach ($tags as $tag) {
         preg_match_all('#<' . $tag . '(.*?)>(.*?)</' . $tag . '>#is', $data, $matches);
         foreach ($matches[0] as $match) {
@@ -851,23 +851,19 @@ function os2web_esdh_provider_filter_html_tags($data) {
         }
     }
            
-    //remove all a tags with attribute Name="Acadre.. 
-   // $data = preg_replace("/(<a name=Acadre(.*?)>((.*?)(\\s*?))+<\\/a>\\s*)+/", '', $data);
-   /* preg_match_all('/<a name=Acadre.*?>(.*?)<\\/a>\\s*+/',$data, $aTags);     
-    for ($i = 0; $i < count($aTags); $i++) 
-      $data = preg_replace("/(<a name=Acadre(.*?)>((.*?)(\\s*?))+<\\/a>\\s*)+/", $aTags[$i][1], $data);
-    */
     while(preg_match('/(<a name=Acadre(.*?)>((.*?\\s*?))+<\\/a>\\s*)+/',$data, $aTags)>0){   
        $str = _os2web_esdh_provider_strip_only($aTags[0],  'a');
        $data = str_replace($aTags[0],$str, $data);
      }
-    $stripped_tags = explode(',', variable_get('os2dagsorden_stripped_tags', ''));
+    $stripped_tags = explode(',', variable_get('os2web_esdh_provider_stripped_tags', ''));
     $data = _os2web_esdh_provider_strip_only($data,  $stripped_tags);
        
     //remove all img tags that link missing files
     $data =  _os2web_esdh_provider_remove_img_tags($data);
     //replace all <p></p> and <p>&nbsp;</p> tags with <br />  
     $data = preg_replace('#(<p>((<span>)*?)(|&nbsp;)((<\/span>)*?)<\/p>\s*)+#i', '<br />', $data);
+    //replace multiple &nbsp; tags with...  
+    $data = preg_replace('/(\x{00A0}|&nbsp;){2,}/u', variable_get('os2web_esdh_provider_tab_tag', '&nbsp;'), $data);
     return $data;
 }
 
