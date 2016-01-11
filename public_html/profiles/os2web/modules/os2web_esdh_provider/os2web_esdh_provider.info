@@ -9,3 +9,4 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = os2web_adlib_api
 features[features_api][] = api:1
+stylesheets[all][] = css/os2web_esdh_provider.css

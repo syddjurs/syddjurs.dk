@@ -86,6 +86,27 @@ function os2web_esdh_provider_form_os2web_settings_settings_form_alter(&$form, &
     '#description' => t('This is currently only tested on meetings imported with the acadre plugin'),
     '#default_value' => variable_get('os2web_meetings_unpublish_without_manifest', FALSE),
   );
+  $form['os2web_esdh_provider']['os2web_esdh_provider_filtered_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Filtered HTML tags lists'),
+    '#maxlength' => 250,
+    '#default_value' => variable_get('os2web_esdh_provider_filtered_tags', ''),
+    '#description' => t('Comma-separated list of html tags that want to filter out (fe. p,h1,h2).'),
+  );
+  $form['os2web_esdh_provider']['os2web_esdh_provider_stripped_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Striped HTML tags lists'),
+    '#maxlength' => 250,
+    '#default_value' => variable_get('os2web_esdh_provider_stripped_tags', ''),
+    '#description' => t('Comma-separated list of html tags that want to strip (fe. font, span).'),
+  );
+  $form['os2web_esdh_provider']['os2web_esdh_provider_tab_tag'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Replace  multiple &amp;nbsp; tags with: '),
+    '#maxlength' => 250,
+    '#default_value' => variable_get('os2dagsorden_tab_tag', '&nbsp;'),
+    '#description' => t('Tag what should be put into the document instead of multiple &amp;nbsp; tags'),
+  );
 }
 
 /**
