@@ -19,7 +19,7 @@ div.microArticle a {
 }
 
 #borger_dk_header{
-  font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   font-size: 20px;
   font-weight: 300;
   margin-left: 10px;
@@ -35,7 +35,6 @@ div.microArticle a {
 .os2web_borger_dk_selfservi h3 {
   border-bottom: 1px solid #BBC5A8;
   color: #526A27;
-  /*font-family: "myriad-pro",Arial,Helvetica,sans-serif;*/
   font-size: 20px;
   font-weight: 300;
 }
@@ -50,7 +49,7 @@ div.microArticle a {
 .borger_dk-region-stack2,
 .borger_dk-region-stack3, .borger_dk-region-stack4 {
   clear: both;
-  font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   font-size: 13px;
   padding: 10px 5px 10px 10px;
 }
@@ -94,13 +93,13 @@ div.microArticle a {
 .borger_dk-field_os2web-borger-dk-recommend h3,
 .borger_dk-field_os2web-borger-dk-shortlist h3 {
   border-bottom: 1px solid #C3C3C3;
-  font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   font-size: 20px;
   font-weight: 300;
 }
 
 .borger_dk-field_os2web-borger-dk-recommend h4 {
-  font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   font-size: 18px;
   font-weight: 300;
 }
@@ -119,7 +118,7 @@ div.microArticle a {
    /* margin: 0 0 1.5em 2em;*/
 }
 .borger_dk-field_os2web-borger-dk-byline {
-  font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   float: right;
   padding-right: 10px;
 }

@@ -150,21 +150,18 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 h1, h2, h3, h4, h5, h6  { letter-spacing: -0.7px;  }
 h4 {margin-top: 5px; font-size: 16px }
 
-/* Myriad Pro Font */
 
 h1, h2, h3, h4, h5, h6, .button, .knapper, .view-selvbetjening, .view-id-selvbetjening select, #breadcrumb, .view-rotating-image-view, .view-os2web-kulturnaut-events-lists, .portalnews-big, #main-menu, #zone-menu, #region-header-second .region-inner li, #block-search-form, input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], .spotbox-subsite-frontpage .spotbody, .telefonnummer, .telfonnummer, option, .agenda-bullet-list, .pane-os2web-hearings a, .qtip-wrapper a, .qtip-wrapper, .section-footer {
-  font-family: "myriad-pro", "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-family:  Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 
-/* Myriad Pro Light Font */
 
-.view-os2web-hearings .field-name-field-os2web-base-field-summary, .field-name-field-os2web-hearings-enddate,#views-exposed-form-os2web-meetings-view-search-page label, #region-sidebar-second .spotbox_no_picture_text h3, .spotbox .spotbox_no_picture_text h3, .search-form .form-text, .views-slideshow-cycle-main-frame-row-item, .region-inner h1.title, .node-type-os2web-base-contentpage .field-name-field-os2web-base-field-summary {font-family: "myriad-pro", "Myriad Pro", Arial, Helvetica, sans-serif; font-weight: 300; letter-spacing: normal}
+.view-os2web-hearings .field-name-field-os2web-base-field-summary, .field-name-field-os2web-hearings-enddate,#views-exposed-form-os2web-meetings-view-search-page label, #region-sidebar-second .spotbox_no_picture_text h3, .spotbox .spotbox_no_picture_text h3, .search-form .form-text, .views-slideshow-cycle-main-frame-row-item, .region-inner h1.title, .node-type-os2web-base-contentpage .field-name-field-os2web-base-field-summary {font-family: Arial, Helvetica, sans-serif; font-weight: 300; letter-spacing: normal}
 
 
-/*   Myriad Pro Bold Font */
 
-.portalnews-big .date {font-family: "myriad-pro", Arial, Helvetica, sans-serif; font-weight: 700; letter-spacing: normal}
+.portalnews-big .date {font-family: Arial, Helvetica, sans-serif; font-weight: 700; letter-spacing: normal}
 
 /* // END Fonts */
 
@@ -720,7 +717,7 @@ ul.jcarousel-list-horizontal { }
 
 #zone-postscript { background-image: url(../images/cw-bg-bund.png); background-position: center; background-repeat: repeat-y; }
 #zone-menu {
-  font-family: "myriad-pro", Arial, Helvetica, Tahoma, sans-serif;
+  font-family: Arial, Helvetica, Tahoma, sans-serif;
   margin-top: 10px;
 }
 #region-user-second, #region-header-second {float: right}
@@ -3271,7 +3268,7 @@ ul#facetapi-facet-apachesolrsolr-block-im-field-os2web-base-field-struc {
 	padding-left: 13px;
 	margin-left: 10px;
 	margin-top: 10px;
-	font-family: "myriad-pro", Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	position: relative;
 	width: 90%;
 	background-position: 0 2px;
