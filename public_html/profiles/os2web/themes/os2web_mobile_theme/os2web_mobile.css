@@ -28,3 +28,26 @@ ul.nav {
 article.node iframe {
     width: 100% !important;
 }
+.form-textarea-wrapper textarea,
+.webform-component input {
+  width: 100%;
+  padding: 5px 0;
+}
+
+.pane-node-webform {
+  background: #FFF;
+  padding: 5px;
+}
+.pane-node-webform label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pane-node-webform .webform-component {
+  margin-bottom: 20px;
+}
+.pane-node-webform .radio,
+.pane-node-webform .checkbox {
+  font-weight: 400;
+  font-size: 16px;
+}
