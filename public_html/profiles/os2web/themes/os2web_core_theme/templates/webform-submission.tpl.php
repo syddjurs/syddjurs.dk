@@ -65,7 +65,7 @@
 
           <div class="form-item webform-component webform-component-display webform-component--<?php print $key; ?>">
             <label for="edit-submitted-<?php print $key; ?>"><?php print $value['name']; ?></label>
-            <div class="form-item webform-component webform-component-display"><?php print $output ?></div>
+            <div class="form-item webform-component webform-component-display"><?php print $output; ?></div>
           </div>
 
         <?php endforeach; ?>
