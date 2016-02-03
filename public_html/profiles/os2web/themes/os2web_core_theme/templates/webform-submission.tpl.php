@@ -47,10 +47,25 @@
       <div class="webform-submission">
 
         <?php foreach($result as $key => $value): ?>
+        <?php $output = $_SESSION['webform'][$node->nid]['submitted'][$key]; ?>
+        <?php if (is_array($_SESSION['webform'][$node->nid]['submitted'][$key])) {
+          $output = '';
+          $data = $_SESSION['webform'][$node->nid]['submitted'][$key];
+          if (isset($data['day'])) {
+            $output = $data['day'] . '-' . $data['month'] . '-' . $data['year'];
+          }
+          else {
+            foreach ($data as $key => $elelment) {
+              if ($elelment) {
+                $output .= $elelment . '  /  ';
+              }
+            }
+          }
+        }?>
 
           <div class="form-item webform-component webform-component-display webform-component--<?php print $key; ?>">
             <label for="edit-submitted-<?php print $key; ?>"><?php print $value['name']; ?></label>
-            <?php print $_SESSION['webform'][$node->nid]['submitted'][$key]; ?>
+            <div class="form-item webform-component webform-component-display"><?php print $output ?></div>
           </div>
 
         <?php endforeach; ?>
