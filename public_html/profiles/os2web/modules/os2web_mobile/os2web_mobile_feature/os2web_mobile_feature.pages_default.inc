@@ -251,6 +251,29 @@ function os2web_mobile_feature_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-7'] = $pane;
     $display->panels['top'][2] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field_extra';
+    $pane->subtype = 'node:webform';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'full',
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['top'][3] = 'new-8';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
