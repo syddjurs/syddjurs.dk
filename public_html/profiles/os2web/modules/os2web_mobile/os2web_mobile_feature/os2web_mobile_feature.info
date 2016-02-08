@@ -3,6 +3,7 @@ core = 7.x
 package = Features
 version = 7.x-1.0
 project = os2web_mobile_feature
+dependencies[] = ctools
 dependencies[] = image
 dependencies[] = menu_block
 dependencies[] = page_manager

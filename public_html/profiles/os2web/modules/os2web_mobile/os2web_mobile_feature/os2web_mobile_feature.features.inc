@@ -38,6 +38,7 @@ function os2web_mobile_feature_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'mobile_focus_active',
   );
 
   // Exported image style: mobile_focus_thumb.
@@ -52,6 +53,7 @@ function os2web_mobile_feature_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'mobile_focus_thumb',
   );
 
   return $styles;
