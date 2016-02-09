@@ -63,7 +63,6 @@ function drush_os2web_acadre_esdh_acadre_doc($docid = NULL) {
     }
     else {
       drush_log('Document lookup..', 'ok');
-      error_log(print_r($data, 1));
     }
   }
   else {
@@ -83,7 +82,6 @@ function drush_os2web_acadre_esdh_acadre_case($caseid = NULL) {
     }
     else {
       drush_log('Case lookup..', 'ok');
-      error_log(print_r($data, 1));
     }
   }
   else {
@@ -103,7 +101,6 @@ function drush_os2web_acadre_esdh_acadre_case_docs($caseid = NULL) {
     }
     else {
       drush_log('Case lookup..', 'ok');
-      error_log(print_r($data, 1));
     }
   }
   else {
@@ -127,7 +124,6 @@ function drush_os2web_acadre_esdh_acadre_case_docs_load($caseid = NULL) {
       foreach ($data as $doc) {
         $docs[] = os2web_esdh_provider_invoke('cm', 'get_document', $doc);
       }
-      error_log(print_r($docs, 1));
     }
   }
   else {
