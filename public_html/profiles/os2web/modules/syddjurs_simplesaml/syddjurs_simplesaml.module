@@ -6,7 +6,7 @@
 function syddjurs_simplesaml_menu() {
   $items = array();
 
-  $items['admin/config/os2intra/simplesaml'] = array(
+  $items['admin/config/people/simplesaml'] = array(
     'title'            => 'Syddjurs SimpleSAML',
     'description'      => 'Administer SimpleSAML',
     'page callback' => 'drupal_get_form',
