@@ -60,23 +60,23 @@ function syddjurs_simplesaml_settings_form_submit($form, &$form_state) {
 function syddjurs_simplesaml_user_login(&$edit, $account) {
   $attributes = simplesamlphp_auth_get_attributes();
 
-  if (!empty($attributes)) {
-    if (isset($attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'])) {
-      $edit['field_first_name'][LANGUAGE_NONE][0]['value'] = $attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'];
-    }
-    if (isset($attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'])) {
-      $edit['field_last_name'][LANGUAGE_NONE][0]['value'] = $attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'];
-    }
-    if (isset($attributes['http://www.syddjurs.dk/claims/title'])) {
-      $edit['field_job_title'][LANGUAGE_NONE][0]['value'] =
-        $attributes['http://www.syddjurs.dk/claims/title'];
-    }
-    if (isset($attributes['http://www.syddjurs.dk/claims/physicalDeliveryOfficeName'])) {
-      $edit['field_location_place'][LANGUAGE_NONE][0]['value'] =
-        $attributes['http://www.syddjurs.dk/claims/physicalDeliveryOfficeName'];
-    }
-    user_save($account, $edit);
-  }
+  #if (!empty($attributes)) {
+  #  if (isset($attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'])) {
+  #    $edit['field_first_name'][LANGUAGE_NONE][0]['value'] = $attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'];
+  #  }
+  #  if (isset($attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'])) {
+  #    $edit['field_last_name'][LANGUAGE_NONE][0]['value'] = $attributes['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname'];
+  #  }
+  #  if (isset($attributes['http://www.syddjurs.dk/claims/title'])) {
+  #    $edit['field_job_title'][LANGUAGE_NONE][0]['value'] =
+  #      $attributes['http://www.syddjurs.dk/claims/title'];
+  #  }
+  #  if (isset($attributes['http://www.syddjurs.dk/claims/physicalDeliveryOfficeName'])) {
+  #   $edit['field_location_place'][LANGUAGE_NONE][0]['value'] =
+  #      $attributes['http://www.syddjurs.dk/claims/physicalDeliveryOfficeName'];
+  #  }
+  #  user_save($account, $edit);
+  #}
 }
 
 /**
@@ -87,7 +87,7 @@ function syddjurs_simplesaml_boot() {
   if (php_sapi_name() != 'cli' && $GLOBALS['user']->uid == 0) {
   error_log('saml',print_r($attributes),0);
     $custom_ips = explode(',', variable_get('syddjurs_simplesaml_redirected_ips'));
-    $remote_ip = $_SERVER['REMOTE_ADDR'];
+    isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $remote_ip = $_SERVER['HTTP_X_FORWARDED_FOR'] : $remote_ip = $_SERVER['REMOTE_ADDR'];
 
     foreach ($custom_ips as $custom_ip) {
       // If we the client request is from one of the IP's, login using SimpleSAMLphp; otherwise use normal login
