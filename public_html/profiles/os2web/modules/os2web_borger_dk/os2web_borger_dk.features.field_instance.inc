@@ -169,7 +169,7 @@ function os2web_borger_dk_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_selfserv',
-    'label' => 'Selvbetjeningslinks',
+    'label' => 'Blanketter/Selvbetjening',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1282,6 +1282,7 @@ function os2web_borger_dk_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Article text');
   t('Billede');
+  t('Blanketter/Selvbetjening');
   t('Borger.dk-URL');
   t('Byline');
   t('FORM Emneord');
@@ -1294,7 +1295,6 @@ function os2web_borger_dk_field_default_field_instances() {
   t('Post-text');
   t('Pre-text');
   t('Recommended');
-  t('Selvbetjeningslinks');
   t('Shortlist');
   t('Spotboxe');
 
