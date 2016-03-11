@@ -214,17 +214,14 @@
   ?>
   <div class="content clearfix"<?php print $content_attributes; ?>>
   <?php
-    if (!empty($content_field['field_os2web_base_field_selfserv'])) {
+    if (!empty($content['field_os2web_base_field_selfserv'])) {
       print "<div class='borger_dk-region-stack2'>
-              <div class='inside'>
-               <div class='field-name-field-os2web-base-field-selfserv'>";
-            print "<div class='field-label'>Blanketter/selvbetjening:&nbsp;</div>";
-                print render($content_field['field_os2web_base_field_selfserv']);
-      print   '</div>
-              </div>
+              <div class='inside'>";
+                print render($content['field_os2web_base_field_selfserv']);
+      print  '</div> 
             </div>';
     }
-    elseif (!empty($content_field['field_os2web_borger_dk_selfservi'])) {
+    elseif (!empty($content_field['field_os2web_borger_dk_selfservi']) && empty($content['field_os2web_base_field_selfserv'])) {
       print "<div class='borger_dk-region-stack2'>
               <div class='inside'>
                <div class='field-name-field-os2web-base-field-selfserv'>";
