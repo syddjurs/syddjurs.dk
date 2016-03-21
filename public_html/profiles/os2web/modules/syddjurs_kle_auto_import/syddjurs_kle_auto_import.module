@@ -16,6 +16,12 @@ function syddjurs_kle_auto_import_menu() {
     'page arguments'   => array('_syddjurs_kle_auto_import_menu_settings'),
     'access arguments' => array('access administration pages'),
   );
+  $items['kle_without_deleted_term/autocomplete'] = array(
+    'page callback'    => '_syddjurs_kle_autocomplete_callback',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -52,6 +58,16 @@ function _syddjurs_kle_auto_import_menu_settings() {
     '#size' => 80,
     '#required' => TRUE,
     '#default_value' => variable_get('syddjurs_kle_auto_import_schedule', SYDDJURS_KLE_AUTO_IMPORT_DEFAULT_SCHEDULE),
+  );
+  $form['syddjurs_kle_auto_import_remove_deleted_kle'] = array(
+    '#title' => t('Fjern udgået kle fra import fil.'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('syddjurs_kle_auto_import_remove_deleted_kle', 0),
+  );
+  $form['syddjurs_kle_auto_import_hide_deleted_kle'] = array(
+    '#title' => t('Skjul udgået kle fra KLE autocomplete list.'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('syddjurs_kle_auto_import_hide_deleted_kle', 0),
   );
 
   $last_run_var = variable_get('syddjurs_kle_auto_import_last_run', 0);
@@ -142,6 +158,7 @@ function _syddjurs_kle_auto_import_convert_xml($org_xml) {
 
   $dom_doc = new DOMDocument('1.0', 'utf-8');
   $root_element = $dom_doc->createElement('Taxonomy');
+  $discontinued = variable_get('syddjurs_kle_auto_import_remove_deleted_kle', 0);
 
   $name_node = $dom_doc->createElement('Name');
   $name_node->nodeValue = 'KLE';
@@ -154,6 +171,13 @@ function _syddjurs_kle_auto_import_convert_xml($org_xml) {
   $dom_doc->appendChild($root_element);
   foreach ($org_xml->Hovedgruppe as $hovedgruppe) {
 
+    if ($hovedgruppe->xpath('HovedgruppeAdministrativInfo/Historisk/UdgaaetDato') && $discontinued) {
+      continue;
+    }
+    if ($hovedgruppe->xpath('HovedgruppeAdministrativInfo/Historisk/Flyttet/FlyttetDato')
+        && $discontinued) {
+      continue;
+    }
     /*
      * Hovedgruppe
      */
@@ -190,6 +214,13 @@ function _syddjurs_kle_auto_import_convert_xml($org_xml) {
      */
     foreach($hovedgruppe->Gruppe as $gruppe) {
 
+      if ($gruppe->xpath('GruppeAdministrativInfo/Historisk/UdgaaetDato') && $discontinued) {
+        continue;
+      }
+      if ($gruppe->xpath('GruppeAdministrativInfo/Historisk/Flyttet/FlyttetDato')
+        && $discontinued) {
+        continue;
+      }
       // <Taxon>
       $gruppe_taxon = $dom_doc->createElement('Taxon');
       $root_element->appendChild($gruppe_taxon);
@@ -254,7 +285,14 @@ function _syddjurs_kle_auto_import_convert_xml($org_xml) {
        * Emne
        */
       foreach ($gruppe->Emne as $emne) {
+        if ($emne->xpath('EmneAdministrativInfo/Historisk/UdgaaetDato') && $discontinued) {
+          continue;
+        }
 
+        if ($emne->xpath('EmneAdministrativInfo/Historisk/Flyttet/FlyttetDato')
+          && $discontinued) {
+          continue;
+        }
         // <Taxon>
         $emne_taxon = $dom_doc->createElement('Taxon');
         $root_element->appendChild($emne_taxon);
@@ -332,4 +370,38 @@ function syddjurs_kle_auto_import_cron() {
   if ($next_run <= time()) {
     syddjurs_kle_auto_import_run();
   }
+}
+function syddjurs_kle_auto_import_form_alter(&$form, &$form_state,$form_id) {
+  $discontinued = variable_get('syddjurs_kle_auto_import_hide_deleted_kle', 0);
+  if ($discontinued) {
+    $new_path = "kle_without_deleted_term/autocomplete";
+    $form['field_os2web_base_field_kle_ref']['und']['#autocomplete_path'] = $new_path;
+
+  }
+}
+
+function _syddjurs_kle_autocomplete_callback($string = '') {
+  $discontinued = variable_get('syddjurs_kle_auto_import_hide_deleted_kle', 0);
+  $matches = array();
+  if ($string) {
+
+    $query = db_select('taxonomy_term_data', 't')
+      ->fields('t', array('name', 'tid'))
+      ->condition('t.vid', 4, '=')
+      ->condition('t.name', '%' . db_like($string) . '%', 'LIKE');
+      if ($discontinued) {
+        $query->condition('t.name', '%[udg%', 'NOT LIKE');
+      }
+      $query
+      ->orderBy('t.tid', 'ASC')
+      ->range(0, 10);
+    $result = $query->execute();
+    // Add matches to $matches.
+    foreach ($result as $row) {
+        $row_name = $row->name;
+
+      $matches[$row_name] = check_plain($row_name);
+    }
+  }
+  drupal_json_output($matches);
 }
