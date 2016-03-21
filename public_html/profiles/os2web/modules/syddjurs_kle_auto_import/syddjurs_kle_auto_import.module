@@ -382,12 +382,13 @@ function syddjurs_kle_auto_import_form_alter(&$form, &$form_state,$form_id) {
 
 function _syddjurs_kle_autocomplete_callback($string = '') {
   $discontinued = variable_get('syddjurs_kle_auto_import_hide_deleted_kle', 0);
+  $vid = taxonomy_vocabulary_machine_name_load('os2web_taxonomies_tax_kle')->vid;
   $matches = array();
   if ($string) {
 
     $query = db_select('taxonomy_term_data', 't')
       ->fields('t', array('name', 'tid'))
-      ->condition('t.vid', 4, '=')
+      ->condition('t.vid', $vid, '=')
       ->condition('t.name', '%' . db_like($string) . '%', 'LIKE');
       if ($discontinued) {
         $query->condition('t.name', '%[udg%', 'NOT LIKE');
