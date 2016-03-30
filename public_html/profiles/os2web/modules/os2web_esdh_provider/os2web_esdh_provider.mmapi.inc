@@ -140,22 +140,19 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     // Meeting already exist.
     // Either republish, delete or skip.
     if ($nid) {
-
+      $node = node_load($nid);
       if ($force) {
         os2web_esdh_provider_log('Republish nid: ' . $nid);
-
-        $node = node_load($nid);
         watchdog('acadre MM', 'Using %nid for import.', array('%nid' => $nid), WATCHDOG_DEBUG);
       }
       // Republish if current meeting is of type Referat.
       // This means that the one already exist is a Dagsorden.
       elseif ($meeting['type'] === 'Referat') {
-        $node = node_load($nid);
         if ($node->field_os2web_meetings_type[LANGUAGE_NONE][0]['value'] !== 'Dagsorden') {
           os2web_esdh_provider_log('Skipping nid: ' . $nid);
           watchdog('acadre MM', 'Meeting already imported in %nid. Skipṕing.', array('%nid' => $nid), WATCHDOG_DEBUG);
           lock_release(__FUNCTION__ . $meeting_id['id']);
-          return;
+          continue;
         }
         os2web_esdh_provider_log('Republish nid: ' . $nid);
         watchdog('acadre MM', 'Using %nid for import. Type mismatch.', array('%nid' => $nid), WATCHDOG_DEBUG);
@@ -166,7 +163,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
         watchdog('acadre MM', 'Meeting already imported in %nid. Skipṕing.', array('%nid' => $nid), WATCHDOG_DEBUG);
         lock_release(__FUNCTION__ . $meeting_id['id']);
         os2web_esdh_provider_index_meeting_update_committee_tid($meeting_id['id'], $meeting['meeting_sub_id'], $node->field_os2web_meetings_committee['und'][0]['tid']);
-        return;
+        continue;
       }
     }
     else {

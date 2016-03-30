@@ -154,8 +154,10 @@ function os2web_borger_dk_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
+        'settings' => array(
+          'node_reference_view_mode' => 'full',
+        ),
+        'type' => 'node_reference_node',
         'weight' => 13,
       ),
       'teaser' => array(
@@ -167,7 +169,7 @@ function os2web_borger_dk_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_selfserv',
-    'label' => 'Selvbetjeningslinks',
+    'label' => 'Blanketter/Selvbetjening',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1276,46 +1278,11 @@ function os2web_borger_dk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_borger_dk_article-field_piwik_stats'
-  $field_instances['node-os2web_borger_dk_article-field_piwik_stats'] = array(
-    'bundle' => 'os2web_borger_dk_article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_piwik_stats',
-    'label' => 'Piwik Stats',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'piwik_stats',
-      'settings' => array(),
-      'type' => 'piwik_stats_hidden',
-      'weight' => 18,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Article text');
   t('Billede');
+  t('Blanketter/Selvbetjening');
   t('Borger.dk-URL');
   t('Byline');
   t('FORM Emneord');
@@ -1324,12 +1291,10 @@ function os2web_borger_dk_field_default_field_instances() {
   t('Kontaktblok');
   t('Legislation');
   t('Page title');
-  t('Piwik Stats');
   t('Portalservice/self-service');
   t('Post-text');
   t('Pre-text');
   t('Recommended');
-  t('Selvbetjeningslinks');
   t('Shortlist');
   t('Spotboxe');
 
