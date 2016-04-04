@@ -2529,15 +2529,11 @@ ul.nice-menu-down li ul > li {
 
 .footer-grid-right {
   padding-top: 29px;
-  width: 494px;
-  float: left;
 }
 
 .footer-grid-left {
   padding-top: 29px;
   padding-left: 15px;
-  width: 455px;
-  float: left;
 }
 
 .section-footer h3 {
@@ -2679,10 +2675,12 @@ ul.nice-menu-down li ul > li {
 	position: relative;
 	width: 140px;
 }
-
+#region-footer-second .pane-os2web-base-panels-view-selfserv ul,
+#region-footer-second .pane-os2web-base-panels-view-selfserv ul li,
 #region-footer-second .view-id-selvbetjening ul,
 #region-footer-second .view-id-selvbetjening li {
-	margin: 0;
+	margin-left: 0;
+        padding-left: 0px;
 
 }
 
