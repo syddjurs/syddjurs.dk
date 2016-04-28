@@ -802,6 +802,8 @@ function os2web_meetings_strongarm() {
   $strongarm->value = array(
     'link' => 0,
     'corner' => 0,
+    'block' => 0,
+    'help' => 0,
   );
   $export['print_pdf_link_pos'] = $strongarm;
 

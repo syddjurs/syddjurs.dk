@@ -2603,7 +2603,7 @@ ul.nice-menu-down li ul > li {
 	margin-top: 15px;
 	padding-left: 15px;
 	padding-top: 5px
-  
+
 }
 
 .section-footer .phonenumber-item {
@@ -4057,12 +4057,12 @@ th.views-field-field-os2web-meetings-date {
 .view-os2web-meetings-meeting-details .agenda-bullet-list {
 	color: #8b0054;
 	border: 1px solid #CCCCCC;
-	width: 630px;
+	width: 600px;
 	height: auto;
 	min-height: 25px;
 	font-size: 15px;
 	margin-right: 0;
-	padding-right: 43px;
+	padding-right: 75px;
 }
 
 .view-os2web-meetings-meeting-details .agenda-bullet-list.open {
@@ -4094,7 +4094,21 @@ th.views-field-field-os2web-meetings-date {
 .view-display-id-attachment_5 td.views-field-field-os2web-meetings-nntv-ref {
     position: absolute;
     left: 675px;
-    margin-top: 2px;
+    margin-top: 5px;
+}
+
+.view-os2web-meetings-meeting-details .view-display-id-attachment_2 td.views-field-field-os2web-meetings-send-to-friend-link,
+.view-display-id-attachment_5 td.views-field-field-os2web-meetings-send-to-friend-link {
+    position: absolute;
+    left: 652px;
+    margin-top: 7px;
+}
+
+.view-os2web-meetings-meeting-details .view-display-id-attachment_2 td.views-field-field-os2web-meetings-print-link,
+.view-display-id-attachment_5 td.views-field-field-os2web-meetings-print-link {
+    position: absolute;
+    left: 628px;
+    margin-top: 5px;
 }
 
 .view-os2web-meetings-meeting-details .views-field strong {
@@ -4131,26 +4145,6 @@ th.views-field-field-os2web-meetings-date {
 #forside .grid-6.custom-video {margin-left: 20px; width: 470px; padding: 5px 3px;}
 
 /* meetings view */
-.bullet-point-print-link {
-  position: relative;
-  height: 16px;
-  width: 16px;
-  float: right;
-  margin-right: 5px;
-  top: -24px;
-  background: url('../images/icon-print-bullet-point.png') no-repeat 50% top;
-}
-
-.bullet-point-send-to-friend {
-  position: relative;
-  height: 16px;
-  width: 16px;
-  float: right;
-  margin-right: 25px;
-  top: -23px;
-  background: url('../images/icon-send-to-friend-bullet-point.png') no-repeat 50% top;
-}
-
 input.error{
   border: solid 2px #FF0000;
 }
@@ -4754,4 +4748,3 @@ ul.os2web_menus-container {
 .webform-submission-actions li {
   margin-right: 10px;
 }
-
