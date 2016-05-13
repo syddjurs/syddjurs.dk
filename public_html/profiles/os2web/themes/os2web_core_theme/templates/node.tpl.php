@@ -50,7 +50,7 @@
         <div class="fandt-du"><a href="/contact?<?php print urlencode('edit[subject]=' . $node_url); ?>">Fandt du ikke det du søgte</a></div>
       </div>
 
-      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+      <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script>
       <div class="synes-om">
         <div class="addthis_toolbox addthis_default_style">
           <a class="addthis_button_facebook_like" fb:like:width="104"></a>
