@@ -30,6 +30,7 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
+      hide($content['social_share']);
       print render($content);
       if ($teaser && $node->type == 'os2web_ofir_job') {
          print '<div class="changed"> Opdateret: ' . date('d/m/Y - H:i', $node->changed) . '</div>';
@@ -43,19 +44,11 @@
     <?php if (arg(0) == 'node' && is_numeric(arg(1)) && $page) : ?>
       <div class="del-bund">
         <div class="del">
-          <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-            <a class="addthis_button_compact">Del <img alt="blank" src="/<?php print $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL)); ?>/images/blank.png"/> </a>
-          </div>
+          <?php print render($content['social_share']); ?>
         </div>
         <div class="fandt-du"><a href="/contact?<?php print urlencode('edit[subject]=' . $node_url); ?>">Fandt du ikke det du søgte</a></div>
       </div>
 
-      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
-      <div class="synes-om">
-        <div class="addthis_toolbox addthis_default_style">
-          <a class="addthis_button_facebook_like" fb:like:width="104"></a>
-        </div>
-      </div>
     <?php endif; ?>
     <?php if (!$teaser) {
       print "<div class='last-updated-node'> Opdateret: " . format_date($node->changed, "short") . "</div>";}
