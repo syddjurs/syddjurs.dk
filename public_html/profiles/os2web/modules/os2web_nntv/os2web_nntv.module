@@ -285,7 +285,7 @@ function os2web_nntv_field_formatter_view($entity_type, $entity, $field, $instan
     case 'os2web_nntv_movie_simple':
       foreach ($items as $delta => $item) {
         if ($item['id']) {
-          $embed_url = 'http://media.videotool.dk/?vn=' . $item['id'];
+          $embed_url = 'https://media.videotool.dk/?vn=' . $item['id'];
           $script = <<<EOF
             <iframe src="$embed_url" id="videotool_player" width="562" height="316"></iframe>
             <script>
