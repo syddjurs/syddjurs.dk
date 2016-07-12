@@ -1035,19 +1035,6 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Enclosures */
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['id'] = 'field_os2web_meetings_enclosures';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['table'] = 'field_data_field_os2web_meetings_enclosures';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['field'] = 'field_os2web_meetings_enclosures';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['relationship'] = 'field_os2web_meetings_bullets_target_id';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['alter']['text'] = 'Bilag: [field_os2web_meetings_enclosures]';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['multi_type'] = 'ul';
-  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['field_api_classes'] = TRUE;
   /* Field: Bullet points */
   $handler->display->display_options['fields']['field_os2web_meetings_attach']['id'] = 'field_os2web_meetings_attach';
   $handler->display->display_options['fields']['field_os2web_meetings_attach']['table'] = 'field_data_field_os2web_meetings_attach';
@@ -1067,6 +1054,19 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
   $handler->display->display_options['fields']['field_os2web_meetings_attach']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_os2web_meetings_attach']['multi_type'] = 'ul';
   $handler->display->display_options['fields']['field_os2web_meetings_attach']['separator'] = '<br/>';
+  /* Field: Content: Enclosures */
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['id'] = 'field_os2web_meetings_enclosures';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['table'] = 'field_data_field_os2web_meetings_enclosures';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['field'] = 'field_os2web_meetings_enclosures';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['relationship'] = 'field_os2web_meetings_bullets_target_id';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['label'] = '';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['alter']['text'] = 'Bilag: [field_os2web_meetings_enclosures]';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['multi_type'] = 'ul';
+  $handler->display->display_options['fields']['field_os2web_meetings_enclosures']['field_api_classes'] = TRUE;
   /* Field: Content: Closed */
   $handler->display->display_options['fields']['field_os2web_meetings_bul_closed']['id'] = 'field_os2web_meetings_bul_closed';
   $handler->display->display_options['fields']['field_os2web_meetings_bul_closed']['table'] = 'field_data_field_os2web_meetings_bul_closed';
@@ -1090,7 +1090,7 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['title']['alter']['link_class'] = 'agenda-bullet-list';
-  $handler->display->display_options['fields']['title']['alter']['suffix'] = '<div class="agenda-item">[field_os2web_meetings_attach][field_os2web_meetings_enclosures] </div>';
+  $handler->display->display_options['fields']['title']['alter']['suffix'] = '<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
@@ -1288,7 +1288,6 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
     t('Bullet points - Tillæg'),
     t('<div class="clearfix"><h2 class="pane-title" style="float:left">Tillægs[field_os2web_meetings_type]</h2><div style="float:right;margin: 10px 30px 0 0"><span>[field_os2web_meetings_full_doc]</span></div></div>'),
     t('[title] [field_os2web_meetings_bul_closed]'),
-    t('<div class="agenda-item">[field_os2web_meetings_attach][field_os2web_meetings_enclosures] </div>'),
     t('Samlet tillæg'),
     t('Bilag 4'),
     t('Tillægs møder'),
