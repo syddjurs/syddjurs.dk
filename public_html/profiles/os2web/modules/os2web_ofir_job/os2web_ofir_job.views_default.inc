@@ -53,8 +53,7 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Syddjurs Kommune.<br />
-Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Syddjurs Kommune.<br />Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p><p><a href="https://syddjurs.emply.net/career/" target="_blank">Klik her for at gå til Karriercenter og jobagent</a></p>';
   /* Forbindelse: Content: Stillingskategori (field_os2web_ofir_category) */
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['id'] = 'field_os2web_ofir_category_tid';
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['table'] = 'field_data_field_os2web_ofir_category';
