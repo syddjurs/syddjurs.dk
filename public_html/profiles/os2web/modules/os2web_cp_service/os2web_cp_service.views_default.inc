@@ -306,6 +306,7 @@ return TRUE; // If no exposed inputs, remove all results
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['field'] = 'field_os2web_cp_service_date_value';
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['ui_name'] = 'os2web_cp_service_date_from';
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['value']['value'] = '2007-01-01';
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['group'] = 1;
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['operator_id'] = 'field_os2web_cp_service_date_value_1_op';
@@ -322,7 +323,6 @@ return TRUE; // If no exposed inputs, remove all results
     5 => 0,
   );
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['default_date'] = '-1 year';
   /* Filter criterion: os2web_cp_service_date_to */
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['id'] = 'field_os2web_cp_service_date_value_2';
   $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['table'] = 'field_data_field_os2web_cp_service_date';
