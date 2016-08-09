@@ -52,7 +52,6 @@ function os2web_ofir_job_menu() {
     'page arguments' => array('os2web_ofir_job_settings_form'),
     'access arguments' => array('administer site configuration'),
   );
-
   return $items;
 }
 
@@ -375,15 +374,36 @@ function _os2web_ofir_job_parse_job_text($xml) {
   $apply_link                  = str_replace('vacancyAd', 'vacancyapply', $apply_link);
   $ofir_job['apply_link']      = $apply_link;
 
+  foreach($xml->ad->facts->fact as $fact){
+    $title_attr = _os2web_ofir_job_xml_attribute($fact, 'title');
+    switch($title_attr) {
+      case 'Stillingkatagorier':
+        $ofir_job['category'] = (string) $fact;
+        $ofir_job['job_type'] = (string) $fact;
+        break;
+      case 'Annoncen er':
+        $ofir_job['work_hours'] = (string)  $fact;
+        break;
+      case "Ansøgningsfrist":
+        $ofir_job['job_start_time'] = (string) $fact;
+        break;
+      case "Kontaktperson":
+        $ofir_job['contact_person'] = (string) $fact;
+        break;
+      case "Telefon":
+        $ofir_job['contact_no'] = (string) $fact;
+        break;
+    }
+  }
   // Facts
   // @todo: If order of elements changes in array, data will not be mapped correctly to fields!!
-  $ofir_job['job_desc']       = (string) $xml->ad->facts->fact[0];
+  /*$ofir_job['job_desc']       = (string) $xml->ad->facts->fact[0];
   $ofir_job['work_hours']     = (string) $xml->ad->facts->fact[1];
   $ofir_job['job_type']       = (string) $xml->ad->facts->fact[2];
   $ofir_job['category']       = (string) $xml->ad->facts->fact[1];
   $ofir_job['job_start_time'] = (string) $xml->ad->facts->fact[0];
   $ofir_job['contact_person'] = (string) $xml->ad->facts->fact[4];
-  $ofir_job['contact_no']     = (string) $xml->ad->facts->fact[5];
+  $ofir_job['contact_no']     = (string) $xml->ad->facts->fact[5];*/
   return $ofir_job;
 }
 
