@@ -650,15 +650,8 @@ ul.jcarousel-list-horizontal { }
   display: none;
 }
 
-.view-id-os2web_base_panels_view_newslist.view-display-id-page_1 li {
-  display: block;
-  clear: both;
-  width: 100%;
-  margin: 0;
-}
-
-.view-id-os2web_base_panels_view_newslist.view-display-id-page_1 .news-list-right {
-  width: 300px;
+.view-id-os2web_base_panels_view_newslist.view-display-id-page_1 .views-row {
+  margin-bottom: 20px;
 }
 
 .view-id-os2web_base_panels_view_newslist.view-display-id-panel_pane_1 .news-list-right {
