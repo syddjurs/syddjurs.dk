@@ -1277,9 +1277,9 @@ function os2web_base_panels_default_page_manager_pages() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'offset' => '2',
+      'offset' => '0',
       'arguments' => array(
-        'nid' => '',
+        'nid' => '292878',
       ),
     );
     $pane->cache = array();
