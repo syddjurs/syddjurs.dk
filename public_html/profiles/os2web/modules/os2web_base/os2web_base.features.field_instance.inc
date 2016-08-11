@@ -1145,7 +1145,7 @@ function os2web_base_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'PDF',
-      'file_extensions' => 'pdf swf doc docx ppt xls xlsx',
+      'file_extensions' => 'pdf swf doc docx ppt xls xlsx xml',
       'max_filesize' => '50 MB',
       'user_register_form' => FALSE,
     ),
