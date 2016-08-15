@@ -133,3 +133,17 @@ function os2web_base_node_update($node) {
   }
   // <-- Delete files from old node revisions.
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function os2web_base_page_alter(&$page) {
+  if (module_exists('os2web_subscription') &&
+      request_path() === 'nyheder') {
+
+    // If the OS2web Subscription module are enabled, add a subscribe form.
+    if (os2web_subscription_category_is_enabled('os2web_hearings_hearing_case')) {
+      $page['content'][] = drupal_get_form('os2web_subscription_add_subscription_form', 'os2web_base_news');
+    }
+  }
+}
