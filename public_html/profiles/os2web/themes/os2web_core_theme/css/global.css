@@ -654,6 +654,13 @@ ul.jcarousel-list-horizontal { }
   margin-bottom: 20px;
 }
 
+.view-id-os2web_base_panels_view_newslist.view-display-id-page_1 .views-row h3 {
+  font-size: inherit;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;  
+}
+
 .view-id-os2web_base_panels_view_newslist.view-display-id-panel_pane_1 .news-list-right {
   width: 200px;
   margin-left: 20px;
