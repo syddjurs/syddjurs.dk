@@ -38,6 +38,7 @@ function os2web_citizenservices_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_citizenservices_image',
   );
 
   return $styles;
