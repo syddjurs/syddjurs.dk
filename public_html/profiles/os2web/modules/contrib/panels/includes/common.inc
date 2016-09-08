@@ -89,7 +89,7 @@ class panels_allowed_layouts {
    *  as allowed or not allowed on the initial call to panels_allowed_layouts::set_allowed()
    *
    */
-  function panels_allowed_layouts($start_allowed = TRUE) {
+  function __construct($start_allowed = TRUE) {
     // TODO would be nice if there was a way to just fetch the names easily
     foreach ($this->list_layouts() as $layout_name) {
       $this->allowed_layout_settings[$layout_name] = $start_allowed ? 1 : 0;
@@ -245,9 +245,19 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
   }
 
   $default_options['other'] = t('New content of other types');
-  $form['panels_common_default'] = array(
-    '#type' => 'checkboxes',
+
+  $form['additional_settings'] = array(
+    '#type' => 'vertical_tabs',
+  );
+
+  $form['common'] = array(
+    '#type' => 'fieldset',
     '#title' => t('New content behavior'),
+    '#group' => 'additional_settings',
+    '#weight' => -10,
+  );
+  $form['common']['panels_common_default'] = array(
+    '#type' => 'checkboxes',
     '#description' => t('Select the default behavior of new content added to the system. If checked, new content will automatically be immediately available to be added to Panels pages. If not checked, new content will not be available until specifically allowed here.'),
     '#options' => $default_options,
     '#default_value' => array_keys(array_filter($default_types)),
@@ -280,18 +290,23 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
 
     $form['content_types'] = array(
       '#tree' => TRUE,
-      '#prefix' => '<div class="clearfix">',
-      '#suffix' => '</div>',
     );
+
     // cheat a bit
     $content_types['other'] = array('title' => t('Other'), 'weight' => 10);
     foreach ($content_types as $id => $info) {
       if (isset($allowed[$id])) {
+
         $form['content_types'][$id] = array(
+          '#type' => 'fieldset',
+          '#group' => 'additional_settings',
+          '#title' => t('Allowed @s content', array('@s' => $info['title'])),
+        );
+
+        $form['content_types'][$id]['options'] = array(
           '#prefix' => '<div class="panels-page-type-container">',
           '#suffix' => '</div>',
           '#type' => 'checkboxes',
-          '#title' => t('Allowed @s content', array('@s' => $info['title'])),
           '#options' => $options[$id],
           '#default_value' => array_keys(array_filter($allowed[$id])),
           '#checkall' => TRUE,
@@ -300,7 +315,13 @@ function panels_common_settings($form, &$form_state, $module_name = 'panels_comm
     }
   }
 
+  // Layout selection.
   panels_common_allowed_layouts_form($form, $form_state, $module_name);
+
+  $form['allowed'] = array(
+    '#type' => 'value',
+    '#value' => isset($allowed) ? array_keys($allowed) : array(),
+  );
 
   $form['module_name'] = array(
     '#type' => 'value',
@@ -331,8 +352,23 @@ function panels_common_settings_submit($form, &$form_state) {
   $module_name = $form_state['values']['module_name'];
   variable_set($module_name . '_default', $form_state['values']['panels_common_default']);
   if (!$form_state['skip']) {
-    // merge the broken apart array neatly back together
-    variable_set($module_name . '_allowed_types', call_user_func_array('array_merge', $form_state['values']['content_types']));
+    // Merge the broken apart array neatly back together.
+    $allowed_content_types = array();
+    foreach ($form_state['values']['allowed'] as $allowed) {
+      $values = $form_state['values']['content_types'][$allowed]['options'];
+      // If new content of the type is not added, storing a lisy of disabled
+      // content is not needed.
+      if (!$form_state['values']['panels_common_default'][$allowed]) {
+        $values = array_filter($values);
+      }
+      $allowed_content_types = array_merge($allowed_content_types, $values);
+    }
+    // Values from checkboxes are the same string as they key, but we only need
+    // to store the boolean value.
+    foreach ($allowed_content_types as &$value) {
+      $value = (bool) $value;
+    }
+    variable_set($module_name . '_allowed_types', $allowed_content_types);
   }
   drupal_set_message(t('Your changes have been saved.'));
 }
@@ -391,9 +427,15 @@ function panels_common_allowed_layouts_form(&$form, &$form_state, $module_name) 
   $form_state['allowed_layouts'] = &$allowed_layouts;
 
   ctools_add_js('layout', 'panels');
-  $form['layouts'] = array(
-    '#type' => 'checkboxes',
+
+  $form['layout_selection'] = array(
+    '#type' => 'fieldset',
     '#title' => t('Select allowed layouts'),
+    '#group' => 'additional_settings',
+    '#weight' => 10,
+  );
+  $form['layout_selection']['layouts'] = array(
+    '#type' => 'checkboxes',
     '#options' => $options,
     '#description' => t('Check the boxes for all layouts you want to allow users choose from when picking a layout. You must allow at least one layout.'),
     '#default_value' => array_keys(array_filter($allowed_layouts->allowed_layout_settings)),
@@ -445,6 +487,7 @@ function panels_common_get_allowed_layout_object($module_name) {
  * Get the allowed layouts for the given module.
  */
 function panels_common_get_allowed_layouts($module_name) {
+  ctools_include('plugins', 'panels');
   $available_layouts = panels_get_layouts();
   if (empty($module_name)) {
     return $available_layouts;
