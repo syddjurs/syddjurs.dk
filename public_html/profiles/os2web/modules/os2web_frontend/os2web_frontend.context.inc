@@ -173,17 +173,17 @@ function os2web_frontend_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'views-428d591c1dcba42e1f02e4d3e427c502' => array(
-          'module' => 'views',
-          'delta' => '428d591c1dcba42e1f02e4d3e427c502',
-          'region' => 'sidebar_second',
-          'weight' => '-52',
-        ),
         'views-236b5043c40af396053d1693200f7809' => array(
           'module' => 'views',
           'delta' => '236b5043c40af396053d1693200f7809',
           'region' => 'sidebar_second',
-          'weight' => '-51',
+          'weight' => '-66',
+        ),
+        'views-428d591c1dcba42e1f02e4d3e427c502' => array(
+          'module' => 'views',
+          'delta' => '428d591c1dcba42e1f02e4d3e427c502',
+          'region' => 'sidebar_second',
+          'weight' => '-65',
         ),
         'menu-os2web-menu-business-shortcuts' => array(
           'module' => 'menu',
