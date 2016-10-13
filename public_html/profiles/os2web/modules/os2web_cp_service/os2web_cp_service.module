@@ -95,7 +95,16 @@ function os2web_cp_service_page() {
 
   return theme('os2web_cp_service_page', $variables);
 }
+/**
+ * Implemets hook_cron().
+ *
+ * Will run import on every cron.
+ */
+function os2web_cp_service_cron() {
 
+  os2web_cp_service_add_docs_to_case();
+
+}
 /**
  * Render table with documents for specified date.
  */
@@ -1196,4 +1205,49 @@ function _os2web_cp_service_count_nodes($type) {
     ->count();
 
   return $query->execute();
+}
+/*
+ * Attached documents with empty SagsID to the case
+ */
+function os2web_cp_service_add_docs_to_case(){
+  $query = db_select('node', 'n');
+  $query->leftJoin('field_data_field_os2web_cp_service_case_id', 'c', 'n.nid = c.entity_id');
+  $query->fields('n', array('nid'))
+    ->condition('n.type', 'os2web_cp_service_cp_document')
+    ->isNull('field_os2web_cp_service_case_id_value');
+  $result = $query->execute()->fetchAllAssoc('nid');
+
+  $doc_nids = (isset($result)) ? array_keys($result) : array();
+  $doc_nodes = node_load_multiple($doc_nids);
+  foreach ($doc_nodes as $doc_nid => $doc_node) {
+    if (isset($doc_node->field_os2web_cp_service_case_sid['und'])) {
+      $query = new EntityFieldQuery();
+      $result = $query
+        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('type', 'os2web_cp_service_cp_case')
+        ->fieldCondition('field_os2web_cp_service_sysid', 'value', $doc_node->field_os2web_cp_service_case_sid['und'][0]['value'], '=')
+        ->execute();
+      if (!empty($result['node'])) {
+        $nids = array_keys($result['node']);
+        foreach ($nids as $nid) {
+          $cnode = node_load($nid);
+          if (!empty($cnode)) {
+            $doc_node->field_os2web_cp_service_case_id[LANGUAGE_NONE][0]['value'] = $cnode->field_os2web_cp_service_case_id[LANGUAGE_NONE][0]['value'];
+            node_save($doc_node);
+            $is_missing = TRUE;
+            foreach ($cnode->field_os2web_cp_service_doc_ref[LANGUAGE_NONE] as $value) {
+              if ($value['target_id'] == $doc_node->nid) {
+                $is_missing = FALSE;
+              }
+            }
+            if ($is_missing) {
+              $cnode->field_os2web_cp_service_doc_ref[LANGUAGE_NONE][]['target_id'] = $doc_node->nid;
+              node_save($cnode);
+              watchdog('os2web_cp_service', 'Document node nid: %doc_nid attached to the case node nid: %case_nid', array('%doc_nid' => $doc_nid, '%case_nid' => $cnode->nid), WATCHDOG_NOTICE);
+            }
+          }
+        }
+      }
+    }
+  }
 }
