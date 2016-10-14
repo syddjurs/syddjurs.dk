@@ -615,22 +615,17 @@ ul.jcarousel-list-horizontal { }
 }
 
 #facebook-youtube {
-  float: left;
   height: 21px;
-  left: 4px;
   margin-top: -6px;
 }
 #facebook-youtube a {
   border-right: solid 1px #d8d8d8;
-  padding:0 0 0 8px;
+  padding: 0 6px;
 }
 
-#facebook-youtube a.twitter {
-  padding: 0 5px 0 7px;
-}
-
-#facebook-youtube a.video {
-  padding: 0 5px 0 5px;
+#facebook-youtube a:last-child {
+  padding-right: 0;
+  border-right: 0;
 }
 
 #block-block-4 p { margin-bottom: 0px}
