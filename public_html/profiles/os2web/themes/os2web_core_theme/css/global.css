@@ -617,6 +617,7 @@ ul.jcarousel-list-horizontal { }
 #facebook-youtube {
   height: 21px;
   margin-top: -6px;
+  width: auto;
 }
 #facebook-youtube a {
   border-right: solid 1px #d8d8d8;
