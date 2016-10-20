@@ -178,13 +178,25 @@ function _os2web_ofir_job_cronbatch() {
 function os2web_ofir_job_import_job($job_text) {
 
   if (!empty($job_text)) {
-    $node = new stdClass();
-    $node->created = !empty($job_text['published']) ? strtotime($job_text['published']) : REQUEST_TIME;
-    $node->validated = TRUE;
-    $node->uid = 1;
-    $node->language = 'da';
+    $entity_id = "";
+
+    if ($job_text['ad_id']){
+       $entity_id = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
+              ':ad_id' => $job_text['ad_id']))->fetchField();
+    }
+    if (!empty($entity_id)){
+      $node =  node_load($entity_id);
+    }
+    else {
+      $node = new stdClass();
+      $node->validated = TRUE;
+      $node->uid = 1;
+      $node->language = 'da';
     // Insert default value of a new node.
-    $node->type = 'os2web_ofir_job';
+      $node->type = 'os2web_ofir_job';
+    }
+   // $node = new stdClass();
+    $node->created = !empty($job_text['published']) ? strtotime($job_text['published']) : REQUEST_TIME;
     $node->title = (!empty($job_text['title'])) ? $job_text['title'] : '';
 
     if (!empty($job_text['description'])) {
@@ -425,7 +437,13 @@ function _os2web_ofir_job_check_existed($job) {
       return FALSE;
     }
     else {
-      return TRUE;
+      $node =  node_load($status);
+      if ((int)$node->created < strtotime(_os2web_ofir_job_xml_attribute($job, 'published'))) {
+        return FALSE;
+      }
+      else {
+        return TRUE;
+      }
     }
   }
   return FALSE;
