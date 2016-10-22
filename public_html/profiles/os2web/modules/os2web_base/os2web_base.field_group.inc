@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function os2web_base_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,12 +36,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-3 field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_3|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_3|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,11 +66,11 @@ function os2web_base_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-content field-group-htabs',
       ),
     ),
   );
-  $export['group_os2web_base_group_content|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_content|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,13 +92,13 @@ function os2web_base_field_group_info() {
     'format_settings' => array(
       'label' => 'Hentet fra kommunens sagssystem',
       'instance_settings' => array(
-        'classes' => 'attached-documents',
+        'classes' => 'attached-documents group-os2web-base-group-document field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_os2web_base_group_document|node|os2web_base_contentpage|default'] = $field_group;
+  $field_groups['group_os2web_base_group_document|node|os2web_base_contentpage|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,13 +122,13 @@ function os2web_base_field_group_info() {
       'label' => 'Sager og dokumenter',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-esdh field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
     ),
   );
-  $export['group_os2web_base_group_esdh|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_esdh|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -153,12 +153,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-extras field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_extras|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_extras|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -181,13 +181,13 @@ function os2web_base_field_group_info() {
       'label' => 'Tekst',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-general field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
     ),
   );
-  $export['group_os2web_base_group_general|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_general|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -210,12 +210,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_hidden|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_hidden|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -239,12 +239,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_hidden|node|os2web_base_gallery|form'] = $field_group;
+  $field_groups['group_os2web_base_group_hidden|node|os2web_base_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -269,12 +269,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_hidden|node|os2web_base_news|form'] = $field_group;
+  $field_groups['group_os2web_base_group_hidden|node|os2web_base_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -298,12 +298,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-images field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_images|node|os2web_base_contentpage|form'] = $field_group;
+  $field_groups['group_os2web_base_group_images|node|os2web_base_contentpage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -321,41 +321,13 @@ function os2web_base_field_group_info() {
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Billede',
-    ),
-  );
-  $export['group_os2web_base_group_image|node|os2web_base_news|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_os2web_base_group_settings|node|os2web_base_news|form';
-  $field_group->group_name = 'group_os2web_base_group_settings';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'os2web_base_news';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_os2web_base_news_tabs';
-  $field_group->data = array(
-    'label' => 'Indstillinger',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_os2web_base_field_promote',
-      1 => 'field_os2web_base_field_case',
-      2 => 'field_os2web_base_field_doc',
-      3 => 'path',
-      4 => 'group_os2web_base_group_hidden',
-    ),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'label' => 'Indstillinger',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
+        'classes' => 'group-os2web-base-group-image field-group-div',
+        'id' => 'node_os2web_base_news_form_group_os2web_base_group_image',
       ),
-      'formatter' => 'open',
     ),
   );
-  $export['group_os2web_base_group_settings|node|os2web_base_news|form'] = $field_group;
+  $field_groups['group_os2web_base_group_image|node|os2web_base_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -381,12 +353,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_taxono|node|os2web_base_gallery|form'] = $field_group;
+  $field_groups['group_os2web_base_group_taxono|node|os2web_base_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -412,12 +384,12 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_base_group_taxono|node|os2web_base_iframe|form'] = $field_group;
+  $field_groups['group_os2web_base_group_taxono|node|os2web_base_iframe|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -443,40 +415,26 @@ function os2web_base_field_group_info() {
       'label' => 'Emneord',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_os2web_base_group_taxono|node|os2web_base_news|form'] = $field_group;
+  $field_groups['group_os2web_base_group_taxono|node|os2web_base_news|form'] = $field_group;
 
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_os2web_base_news_tabs|node|os2web_base_news|form';
-  $field_group->group_name = 'group_os2web_base_news_tabs';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'os2web_base_news';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'News',
-    'weight' => '0',
-    'children' => array(
-      0 => 'group_os2web_base_group_settings',
-      1 => 'group_os2web_base_group_taxono',
-      2 => 'group_os2web_base_group_text',
-    ),
-    'format_type' => 'htabs',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_os2web_base_news_tabs|node|os2web_base_news|form'] = $field_group;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Billede');
+  t('Billeder og filer');
+  t('Emneord');
+  t('Hentet fra kommunens sagssystem');
+  t('Indholdsside');
+  t('Indstillinger');
+  t('Sager og dokumenter');
+  t('Skjult');
+  t('Taksonomi');
+  t('Tekst');
 
-  return $export;
+  return $field_groups;
 }

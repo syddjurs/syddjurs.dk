@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function os2web_spotbox_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -34,13 +34,13 @@ function os2web_spotbox_field_group_info() {
       'label' => 'Spotbox',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-billeder field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
     ),
   );
-  $export['group_billeder|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_billeder|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,12 +64,12 @@ function os2web_spotbox_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-links field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_links|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_links|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -93,11 +93,11 @@ function os2web_spotbox_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-spotbox field-group-htabs',
       ),
     ),
   );
-  $export['group_spotbox|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_spotbox|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -123,12 +123,12 @@ function os2web_spotbox_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-taksonomi field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_taksonomi|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_taksonomi|node|os2web_spotbox_box|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -151,13 +151,20 @@ function os2web_spotbox_field_group_info() {
       'label' => 'Tekst og video',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-tekst field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
     ),
   );
-  $export['group_tekst|node|os2web_spotbox_box|form'] = $field_group;
+  $field_groups['group_tekst|node|os2web_spotbox_box|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Emneord');
+  t('Links');
+  t('Spotbox');
+  t('Tekst og video');
+
+  return $field_groups;
 }

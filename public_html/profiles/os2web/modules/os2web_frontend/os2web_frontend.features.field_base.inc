@@ -10,7 +10,7 @@
 function os2web_frontend_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_frontend_bg_file'
+  // Exported field_base: 'field_os2web_frontend_bg_file'.
   $field_bases['field_os2web_frontend_bg_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -32,7 +32,7 @@ function os2web_frontend_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_piwik'
+  // Exported field_base: 'field_piwik'.
   $field_bases['field_piwik'] = array(
     'active' => 1,
     'cardinality' => 1,

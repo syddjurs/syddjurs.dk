@@ -10,7 +10,7 @@
 function os2web_meetings_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_meetings_abbr'
+  // Exported field_base: 'field_os2web_meetings_abbr'.
   $field_bases['field_os2web_meetings_abbr'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_meetings_acadrename'
+  // Exported field_base: 'field_os2web_meetings_acadrename'.
   $field_bases['field_os2web_meetings_acadrename'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -52,7 +52,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_meetings_addendum'
+  // Exported field_base: 'field_os2web_meetings_addendum'.
   $field_bases['field_os2web_meetings_addendum'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -107,7 +107,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_attach'
+  // Exported field_base: 'field_os2web_meetings_attach'.
   $field_bases['field_os2web_meetings_attach'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -146,7 +146,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_bpa_body'
+  // Exported field_base: 'field_os2web_meetings_bpa_body'.
   $field_bases['field_os2web_meetings_bpa_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -165,7 +165,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_os2web_meetings_bpa_file'
+  // Exported field_base: 'field_os2web_meetings_bpa_file'.
   $field_bases['field_os2web_meetings_bpa_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -188,7 +188,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_meetings_bpa_id'
+  // Exported field_base: 'field_os2web_meetings_bpa_id'.
   $field_bases['field_os2web_meetings_bpa_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -203,7 +203,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_meetings_bul_closed'
+  // Exported field_base: 'field_os2web_meetings_bul_closed'.
   $field_bases['field_os2web_meetings_bul_closed'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -231,7 +231,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_meetings_bullets'
+  // Exported field_base: 'field_os2web_meetings_bullets'.
   $field_bases['field_os2web_meetings_bullets'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -270,7 +270,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_commiteeid'
+  // Exported field_base: 'field_os2web_meetings_commiteeid'.
   $field_bases['field_os2web_meetings_commiteeid'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -285,7 +285,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_meetings_committee'
+  // Exported field_base: 'field_os2web_meetings_committee'.
   $field_bases['field_os2web_meetings_committee'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -312,7 +312,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_date'
+  // Exported field_base: 'field_os2web_meetings_date'.
   $field_bases['field_os2web_meetings_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -341,7 +341,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_meetings_date_valid'
+  // Exported field_base: 'field_os2web_meetings_date_valid'.
   $field_bases['field_os2web_meetings_date_valid'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -370,7 +370,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_meetings_enclosures'
+  // Exported field_base: 'field_os2web_meetings_enclosures'.
   $field_bases['field_os2web_meetings_enclosures'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -393,7 +393,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_meetings_ext_url'
+  // Exported field_base: 'field_os2web_meetings_ext_url'.
   $field_bases['field_os2web_meetings_ext_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -422,7 +422,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_os2web_meetings_full_doc'
+  // Exported field_base: 'field_os2web_meetings_full_doc'.
   $field_bases['field_os2web_meetings_full_doc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -445,7 +445,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_meetings_hex'
+  // Exported field_base: 'field_os2web_meetings_hex'.
   $field_bases['field_os2web_meetings_hex'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -466,7 +466,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_meetings_id'
+  // Exported field_base: 'field_os2web_meetings_id'.
   $field_bases['field_os2web_meetings_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -481,7 +481,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_meetings_is_regular'
+  // Exported field_base: 'field_os2web_meetings_is_regular'.
   $field_bases['field_os2web_meetings_is_regular'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -506,7 +506,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_meetings_location'
+  // Exported field_base: 'field_os2web_meetings_location'.
   $field_bases['field_os2web_meetings_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -533,7 +533,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_nntv_ref'
+  // Exported field_base: 'field_os2web_meetings_nntv_ref'.
   $field_bases['field_os2web_meetings_nntv_ref'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -548,7 +548,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'os2web_nntv_movie',
   );
 
-  // Exported field_base: 'field_os2web_meetings_searchdata'
+  // Exported field_base: 'field_os2web_meetings_searchdata'.
   $field_bases['field_os2web_meetings_searchdata'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -581,7 +581,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'computed',
   );
 
-  // Exported field_base: 'field_os2web_meetings_status'
+  // Exported field_base: 'field_os2web_meetings_status'.
   $field_bases['field_os2web_meetings_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -608,7 +608,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_meetings_sub_id'
+  // Exported field_base: 'field_os2web_meetings_sub_id'.
   $field_bases['field_os2web_meetings_sub_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -623,7 +623,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_meetings_system_id'
+  // Exported field_base: 'field_os2web_meetings_system_id'.
   $field_bases['field_os2web_meetings_system_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -638,7 +638,7 @@ function os2web_meetings_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_meetings_type'
+  // Exported field_base: 'field_os2web_meetings_type'.
   $field_bases['field_os2web_meetings_type'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -44,6 +44,7 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_spotbox_image_300',
   );
 
   // Exported image style: os2web_spotbox_image_right.
@@ -68,6 +69,7 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'os2web_spotbox_image_right',
   );
 
   // Exported image style: os2web_spotbox_image_spot5.
@@ -82,6 +84,7 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_spotbox_image_spot5',
   );
 
   // Exported image style: os2web_spotbox_image_tall.
@@ -97,6 +100,7 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_spotbox_image_tall',
   );
 
   // Exported image style: os2web_spotbox_image_video_front.
@@ -121,6 +125,7 @@ function os2web_spotbox_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'os2web_spotbox_image_video_front',
   );
 
   return $styles;

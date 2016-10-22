@@ -245,7 +245,7 @@ function os2web_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'linkchecker_cleanup_links_last';
-  $strongarm->value = 1447020901;
+  $strongarm->value = 1476964801;
   $export['linkchecker_cleanup_links_last'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -730,7 +730,7 @@ http://www.syddjurs.dk/Portaler/';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_pdf_tool';
-  $strongarm->value = 0;
+  $strongarm->value = 'profiles/os2web/libraries/dompdf/dompdf_config.inc.php';
   $export['print_pdf_pdf_tool'] = $strongarm;
 
   $strongarm = new stdClass();
