@@ -2,9 +2,9 @@
 
 /**
  * @file
- * Calls Taxon and displays the resulting tags.
+ * Calls Taxon Classifier and displays the resulting tags.
  *
- * The Taxon web service must be installed, see the Taxon manual at www.taxon.dk.
+ * The Taxon Classifier web service must be installed, see the Taxon Classifier manual at www.taxon.dk.
  *
  * taxon_taxonomy.module manage general hooks of module.
  */
@@ -55,8 +55,8 @@ function taxon_taxonomy_help($path, $arg) {
       module_load_include('inc', 'taxon_taxonomy');
 
       $output = '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Provides the connection to your existing Taxon web service.') . '</p>';
-      $output .= '<p>' . t('You can read more about Taxon and the Taxon Taxonomy module at') . ' <a target = "_blank" href = "http://www.taxon.dk">www.taxon.dk</a>.' . '</p>';
+      $output .= '<p>' . t('Provides the connection to your existing Taxon Classifier web service.') . '</p>';
+      $output .= '<p>' . t('You can read more about Taxon Classifier and the Taxon Taxonomy module at') . ' <a target = "_blank" href = "http://www.taxon.dk">www.taxon.dk</a>.' . '</p>';
 
       return $output;
   }
@@ -82,20 +82,32 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 
   $form['taxon_taxonomy_lookup_file'] = array(
     '#type' => 'textfield',
-    '#title' => t('Lookup taxonomy for Taxon'),
-    '#description' => t('The full path and filename for the lookup taxonomy for Taxon.'),
+    '#title' => t('Lookup taxonomy for Taxon Classifier'),
+    '#description' => t('The full path and filename for the lookup taxonomy for Taxon Classifier.'),
     '#size' => 60,
     '#maxlength' => 255,
-    '#required' => TRUE,
+    '#required' => FALSE,
     '#default_value' => $lookup_file,
+  );
+
+  $taxonhub_api_key = variable_get('taxon_taxonomy_taxonhub_api_key');
+
+  $form['taxon_taxonomy_taxonhub_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TaxonHub API Key for Taxon Classifier Cloud'),
+    '#description' => t('The TaxonHub API Key used with Taxon Classifier Cloud.'),
+    '#size' => 60,
+    '#maxlength' => 255,
+    '#required' => FALSE,
+    '#default_value' => $taxonhub_api_key,
   );
 
   $taxon_url = variable_get('taxon_taxonomy_taxon_url');
 
   $form['taxon_taxonomy_taxon_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('The URL for Taxon'),
-    '#description' => t('The URL where we can find the Taxon web service.'),
+    '#title' => t('The URL for Taxon Classifier'),
+    '#description' => t('The URL where we can find the Taxon Classifier web service.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -107,7 +119,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_number_results_returned'] = array(
     '#type' => 'textfield',
     '#title' => t('The number of returned results'),
-    '#description' => t('The number of results to return from Taxon. 0 means all.'),
+    '#description' => t('The number of results to return from Taxon Classifier. 0 means all.'),
     '#size' => 10,
     '#maxlength' => 16,
     '#required' => TRUE,
@@ -119,7 +131,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_field_name'] = array(
     '#type' => 'textfield',
     '#title' => t('The name of the taxonomy field'),
-    '#description' => t('The name of the taxonomy field where the results from Taxon is added or removed. Use a # for ids, e.g. #taxonomy-tag-id and . for classes, e.g. .taxonomy-tags-class'),
+    '#description' => t('The name of the taxonomy field where the results from Taxon Classifier is added or removed. Use a # for ids, e.g. #taxonomy-tag-id and . for classes, e.g. .taxonomy-tags-class'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -131,7 +143,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_selected_image'] = array(
     '#type' => 'textfield',
     '#title' => t('The path to the selected image'),
-    '#description' => t('The path relative to Drupal home directory to the image used when a Taxon class is selected.'),
+    '#description' => t('The path relative to Drupal home directory to the image used when a Taxon Classifier class is selected.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -143,7 +155,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_not_selected_image'] = array(
     '#type' => 'textfield',
     '#title' => t('The path to the not-selected image'),
-    '#description' => t('The path relative to Drupal home directory to the image used when a Taxon class is not selected.'),
+    '#description' => t('The path relative to Drupal home directory to the image used when a Taxon Classifier class is not selected.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -155,7 +167,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_wait_image'] = array(
     '#type' => 'textfield',
     '#title' => t('The path to the wait image'),
-    '#description' => t('The path relative to Drupal home directory to the image used when waiting for Taxon to return the results. Usually an animated GIF.'),
+    '#description' => t('The path relative to Drupal home directory to the image used when waiting for Taxon Classifier to return the results. Usually an animated GIF.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -174,12 +186,12 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
     '#default_value' => $help_image,
   );
 
-  $button_text = variable_get('taxon_taxonomy_button_text', t("Classify with Taxon"));
+  $button_text = variable_get('taxon_taxonomy_button_text', t("Classify with Taxon Classifier"));
 
   $form['taxon_taxonomy_button_text'] = array(
     '#type' => 'textfield',
-    '#title' => t('The text on the Taxon button'),
-    '#description' => t('The text on the Taxon button.'),
+    '#title' => t('The text on the Taxon Classifier button'),
+    '#description' => t('The text on the Taxon Classifier button.'),
     '#size' => 40,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -190,8 +202,8 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 
   $form['taxon_taxonomy_button_text_wait'] = array(
     '#type' => 'textfield',
-    '#title' => t('The text on the Taxon button while waiting'),
-    '#description' => t('The text on the Taxon button while waiting for Taxon to return results.'),
+    '#title' => t('The text on the Taxon Classifier button while waiting'),
+    '#description' => t('The text on the Taxon Classifier button while waiting for Taxon Classifier to return results.'),
     '#size' => 40,
     '#maxlength' => 255,
     '#required' => TRUE,
@@ -215,7 +227,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_text_breadcrumb'] = array(
     '#type' => 'checkbox',
     '#title' => t('Include the breadcrumb'),
-    '#description' => t('Include the breadcrumb in the text sent to Taxon.'),
+    '#description' => t('Include the breadcrumb in the text sent to Taxon Classifier.'),
     '#default_value' => $text_breadcrumb,
   );
 
@@ -244,8 +256,8 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 
   $form['taxon_taxonomy_help_texts'] = array(
     '#type' => 'textfield',
-    '#title' => t('The path to help texts for Taxon'),
-    '#description' => t('The path relative to Drupal home directory to help texts for Taxon. Leave blank if you do not have help texts.'),
+    '#title' => t('The path to help texts for Taxon Classifier'),
+    '#description' => t('The path relative to Drupal home directory to help texts for Taxon Classifier. Leave blank if you do not have help texts.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => FALSE,
@@ -257,7 +269,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_exclude_classes'] = array(
     '#type' => 'textfield',
     '#title' => t('Exclude classes from the result'),
-    '#description' => t('A comma separated list of classes to exclude from the Taxon result. Note that all children/grandchildren etc. of an excluded class also are excluded.'),
+    '#description' => t('A comma separated list of classes to exclude from the Taxon Classifier result. Note that all children/grandchildren etc. of an excluded class also are excluded.'),
     '#size' => 60,
     '#maxlength' => 255,
     '#required' => FALSE,
@@ -269,7 +281,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_auto_fill'] = array(
     '#type' => 'checkbox',
     '#title' => t('Automatically fill taxonomy field on editing'),
-    '#description' => t('If the taxonomy field is empty the field is filled with the result from Taxon when the page is opened for edit.'),
+    '#description' => t('If the taxonomy field is empty the field is filled with the result from Taxon Classifier when the page is opened for edit.'),
     '#required' => FALSE,
     '#default_value' => $auto_fill,
   );
@@ -279,7 +291,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_auto_fill_on_save'] = array(
     '#type' => 'checkbox',
     '#title' => t('Automatically fill taxonomy field on saving'),
-    '#description' => t('If the taxonomy field is empty the field is filled with the result from Taxon when the page is saved.'),
+    '#description' => t('If the taxonomy field is empty the field is filled with the result from Taxon Classifier when the page is saved.'),
     '#required' => FALSE,
     '#default_value' => $auto_fill_on_save,
   );
@@ -288,8 +300,8 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 
   $form['taxon_taxonomy_delay_taxon_call'] = array(
     '#type' => 'textfield',
-    '#title' => t('Time to delay the initial call to Taxon'),
-    '#description' => t('When opening the page for editing wait this long before calling Taxon. The delay should be long enough to ensure that the full overlay is loaded.'),
+    '#title' => t('Time to delay the initial call to Taxon Classifier'),
+    '#description' => t('When opening the page for editing wait this long before calling Taxon Classifier. The delay should be long enough to ensure that the full overlay is loaded.'),
     '#size' => 10,
     '#maxlength' => 16,
     '#required' => TRUE,
@@ -300,7 +312,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 
   $form['taxon_taxonomy_hide_taxon'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Hide the whole Taxon part'),
+    '#title' => t('Hide the whole Taxon Classifier part'),
     '#description' => t('This is useful in connection with some of the auto fill settings. Otherwise it might be slightly pointless.'),
     '#required' => FALSE,
     '#default_value' => $hide_taxon,
@@ -311,7 +323,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_threshold_weight'] = array(
     '#type' => 'textfield',
     '#title' => t('Threshold for weight'),
-    '#description' => t('Threshold for the weight of the top result returned from Taxon.'),
+    '#description' => t('Threshold for the weight of the top result returned from Taxon Classifier.'),
     '#size' => 10,
     '#maxlength' => 16,
     '#required' => FALSE,
@@ -323,7 +335,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_threshold_weight_text'] = array(
     '#type' => 'textfield',
     '#title' => t('Message if threshold for weight is not met'),
-    '#description' => t('Message if threshold for weight is not met by the top result returned from Taxon.'),
+    '#description' => t('Message if threshold for weight is not met by the top result returned from Taxon Classifier.'),
     '#size' => 60,
     '#maxlength' => 256,
     '#required' => FALSE,
@@ -335,7 +347,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_threshold_confidenceCoefficient'] = array(
     '#type' => 'textfield',
     '#title' => t('Threshold for confidenceCoefficient'),
-    '#description' => t('Threshold for the confidenceCoefficient of the top result returned from Taxon.'),
+    '#description' => t('Threshold for the confidenceCoefficient of the top result returned from Taxon Classifier.'),
     '#size' => 10,
     '#maxlength' => 16,
     '#required' => FALSE,
@@ -347,18 +359,30 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
   $form['taxon_taxonomy_threshold_confidenceCoefficient_text'] = array(
     '#type' => 'textfield',
     '#title' => t('Message if threshold for confidenceCoefficient is not met'),
-    '#description' => t('Message if threshold for confidenceCoefficient is not met by the top result returned from Taxon.'),
+    '#description' => t('Message if threshold for confidenceCoefficient is not met by the top result returned from Taxon Classifier.'),
     '#size' => 60,
     '#maxlength' => 256,
     '#required' => FALSE,
     '#default_value' => $threshold_confidenceCoefficient_text,
   );
 
+  $no_result_text = variable_get('taxon_taxonomy_no_result_text', 'Taxon Classifier did not find any classes');
+
+  $form['taxon_taxonomy_no_result_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Message if Taxon Classifier did not find any relevant classes'),
+    '#description' => t('Message if Taxon Classifier did not find any relevant classes.'),
+    '#size' => 60,
+    '#maxlength' => 256,
+    '#required' => FALSE,
+    '#default_value' => $no_result_text,
+  );
+
   $threshold_loop_up = variable_get('taxon_taxonomy_threshold_loop_up', false);
 
   $form['taxon_taxonomy_threshold_loop_up'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Loop up Taxon result'),
+    '#title' => t('Loop up Taxon Classifier result'),
     '#description' => t('If the result does not meet the thresholds and two or more classes exist in the same 2nd level class they are loop up in the xx.yy.00 class. Mainly relevant for KLE type taxonomies.'),
     '#required' => FALSE,
     '#default_value' => $threshold_loop_up,
@@ -379,6 +403,7 @@ function taxon_taxonomy_admin_form($form, &$form_state) {
 function taxon_taxonomy_admin_form_submit($form, &$form_state) {
   variable_set('taxon_taxonomy_drupal_name', $form_state['values']['taxon_taxonomy_drupal_name']);
   variable_set('taxon_taxonomy_lookup_file', $form_state['values']['taxon_taxonomy_lookup_file']);
+  variable_set('taxon_taxonomy_taxonhub_api_key', $form_state['values']['taxon_taxonomy_taxonhub_api_key']);
   variable_set('taxon_taxonomy_taxon_url', $form_state['values']['taxon_taxonomy_taxon_url']);
   variable_set('taxon_taxonomy_number_results_returned', $form_state['values']['taxon_taxonomy_number_results_returned']);
   variable_set('taxon_taxonomy_field_name', $form_state['values']['taxon_taxonomy_field_name']);
@@ -402,6 +427,7 @@ function taxon_taxonomy_admin_form_submit($form, &$form_state) {
   variable_set('taxon_taxonomy_threshold_weight_text', $form_state['values']['taxon_taxonomy_threshold_weight_text']);
   variable_set('taxon_taxonomy_threshold_confidenceCoefficient', $form_state['values']['taxon_taxonomy_threshold_confidenceCoefficient']);
   variable_set('taxon_taxonomy_threshold_confidenceCoefficient_text', $form_state['values']['taxon_taxonomy_threshold_confidenceCoefficient_text']);
+  variable_set('taxon_taxonomy_no_result_text', $form_state['values']['taxon_taxonomy_no_result_text']);
   variable_set('taxon_taxonomy_threshold_loop_up', $form_state['values']['taxon_taxonomy_threshold_loop_up']);
 
   drupal_set_message(t('The settings have been saved'));
@@ -411,8 +437,8 @@ function taxon_taxonomy_admin_form_submit($form, &$form_state) {
  * As JavaScript can not call an external domain directly, we use a proxy.
  */
 function _taxon_taxonomy_proxy() {
-  $taxonomy = $_POST['taxonomy'];
-  $text = $_POST['text'];
+  $text = isset($_POST['text']) ? $_POST['text'] : "";
+  $taxonomy = isset($_POST['taxonomy']) ? $_POST['taxonomy'] : "";
 
   $text = preg_replace("/<\s*script[^>]*>[\s\S]*?<\/script[^>]*>/", " ", $text);
   $text = preg_replace("/<\s*style[^>]*>[\s\S]*?<\/style[^>]*>/", " ", $text);
@@ -436,8 +462,17 @@ function _taxon_taxonomy_proxy() {
   $url = variable_get('taxon_taxonomy_taxon_url');
   $number_results_returned  = variable_get('taxon_taxonomy_number_results_returned');
 
+  // The taxonomy path is used with Taxon Classifier Web service
+  $taxonomy = variable_get('taxon_taxonomy_lookup_file');
+
+  // The TaxonHub API Key is used with Taxon Classifier Cloud and Taxon Classifier Enterprise
+  $taxonhub_api_key  = variable_get('taxon_taxonomy_taxonhub_api_key');
+
+  // We send both taxonomy and taxonhub_api_key regardless expecting the receiving service to use 
+  // the information it needs and ignore the rest rather than introducing complicated logic.
   $fields = array(
     'taxonomy' => urlencode($taxonomy),
+    'taxonhub_api_key' => urlencode($taxonhub_api_key),
     'text' => urlencode("$text"),
     'settings' => urlencode(json_encode(array("numberResultsReturned" => $number_results_returned))),
   );
@@ -456,6 +491,10 @@ function _taxon_taxonomy_proxy() {
   // Execute post.
   $taxonomy_taxon_json = curl_exec($ch);
 
+  // Check this later
+  $curl_error = curl_error($ch);
+  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  
   // Close connection.
   curl_close($ch);
 
@@ -465,23 +504,32 @@ function _taxon_taxonomy_proxy() {
   $result_text = "";
 
   if(($result == null) || ($result['status']['status'] == 'Error')) {
-    if($result == null) {
-      // The result is not JSON, so print it
-      $result_text = "Note: $taxonomy_taxon_json"; // Taxon 2.x
+    if(($curl_error == "") && ($httpCode == 200)) {
+      // cURL return OK
+      if($result == null) {
+        // The result is not JSON, so print it
+        $result_text = "Note: $taxonomy_taxon_json"; // Taxon Classifier 2.x
+      }
+      else {
+        $result_text = "Note: " . $result['status']['errors'][0]['errorText']; // Taxon Classifier 3.x
+      }
     }
     else {
-      $result_text = "Note: " . $result['status']['errors'][0]['errorText']; // Taxon 3.x
+      // Connection error
+      $result_text = "Note: Error connecting to Taxon Classifier:";
+      $result_text .= $curl_error != "" ? " $curl_error." : "";
+      $result_text .= $httpCode != 0 ? " HTTP = $httpCode on '$url'." : "";
     }
   }
   else {
     $classes = array();
 
-    // Check for Taxon 2.x or Taxon 3.x result
+    // Check for Taxon Classifier 2.x or Taxon Classifier 3.x result
     if(! isset($result['classes'])) {
-      $classes = $result; // Taxon 2.x
+      $classes = $result; // Taxon Classifier 2.x
     }
     else {
-      $classes = $result['classes']; // Taxon 3.x
+      $classes = $result['classes']; // Taxon Classifier 3.x
     }
 
     // Print the result, if any
@@ -633,7 +681,6 @@ function taxon_taxonomy_node_prepare($node) {
   drupal_add_js(
     array(
       'taxon_taxonomy' => array(
-        'taxonomy_name' => variable_get('taxon_taxonomy_lookup_file'),
         'field_name' => variable_get('taxon_taxonomy_field_name'),
         'selected_image' => variable_get('taxon_taxonomy_selected_image'),
         'not_selected_image' => variable_get('taxon_taxonomy_not_selected_image'),
