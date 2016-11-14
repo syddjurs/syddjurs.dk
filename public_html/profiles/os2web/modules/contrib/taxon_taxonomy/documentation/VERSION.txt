@@ -1,8 +1,15 @@
-This is taxon_taxonomy 3.0
+This is taxon_taxonomy 3.1
 
 -------------------------------------------------------------------------------
 Change log
 -------------------------------------------------------------------------------
+3.1 - 08/11-2015
+  Updated naming from Taxon to Taxon Classifier
+  Added field 'TaxonHub API Key for Taxon Classifier Cloud'
+  Added support for Taxon Classifier Cloud and Taxon Classifier Enterprise
+  Added 'No result' field for better handling of no results from Taxon Classifier
+  Added handling of errors from cURL
+
 3.0 - 31/10-2014
   This version is also compatible with Taxon 3.x
   Now classes in Taxon result and taxonomy field are solely compared on ID

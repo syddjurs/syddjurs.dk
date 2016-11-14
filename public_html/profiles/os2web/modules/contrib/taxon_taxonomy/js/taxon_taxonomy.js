@@ -27,7 +27,6 @@
   Drupal.behaviors.overlay_alter = {
     attach: function (context) {
       // Global settings from Drupal
-      var taxonomy_name = Drupal.settings.taxon_taxonomy.taxonomy_name;
       var taxonomy_tag_name = Drupal.settings.taxon_taxonomy.field_name;
       var taxonomy_selected_image = Drupal.settings.taxon_taxonomy.selected_image;
       var taxonomy_not_selected_image = Drupal.settings.taxon_taxonomy.not_selected_image;
@@ -51,13 +50,13 @@
           sort of waiting mechanism.
         */
         setTimeout(function() {
-          getTaxonResult(taxonomy_name, taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb);
+          getTaxonResult(taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb);
         }, taxonomy_delay_taxon_call);
       }
 
       $(document).find('#edit-submit').click(function() {
         if (taxonomy_auto_fill_on_save) {
-          getTaxonResult(taxonomy_name, taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb);
+          getTaxonResult(taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb);
         }
       });
 
@@ -123,7 +122,7 @@
           $.ajaxSetup({async:false});
 
           // Post to the Drupal proxy function and get the result back as text
-          $.post("/taxon-taxonomy", { taxonomy: taxonomy_name, text: text }, function(data) {
+          $.post("/taxon-taxonomy", { text: text }, function(data) {
             $('#taxon-classify-button').before("<div id = 'taxon-results'> </div>");
 
             var classids_string = "," + $(taxonomy_tag_name).val() + ",";
@@ -367,7 +366,7 @@
     }
   };
 
-  function getTaxonResult(taxonomy_name, taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb_text) {
+  function getTaxonResult(taxonomy_tag_name, taxonomy_text_field, taxonomy_text_field_ckeditor, taxonomy_button_text, taxonomy_button_text_wait, taxonomy_waiticon_image, taxonomy_delay_taxon_call, taxonomy_text_title, taxonomy_text_breadcrumb_text) {
     var taxonomy_contents = $(document).find(taxonomy_tag_name).val();
 
     if (taxonomy_contents == "") {
@@ -407,7 +406,7 @@
       $.ajaxSetup({async:false});
 
       // Post to the Drupal proxy function and get the result back as text
-      $.post("/taxon-taxonomy", { taxonomy: taxonomy_name, text: text }, function(data) {
+      $.post("/taxon-taxonomy", { text: text }, function(data) {
         data = data.replace(/\n/g, ",");
         $(taxonomy_tag_name).val(data);
 
