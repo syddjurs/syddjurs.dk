@@ -568,6 +568,8 @@ function os2web_meetings_strongarm() {
   $strongarm->value = array(
     'link' => 0,
     'corner' => 0,
+    'block' => 0,
+    'help' => 0,
   );
   $export['print_html_link_pos'] = $strongarm;
 
@@ -638,7 +640,7 @@ function os2web_meetings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_html_windowclose';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['print_html_windowclose'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -96,17 +96,6 @@ function os2web_settings_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Editor' => 'Editor',
-      'Webmaster' => 'Webmaster',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'revert revisions'.
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',

@@ -59,47 +59,51 @@ function os2web_meetings_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '%node:field_os2web_meetings_committee';
+  $display->uuid = '99697db6-5d8c-496e-8006-b84e82ab49a2';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'node_view_panel_agenda';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-1';
-    $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'os2web_meetings_meeting_details';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '0',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'page',
-      'context' => array(
-        0 => 'argument_entity_id:node_1.field_os2web_meetings_bpa_id',
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array(
-      'method' => '0',
-      'settings' => array(),
-    );
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['center'][0] = 'new-1';
+  $pane = new stdClass();
+  $pane->pid = 'new-5e59cc68-5ebb-4f78-8294-8d07d648ccd0';
+  $pane->panel = 'center';
+  $pane->type = 'views';
+  $pane->subtype = 'os2web_meetings_meeting_details';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'page',
+    'context' => array(
+      0 => 'argument_entity_id:node_1.field_os2web_meetings_bpa_id',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array(
+    'method' => '0',
+    'settings' => array(),
+  );
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '5e59cc68-5ebb-4f78-8294-8d07d648ccd0';
+  $display->content['new-5e59cc68-5ebb-4f78-8294-8d07d648ccd0'] = $pane;
+  $display->panels['center'][0] = 'new-5e59cc68-5ebb-4f78-8294-8d07d648ccd0';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

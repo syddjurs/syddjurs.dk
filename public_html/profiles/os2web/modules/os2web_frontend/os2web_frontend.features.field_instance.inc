@@ -10,7 +10,7 @@
 function os2web_frontend_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2web_base_contentpage-field_piwik'
+  // Exported field_instance: 'node-os2web_base_contentpage-field_piwik'.
   $field_instances['node-os2web_base_contentpage-field_piwik'] = array(
     'bundle' => 'os2web_base_contentpage',
     'default_value' => NULL,
@@ -46,7 +46,7 @@ function os2web_frontend_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_base_iframe-field_piwik'
+  // Exported field_instance: 'node-os2web_base_iframe-field_piwik'.
   $field_instances['node-os2web_base_iframe-field_piwik'] = array(
     'bundle' => 'os2web_base_iframe',
     'default_value' => NULL,
@@ -83,7 +83,7 @@ function os2web_frontend_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_base_news-field_os2web_base_field_lead_img'
+  // 'node-os2web_base_news-field_os2web_base_field_lead_img'.
   $field_instances['node-os2web_base_news-field_os2web_base_field_lead_img'] = array(
     'bundle' => 'os2web_base_news',
     'deleted' => 0,
@@ -173,7 +173,7 @@ function os2web_frontend_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_base_news-field_piwik'
+  // Exported field_instance: 'node-os2web_base_news-field_piwik'.
   $field_instances['node-os2web_base_news-field_piwik'] = array(
     'bundle' => 'os2web_base_news',
     'default_value' => NULL,
@@ -209,7 +209,7 @@ function os2web_frontend_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_borger_dk_article-field_piwik'
+  // Exported field_instance: 'node-os2web_borger_dk_article-field_piwik'.
   $field_instances['node-os2web_borger_dk_article-field_piwik'] = array(
     'bundle' => 'os2web_borger_dk_article',
     'default_value' => NULL,
@@ -245,7 +245,7 @@ function os2web_frontend_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_borger_dk_article-field_piwik_stats'
+  // Exported field_instance: 'node-os2web_borger_dk_article-field_piwik_stats'.
   $field_instances['node-os2web_borger_dk_article-field_piwik_stats'] = array(
     'bundle' => 'os2web_borger_dk_article',
     'default_value' => NULL,
@@ -282,7 +282,7 @@ function os2web_frontend_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_frontend_background_img-field_os2web_frontend_bg_file'
+  // 'node-os2web_frontend_background_img-field_os2web_frontend_bg_file'.
   $field_instances['node-os2web_frontend_background_img-field_os2web_frontend_bg_file'] = array(
     'bundle' => 'os2web_frontend_background_img',
     'deleted' => 0,
@@ -365,7 +365,7 @@ function os2web_frontend_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_contact'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_contact'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_contact'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -405,7 +405,7 @@ function os2web_frontend_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_piwik'
+  // Exported field_instance: 'node-os2web_hearings_hearing_case-field_piwik'.
   $field_instances['node-os2web_hearings_hearing_case-field_piwik'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,

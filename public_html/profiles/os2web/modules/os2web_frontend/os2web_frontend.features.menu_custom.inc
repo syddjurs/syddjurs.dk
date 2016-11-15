@@ -26,7 +26,7 @@ function os2web_frontend_menu_default_menu_custom() {
   $menus['os2web-menu-contentmenu'] = array(
     'menu_name' => 'os2web-menu-contentmenu',
     'title' => 'Indholdsmenu',
-    'description' => '',
+    'description' => 'Fars køkkenskole',
   );
   // Exported menu: os2web-menu-other-sites.
   $menus['os2web-menu-other-sites'] = array(
@@ -44,13 +44,13 @@ function os2web_frontend_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Andre netsteder');
   t('Din kommune');
+  t('Fars køkkenskole');
   t('Indholdsmenu');
   t('Main menu');
   t('Os2web User menu');
   t('Spørgsmål om din kommune');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
-
 
   return $menus;
 }

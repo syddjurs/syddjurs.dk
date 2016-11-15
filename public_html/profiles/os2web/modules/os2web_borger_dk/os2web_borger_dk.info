@@ -50,7 +50,6 @@ features[field_instance][] = node-os2web_borger_dk_article-field_os2web_borger_d
 features[field_instance][] = node-os2web_borger_dk_article-field_os2web_borger_dk_recommend
 features[field_instance][] = node-os2web_borger_dk_article-field_os2web_borger_dk_selfservi
 features[field_instance][] = node-os2web_borger_dk_article-field_os2web_borger_dk_shortlist
-features[field_instance][] = node-os2web_borger_dk_article-field_piwik_stats
 features[node][] = os2web_borger_dk_article
 features[taxonomy][] = os2web_borger_dk_form_menu
 features[user_permission][] = create os2web_borger_dk_article content

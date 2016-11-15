@@ -50,6 +50,7 @@ function os2web_base_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'os2web_base_style_content',
   );
 
   // Exported image style: os2web_base_style_image.
@@ -79,6 +80,7 @@ function os2web_base_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'os2web_base_style_image',
   );
 
   // Exported image style: os2web_base_style_medium.
@@ -103,6 +105,7 @@ function os2web_base_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'os2web_base_style_medium',
   );
 
   // Exported image style: os2web_base_style_news_big.
@@ -117,6 +120,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_big',
   );
 
   // Exported image style: os2web_base_style_news_medium.
@@ -131,6 +135,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_medium',
   );
 
   // Exported image style: os2web_base_style_news_small.
@@ -145,6 +150,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_small',
   );
 
   // Exported image style: os2web_base_style_rotating.
@@ -159,6 +165,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_rotating',
   );
 
   // Exported image style: os2web_base_style_rotating_small.
@@ -173,6 +180,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_rotating_small',
   );
 
   return $styles;

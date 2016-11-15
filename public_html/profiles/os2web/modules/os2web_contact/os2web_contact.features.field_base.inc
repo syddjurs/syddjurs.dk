@@ -10,7 +10,7 @@
 function os2web_contact_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_contact_field_addr'
+  // Exported field_base: 'field_os2web_contact_field_addr'.
   $field_bases['field_os2web_contact_field_addr'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_callc'
+  // Exported field_base: 'field_os2web_contact_field_callc'.
   $field_bases['field_os2web_contact_field_callc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -56,7 +56,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_dept'
+  // Exported field_base: 'field_os2web_contact_field_dept'.
   $field_bases['field_os2web_contact_field_dept'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -77,7 +77,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_email'
+  // Exported field_base: 'field_os2web_contact_field_email'.
   $field_bases['field_os2web_contact_field_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -98,7 +98,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_fricl'
+  // Exported field_base: 'field_os2web_contact_field_fricl'.
   $field_bases['field_os2web_contact_field_fricl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -119,7 +119,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_friop'
+  // Exported field_base: 'field_os2web_contact_field_friop'.
   $field_bases['field_os2web_contact_field_friop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -140,7 +140,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_info'
+  // Exported field_base: 'field_os2web_contact_field_info'.
   $field_bases['field_os2web_contact_field_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -159,7 +159,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_moncl'
+  // Exported field_base: 'field_os2web_contact_field_moncl'.
   $field_bases['field_os2web_contact_field_moncl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -180,7 +180,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_monop'
+  // Exported field_base: 'field_os2web_contact_field_monop'.
   $field_bases['field_os2web_contact_field_monop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -201,7 +201,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_mowcl'
+  // Exported field_base: 'field_os2web_contact_field_mowcl'.
   $field_bases['field_os2web_contact_field_mowcl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -222,7 +222,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_mowop'
+  // Exported field_base: 'field_os2web_contact_field_mowop'.
   $field_bases['field_os2web_contact_field_mowop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -243,7 +243,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_phone'
+  // Exported field_base: 'field_os2web_contact_field_phone'.
   $field_bases['field_os2web_contact_field_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -258,7 +258,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_satcl'
+  // Exported field_base: 'field_os2web_contact_field_satcl'.
   $field_bases['field_os2web_contact_field_satcl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -279,7 +279,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_satop'
+  // Exported field_base: 'field_os2web_contact_field_satop'.
   $field_bases['field_os2web_contact_field_satop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -300,7 +300,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_show'
+  // Exported field_base: 'field_os2web_contact_field_show'.
   $field_bases['field_os2web_contact_field_show'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -325,7 +325,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_suncl'
+  // Exported field_base: 'field_os2web_contact_field_suncl'.
   $field_bases['field_os2web_contact_field_suncl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -346,7 +346,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_sunop'
+  // Exported field_base: 'field_os2web_contact_field_sunop'.
   $field_bases['field_os2web_contact_field_sunop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -367,7 +367,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_thucl'
+  // Exported field_base: 'field_os2web_contact_field_thucl'.
   $field_bases['field_os2web_contact_field_thucl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -388,7 +388,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_thuop'
+  // Exported field_base: 'field_os2web_contact_field_thuop'.
   $field_bases['field_os2web_contact_field_thuop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -409,7 +409,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_tuecl'
+  // Exported field_base: 'field_os2web_contact_field_tuecl'.
   $field_bases['field_os2web_contact_field_tuecl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -430,7 +430,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_tueop'
+  // Exported field_base: 'field_os2web_contact_field_tueop'.
   $field_bases['field_os2web_contact_field_tueop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -451,7 +451,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_wedcl'
+  // Exported field_base: 'field_os2web_contact_field_wedcl'.
   $field_bases['field_os2web_contact_field_wedcl'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -472,7 +472,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_wedop'
+  // Exported field_base: 'field_os2web_contact_field_wedop'.
   $field_bases['field_os2web_contact_field_wedop'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -493,7 +493,7 @@ function os2web_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_contact_field_zip'
+  // Exported field_base: 'field_os2web_contact_field_zip'.
   $field_bases['field_os2web_contact_field_zip'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -10,7 +10,7 @@
 function os2web_spotbox_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_spotbox_big_image'
+  // Exported field_base: 'field_os2web_spotbox_big_image'.
   $field_bases['field_os2web_spotbox_big_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -32,7 +32,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_editor_tags'
+  // Exported field_base: 'field_os2web_spotbox_editor_tags'.
   $field_bases['field_os2web_spotbox_editor_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -59,7 +59,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_focus_sect'
+  // Exported field_base: 'field_os2web_spotbox_focus_sect'.
   $field_bases['field_os2web_spotbox_focus_sect'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -81,7 +81,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_image_tall'
+  // Exported field_base: 'field_os2web_spotbox_image_tall'.
   $field_bases['field_os2web_spotbox_image_tall'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -103,7 +103,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_lead_image'
+  // Exported field_base: 'field_os2web_spotbox_lead_image'.
   $field_bases['field_os2web_spotbox_lead_image'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -125,7 +125,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_organizati'
+  // Exported field_base: 'field_os2web_spotbox_organizati'.
   $field_bases['field_os2web_spotbox_organizati'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -152,7 +152,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_politics'
+  // Exported field_base: 'field_os2web_spotbox_politics'.
   $field_bases['field_os2web_spotbox_politics'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -179,7 +179,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_promote_to'
+  // Exported field_base: 'field_os2web_spotbox_promote_to'.
   $field_bases['field_os2web_spotbox_promote_to'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -207,7 +207,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_ref_kle'
+  // Exported field_base: 'field_os2web_spotbox_ref_kle'.
   $field_bases['field_os2web_spotbox_ref_kle'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -234,7 +234,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_ref_place'
+  // Exported field_base: 'field_os2web_spotbox_ref_place'.
   $field_bases['field_os2web_spotbox_ref_place'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -261,7 +261,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_sitestruct'
+  // Exported field_base: 'field_os2web_spotbox_sitestruct'.
   $field_bases['field_os2web_spotbox_sitestruct'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -289,7 +289,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_text'
+  // Exported field_base: 'field_os2web_spotbox_text'.
   $field_bases['field_os2web_spotbox_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -308,7 +308,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_url'
+  // Exported field_base: 'field_os2web_spotbox_url'.
   $field_bases['field_os2web_spotbox_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -329,7 +329,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_url_setting'
+  // Exported field_base: 'field_os2web_spotbox_url_setting'.
   $field_bases['field_os2web_spotbox_url_setting'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -354,7 +354,7 @@ function os2web_spotbox_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_spotbox_video'
+  // Exported field_base: 'field_os2web_spotbox_video'.
   $field_bases['field_os2web_spotbox_video'] = array(
     'active' => 1,
     'cardinality' => 1,

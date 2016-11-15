@@ -89,194 +89,203 @@ function os2web_portals_political_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '62a13824-9266-4ceb-9491-d50629ed6028';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'term_view_panel_context_3';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-1';
-    $pane->panel = 'middle_center';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'os2web_base_panels_view_newslist-panel_pane_3';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'more_link' => 0,
-      'use_pager' => 0,
-      'pager_id' => '0',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-6',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['middle_center'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'middle_center';
-    $pane->type = 'block';
-    $pane->subtype = 'os2web_meetings-meeting-search-block';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Søg i dagsordner',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-6',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['middle_center'][1] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'middle_center';
-    $pane->type = 'views';
-    $pane->subtype = 'os2web_hearings_view_hearing';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '0',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-6 omega',
-    );
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['middle_center'][2] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'middle_center';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_7';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-6',
-    );
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['middle_center'][3] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'middle_right';
-    $pane->type = 'views';
-    $pane->subtype = 'os2web_base_panels_view_selfserv';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '0',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 1,
-      'link_to_view' => 0,
-      'args' => 'politik-og-planer',
-      'url' => '',
-      'display' => 'block_2',
-      'context' => array(
-        0 => '',
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-3',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['middle_right'][0] = 'new-5';
-    $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'middle_right';
-    $pane->type = 'views';
-    $pane->subtype = 'os2web_contact_view_contact';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '1',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
-      'context' => array(
-        0 => '',
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'grid-3',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['middle_right'][1] = 'new-6';
+  $pane = new stdClass();
+  $pane->pid = 'new-41e08855-bffb-4699-9c32-927fbedec11d';
+  $pane->panel = 'middle_center';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'os2web_base_panels_view_newslist-panel_pane_3';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'more_link' => 0,
+    'use_pager' => 0,
+    'pager_id' => '0',
+    'override_title' => 1,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '41e08855-bffb-4699-9c32-927fbedec11d';
+  $display->content['new-41e08855-bffb-4699-9c32-927fbedec11d'] = $pane;
+  $display->panels['middle_center'][0] = 'new-41e08855-bffb-4699-9c32-927fbedec11d';
+  $pane = new stdClass();
+  $pane->pid = 'new-30eb5230-182f-446b-b03a-c296a7e14643';
+  $pane->panel = 'middle_center';
+  $pane->type = 'block';
+  $pane->subtype = 'os2web_meetings-meeting-search-block';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Søg i dagsordner',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '30eb5230-182f-446b-b03a-c296a7e14643';
+  $display->content['new-30eb5230-182f-446b-b03a-c296a7e14643'] = $pane;
+  $display->panels['middle_center'][1] = 'new-30eb5230-182f-446b-b03a-c296a7e14643';
+  $pane = new stdClass();
+  $pane->pid = 'new-6b4ee815-37ad-4ac7-b93e-54633045cdfc';
+  $pane->panel = 'middle_center';
+  $pane->type = 'views';
+  $pane->subtype = 'os2web_hearings_view_hearing';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'override_title' => 1,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6 omega',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '6b4ee815-37ad-4ac7-b93e-54633045cdfc';
+  $display->content['new-6b4ee815-37ad-4ac7-b93e-54633045cdfc'] = $pane;
+  $display->panels['middle_center'][2] = 'new-6b4ee815-37ad-4ac7-b93e-54633045cdfc';
+  $pane = new stdClass();
+  $pane->pid = 'new-302c2bdc-d314-40a1-9d27-24d18b2c98b9';
+  $pane->panel = 'middle_center';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_7';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6',
+  );
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '302c2bdc-d314-40a1-9d27-24d18b2c98b9';
+  $display->content['new-302c2bdc-d314-40a1-9d27-24d18b2c98b9'] = $pane;
+  $display->panels['middle_center'][3] = 'new-302c2bdc-d314-40a1-9d27-24d18b2c98b9';
+  $pane = new stdClass();
+  $pane->pid = 'new-b2773d03-50b5-41a7-93c4-4349324c4aa1';
+  $pane->panel = 'middle_right';
+  $pane->type = 'views';
+  $pane->subtype = 'os2web_base_panels_view_selfserv';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 1,
+    'link_to_view' => 0,
+    'args' => 'politik-og-planer',
+    'url' => '',
+    'display' => 'block_2',
+    'context' => array(
+      0 => '',
+    ),
+    'override_title' => 1,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-3',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'b2773d03-50b5-41a7-93c4-4349324c4aa1';
+  $display->content['new-b2773d03-50b5-41a7-93c4-4349324c4aa1'] = $pane;
+  $display->panels['middle_right'][0] = 'new-b2773d03-50b5-41a7-93c4-4349324c4aa1';
+  $pane = new stdClass();
+  $pane->pid = 'new-2e7366c6-93da-4920-8ee7-3d669f852518';
+  $pane->panel = 'middle_right';
+  $pane->type = 'views';
+  $pane->subtype = 'os2web_contact_view_contact';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '1',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'context' => array(
+      0 => '',
+    ),
+    'override_title' => 1,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-3',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '2e7366c6-93da-4920-8ee7-3d669f852518';
+  $display->content['new-2e7366c6-93da-4920-8ee7-3d669f852518'] = $pane;
+  $display->panels['middle_right'][1] = 'new-2e7366c6-93da-4920-8ee7-3d669f852518';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

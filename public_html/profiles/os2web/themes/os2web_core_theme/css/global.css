@@ -654,7 +654,7 @@ ul.jcarousel-list-horizontal { }
   font-size: inherit;
   font-weight: bold;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 
 .view-id-os2web_base_panels_view_newslist.view-display-id-panel_pane_1 .news-list-right {
@@ -3246,9 +3246,13 @@ ul#facetapi-facet-apachesolrsolr-block-im-field-os2web-base-field-struc {
 	margin: 20px 10px 0px 10px;
 	width: 418px;
 	display: block;
-
 	background-color: #f6f6f6;
 }
+
+.ui-dialog-content .fieldset-legend {
+  margin: 0;
+  padding: 0;
+  }
 
 #region-branding {
   margin-left: 0;
@@ -4748,7 +4752,7 @@ ul.os2web_menus-container {
 /* social-share */
 
 .del-bund div.del div.social-share {
-  padding-top: 7px;  
+  padding-top: 7px;
 }
 
 .del-bund div.del div.social-share span,

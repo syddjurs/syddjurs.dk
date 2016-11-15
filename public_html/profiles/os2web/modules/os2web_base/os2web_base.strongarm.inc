@@ -672,7 +672,6 @@ function os2web_base_strongarm() {
   $strongarm->value = array(
     0 => 'os2web-menu-contentmenu',
     1 => 'os2web-main-menu',
-    2 => 'main-menu',
   );
   $export['menu_options_os2web_base_contentpage'] = $strongarm;
 
