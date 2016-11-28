@@ -1,7 +1,7 @@
 logs
 sessions
 tmp
-site
+.idea
 
 batch
 os2web-deploy
