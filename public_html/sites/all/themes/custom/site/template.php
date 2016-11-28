@@ -3,7 +3,7 @@
 /**
  * Implements theme_preprocess_html().
  */
-function fki_preprocess_html(&$variables) {
+function site_preprocess_html(&$variables) {
   $theme_path = path_to_theme();
 //
 //  // Add conditional stylesheets
@@ -39,7 +39,7 @@ function fki_preprocess_html(&$variables) {
       'rel' => 'stylesheet',
       'type' => 'text/css',
     ),
-  ), 'google_font_fki');
+  ), 'google_font_site');
 
   // Footer
   if (theme_get_setting('footer_attached')) {
@@ -60,21 +60,21 @@ function fki_preprocess_html(&$variables) {
 /*
  * Implements hook_js_alter().
  */
-function fki_js_alter(&$javascript) {
+function site_js_alter(&$javascript) {
   unset($javascript['profiles/os2web/modules/custom/os2web_borger_dk/js/os2web_borger_dk.js']);
 }
 
 /*
  * Implements hook_css_alter().
  */
-function fki_css_alter(&$css) {
+function site_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'feedback') . '/feedback.css']);
 }
 
 /*
  * Implements theme_preprocess_page().
  */
-function fki_preprocess_page(&$variables) {
+function site_preprocess_page(&$variables) {
   $current_theme = variable_get('theme_default','none');
   $primary_navigation_name = variable_get('menu_main_links_source', 'main-menu');
   $secondary_navigation_name = variable_get('menu_secondary_links_source', 'user-menu');
@@ -130,7 +130,7 @@ function fki_preprocess_page(&$variables) {
 /**
  * Implements template_preprocess_node.
  */
-function fki_preprocess_node(&$variables) {
+function site_preprocess_node(&$variables) {
   $node = $variables['node'];
 
   // Optionally, run node-type-specific preprocess functions, like
@@ -148,7 +148,7 @@ function fki_preprocess_node(&$variables) {
 /*
  * Implements template_preprocess_comment().
  */
-function fki_preprocess_comment(&$variables) {
+function site_preprocess_comment(&$variables) {
 
   // Author
   if ($author_information = bellcom_user_get_raw_information($variables['comment']->uid)) {
@@ -162,14 +162,14 @@ function fki_preprocess_comment(&$variables) {
 /*
  * Implements template_node_view_alter().
  */
-function fki_node_view_alter(&$build) {
+function site_node_view_alter(&$build) {
 }
 
 /*
  * Full node
  * Implements hook_preprocess_node().
  */
-function fki_preprocess_node__full(&$variables) {
+function site_preprocess_node__full(&$variables) {
   // Make "node--NODETYPE--VIEWMODE.tpl.php" templates available for nodes
   $variables['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
 }
@@ -177,7 +177,7 @@ function fki_preprocess_node__full(&$variables) {
 /*
  * Implements hook_preprocess_node().
  */
-function fki_preprocess_node__os2web_spotbox_box(&$variables) {
+function site_preprocess_node__os2web_spotbox_box(&$variables) {
 
   // Teaser
   if ($variables['view_mode'] == 'teaser') {
@@ -254,7 +254,7 @@ function fki_preprocess_node__os2web_spotbox_box(&$variables) {
 /*
  * Implements hook_preprocess_node().
  */
-function fki_preprocess_node__os2web_base_news(&$variables) {
+function site_preprocess_node__os2web_base_news(&$variables) {
 
   // Spotbox
   if ($variables['view_mode'] == 'spotbox') {
@@ -274,7 +274,7 @@ function fki_preprocess_node__os2web_base_news(&$variables) {
 /*
  * Implements hook_preprocess_node().
  */
-function fki_preprocess_node__os2web_cp_service_cp_document(&$variables) {
+function site_preprocess_node__os2web_cp_service_cp_document(&$variables) {
 
   // List
   if ($variables['view_mode'] == 'list') {
@@ -298,7 +298,7 @@ function fki_preprocess_node__os2web_cp_service_cp_document(&$variables) {
 /*
  * Implements template_preprocess_taxonomy_term().
  */
-function fki_preprocess_taxonomy_term(&$variables) {
+function site_preprocess_taxonomy_term(&$variables) {
   $term = $variables['term'];
 
   // Add taxonomy-term--view_mode.tpl.php suggestions.
@@ -325,7 +325,7 @@ function fki_preprocess_taxonomy_term(&$variables) {
 /*
  * Implements template_preprocess_taxonomy_term().
  */
-function fki_preprocess_taxonomy_term__teaser(&$variables) {
+function site_preprocess_taxonomy_term__teaser(&$variables) {
 
   // Structure
   if ($variables['vocabulary_machine_name'] == 'os2web_base_tax_site_structure') {
@@ -338,7 +338,7 @@ function fki_preprocess_taxonomy_term__teaser(&$variables) {
 /*
  * Implements hook_form_alter().
  */
-function fki_form_alter(&$form, &$form_state, $form_id) {
+function site_form_alter(&$form, &$form_state, $form_id) {
 
   switch ($form_id)  {
 
@@ -370,7 +370,7 @@ function fki_form_alter(&$form, &$form_state, $form_id) {
 /*
  * Implements template_preprocess_field().
  */
-function fki_preprocess_field(&$variables, $hook) {
+function site_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
 
   if (isset($element['#field_name'])) {
@@ -408,7 +408,7 @@ function fki_preprocess_field(&$variables, $hook) {
 /*
  * Implements theme_menu_tree().
  */
-function fki_menu_tree(&$variables) {
+function site_menu_tree(&$variables) {
   if($variables['theme_hook_original'] != 'menu_tree') {
     return $variables['tree'];
   }
@@ -419,14 +419,14 @@ function fki_menu_tree(&$variables) {
 /*
  * Implements theme_menu_tree().
  */
-function fki_menu_tree__tabbed(&$variables) {
+function site_menu_tree__tabbed(&$variables) {
   return $variables['tree'];
 }
 
 /*
  * Implements theme_menu_link().
  */
-function fki_menu_link__tabbed(array $variables) {
+function site_menu_link__tabbed(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -480,6 +480,6 @@ function fki_menu_link__tabbed(array $variables) {
 /*
  * Implements hook_preprocess_breadcrumb().
  */
-function fki_preprocess_breadcrumb(&$variables) {
+function site_preprocess_breadcrumb(&$variables) {
   $variables['breadcrumb'][0] = l('<span class="icon"></span>', '<front>', array('html' => true));
 }
