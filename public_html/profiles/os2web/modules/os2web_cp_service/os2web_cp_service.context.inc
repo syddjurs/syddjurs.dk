@@ -13,6 +13,34 @@ function os2web_cp_service_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'health_and_care_cp_case_page';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'retningsgivende-dokumenter-sundhed-og-omsorg' => 'retningsgivende-dokumenter-sundhed-og-omsorg',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-75b62bcf0a3bec8ced2c912475408d13' => array(
+          'module' => 'views',
+          'delta' => '75b62bcf0a3bec8ced2c912475408d13',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['health_and_care_cp_case_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'os2web_cp_service_context';
   $context->description = 'Contexts to CP panels. Hide right sidebar';
   $context->tag = 'OS2Web - Blokke';
