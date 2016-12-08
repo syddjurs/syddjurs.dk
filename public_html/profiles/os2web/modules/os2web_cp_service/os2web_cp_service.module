@@ -456,6 +456,26 @@ function os2web_cp_service_create_case(array $data) {
               }
             }
           }
+          // Search of the term in os2web_cp_service_org_unit vocabulary and create term if not exists.
+          if ($field_name == 'field_os2web_cp_service_org_unit') {
+            try {
+              $term = taxonomy_get_term_by_name((string) $data['fields'][$field['label']], 'os2web_cp_service_org_unit');
+              if (empty($term)) {
+                $rules_vocabulary = taxonomy_vocabulary_machine_name_load('os2web_cp_service_org_unit');
+                $term = new stdClass();
+                $term->vid = $rules_vocabulary->vid;
+                $term->name = (string) $data['fields'][$field['label']];
+                taxonomy_term_save($term);
+              }
+              if (is_array($term)) {
+                $choosen_term = array_pop($term);
+                $term = $choosen_term;
+              }
+            }
+            catch (Exception $e) {
+              watchdog('os2web_cp_service', 'Error on organisation unit import: %message', array('%message' => print_r($e->getMessage(), 1)), WATCHDOG_ERROR);
+            }
+          }
 
           // If non found, find in every vocabularies.
           // Retrieve the first occurance of the term.
@@ -702,6 +722,30 @@ function os2web_cp_service_create_document(array $data) {
         case 'text':
           $node->{$field_name}[LANGUAGE_NONE][0]['value'] = (string) $data['fields'][$field['label']];
           break;
+        case 'taxonomy_term_reference':
+          $term = NULL;
+          // Search of the term in os2web_organisational_unit vocabulary and create term if not exists.
+          if ($field_name == 'field_os2web_cp_service_org_unit') {
+            try{
+              $term = taxonomy_get_term_by_name((string) $data['fields'][$field['label']], 'os2web_cp_service_org_unit');
+              if (empty($term)) {
+                $rules_vocabulary = taxonomy_vocabulary_machine_name_load('os2web_cp_service_org_unit');
+                $term = new stdClass();
+                $term->vid = $rules_vocabulary->vid;
+                $term->name = (string) $data['fields'][$field['label']];
+                taxonomy_term_save($term);
+              }
+              if (is_array($term)) {
+               $term = array_pop($term);
+                //$term = $choosen_term;
+                $node->{$field_name}['und'][0]['tid'] = $term->tid;
+              }
+            }
+            catch (Exception $e) {
+              watchdog('os2web_cp_service', 'Error on organisation unit import: %message', array('%message' => print_r($e->getMessage(), 1)), WATCHDOG_ERROR);
+            }
+          }
+          break;
 
         default:
           $node->{$field_name}[LANGUAGE_NONE][0]['value'] = $data['fields'][$field['label']];
@@ -820,6 +864,7 @@ function os2web_cp_service_default_document() {
       'Journalstatus - Journalstatusbetegnelse' => NULL,
       'Dokumentstatus - Dokumentstatus' => NULL,
       'Dokumentstatus - Dokumentstatusbetegnelse' => NULL,
+      'Sagsansvarlig enhed - Administrativ enhed' => NULL,
       'Dokumentfrist note' => NULL,
       'Arkivdel - Arkivdel' => NULL,
       'Arkivdel - Arkivdelbetegnelse' => NULL,
@@ -959,6 +1004,7 @@ function os2web_cp_service_form_alter(&$form, &$form_state, $form_id) {
     case 'views-exposed-form-os2web-cp-service-cp-case-search-page':
     case 'views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1':
     case 'views-exposed-form-os2web-cp-service-cp-case-search-default':
+    case 'views-exposed-form-health-and-care-cp-case-search-block-1':
       foreach ($form['#info'] as &$widget) {
         // Adds placeholder to all textfields with a description ab@bellcom.dk.
         if (!empty($widget['description']) && isset($form[$widget['value']]['#type']) && $form[$widget['value']]['#type'] === 'textfield') {
@@ -983,7 +1029,8 @@ function os2web_cp_service_preprocess_views_exposed_form(&$variables) {
   // Wrap certain elements in search form. Used for styling etc.
   if ($variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-page' ||
       $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1' ||
-      $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-default') {
+      $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-default' ||
+      $variables['form']['#id'] == 'views-exposed-form-health-and-care-cp-case-search-block-1') {
     foreach ($variables['widgets'] as $id => &$widget) {
       switch ($id) {
         case 'filter-field_os2web_cp_service_date_value_1':
@@ -1005,7 +1052,10 @@ function os2web_cp_service_preprocess_views_exposed_form(&$variables) {
           break;
       }
     }
-
+ }
+  if ($variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-page' ||
+      $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1' ||
+      $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-default'){
     $cal_icon = drupal_get_path('module', 'os2web_cp_service') . "/images/cal.png";
     $datepicker = 'jQuery(document).ready(function($) {
       $( "#edit-field-os2web-cp-service-date-from-value-datepicker-popup-0" ).datepicker({

@@ -19,10 +19,16 @@ function os2web_cp_service_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '18',
+        ),
+        'redirect' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -61,7 +67,13 @@ function os2web_cp_service_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '17',
+        ),
+        'redirect' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(),

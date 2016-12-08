@@ -9,6 +9,29 @@
  */
 function os2web_cp_service_taxonomy_default_vocabularies() {
   return array(
+    'os2web_cp_service_org_unit' => array(
+      'name' => 'Os2web organisational unit',
+      'machine_name' => 'os2web_cp_service_org_unit',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'os2web_cp_service_tax_approved_rules' => array(
       'name' => 'CP Approved Rules',
       'machine_name' => 'os2web_cp_service_tax_approved_rules',
