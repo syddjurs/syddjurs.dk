@@ -138,6 +138,7 @@ function os2web_frontend_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'borger_dk_article' => 'borger_dk_article',
         'os2web_base_contentpage' => 'os2web_base_contentpage',
         'os2web_base_gallery' => 'os2web_base_gallery',
         'os2web_base_iframe' => 'os2web_base_iframe',
