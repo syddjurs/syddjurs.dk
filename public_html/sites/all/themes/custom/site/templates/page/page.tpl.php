@@ -157,7 +157,7 @@
                 <!-- End - breadcrumb -->
             <?php endif; ?>
 
-              <div class="container bs3-container-background-color">
+              <div class="container">
 
                 <?php if (!empty($page['help'])): ?>
                   <?php print render($page['help']); ?>
