@@ -320,58 +320,12 @@ return TRUE; // If no exposed inputs, remove all results
     'title_1' => 'title_1',
     'field_os2web_cp_service_address' => 'field_os2web_cp_service_address',
   );
-  /* Filterkriterie: os2web_cp_service_date_from */
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['id'] = 'field_os2web_cp_service_date_value_1';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['table'] = 'field_data_field_os2web_cp_service_date';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['field'] = 'field_os2web_cp_service_date_value';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['ui_name'] = 'os2web_cp_service_date_from';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['group'] = 1;
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['operator_id'] = 'field_os2web_cp_service_date_value_1_op';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['label'] = 'Fra';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['operator'] = 'field_os2web_cp_service_date_value_1_op';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['identifier'] = 'field_os2web_cp_service_date_from';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    4 => 0,
-    7 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_1']['default_date'] = '-1 year';
-  /* Filterkriterie: os2web_cp_service_date_to */
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['id'] = 'field_os2web_cp_service_date_value_2';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['table'] = 'field_data_field_os2web_cp_service_date';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['field'] = 'field_os2web_cp_service_date_value';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['ui_name'] = 'os2web_cp_service_date_to';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['group'] = 1;
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['expose']['operator_id'] = 'field_os2web_cp_service_date_value_2_op';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['expose']['label'] = 'Til';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['expose']['operator'] = 'field_os2web_cp_service_date_value_2_op';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['expose']['identifier'] = 'field_os2web_cp_service_date_to';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    4 => 0,
-    7 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_os2web_cp_service_date_value_2']['default_date'] = 'now';
   /* Filterkriterie: Indhold: Sagsansvarlig enhed - Administrativ enhed (field_os2web_cp_service_org_unit) */
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['id'] = 'field_os2web_cp_service_org_unit_tid';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['table'] = 'field_data_field_os2web_cp_service_org_unit';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['field'] = 'field_os2web_cp_service_org_unit_tid';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['value'] = array(
-    19759 => '19759',
+    19709 => '19709',
   );
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['vocabulary'] = 'os2web_cp_service_org_unit';
@@ -417,8 +371,6 @@ return TRUE; // If no exposed inputs, remove all results
     t('Dato'),
     t('Søgetekst eller sagsnummer'),
     t('fx Birkevej. Affald. 12/99999'),
-    t('Fra'),
-    t('Til'),
     t('Page'),
     t('Der kunne ikke findes nogle sager ud fra dine søgekriterier.'),
     t('Blok'),
