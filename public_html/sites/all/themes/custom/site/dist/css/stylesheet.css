@@ -17176,18 +17176,18 @@ body .footer {
 }
 .footer {
   padding: 0;
-  background-color: #005794;
+  background-color: #9a185a;
 }
 .footer p {
   margin-bottom: 0;
 }
 .footer,
 .footer p {
-  color: #fff;
+  color: #FFF;
 }
 .footer a,
 .footer a:hover {
-  color: #fff;
+  color: #FFF;
 }
 .footer .heading-h1,
 .footer .heading-h2,
@@ -17218,7 +17218,7 @@ body .footer {
 }
 .footer .nav > li > a,
 .footer .nav > li > a:hover {
-  color: #fff;
+  color: #FFF;
   background-color: transparent;
 }
 .footer .footer-hotline p {
