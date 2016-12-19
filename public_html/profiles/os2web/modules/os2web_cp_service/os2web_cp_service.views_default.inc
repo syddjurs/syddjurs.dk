@@ -325,7 +325,7 @@ return TRUE; // If no exposed inputs, remove all results
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['table'] = 'field_data_field_os2web_cp_service_org_unit';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['field'] = 'field_os2web_cp_service_org_unit_tid';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['value'] = array(
-    19759 => '19759',
+    19709 => '19709',
   );
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['vocabulary'] = 'os2web_cp_service_org_unit';
