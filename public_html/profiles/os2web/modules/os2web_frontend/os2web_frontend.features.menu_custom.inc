@@ -26,7 +26,7 @@ function os2web_frontend_menu_default_menu_custom() {
   $menus['os2web-menu-contentmenu'] = array(
     'menu_name' => 'os2web-menu-contentmenu',
     'title' => 'Indholdsmenu',
-    'description' => 'Fars køkkenskole',
+    'description' => 'Kom videre mand',
   );
   // Exported menu: os2web-menu-other-sites.
   $menus['os2web-menu-other-sites'] = array(
@@ -44,8 +44,8 @@ function os2web_frontend_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Andre netsteder');
   t('Din kommune');
-  t('Fars køkkenskole');
   t('Indholdsmenu');
+  t('Kom videre mand');
   t('Main menu');
   t('Os2web User menu');
   t('Spørgsmål om din kommune');

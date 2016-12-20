@@ -297,13 +297,6 @@ function os2web_webform_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'webform_search_index';
-  $strongarm->value = 0;
-  $export['webform_search_index'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'webform_submission_access_control';
   $strongarm->value = '0';
   $export['webform_submission_access_control'] = $strongarm;

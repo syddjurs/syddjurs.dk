@@ -11,7 +11,7 @@ function os2web_ofir_job_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'node-os2web_ofir_job-field_os2web_ofir_apply_link'
+  // 'node-os2web_ofir_job-field_os2web_ofir_apply_link'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_apply_link'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -99,7 +99,7 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_category'
+  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_category'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_category'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -145,7 +145,7 @@ function os2web_ofir_job_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_ofir_job-field_os2web_ofir_contact_no'
+  // 'node-os2web_ofir_job-field_os2web_ofir_contact_no'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_contact_no'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -234,7 +234,7 @@ function os2web_ofir_job_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_ofir_job-field_os2web_ofir_contact_person'
+  // 'node-os2web_ofir_job-field_os2web_ofir_contact_person'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_contact_person'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -322,7 +322,7 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_design'
+  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_design'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_design'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -366,7 +366,8 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_ad_id'
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_job_ad_id'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_ad_id'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -449,7 +450,7 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_logo'
+  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_logo'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_logo'] = array(
     'bundle' => 'os2web_ofir_job',
     'deleted' => 0,
@@ -532,7 +533,7 @@ function os2web_ofir_job_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_ofir_job-field_os2web_ofir_job_period'
+  // 'node-os2web_ofir_job-field_os2web_ofir_job_period'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_period'] = array(
     'bundle' => 'os2web_ofir_job',
     'deleted' => 0,
@@ -565,6 +566,7 @@ function os2web_ofir_job_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -597,7 +599,7 @@ function os2web_ofir_job_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_text'
+  // Exported field_instance: 'node-os2web_ofir_job-field_os2web_ofir_job_text'.
   $field_instances['node-os2web_ofir_job-field_os2web_ofir_job_text'] = array(
     'bundle' => 'os2web_ofir_job',
     'default_value' => NULL,
@@ -687,7 +689,7 @@ function os2web_ofir_job_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-os2web_job_designs-field_os2web_job_image'
+  // 'taxonomy_term-os2web_job_designs-field_os2web_job_image'.
   $field_instances['taxonomy_term-os2web_job_designs-field_os2web_job_image'] = array(
     'bundle' => 'os2web_job_designs',
     'deleted' => 0,

@@ -10,7 +10,7 @@
 function os2web_cp_service_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_cp_service_address'
+  // Exported field_base: 'field_os2web_cp_service_address'.
   $field_bases['field_os2web_cp_service_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_case_id'
+  // Exported field_base: 'field_os2web_cp_service_case_id'.
   $field_bases['field_os2web_cp_service_case_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -52,7 +52,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_case_sid'
+  // Exported field_base: 'field_os2web_cp_service_case_sid'.
   $field_bases['field_os2web_cp_service_case_sid'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,7 +73,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_casetype'
+  // Exported field_base: 'field_os2web_cp_service_casetype'.
   $field_bases['field_os2web_cp_service_casetype'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -98,7 +98,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_content'
+  // Exported field_base: 'field_os2web_cp_service_content'.
   $field_bases['field_os2web_cp_service_content'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -117,7 +117,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_date'
+  // Exported field_base: 'field_os2web_cp_service_date'.
   $field_bases['field_os2web_cp_service_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -146,7 +146,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_doc_id'
+  // Exported field_base: 'field_os2web_cp_service_doc_id'.
   $field_bases['field_os2web_cp_service_doc_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -167,7 +167,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_doc_ref'
+  // Exported field_base: 'field_os2web_cp_service_doc_ref'.
   $field_bases['field_os2web_cp_service_doc_ref'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -202,7 +202,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_doc_type'
+  // Exported field_base: 'field_os2web_cp_service_doc_type'.
   $field_bases['field_os2web_cp_service_doc_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -227,7 +227,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_edited'
+  // Exported field_base: 'field_os2web_cp_service_edited'.
   $field_bases['field_os2web_cp_service_edited'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -256,7 +256,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_file_id'
+  // Exported field_base: 'field_os2web_cp_service_file_id'.
   $field_bases['field_os2web_cp_service_file_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -277,7 +277,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_filetype'
+  // Exported field_base: 'field_os2web_cp_service_filetype'.
   $field_bases['field_os2web_cp_service_filetype'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -298,7 +298,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_full_xml'
+  // Exported field_base: 'field_os2web_cp_service_full_xml'.
   $field_bases['field_os2web_cp_service_full_xml'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -317,7 +317,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_key'
+  // Exported field_base: 'field_os2web_cp_service_key'.
   $field_bases['field_os2web_cp_service_key'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -338,7 +338,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_kle_ref'
+  // Exported field_base: 'field_os2web_cp_service_kle_ref'.
   $field_bases['field_os2web_cp_service_kle_ref'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -365,7 +365,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_org_unit'
+  // Exported field_base: 'field_os2web_cp_service_org_unit'.
   $field_bases['field_os2web_cp_service_org_unit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -373,21 +373,27 @@ function os2web_cp_service_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_os2web_cp_service_org_unit',
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'taxonomy',
     'settings' => array(
-      'allowed_values' => array(),
-      'allowed_values_function' => '',
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'os2web_cp_service_org_unit',
+          'parent' => 0,
+          'depth' => '',
+        ),
+      ),
+      'options_list_callback' => 'content_taxonomy_allowed_values',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_property'
+  // Exported field_base: 'field_os2web_cp_service_property'.
   $field_bases['field_os2web_cp_service_property'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -408,7 +414,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_rules'
+  // Exported field_base: 'field_os2web_cp_service_rules'.
   $field_bases['field_os2web_cp_service_rules'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -435,7 +441,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_status'
+  // Exported field_base: 'field_os2web_cp_service_status'.
   $field_bases['field_os2web_cp_service_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -456,7 +462,7 @@ function os2web_cp_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_cp_service_sysid'
+  // Exported field_base: 'field_os2web_cp_service_sysid'.
   $field_bases['field_os2web_cp_service_sysid'] = array(
     'active' => 1,
     'cardinality' => 1,

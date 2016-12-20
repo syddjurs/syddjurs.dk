@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function os2web_hearings_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -31,12 +31,12 @@ function os2web_hearings_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-hearings-case-attac field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_hearings_case_attac|node|os2web_hearings_hearing_case|form'] = $field_group;
+  $field_groups['group_os2web_hearings_case_attac|node|os2web_hearings_hearing_case|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -60,12 +60,12 @@ function os2web_hearings_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-hearings-case-setti field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_hearings_case_setti|node|os2web_hearings_hearing_case|form'] = $field_group;
+  $field_groups['group_os2web_hearings_case_setti|node|os2web_hearings_hearing_case|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -89,11 +89,11 @@ function os2web_hearings_field_group_info() {
     'format_settings' => array(
       'label' => 'Høring',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-os2web-hearings-case-tabs field-group-htabs',
       ),
     ),
   );
-  $export['group_os2web_hearings_case_tabs|node|os2web_hearings_hearing_case|form'] = $field_group;
+  $field_groups['group_os2web_hearings_case_tabs|node|os2web_hearings_hearing_case|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -119,12 +119,12 @@ function os2web_hearings_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-hearings-case-taxon field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_hearings_case_taxon|node|os2web_hearings_hearing_case|form'] = $field_group;
+  $field_groups['group_os2web_hearings_case_taxon|node|os2web_hearings_hearing_case|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -149,12 +149,20 @@ function os2web_hearings_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-hearings-case-text field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_os2web_hearings_case_text|node|os2web_hearings_hearing_case|form'] = $field_group;
+  $field_groups['group_os2web_hearings_case_text|node|os2web_hearings_hearing_case|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Emneord');
+  t('Høring');
+  t('Indstillinger');
+  t('Tekst');
+  t('Vedhæftninger');
+
+  return $field_groups;
 }

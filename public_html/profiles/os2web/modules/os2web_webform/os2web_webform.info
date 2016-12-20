@@ -84,6 +84,5 @@ features[variable][] = webform_email_address_format
 features[variable][] = webform_export_format
 features[variable][] = webform_format_override
 features[variable][] = webform_node_types
-features[variable][] = webform_search_index
 features[variable][] = webform_submission_access_control
 features[variable][] = webform_use_cookies
