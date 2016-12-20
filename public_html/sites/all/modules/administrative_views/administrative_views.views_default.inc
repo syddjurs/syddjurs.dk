@@ -547,7 +547,6 @@ function administrative_views_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = 'Filnavn';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['filename']['link_to_file'] = TRUE;
   /* Felt: Fil: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'file_managed';
