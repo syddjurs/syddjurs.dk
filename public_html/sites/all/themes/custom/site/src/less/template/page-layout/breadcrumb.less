@@ -36,6 +36,7 @@
 		margin: 0;
 		border-radius: 0;
 		background-color: transparent;
+		line-height: 1.2em;
 
 		li {
 			font-size: @os2-breadcrumb-separator-font-size;
@@ -48,10 +49,16 @@
 				}
 			}
 
+			&:before {
+		  	font-family: 'FontAwesome';
+				content: @fa-var-chevron-right;
+				color: @os2-breadcrumb-separator-color;
+				padding: 0 @os2-breadcrumb-separator-spacing;
+			}
 			&:first-child {
 
 				a {
-					font-size: 0;
+					// font-size: 0;
 
 					.icon {
 
@@ -71,13 +78,16 @@
 				+ li {
 
 					&:before {
-						display: none;
+						// display: none;
 					}
 				}
 			}
 
 			&.active {
 				color: @os2-breadcrumb-active-color;
+				&:before {
+				  display: none;
+				}
 			}
 
 			+ li {
