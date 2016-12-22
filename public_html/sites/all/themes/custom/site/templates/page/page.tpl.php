@@ -201,7 +201,6 @@
                 </div>
               </div>
 
-              <div class="row content-row">
 
                 <a id="main-content"></a>
                 <div class="message">
@@ -214,6 +213,7 @@
                     <?php print render($page['content']); ?>
                   <?php endif; ?>
                 <?php else: ?>
+              <div class="row content-row">
                   <!-- Begin - sidebar first -->
                     <?php if (!empty($page['sidebar_first'])): ?>
                       <div id="region-sidebar-first" class="col-xs-12 col-sm-3 region-sidebar-first">
@@ -235,7 +235,6 @@
                   <!-- Begin - content -->
                     <?php print render($page['content']); ?>
                   <!-- End - content -->
-
                   </div>
 
                   <!-- Begin - sidebar second -->
@@ -244,50 +243,53 @@
                         <?php print render($page['sidebar_second']); ?>
                       </div>
                     <?php endif; ?>
-                  <!-- End - sidebar second -->
+                  <!-- End - sidebar second --> </div>
                 <?php endif; ?>
-              </div>
-              <!-- Begin - footer first -->
-                <?php if (!empty($page['footer_first'])): ?>
-                  <footer class="footer">
-                    <div class="footer-content">
-                      <div class="row">
-                        <div class="col-xs-12">
-                          <?php print render($page['footer_first']); ?>
+
+              <div class="zone-footer">
+                <!-- Begin - footer first -->
+                  <?php if (!empty($page['footer_first'])): ?>
+                    <footer class="footer region-footer-first">
+                      <div class="footer-content">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <?php print render($page['footer_first']); ?>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </footer>
-                <?php endif; ?>
-              <!-- End - footer first -->
+                    </footer>
+                  <?php endif; ?>
+                <!-- End - footer first -->
 
-          <!-- Begin - footer second -->
-        <?php if (!empty($page['footer_second'])): ?>
-          <footer class="footer">
-            <div class="footer-content">
-              <div class="row">
-                <div class="col-xs-12">
-                  <?php print render($page['footer_second']); ?>
-                </div>
-              </div>
-            </div>
-          </footer>
-        <?php endif; ?>
-          <!-- End - footer second -->
+                <!-- Begin - footer second -->
+                  <?php if (!empty($page['footer_second'])): ?>
+                    <footer class="footer region-footer-second">
+                      <div class="footer-content">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <?php print render($page['footer_second']); ?>
+                          </div>
+                        </div>
+                      </div>
+                    </footer>
+                  <?php endif; ?>
+                <!-- End - footer second -->
 
-          <!-- Begin - footer third -->
-        <?php if (!empty($page['footer_third'])): ?>
-            <footer class="footer">
-              <div class="footer-content">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <?php print render($page['footer_third']); ?>
-                  </div>
-                </div>
+                <!-- Begin - footer third -->
+                  <?php if (!empty($page['footer_third'])): ?>
+                    <footer class="footer region-footer-third">
+                      <div class="footer-content">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <?php print render($page['footer_third']); ?>
+                          </div>
+                        </div>
+                      </div>
+                    </footer>
+                  <?php endif; ?>
+                <!-- End - footer third -->
               </div>
-            </footer>
-        <?php endif; ?>
-          <!-- End - footer third -->
+
 
           </div>
         </div>

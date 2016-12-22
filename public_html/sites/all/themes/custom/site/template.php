@@ -463,5 +463,40 @@ function site_menu_link__tabbed(array $variables) {
  * Implements hook_preprocess_breadcrumb().
  */
 function site_preprocess_breadcrumb(&$variables) {
-  $variables['breadcrumb'][0] = l('<span class="icon"></span>', '<front>', array('html' => true));
+  $variables['breadcrumb'][0] = l('<span class="icon"></span>Forside', '<front>', array('html' => true));
+}
+
+/*
+ * Implements theme_menu_link().
+ */
+function site_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  $title = $element['#title'];
+  $href = $element['#href'];
+  $options = !empty($element['#localized_options']) ? $element['#localized_options'] : array();
+  $attributes = !empty($element['#attributes']) ? $element['#attributes'] : array();
+
+  if ($element['#below']) {
+    // Prevent dropdown functions from being added to management menu so it
+    // does not affect the navbar module.
+    if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
+      $sub_menu = drupal_render($element['#below']);
+    }
+    elseif ($element['#original_link']['in_active_trail']) {
+      $sub_menu = drupal_render($element['#below']);
+    }
+    else {
+      $element['#attributes']['class'][] = 'has-children';
+    }
+  }
+
+  // Filter the title if the "html" is set, otherwise l() will automatically
+  // sanitize using check_plain(), so no need to call that here.
+  if (!empty($options['html'])) {
+    $title = _bootstrap_filter_xss($title);
+  }
+
+  return '<li' . drupal_attributes($attributes) . '>' . l($title, $href, $options) . $sub_menu . "</li>\n";
 }

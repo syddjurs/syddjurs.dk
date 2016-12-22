@@ -1,5 +1,6 @@
 <?php if ($view_mode == 'full'): ?>
   <?php
+    hide($content['social_share']);
     hide($content['comments']);
     hide($content['links_top']);
     hide($content['links']);
@@ -49,7 +50,18 @@
       <!-- End - body -->
     <?php endif; ?>
 
+      <div class="del-bund">
+        <div class="del">
+          <?php print render($content['social_share']); ?>
+        </div>
+        <div class="fandt-du"><a href="/contact?<?php print urlencode('edit[subject]=' . $node_url); ?>">Fandt du ikke det du søgte</a></div>
+      </div>
+
+      <?php print "<div class='last-updated-node'> Opdateret: " . format_date($node->changed, "short") . "</div>";
+      ?>
+
+
   </div>
   <!-- End - full node -->
 
-<?php endif; ?>
+  <?php endif; ?>
