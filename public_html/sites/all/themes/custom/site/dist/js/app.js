@@ -4896,14 +4896,6 @@ var equalHeight = (function ($) {
   // News
   newsIsotoper.init();
 
-  // Iframe height
-
-  $scope.resizeIframe = function (event) {
-      console.log("iframe loaded!");
-      var iframe = event.target;
-      iframe.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-  };
-
   // Megamenu
   toggleMegamenu();
 

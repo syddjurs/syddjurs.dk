@@ -4,7 +4,7 @@
     <?php if ($content['top']): ?>
 
         <!-- Begin - top -->
-        <div class="col-xs-12">
+        <div class="col-xs-12 os2-panels-top">
             <?php print $content['top']; ?>
         </div>
         <!-- End - top -->
@@ -14,13 +14,13 @@
     <?php if ($content['sidebar']): ?>
 
         <!-- Begin - sidebar -->
-        <div class="col-sm-4 col-sm-push-8 hidden-print">
+        <div class="col-sm-4 col-sm-push-8 hidden-print os2-panels-right-sidebar">
             <?php print $content['sidebar']; ?>
         </div>
         <!-- End - sidebar -->
 
         <!-- Begin - content -->
-        <div class="col-sm-8 col-sm-pull-4">
+        <div class="col-sm-8 col-sm-pull-4 os2-panels-main-content">
             <?php print $content['content']; ?>
         </div>
         <!-- End - content -->
@@ -28,7 +28,7 @@
     <?php else: ?>
 
         <!-- Begin - content -->
-        <div class="col-xs-12">
+        <div class="col-xs-12 os2-panels-main-content">
             <?php print $content['content']; ?>
         </div>
         <!-- End - content -->
@@ -38,7 +38,7 @@
     <?php if ($content['bottom']): ?>
 
         <!-- Begin - bottom -->
-        <div class="col-xs-12">
+        <div class="col-xs-12 os2-panels-bottom">
             <?php print $content['bottom']; ?>
         </div>
         <!-- End - bottom -->
