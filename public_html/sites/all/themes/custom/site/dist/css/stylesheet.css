@@ -21012,6 +21012,19 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
 }
 @media print {
 }
+.os2-page-header {
+  padding-top: 0;
+}
+h2.pane-title a,
+h2.block-title a {
+  line-height: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+spotbox-horisontal h2.pane-title {
+  margin-bottom: 1px;
+  padding-top: 2px;
+}
 ul.os2web_menus-container {
   list-style: outside none none;
   margin: 0;
@@ -21543,10 +21556,12 @@ div.social-share a.social-share-yahoo {
   margin-right: -10px;
   background-color: #f4eded;
   color: #4b494a;
-  margin-bottom: 14px;
-  border-radius: 4px;
   margin-left: 0;
   margin-right: 0;
+  border-radius: 4px;
+}
+.news-list img {
+  border-radius: 4px 0 0 4px;
 }
 .news-list .news-list-left {
   position: relative;
@@ -21595,6 +21610,13 @@ div.social-share a.social-share-yahoo {
   width: 7px;
   margin-left: 10px;
 }
+.news-list .news-list-right .pane-title {
+  padding: 0;
+  margin: 0;
+}
+.news-list .news-list-right .pane-title a {
+  color: #8b0053;
+}
 .news-list .view-header {
   position: relative;
 }
@@ -21626,6 +21648,11 @@ div.social-share a.social-share-yahoo {
   width: 72px;
   height: 18px;
   display: block;
+}
+.news-list .sfront .news-list-right > a {
+  font-size: 19px;
+  color: #4b494a;
+  float: left;
 }
 .custom-slideshow {
   float: left;
@@ -22147,7 +22174,7 @@ ul.os2web_menus-container {
 }
 .view-os2web-kulturnaut-events-lists .views-field-title a {
   color: #787878;
-  padding: 5px 0 0 62px;
+  padding: 0 0 0 55px;
   background-image: url(../img/megamenu-arrow.png);
   background-position: 50px 8px;
   background-repeat: no-repeat;
@@ -22168,9 +22195,10 @@ ul.os2web_menus-container {
 .view-os2web-kulturnaut-events-lists .calendar {
   background-image: url(../img/calendar.png);
   background-repeat: no-repeat;
-  height: 60px;
+  height: 45px;
   width: 43px;
   text-align: center;
+  margin-top: 5px;
 }
 .view-os2web-kulturnaut-events-lists .calendar-top {
   color: #fff;
@@ -22239,13 +22267,7 @@ ul.os2web_menus-container {
 .grid-6.custom-video {
   padding: 5px 1px 0;
   margin-left: 9px;
-  width: 468px;
-}
-.spotbox-horisontal .views-row {
-  width: 230px;
-}
-.spotbox-horisontal {
-  width: 490px;
+  width: 100%;
 }
 .spotbox-horisontal.spotbox-fullwidth {
   width: 100%;
@@ -22280,43 +22302,11 @@ ul.os2web_menus-container {
 .front .region-inner h1.title {
   display: none;
 }
-.front .pane-os2web-spotbox-view-spots-panel-pane-5,
-.pane-os2web-hearings {
-  margin-top: 10px;
-}
 .front .view-os2web-spotbox-view-spots {
   clear: both;
 }
 .front .pane-os2web-kulturnaut-events-lists {
   margin-top: -1em;
-}
-.front .news-list-right > a {
-  font-size: 19px;
-  color: #4b494a;
-  float: left;
-}
-.front .news-list-right > a:after {
-  content: " ";
-  display: inline-block;
-  background-image: url(../img/slide-arrow.png);
-  height: 11px;
-  width: 7px;
-  margin-left: 10px;
-}
-.front .news-list-right .pane-title {
-  padding: 0;
-  margin: 0;
-}
-.front .news-list-right .pane-title a {
-  color: #8b0053;
-}
-.front .news-list {
-  border-radius: 4px;
-  background-color: #f4eded;
-  margin-bottom: 9px;
-}
-.front .news-list img {
-  border-radius: 4px 0 0 4px;
 }
 .front .view-os2web-kulturnaut-events-lists .view-content {
   padding: 0;
@@ -22374,5 +22364,50 @@ ul.os2web_menus-container {
 }
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content .views-row a {
   display: inline-block;
+}
+.view-os2web-base-panels-view-rotating .views-field-nothing,
+.view-os2web-spotbox-view-spots .news-list {
+  margin-bottom: 10px;
+}
+.view-os2web-spotbox-view-spot .views-row,
+.spotbox .views-row {
+  border: 2px solid #f4eded;
+  border-radius: 4px;
+  padding: 10px;
+  margin-right: 3px;
+  width: auto;
+}
+.view-os2web-spotbox-view-spot .views-row h3 a,
+.spotbox .views-row h3 a {
+  font-size: 16px;
+  color: #8A8A8A;
+  font-weight: normal;
+  line-height: 19px;
+}
+.view-os2web-spotbox-view-spot.spotbox-2-vertical .views-row,
+.spotbox.spotbox-2-vertical .views-row {
+  border: none;
+  padding: 0;
+}
+.view-os2web-spotbox-view-spots h2.pane-title {
+  margin-top: 0;
+  margin-bottom: 1px;
+  padding-top: 0px;
+  font-size: 16px;
+}
+.video-text {
+  background-image: url(../img/megamenu-arrow.png);
+  background-repeat: no-repeat;
+  padding-left: 15px;
+  margin-left: 15x;
+  margin-top: 5px;
+  position: relative;
+  width: 90%;
+  background-position: 0 5px;
+  font-size: 15px;
+  line-height: 16px;
+}
+.video-text a {
+  color: #333;
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
