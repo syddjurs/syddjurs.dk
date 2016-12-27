@@ -1,4 +1,4 @@
-sdsdfsdf sf <?php if ($view_mode == 'full'): ?>
+<?php if ($view_mode == 'full'): ?>
   <!-- taxonomy-term.tpl.php -->
   <!-- Begin - full -->
   <div id="taxonomy-term-<?php print $term->tid; ?>" class="<?php print $classes; ?> os2-taxonomy-term-full">

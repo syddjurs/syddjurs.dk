@@ -21654,10 +21654,6 @@ div.social-share a.social-share-yahoo {
   color: #4b494a;
   float: left;
 }
-.custom-slideshow {
-  float: left;
-  width: 631px;
-}
 .custom-slideshow .views-slideshow-pager-field-item.active .views-field-title .item-bg {
   background: url(../img/slide-nav-arrow.png) no-repeat 2% 48% transparent;
   color: #fff;
@@ -21681,6 +21677,7 @@ div.social-share a.social-share-yahoo {
 }
 .front .custom-slideshow img {
   width: 100%;
+  border-radius: 4px;
 }
 .front .custom-slideshow .view-content {
   position: relative;
@@ -21688,7 +21685,7 @@ div.social-share a.social-share-yahoo {
 .front .custom-slideshow .views-field-body {
   background-color: #fff;
   bottom: 20px;
-  width: 440px;
+  width: 80%;
   position: absolute;
   z-index: 998;
   border-radius: 0 4px 4px 0;
@@ -21700,7 +21697,7 @@ div.social-share a.social-share-yahoo {
 }
 .front .custom-slideshow {
   float: none;
-  width: 670px;
+  width: 100%;
   border-radius: 4px;
 }
 .custom-slideshow .views-field-body a {
@@ -22002,6 +21999,9 @@ ul.os2web_menus-container {
   position: relative;
   left: -16px;
 }
+.front .os2-breadcrumb-container {
+  display: none;
+}
 .selvbetjening-block-forside {
   color: #B3B3B3;
   margin-left: 0px;
@@ -22024,6 +22024,7 @@ ul.os2web_menus-container {
   background-color: #8b0053;
   border-radius: 4px;
   padding: 8px;
+  margin-top: 0;
 }
 .selvbetjening-block-forside h3 a {
   font-size: 18px;
@@ -22168,6 +22169,24 @@ ul.os2web_menus-container {
 }
 .front .panel-pane {
   margin-bottom: 10px;
+}
+.front .panel-pane.pane-os2web-base-panels-view-rotating {
+  margin-bottom: 0;
+}
+.front .panel-pane.pane-os2web-base-panels-view-rotating.alpha {
+  margin-bottom: 10px;
+}
+.sidebar-second .os2-box,
+.os2-panels-right-sidebar .os2-box {
+  padding: 0 !;
+  margin: 0 !important;
+}
+.sidebar-second .os2-box .os2-box-body,
+.os2-panels-right-sidebar .os2-box .os2-box-body,
+.sidebar-second .os2-box .os2-box-heading,
+.os2-panels-right-sidebar .os2-box .os2-box-heading {
+  padding: 0;
+  margin: 0;
 }
 .view-os2web-kulturnaut-events-lists ul {
   width: 100%;
