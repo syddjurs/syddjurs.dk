@@ -1,11 +1,26 @@
 .os2-page-header {
   padding-top: 0;
 }
-h2.pane-title a, h2.block-title a {
+h2.pane-title,
+h2.block-title {
+    color: #333;
+    font-size: 17px;
+    margin: 0px;
+    border-bottom: 0px solid #ccc;
+    margin-bottom: 3px;
+    padding-bottom: 0px;
+    padding-left: 7px;
+    padding-top: 7px;
+    font-weight: bolder;
+    }
+
+h2.pane-title a,
+h2.block-title a {
     line-height: 24px;
     font-weight: bold;
     letter-spacing: 0;
 }
+
 spotbox-horisontal h2.pane-title {
     margin-bottom: 1px;
     padding-top: 2px;
@@ -35,7 +50,7 @@ ul.os2web_menus-container  {
         }
       }
     &.open {
-      background-color: #f4eded;
+      background-color: #f5f5f5;
     }
   }
 
@@ -50,22 +65,15 @@ div.node--os2web_base_iframe--full {
     background-color: #FFF;
     border-left: @padding-xs-horizontal solid #ded6d0;
     border-right: @padding-xs-horizontal solid #ded6d0;
+    .content-row-inner {
+      padding: 0 3px;
+    }
   }
 }
 .os2-page-header {
   h2.block-title {
     display: none;}
 }
-
-.region-sidebar-first {
-  .block { margin-left: @padding-xs-horizontal;}
-}
-
-.region-sidebar-second,
-.toplevelsearch {
-  .block { margin-right: @padding-xs-horizontal;}
-}
-
 
 .region-header-second,
 .region-user-first {
@@ -407,19 +415,6 @@ div.node--os2web_base_iframe--full {
 
 }
 
-
-#panel-borger .view-id-os2web_kulturnaut_events_lists {
-	background-image: url(../img/detsker-borger-bg.png);
-	width: 234px;
-	height: 235px;
-}
-
-
-#panel-borger .view-id-os2web_kulturnaut_events_lists a {
-	font-size: 12px;
-	background-position: 50px 7px;
-}
-
 .bread-crumb,
 div.breadcrumb.you-are-here {
 	font-size: 11px;
@@ -451,7 +446,7 @@ div.breadcrumb.you-are-here {
   font-size: 13px;
   width: 478px;
   margin-left: -4px;
-  background: #f4eded;
+  background: #f5f5f5;
   border-radius: 4px;
 }
 .del-bund a {
@@ -630,7 +625,7 @@ div.social-share a.social-share-yahoo {
 
 .news-list {
   .make-row();
-  background-color: #f4eded;
+  background-color: #f5f5f5;
   color: #4b494a;
   border-radius: 4px;
   margin-left: 0;
@@ -805,7 +800,7 @@ div.social-share a.social-share-yahoo {
     }
   top: 40px;
   left: 0;
-  background: #f4eded;
+  background: #f5f5f5;
   margin: 0;
   z-index: 999;
   .os2-box {
@@ -1168,7 +1163,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .front {
   .pane-os2web-hearings {
-    border: 2px solid #f4eded;
+    border: 2px solid #f5f5f5;
     border-radius: 4px;
     padding: 10px;
     margin-right: 3px;
@@ -1438,7 +1433,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 .view-os2web-spotbox-view-spot,
 .spotbox {
   .views-row {
-    border: 2px solid #f4eded;
+    border: 2px solid #f5f5f5;
     border-radius: 4px;
     padding: 10px;
     margin-right: 3px;
@@ -1471,7 +1466,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   background-repeat: no-repeat;
   padding-left: 15px;
   margin-left: 15x;
-  margin-top: 5px;
+  margin-top: 10px;
   position: relative;
   width: 90%;
   background-position: 0 5px;
@@ -1479,5 +1474,159 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   line-height: 16px;
   a {
     color: #333;
+  }
+}
+.pane-os2web-citizenservices-view {
+  .view-header {
+    h3 {
+      color: #FFF;
+      background-color: @brand-primary;
+      text-transform: uppercase;
+      padding: 6px 0 6px 25px;
+      margin-top: 0;
+      .border-top-radius(4px);
+    }
+  }
+  .item-list {
+    ul {
+      .make-row();
+      li {
+        .make-md-column(6);
+        clear: none;
+        a {
+          color: #333;
+          font-size: 1.7em;
+          background-position-y: 11px;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+}
+
+.portal-side,
+.portal-politik-og-planer,
+.portal-borger,
+.portal-erhverv {
+  .os2-box {
+    background-color: transparent;
+    margin-bottom: 10px !important;
+    .os2-box-heading {
+      background-color: transparent;
+      color: #333;
+      padding: 0;
+      margin: 0;
+      h2 {
+        color: #333;
+        padding-left: 0;
+        padding-bottom: 5px;
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+    .os2-box-body {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+    }
+  }
+  .view-os2web-base-panels-view-newslist {
+    .views-field-title,
+    .views-field-created {
+      display: inline;
+    }
+    .news-list-right-small {
+      margin-top: 0px;
+      margin-left: 8px;
+      padding-top: 3px;
+      padding-bottom: 5px;
+      border-bottom: 3px solid #FFF;
+      padding-right: 3px;
+      &.views-row-last {
+        border-bottom: none;
+      }
+    }
+    .view-display-id-attachment_1 {
+      .make-md-column(6);
+      padding-left: 0;
+      padding-right: 5px;
+    }
+  }
+  .spotbox .views-row {
+    border: none;
+    padding: 0;
+    margin-right: 0;
+    width: auto;
+    h2.pane-title {
+      padding-left: 0;
+    }
+  }
+  .pane-os2web-base-panels-view-selfserv {
+    background-color: #f5f5f5;
+  }
+
+  .view-id-os2web_kulturnaut_events_lists {
+    .views-row {
+      border-bottom: none;
+      margin-bottom: 5px;
+      border-bottom: 5px solid #FFF;
+      display: block;
+      min-height: 60px;
+      max-height: 60px;
+      overflow: hidden;
+      margin-top: 0;
+      padding-top: 3px;
+      .views-field-imported-1 {
+        .make-md-column(3);
+          .calendar {
+          margin-top: 0;
+          .calendar-top {
+            font-size: 7px;
+          }
+          .calendar-bottom {
+            font-size: 15px;
+          }
+        }
+      }
+      .views-field-title {
+        .make-md-column(9);
+        .field-content {
+          a {
+          	font-size: 12px;
+          	font-weight: bold;
+          	padding: 0 0 0 0;
+          }
+        }
+      }
+    }
+  }
+  .links-erhverv,
+  .erhvervsraadgiver {
+    .os2-box {
+      background-color: #f5f5f5;
+      .os2-box-heading {
+        border-bottom: 1px solid #FFF;
+        h2 {
+          padding-left: 10px;
+          padding-bottom: 10px;
+          padding-top: 10px;
+        }
+      }
+      .os2-box-body {
+        padding: 15px;
+      }
+    }
+  }
+}
+
+.spotbox {
+  &.spotbox-horisontal-3 {
+    .view-content {
+      .make-row();
+      .spotbox-row {
+        .make-md-column(4);
+      }
+    }
   }
 }
