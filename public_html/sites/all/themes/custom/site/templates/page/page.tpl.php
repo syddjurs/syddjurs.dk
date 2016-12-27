@@ -220,48 +220,50 @@
                 </div>
 
                 <div class="row content-row">
+                  <div class="content-row-inner">
 
-                  <!-- Begin - sidebar first -->
+                    <!-- Begin - sidebar first -->
 
-                  <?php if (!empty($page['sidebar_first'])): ?>
-                  <div id="region-sidebar-first" class="col-xs-12 col-sm-3 region-sidebar-first">
-                    <?php print render($page['sidebar_first']); ?>
-                  </div>
-                  <?php endif; ?>
+                    <?php if (!empty($page['sidebar_first'])): ?>
+                    <div id="region-sidebar-first" class="col-xs-12 col-sm-3 region-sidebar-first">
+                      <?php print render($page['sidebar_first']); ?>
+                    </div>
+                    <?php endif; ?>
 
-                  <!-- End - sidebar first -->
+                    <!-- End - sidebar first -->
 
-                  <!-- Begin - content main -->
+                    <!-- Begin - content main -->
 
-                  <?php if (!empty($page['sidebar_first']) && !empty($page['sidebar_second'])): ?>
-                  <div class="col-xs-6">
-                  <?php endif; ?>
+                    <?php if (!empty($page['sidebar_first']) && !empty($page['sidebar_second'])): ?>
+                    <div class="col-xs-6">
+                    <?php endif; ?>
 
-                  <?php if ( (!empty($page['sidebar_first']) && empty($page['sidebar_second'])) OR (empty($page['sidebar_first']) && !empty($page['sidebar_second']))): ?>
-                  <div class="col-xs-9">
-                  <?php endif; ?>
+                    <?php if ( (!empty($page['sidebar_first']) && empty($page['sidebar_second'])) OR (empty($page['sidebar_first']) && !empty($page['sidebar_second']))): ?>
+                    <div class="col-xs-9">
+                    <?php endif; ?>
 
-                  <?php if (empty($page['sidebar_first']) && empty($page['sidebar_second'])): ?>
-                  <div class="col-xs-12">
-                  <?php endif; ?>
+                    <?php if (empty($page['sidebar_first']) && empty($page['sidebar_second'])): ?>
+                    <div class="col-xs-12">
+                    <?php endif; ?>
 
-                    <div class="content-wrapper">
-                      <?php print render($page['content']); ?>
+                      <div class="content-wrapper">
+                        <?php print render($page['content']); ?>
+                      </div>
+
                     </div>
 
-                  </div>
+                    <!-- End - content main -->
 
-                  <!-- End - content main -->
+                    <!-- Begin - sidebar second -->
 
-                  <!-- Begin - sidebar second -->
+                    <?php if (!empty($page['sidebar_second'])): ?>
+                    <div id="region-sidebar-second" class="col-xs-12 col-sm-3 region-sidebar-second">
+                      <?php print render($page['sidebar_second']); ?>
+                    </div>
+                    <?php endif; ?>
 
-                  <?php if (!empty($page['sidebar_second'])): ?>
-                  <div id="region-sidebar-second" class="col-xs-12 col-sm-3 region-sidebar-second">
-                    <?php print render($page['sidebar_second']); ?>
-                  </div>
-                  <?php endif; ?>
-
-                <!-- End - sidebar second -->
+                  <!-- End - sidebar second -->
+                </div>
               </div>
 
                 <div class="zone-footer">

@@ -7284,7 +7284,11 @@ button.close {
 .megamenu-panel:before,
 .megamenu-panel:after,
 .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:before,
-.megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after {
+.megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after,
+.pane-os2web-citizenservices-view .item-list ul:before,
+.pane-os2web-citizenservices-view .item-list ul:after,
+.spotbox.spotbox-horisontal-3 .view-content:before,
+.spotbox.spotbox-horisontal-3 .view-content:after {
   content: " ";
   display: table;
 }
@@ -7316,7 +7320,9 @@ button.close {
 .quicktabs-wrapper .quicktabs-tabs:after,
 .news-list:after,
 .megamenu-panel:after,
-.megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after {
+.megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after,
+.pane-os2web-citizenservices-view .item-list ul:after,
+.spotbox.spotbox-horisontal-3 .view-content:after {
   clear: both;
 }
 .center-block {
@@ -21015,6 +21021,18 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
 .os2-page-header {
   padding-top: 0;
 }
+h2.pane-title,
+h2.block-title {
+  color: #333;
+  font-size: 17px;
+  margin: 0px;
+  border-bottom: 0px solid #ccc;
+  margin-bottom: 3px;
+  padding-bottom: 0px;
+  padding-left: 7px;
+  padding-top: 7px;
+  font-weight: bolder;
+}
 h2.pane-title a,
 h2.block-title a {
   line-height: 24px;
@@ -21051,7 +21069,7 @@ ul.os2web_menus-container li h2 a.active {
   border-bottom: 3px solid #9b185c;
 }
 ul.os2web_menus-container li.open {
-  background-color: #f4eded;
+  background-color: #f5f5f5;
 }
 div.node--os2web_base_iframe--full iframe {
   border: none;
@@ -21061,15 +21079,11 @@ div.node--os2web_base_iframe--full iframe {
   border-left: 5px solid #ded6d0;
   border-right: 5px solid #ded6d0;
 }
+.content .content-inner .content-row-inner {
+  padding: 0 3px;
+}
 .os2-page-header h2.block-title {
   display: none;
-}
-.region-sidebar-first .block {
-  margin-left: 5px;
-}
-.region-sidebar-second .block,
-.toplevelsearch .block {
-  margin-right: 5px;
 }
 .region-header-second h2.block-title,
 .region-user-first h2.block-title {
@@ -21360,15 +21374,6 @@ div.node--os2web_base_iframe--full iframe {
   margin-left: 0;
   padding-left: 0px;
 }
-#panel-borger .view-id-os2web_kulturnaut_events_lists {
-  background-image: url(../img/detsker-borger-bg.png);
-  width: 234px;
-  height: 235px;
-}
-#panel-borger .view-id-os2web_kulturnaut_events_lists a {
-  font-size: 12px;
-  background-position: 50px 7px;
-}
 .bread-crumb,
 div.breadcrumb.you-are-here {
   font-size: 11px;
@@ -21396,7 +21401,7 @@ div.breadcrumb.you-are-here {
   font-size: 13px;
   width: 478px;
   margin-left: -4px;
-  background: #f4eded;
+  background: #f5f5f5;
   border-radius: 4px;
 }
 .del-bund a {
@@ -21554,7 +21559,7 @@ div.social-share a.social-share-yahoo {
 .news-list {
   margin-left: -10px;
   margin-right: -10px;
-  background-color: #f4eded;
+  background-color: #f5f5f5;
   color: #4b494a;
   margin-left: 0;
   margin-right: 0;
@@ -21736,7 +21741,7 @@ div.social-share a.social-share-yahoo {
   padding-right: 10px;
   top: 40px;
   left: 0;
-  background: #f4eded;
+  background: #f5f5f5;
   margin: 0;
   z-index: 999;
 }
@@ -22125,7 +22130,7 @@ ul.os2web_menus-container {
   background-image: url(../img/borgerdk-trans.png);
 }
 .front .pane-os2web-hearings {
-  border: 2px solid #f4eded;
+  border: 2px solid #f5f5f5;
   border-radius: 4px;
   padding: 10px;
   margin-right: 3px;
@@ -22390,7 +22395,7 @@ ul.os2web_menus-container {
 }
 .view-os2web-spotbox-view-spot .views-row,
 .spotbox .views-row {
-  border: 2px solid #f4eded;
+  border: 2px solid #f5f5f5;
   border-radius: 4px;
   padding: 10px;
   margin-right: 3px;
@@ -22419,7 +22424,7 @@ ul.os2web_menus-container {
   background-repeat: no-repeat;
   padding-left: 15px;
   margin-left: 15x;
-  margin-top: 5px;
+  margin-top: 10px;
   position: relative;
   width: 90%;
   background-position: 0 5px;
@@ -22428,5 +22433,277 @@ ul.os2web_menus-container {
 }
 .video-text a {
   color: #333;
+}
+.pane-os2web-citizenservices-view .view-header h3 {
+  color: #FFF;
+  background-color: #911653;
+  text-transform: uppercase;
+  padding: 6px 0 6px 25px;
+  margin-top: 0;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.pane-os2web-citizenservices-view .item-list ul {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.pane-os2web-citizenservices-view .item-list ul li {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  clear: none;
+}
+@media (min-width: 992px) {
+  .pane-os2web-citizenservices-view .item-list ul li {
+    float: left;
+    width: 50%;
+  }
+}
+.pane-os2web-citizenservices-view .item-list ul li a {
+  color: #333;
+  font-size: 1.7em;
+  background-position-y: 11px;
+  padding-left: 15px;
+}
+.portal-side .os2-box,
+.portal-politik-og-planer .os2-box,
+.portal-borger .os2-box,
+.portal-erhverv .os2-box {
+  background-color: transparent;
+  margin-bottom: 10px !important;
+}
+.portal-side .os2-box .os2-box-heading,
+.portal-politik-og-planer .os2-box .os2-box-heading,
+.portal-borger .os2-box .os2-box-heading,
+.portal-erhverv .os2-box .os2-box-heading {
+  background-color: transparent;
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
+.portal-side .os2-box .os2-box-heading h2,
+.portal-politik-og-planer .os2-box .os2-box-heading h2,
+.portal-borger .os2-box .os2-box-heading h2,
+.portal-erhverv .os2-box .os2-box-heading h2 {
+  color: #333;
+  padding-left: 0;
+  padding-bottom: 5px;
+}
+.portal-side .os2-box .os2-box-heading h2:hover,
+.portal-politik-og-planer .os2-box .os2-box-heading h2:hover,
+.portal-borger .os2-box .os2-box-heading h2:hover,
+.portal-erhverv .os2-box .os2-box-heading h2:hover {
+  color: #333;
+}
+.portal-side .os2-box .os2-box-body,
+.portal-politik-og-planer .os2-box .os2-box-body,
+.portal-borger .os2-box .os2-box-body,
+.portal-erhverv .os2-box .os2-box-body {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+.portal-side .view-os2web-base-panels-view-newslist .views-field-title,
+.portal-politik-og-planer .view-os2web-base-panels-view-newslist .views-field-title,
+.portal-borger .view-os2web-base-panels-view-newslist .views-field-title,
+.portal-erhverv .view-os2web-base-panels-view-newslist .views-field-title,
+.portal-side .view-os2web-base-panels-view-newslist .views-field-created,
+.portal-politik-og-planer .view-os2web-base-panels-view-newslist .views-field-created,
+.portal-borger .view-os2web-base-panels-view-newslist .views-field-created,
+.portal-erhverv .view-os2web-base-panels-view-newslist .views-field-created {
+  display: inline;
+}
+.portal-side .view-os2web-base-panels-view-newslist .news-list-right-small,
+.portal-politik-og-planer .view-os2web-base-panels-view-newslist .news-list-right-small,
+.portal-borger .view-os2web-base-panels-view-newslist .news-list-right-small,
+.portal-erhverv .view-os2web-base-panels-view-newslist .news-list-right-small {
+  margin-top: 0px;
+  margin-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #FFF;
+  padding-right: 3px;
+}
+.portal-side .view-os2web-base-panels-view-newslist .news-list-right-small.views-row-last,
+.portal-politik-og-planer .view-os2web-base-panels-view-newslist .news-list-right-small.views-row-last,
+.portal-borger .view-os2web-base-panels-view-newslist .news-list-right-small.views-row-last,
+.portal-erhverv .view-os2web-base-panels-view-newslist .news-list-right-small.views-row-last {
+  border-bottom: none;
+}
+.portal-side .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+.portal-politik-og-planer .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+.portal-borger .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+.portal-erhverv .view-os2web-base-panels-view-newslist .view-display-id-attachment_1 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-left: 0;
+  padding-right: 5px;
+}
+@media (min-width: 992px) {
+  .portal-side .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+  .portal-politik-og-planer .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+  .portal-borger .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
+  .portal-erhverv .view-os2web-base-panels-view-newslist .view-display-id-attachment_1 {
+    float: left;
+    width: 50%;
+  }
+}
+.portal-side .spotbox .views-row,
+.portal-politik-og-planer .spotbox .views-row,
+.portal-borger .spotbox .views-row,
+.portal-erhverv .spotbox .views-row {
+  border: none;
+  padding: 0;
+  margin-right: 0;
+  width: auto;
+}
+.portal-side .spotbox .views-row h2.pane-title,
+.portal-politik-og-planer .spotbox .views-row h2.pane-title,
+.portal-borger .spotbox .views-row h2.pane-title,
+.portal-erhverv .spotbox .views-row h2.pane-title {
+  padding-left: 0;
+}
+.portal-side .pane-os2web-base-panels-view-selfserv,
+.portal-politik-og-planer .pane-os2web-base-panels-view-selfserv,
+.portal-borger .pane-os2web-base-panels-view-selfserv,
+.portal-erhverv .pane-os2web-base-panels-view-selfserv {
+  background-color: #f5f5f5;
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row {
+  border-bottom: none;
+  margin-bottom: 5px;
+  border-bottom: 5px solid #FFF;
+  display: block;
+  min-height: 60px;
+  max-height: 60px;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 3px;
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 992px) {
+  .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+  .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+  .portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
+  .portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 {
+    float: left;
+    width: 25%;
+  }
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar {
+  margin-top: 0;
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top {
+  font-size: 7px;
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom {
+  font-size: 15px;
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 992px) {
+  .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title {
+    float: left;
+    width: 75%;
+  }
+}
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title .field-content a,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title .field-content a,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title .field-content a,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title .field-content a {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 0 0 0;
+}
+.portal-side .links-erhverv .os2-box,
+.portal-politik-og-planer .links-erhverv .os2-box,
+.portal-borger .links-erhverv .os2-box,
+.portal-erhverv .links-erhverv .os2-box,
+.portal-side .erhvervsraadgiver .os2-box,
+.portal-politik-og-planer .erhvervsraadgiver .os2-box,
+.portal-borger .erhvervsraadgiver .os2-box,
+.portal-erhverv .erhvervsraadgiver .os2-box {
+  background-color: #f5f5f5;
+}
+.portal-side .links-erhverv .os2-box .os2-box-heading,
+.portal-politik-og-planer .links-erhverv .os2-box .os2-box-heading,
+.portal-borger .links-erhverv .os2-box .os2-box-heading,
+.portal-erhverv .links-erhverv .os2-box .os2-box-heading,
+.portal-side .erhvervsraadgiver .os2-box .os2-box-heading,
+.portal-politik-og-planer .erhvervsraadgiver .os2-box .os2-box-heading,
+.portal-borger .erhvervsraadgiver .os2-box .os2-box-heading,
+.portal-erhverv .erhvervsraadgiver .os2-box .os2-box-heading {
+  border-bottom: 1px solid #FFF;
+}
+.portal-side .links-erhverv .os2-box .os2-box-heading h2,
+.portal-politik-og-planer .links-erhverv .os2-box .os2-box-heading h2,
+.portal-borger .links-erhverv .os2-box .os2-box-heading h2,
+.portal-erhverv .links-erhverv .os2-box .os2-box-heading h2,
+.portal-side .erhvervsraadgiver .os2-box .os2-box-heading h2,
+.portal-politik-og-planer .erhvervsraadgiver .os2-box .os2-box-heading h2,
+.portal-borger .erhvervsraadgiver .os2-box .os2-box-heading h2,
+.portal-erhverv .erhvervsraadgiver .os2-box .os2-box-heading h2 {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.portal-side .links-erhverv .os2-box .os2-box-body,
+.portal-politik-og-planer .links-erhverv .os2-box .os2-box-body,
+.portal-borger .links-erhverv .os2-box .os2-box-body,
+.portal-erhverv .links-erhverv .os2-box .os2-box-body,
+.portal-side .erhvervsraadgiver .os2-box .os2-box-body,
+.portal-politik-og-planer .erhvervsraadgiver .os2-box .os2-box-body,
+.portal-borger .erhvervsraadgiver .os2-box .os2-box-body,
+.portal-erhverv .erhvervsraadgiver .os2-box .os2-box-body {
+  padding: 15px;
+}
+.spotbox.spotbox-horisontal-3 .view-content {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.spotbox.spotbox-horisontal-3 .view-content .spotbox-row {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 992px) {
+  .spotbox.spotbox-horisontal-3 .view-content .spotbox-row {
+    float: left;
+    width: 33.33333333%;
+  }
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
