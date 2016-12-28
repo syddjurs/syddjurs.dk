@@ -1491,6 +1491,24 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
 }
+.front .spotbox.spotbox-horisontal {
+  .view-content {
+    margin-left: 0;
+    margin-right: 0;
+    .spotbox-row {
+      .make-md-column(12);
+      .wrapper {
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+    &.views-row-first {
+      .wrapper {
+        margin-top: 0;
+      }
+    }
+    }
+  }
+}
 
 .video-text {
   background-image: url(../img/megamenu-arrow.png);
@@ -1678,7 +1696,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     font-size: 16px;
   }
   h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   a {
     color: @brand-primary;
@@ -1713,4 +1731,8 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     line-height: inherit;
     margin-top: 10px;
   }
+}
+#block-os2web-menus-os2web-menus h2 a {
+  font-weight: 900;
+  font-family: @font-family-sans-serif;
 }
