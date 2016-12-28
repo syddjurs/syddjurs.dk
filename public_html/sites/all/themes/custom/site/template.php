@@ -35,7 +35,7 @@ function site_preprocess_html(&$variables) {
   drupal_add_html_head(array(
     '#tag' => 'link',
     '#attributes' => array(
-      'href' => 'https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i|Noto+Serif:400,400i,700,700i',
+      'href' => 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i|Source+Serif+Pro:400,700',
       'rel' => 'stylesheet',
       'type' => 'text/css',
     ),
