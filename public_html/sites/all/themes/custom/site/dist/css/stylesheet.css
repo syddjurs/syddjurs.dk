@@ -21230,6 +21230,9 @@ div.node--os2web_base_iframe--full iframe {
 .zone-footer .footer.region-footer-third .os2-box .os2-box-heading h2 {
   color: #eca0c9;
   margin-bottom: 10px;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
 }
 .zone-footer .footer.region-footer-second .os2-box .os2-box-body,
 .zone-footer .footer.region-footer-third .os2-box .os2-box-body {
@@ -21575,7 +21578,7 @@ div.social-share a.social-share-yahoo {
   border-radius: 4px;
 }
 .news-list img {
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 0;
 }
 .news-list .news-list-left {
   position: relative;
@@ -22080,7 +22083,8 @@ ul.os2web_menus-container {
   margin-right: 4px;
 }
 .selvbetjening-block-forside .knapper a.nemindsigt {
-  background: url(../img/knapAbenIndsigt.png) -3px -3px no-repeat;
+  background-color: #911653;
+  border-radius: 4px;
 }
 .selvbetjening-block-forside .knapper a.aabenindsigt {
   background-image: url(../img/knapSELVBETJENING-BIG.png);
@@ -22139,7 +22143,6 @@ ul.os2web_menus-container {
   border: 2px solid #f5f5f5;
   border-radius: 4px;
   padding: 10px;
-  margin-right: 3px;
 }
 .front .pane-os2web-hearings a {
   color: #8A8A8A;
@@ -22166,9 +22169,6 @@ ul.os2web_menus-container {
   background: none;
   padding: 0 20px;
 }
-.front #block-system-main {
-  padding: 0 10px;
-}
 .front .os2-box {
   padding: 0 !;
   margin: 0 !important;
@@ -22179,13 +22179,21 @@ ul.os2web_menus-container {
   margin: 0;
 }
 .front .panel-pane {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .front .panel-pane.pane-os2web-base-panels-view-rotating {
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 .front .panel-pane.pane-os2web-base-panels-view-rotating.alpha {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+.front .spotbox-normal.spotbox-2-vertical h2.pane-title a {
+  line-height: 20px;
+  padding-top: 20px;
+}
+.front .spotbox-normal.spotbox-2-vertical h2.pane-title a::after {
+  content: none;
+  background-image: none;
 }
 .sidebar-second .os2-box,
 .os2-panels-right-sidebar .os2-box {
@@ -22232,15 +22240,15 @@ ul.os2web_menus-container {
 }
 .view-os2web-kulturnaut-events-lists .calendar-top {
   color: #fff;
-  font-size: 10px;
+  font-size: 9px;
   background: none;
   text-transform: uppercase;
-  padding: 5px 0 0;
+  padding: 3px 0 0;
   font-weight: bold;
 }
 .view-os2web-kulturnaut-events-lists .calendar-bottom {
   color: #991f68;
-  font-size: 18px;
+  font-size: 17px;
   background: none;
 }
 .view-os2web-kulturnaut-events-lists .views-field-imported-1 {
@@ -22328,8 +22336,8 @@ ul.os2web_menus-container {
 .front .view-os2web-spotbox-view-spots {
   clear: both;
 }
-.front .pane-os2web-kulturnaut-events-lists {
-  margin-top: -1em;
+.front .pane-os2web-base-panels-view-newslist {
+  margin-bottom: 0;
 }
 .front .view-os2web-kulturnaut-events-lists .view-content {
   padding: 0;
@@ -22369,6 +22377,8 @@ ul.os2web_menus-container {
 }
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content {
   padding-top: 53px;
+  font-size: 115%;
+  padding-right: 10px;
 }
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content a {
   color: #4b494a;
@@ -22397,7 +22407,6 @@ ul.os2web_menus-container {
   border: 2px solid #f5f5f5;
   border-radius: 4px;
   padding: 10px;
-  margin-right: 3px;
   width: auto;
 }
 .view-os2web-spotbox-view-spot .views-row h3 a,
@@ -22861,5 +22870,47 @@ ul.os2web_menus-container {
 #block-os2web-menus-os2web-menus h2 a {
   font-weight: 900;
   font-family: 'Source Sans Pro', sans-serif;
+}
+#toplevelsearch .block-search {
+  margin-right: 3px;
+}
+#toplevelsearch .input-group {
+  border: 2px solid #8b0053;
+  border-radius: 4px;
+}
+#toplevelsearch input.form-text {
+  font-size: 17px;
+  border: none;
+  height: 34px;
+  width: 100%;
+  padding: 0 0 0 10px;
+  color: black;
+}
+#toplevelsearch input[type="text"] {
+  background-clip: padding-box;
+  background-color: #fff;
+}
+#toplevelsearch .btn-primary {
+  background-color: #FFF;
+  border: none;
+}
+#toplevelsearch .btn-primary .icon {
+  color: #333;
+  background-color: #FFF;
+  border: none;
+  font-size: 21px;
+  line-height: 25px;
+}
+#toplevelsearch .form-submit {
+  background-image: url(../img/search_btn.png);
+  width: 38px;
+  height: 34px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  margin-left: -4px;
+  text-indent: -1100000px;
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
