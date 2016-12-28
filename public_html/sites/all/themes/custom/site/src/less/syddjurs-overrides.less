@@ -1671,6 +1671,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
 }
+.os2-node-full .field-name-body,
 .field-name-body {
   h2 {
     color: #4B4B4B;
@@ -1681,5 +1682,35 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   }
   a {
     color: @brand-primary;
+  }
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    li {
+      margin-bottom: 5px;
+      padding-left: 10px;
+      &::before {
+        margin: 0 15px 0 -26px;
+        line-height: 17px;
+        font-size: 13px;
+        color: @brand-primary;
+      }
+    }
+  }
+  ol {
+    list-style: decimal;
+    color: @brand-primary;
+    li {
+      color: #333;
+    &::before {
+        content: none;
+      }
+    }
+  }
+}
+.os2-node-full {
+  .os2-node-full-intro {
+    line-height: inherit;
+    margin-top: 10px;
   }
 }

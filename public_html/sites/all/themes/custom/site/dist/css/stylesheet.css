@@ -22782,14 +22782,56 @@ ul.os2web_menus-container {
 .portal-erhverv .erhvervsraadgiver .os2-box .os2-box-body {
   padding: 15px;
 }
+.os2-node-full .field-name-body h2,
 .field-name-body h2 {
   color: #4B4B4B;
   font-size: 16px;
 }
+.os2-node-full .field-name-body h3,
 .field-name-body h3 {
   font-size: 14px;
 }
+.os2-node-full .field-name-body a,
 .field-name-body a {
   color: #911653;
+}
+.os2-node-full .field-name-body ul,
+.field-name-body ul,
+.os2-node-full .field-name-body ol,
+.field-name-body ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+.os2-node-full .field-name-body ul li,
+.field-name-body ul li,
+.os2-node-full .field-name-body ol li,
+.field-name-body ol li {
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+.os2-node-full .field-name-body ul li::before,
+.field-name-body ul li::before,
+.os2-node-full .field-name-body ol li::before,
+.field-name-body ol li::before {
+  margin: 0 15px 0 -26px;
+  line-height: 17px;
+  font-size: 13px;
+}
+.os2-node-full .field-name-body ol,
+.field-name-body ol {
+  list-style: decimal;
+  color: #911653;
+}
+.os2-node-full .field-name-body ol li,
+.field-name-body ol li {
+  color: #333;
+}
+.os2-node-full .field-name-body ol li::before,
+.field-name-body ol li::before {
+  content: none;
+}
+.os2-node-full .os2-node-full-intro {
+  line-height: inherit;
+  margin-top: 10px;
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
