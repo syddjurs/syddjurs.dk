@@ -132,7 +132,7 @@
 
                     <!-- Begin - menu -->
                     <?php if (!empty($page['menu'])): ?>
-                    <div id="toplevelmenu" class="col-xs-12 col-sm-8 toplevelmenu">
+                    <div id="toplevelmenu" class="col-xs-12 col-sm-7 toplevelmenu">
                       <?php print render($page['menu']); ?>
                     </div>
                     <?php endif; ?>
@@ -140,7 +140,7 @@
 
                     <!-- Begin - search -->
                     <?php if (!empty($page['search'])): ?>
-                    <div id="toplevelsearch" class="col-xs-12 col-sm-4 toplevelsearch">
+                    <div id="toplevelsearch" class="col-xs-12 col-sm-5 toplevelsearch">
                       <?php print render($page['search']); ?>
                     </div>
                     <?php endif; ?>
