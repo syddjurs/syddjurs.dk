@@ -7279,6 +7279,8 @@ button.close {
 .popover-button:after,
 .quicktabs-wrapper .quicktabs-tabs:before,
 .quicktabs-wrapper .quicktabs-tabs:after,
+.inverse.contact-phonenumber-items:before,
+.inverse.contact-phonenumber-items:after,
 .del-bund:before,
 .del-bund:after,
 .news-list:before,
@@ -7287,6 +7289,8 @@ button.close {
 .megamenu-panel:after,
 .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:before,
 .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after,
+.front .view-os2web-kulturnaut-events-lists ul:before,
+.front .view-os2web-kulturnaut-events-lists ul:after,
 .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content:before,
 .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content:after,
 .spotbox.spotbox-horisontal-3 .view-content:before,
@@ -7298,7 +7302,9 @@ button.close {
 .pane-os2web-citizenservices-view .item-list ul:before,
 .pane-os2web-citizenservices-view .item-list ul:after,
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1:before,
-#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after {
+#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
+#mini-panel-footer_kontakt_info:before,
+#mini-panel-footer_kontakt_info:after {
   content: " ";
   display: table;
 }
@@ -7328,16 +7334,19 @@ button.close {
 #sliding-popup .popup-content:after,
 .popover-button:after,
 .quicktabs-wrapper .quicktabs-tabs:after,
+.inverse.contact-phonenumber-items:after,
 .del-bund:after,
 .news-list:after,
 .megamenu-panel:after,
 .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after,
+.front .view-os2web-kulturnaut-events-lists ul:after,
 .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content:after,
 .spotbox.spotbox-horisontal-3 .view-content:after,
 .view-os2web-spotbox-view-spot.spotbox-horisontal .view-content:after,
 .spotbox.spotbox-horisontal .view-content:after,
 .pane-os2web-citizenservices-view .item-list ul:after,
-#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after {
+#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
+#mini-panel-footer_kontakt_info:after {
   clear: both;
 }
 .center-block {
@@ -21208,7 +21217,6 @@ div.node--os2web_base_iframe--full iframe {
 }
 .zone-footer .footer.region-footer-first .footer-content .inverse {
   color: #FFF;
-  margin-right: -20px;
   padding: 10px;
 }
 .zone-footer .footer.region-footer-first .footer-content .inverse a {
@@ -21283,11 +21291,8 @@ div.node--os2web_base_iframe--full iframe {
   font-weight: normal;
 }
 .zone-footer .phonenumber-item h3 {
-  font-size: 28px;
+  font-size: 19px;
   margin: 0;
-}
-.zone-footer .phonenumber-item {
-  width: 40%;
 }
 .inverse,
 .inverse p,
@@ -21315,7 +21320,7 @@ div.node--os2web_base_iframe--full iframe {
   display: inline-block;
 }
 .icon-phone-large.icon-inverse {
-  background: url(../img/icon-phone-large-inverse.png);
+  background: url('../img/icon-phone-large-inverse.png');
 }
 .icon-co2neutral-medium {
   height: 54px;
@@ -21326,7 +21331,7 @@ div.node--os2web_base_iframe--full iframe {
   background: url('../img/icon-co2neutral-medium-inverse.png');
 }
 .phonenumber {
-  font-size: 26px;
+  font-size: 25px;
 }
 .phonenumber-item {
   display: inline-block;
@@ -21334,14 +21339,23 @@ div.node--os2web_base_iframe--full iframe {
 }
 .inverse.contact-phonenumber-items {
   margin-top: 15px;
-  padding-left: 15px;
-  padding-top: 5px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 .inverse.contact-phonenumber-items a {
   color: #FFF;
 }
-.zone-footer .phonenumber-item {
-  width: 40%;
+.inverse.contact-phonenumber-items .phonenumber-item {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 992px) {
+  .inverse.contact-phonenumber-items .phonenumber-item {
+    float: left;
+    width: 50%;
+  }
 }
 .zone-footer .icon-phone-large {
   margin: 0 14px 0;
@@ -21528,6 +21542,16 @@ div.breadcrumb.you-are-here {
 .news-list img {
   border-radius: 4px 0 0 0;
 }
+@media (min-width: 768px) and (max-width: 991px) {
+  .news-list img {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .news-list img {
+    display: none !important;
+  }
+}
 .news-list .news-list-left {
   position: relative;
   min-height: 1px;
@@ -21535,10 +21559,26 @@ div.breadcrumb.you-are-here {
   padding-right: 10px;
   padding-left: 0;
 }
+@media (min-width: 768px) {
+  .news-list .news-list-left {
+    float: left;
+    width: 50%;
+  }
+}
 @media (min-width: 992px) {
   .news-list .news-list-left {
     float: left;
     width: 33.33333333%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .news-list .news-list-left {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .news-list .news-list-left {
+    display: none !important;
   }
 }
 .news-list .news-list-left img {
@@ -21550,6 +21590,12 @@ div.breadcrumb.you-are-here {
   padding-left: 10px;
   padding-right: 10px;
   position: relative;
+}
+@media (min-width: 768px) {
+  .news-list .news-list-right {
+    float: left;
+    width: 100%;
+  }
 }
 @media (min-width: 992px) {
   .news-list .news-list-right {
@@ -21597,6 +21643,12 @@ div.breadcrumb.you-are-here {
   padding-left: 10px;
   padding-right: 10px;
   padding-left: 0;
+}
+@media (min-width: 768px) {
+  .news-list .view-display-id-attachment_1 {
+    float: left;
+    width: 50%;
+  }
 }
 @media (min-width: 992px) {
   .news-list .view-display-id-attachment_1 {
@@ -21761,6 +21813,12 @@ div.breadcrumb.you-are-here {
   letter-spacing: 0;
   font-size: 15px;
   padding-left: 11px;
+}
+@media (min-width: 768px) {
+  .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav li {
+    float: left;
+    width: 50%;
+  }
 }
 @media (min-width: 992px) {
   .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav li {
@@ -22001,7 +22059,8 @@ ul.os2web_menus-container {
   text-transform: none;
 }
 .selvbetjening-block-forside li {
-  padding-left: 5px;
+  padding-left: 0;
+  margin-bottom: 5px;
 }
 .selvbetjening-block-forside .readmore a {
   font-size: 14px;
@@ -22023,8 +22082,9 @@ ul.os2web_menus-container {
   width: 100%;
   color: #fff;
   padding: 0;
-  line-height: 40px;
   padding-left: 22px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 .selvbetjening-block-forside .knapper a.kviksvar {
   background: url(../img/knapSELVBETJENING.png) 100% 0% no-repeat;
@@ -22255,6 +22315,9 @@ ul.os2web_menus-container {
   margin-left: 9px;
   width: 100%;
 }
+.front .spotbox.spotbox-video h2.pane-title {
+  display: none;
+}
 .spotbox-horisontal.spotbox-fullwidth {
   width: 100%;
 }
@@ -22294,34 +22357,45 @@ ul.os2web_menus-container {
 }
 .front .view-os2web-kulturnaut-events-lists ul {
   text-align: center;
-  padding: 10px 10px;
   overflow: hidden;
+  margin-left: -10px;
+  margin-right: -10px;
 }
-.front .view-os2web-kulturnaut-events-lists .views-row {
-  margin: 0 10px;
+.front .view-os2web-kulturnaut-events-lists ul .views-row {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
   border: none;
   float: right;
-  max-width: 46%;
-  min-width: 40%;
   text-align: left;
+  clear: none;
 }
-.front .view-os2web-kulturnaut-events-lists .views-row .views-field-imported-1 {
+@media (min-width: 768px) {
+  .front .view-os2web-kulturnaut-events-lists ul .views-row {
+    float: left;
+    width: 50%;
+  }
+}
+.front .view-os2web-kulturnaut-events-lists ul .views-row .views-field {
+  display: inline;
+}
+.front .view-os2web-kulturnaut-events-lists ul .views-row .views-field-imported-1 {
   width: auto;
   padding: 0;
 }
-.front .view-os2web-kulturnaut-events-lists .views-row .views-field {
-  display: inline;
-}
-.front .view-os2web-kulturnaut-events-lists .views-field-title a {
+.front .view-os2web-kulturnaut-events-lists ul .views-row .views-field-title a {
   color: white;
   font-size: 17px;
   background: none;
   line-height: 21px;
-  padding: 11px 0 0 55px;
+  padding: 3px 0 0 55px;
   height: auto;
+  margin-bottom: 10px;
 }
-.front .view-os2web-kulturnaut-events-lists .calendar {
+.front .view-os2web-kulturnaut-events-lists ul .views-row .calendar {
   height: 42px;
+  margin: 5px 10px 10px 10px;
 }
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content {
   padding-top: 53px;
@@ -22392,6 +22466,13 @@ ul.os2web_menus-container {
   padding-left: 10px;
   padding-right: 10px;
 }
+@media (min-width: 768px) {
+  .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content .spotbox-row,
+  .spotbox.spotbox-horisontal-3 .view-content .spotbox-row {
+    float: left;
+    width: 50%;
+  }
+}
 @media (min-width: 992px) {
   .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content .spotbox-row,
   .spotbox.spotbox-horisontal-3 .view-content .spotbox-row {
@@ -22421,7 +22502,7 @@ ul.os2web_menus-container {
   padding-right: 10px;
   padding-left: 5px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .view-os2web-spotbox-view-spot.spotbox-horisontal .view-content .spotbox-row,
   .spotbox.spotbox-horisontal .view-content .spotbox-row {
     float: left;
@@ -22455,7 +22536,7 @@ ul.os2web_menus-container {
   padding-left: 10px;
   padding-right: 10px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .front .spotbox.spotbox-horisontal .view-content .spotbox-row {
     float: left;
     width: 100%;
@@ -22503,7 +22584,7 @@ ul.os2web_menus-container {
   padding-right: 10px;
   clear: none;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .pane-os2web-citizenservices-view .item-list ul li {
     float: left;
     width: 50%;
@@ -22606,7 +22687,7 @@ ul.os2web_menus-container {
   padding-left: 0;
   padding-right: 5px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .portal-side .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
   .portal-politik-og-planer .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
   .portal-borger .view-os2web-base-panels-view-newslist .view-display-id-attachment_1,
@@ -22667,31 +22748,31 @@ ul.os2web_menus-container {
   padding-left: 10px;
   padding-right: 10px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
   .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
   .portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
   .portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 {
     float: left;
-    width: 25%;
+    width: 50%;
   }
 }
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar {
   margin-top: 0;
 }
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top {
   font-size: 7px;
 }
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom {
   font-size: 15px;
 }
 .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
@@ -22702,6 +22783,15 @@ ul.os2web_menus-container {
   min-height: 1px;
   padding-left: 10px;
   padding-right: 10px;
+}
+@media (min-width: 768px) {
+  .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
+  .portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title {
+    float: left;
+    width: 50%;
+  }
 }
 @media (min-width: 992px) {
   .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
@@ -22884,5 +22974,29 @@ ul.os2web_menus-container {
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1 .view-content a {
   color: #000;
   font-weight: bold;
+}
+#mini-panel-footer_kontakt_info {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+#mini-panel-footer_kontakt_info .panel-col-first,
+#mini-panel-footer_kontakt_info .panel-col-last {
+  float: left;
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 992px) {
+  #mini-panel-footer_kontakt_info .panel-col-first,
+  #mini-panel-footer_kontakt_info .panel-col-last {
+    float: left;
+    width: 50%;
+  }
+}
+#mini-panel-footer_kontakt_info .panel-col-first .inside,
+#mini-panel-footer_kontakt_info .panel-col-last .inside {
+  margin: 0 10px;
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
