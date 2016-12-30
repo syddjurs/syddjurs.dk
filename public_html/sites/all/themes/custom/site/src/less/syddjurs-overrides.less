@@ -198,7 +198,6 @@ div.node--os2web_base_iframe--full {
         }
         .inverse {
           color: #FFF;
-          margin-right: -20px;
           padding: 10px;
           a { color: #FFF;}
           h2, h3 {
@@ -284,12 +283,8 @@ div.node--os2web_base_iframe--full {
 }
 
 .zone-footer .phonenumber-item h3 {
-  font-size: 28px;
+  font-size: @font-size-large;
   margin: 0;
-}
-
-.zone-footer .phonenumber-item {
-    width: 40%;
 }
 
 .inverse,
@@ -323,7 +318,7 @@ div.node--os2web_base_iframe--full {
 }
 
 .icon-phone-large.icon-inverse {
-  background: url(../img/icon-phone-large-inverse.png);
+  background: url('../img/icon-phone-large-inverse.png');
 }
 
 .icon-co2neutral-medium{
@@ -337,7 +332,7 @@ div.node--os2web_base_iframe--full {
 }
 
 .phonenumber {
-  font-size: 26px;
+  font-size: @font-size-xl;
 }
 
 .phonenumber-item {
@@ -347,16 +342,13 @@ div.node--os2web_base_iframe--full {
 
 .inverse.contact-phonenumber-items {
 	margin-top: 15px;
-	padding-left: 15px;
-	padding-top: 5px;
+  .make-row();
 	a {
   	color: #FFF;
 	}
-
-}
-
-.zone-footer .phonenumber-item {
-  width:40%;
+	.phonenumber-item {
+  	.make-md-column(6);
+	}
 }
 
 .zone-footer .icon-phone-large {
@@ -549,15 +541,21 @@ div.breadcrumb.you-are-here {
   border-radius: 4px;
   img {
     border-radius: 4px 0 0 0;
+    .hidden-sm;
+    .hidden-xs;
   }
   .news-list-left {
+    .make-sm-column(6);
     .make-md-column(4);
+    .hidden-sm;
+    .hidden-xs;
     padding-left: 0;
     img {
       .border-left-radius(4px);
     }
   }
   .news-list-right {
+    .make-sm-column(12);
     .make-md-column(8);
     position: relative;
     a {
@@ -597,6 +595,7 @@ div.breadcrumb.you-are-here {
     }
 
   .view-display-id-attachment_1 {
+    .make-sm-column(6);
     .make-md-column(5);
     padding-left: 0;
   }
@@ -752,6 +751,7 @@ div.breadcrumb.you-are-here {
     ul.menu.nav {
       .make-row();
       li {
+        .make-sm-column(6);
         .make-md-column(3);
         padding: 0;
         letter-spacing: 0;
@@ -984,7 +984,8 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
   li {
-    padding-left: 5px;
+    padding-left: 0;
+    margin-bottom: 5px;
   }
   .readmore a {
     font-size: 14px; margin-bottom: 10px
@@ -1003,8 +1004,9 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         width: 100%;
         color: #fff;
         padding: 0;
-        line-height: 40px;
         padding-left: 22px;
+        padding-bottom: 10px;
+        padding-top: 10px;
       }
       &.kviksvar {
         background: url(../img/knapSELVBETJENING.png) 100% 0% no-repeat;
@@ -1253,6 +1255,9 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 	margin-left: 0px;
 }
 .grid-6.custom-video { padding: 5px 1px 0; margin-left: 9px; width: 100%;}
+.front .spotbox.spotbox-video h2.pane-title {
+  display: none;
+}
 
 .spotbox-horisontal.spotbox-fullwidth {
   width: 100%;
@@ -1287,37 +1292,41 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   background-color: #9b185c;
   border-radius: 0 0 4px 4px;
 }
-.front .view-os2web-kulturnaut-events-lists ul {
-  text-align: center;
-  padding: 10px 10px;
-  overflow: hidden;
+.front {
+  .view-os2web-kulturnaut-events-lists ul {
+    text-align: center;
+    overflow: hidden;
+    .make-row();
+    .views-row {
+      .make-sm-column(6);
+      border: none;
+      float: right;
+      text-align: left;
+      clear: none;
+      .views-field {
+        display: inline;
+      }
+      .views-field-imported-1 {
+        width: auto;
+        padding: 0;
+      }
+      .views-field-title a {
+        color: white;
+        font-size: 17px;
+        background: none;
+        line-height: 21px;
+        padding: 3px 0 0 55px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .calendar {
+        height: 42px;
+        margin: 5px 10px 10px 10px;
+      }
+    }
+  }
 }
-.front .view-os2web-kulturnaut-events-lists .views-row {
-  margin: 0 10px;
-  border: none;
-  float: right;
-  max-width: 46%;
-  min-width: 40%;
-  text-align: left;
-}
-.front .view-os2web-kulturnaut-events-lists .views-row .views-field-imported-1 {
-  width: auto;
-  padding: 0;
-}
-.front .view-os2web-kulturnaut-events-lists .views-row .views-field {
-  display: inline;
-}
-.front .view-os2web-kulturnaut-events-lists .views-field-title a {
-  color: white;
-  font-size: 17px;
-  background: none;
-  line-height: 21px;
-  padding: 11px 0 0 55px;
-  height: auto;
-}
-.front .view-os2web-kulturnaut-events-lists .calendar {
-  height: 42px;
-}
+
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content {
   padding-top: 53px;
   font-size: 115%;
@@ -1380,6 +1389,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     .view-content {
       .make-row();
       .spotbox-row {
+        .make-sm-column(6);
         .make-md-column(4);
         &.views-row-even {
           border-left: 1px solid #f5f5f5;
@@ -1395,7 +1405,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     .view-content {
       .make-row();
       .spotbox-row {
-        .make-md-column(6);
+        .make-sm-column(6);
         padding-left: 5px;
         .wrapper {
           border: solid 1px #f5f5f5;
@@ -1420,7 +1430,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     margin-left: 0;
     margin-right: 0;
     .spotbox-row {
-      .make-md-column(12);
+      .make-sm-column(12);
       .wrapper {
         margin-bottom: 0;
         margin-top: 10px;
@@ -1463,7 +1473,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     ul {
       .make-row();
       li {
-        .make-md-column(6);
+        .make-sm-column(6);
         clear: none;
         a {
           color: #333;
@@ -1533,7 +1543,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
       }
     }
     .view-display-id-attachment_1 {
-      .make-md-column(6);
+      .make-sm-column(6);
       padding-left: 0;
       padding-right: 5px;
     }
@@ -1572,7 +1582,8 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
       margin-top: 0;
       padding-top: 3px;
       .views-field-imported-1 {
-        .make-md-column(3);
+        .make-sm-column(6);
+        .make-md-column(3)
           .calendar {
           margin-top: 0;
           .calendar-top {
@@ -1584,6 +1595,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         }
       }
       .views-field-title {
+        .make-sm-column(6);
         .make-md-column(9);
         .field-content {
           a {
@@ -1717,6 +1729,17 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     a {
       color: #000;
       font-weight: bold;
+    }
+  }
+}
+#mini-panel-footer_kontakt_info {
+  .make-row();
+  .panel-col-first,
+  .panel-col-last {
+    .make-xs-column(12);
+    .make-md-column(6);
+    .inside {
+      margin: 0 10px;
     }
   }
 }
