@@ -1,0 +1,9 @@
+name = OS2web Site Theme
+core = 7.x
+package = OS2Web Site
+version = 7.x-1.0
+dependencies[] = bellcom_panel_layouts
+dependencies[] = bootstrap_ux
+dependencies[] = jquery_update
+features[features_api][] = api:2
+project path = sites/all/modules/custom
