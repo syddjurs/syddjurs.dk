@@ -70,7 +70,7 @@ function os2web_portals_business_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'os2web_portal';
+  $display->layout = 'content-with-right-sidebar-7-5';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -85,18 +85,48 @@ function os2web_portals_business_default_page_manager_handlers() {
       'middle_right' => NULL,
       'center' => NULL,
       'right_' => NULL,
+      'top' => NULL,
+      'sidebar' => NULL,
+      'content' => NULL,
+      'bottom' => NULL,
     ),
   );
   $display->cache = array();
   $display->title = '';
-  $display->uuid = 'd5c953c3-2e2b-4fb9-a3d5-0e80daa44743';
+  $display->uuid = 'ddecc177-368c-4f32-8e9d-c648c68c2d01';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'term_view_panel_context_2';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
-  $pane->pid = 'new-c2461b4a-46ea-4a3f-8524-e3fc028939d8';
-  $pane->panel = 'lead';
+  $pane->pid = 'new-bb79d598-2ed0-4422-b298-4899d5c665e6';
+  $pane->panel = 'bottom';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_6';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'nid' => '292846,292845,292847',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-9 alpha omega',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'bb79d598-2ed0-4422-b298-4899d5c665e6';
+  $display->content['new-bb79d598-2ed0-4422-b298-4899d5c665e6'] = $pane;
+  $display->panels['bottom'][0] = 'new-bb79d598-2ed0-4422-b298-4899d5c665e6';
+  $pane = new stdClass();
+  $pane->pid = 'new-bf9d86ce-f186-42e4-ab55-c5e575b5d052';
+  $pane->panel = 'content';
   $pane->type = 'views';
   $pane->subtype = 'os2web_base_panels_view_rotating';
   $pane->shown = TRUE;
@@ -131,12 +161,68 @@ function os2web_portals_business_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = 'c2461b4a-46ea-4a3f-8524-e3fc028939d8';
-  $display->content['new-c2461b4a-46ea-4a3f-8524-e3fc028939d8'] = $pane;
-  $display->panels['lead'][0] = 'new-c2461b4a-46ea-4a3f-8524-e3fc028939d8';
+  $pane->uuid = 'bf9d86ce-f186-42e4-ab55-c5e575b5d052';
+  $display->content['new-bf9d86ce-f186-42e4-ab55-c5e575b5d052'] = $pane;
+  $display->panels['content'][0] = 'new-bf9d86ce-f186-42e4-ab55-c5e575b5d052';
   $pane = new stdClass();
-  $pane->pid = 'new-5907289f-562a-4dfc-a4a0-c982bbf9952a';
-  $pane->panel = 'lead';
+  $pane->pid = 'new-7c044c0d-8934-410f-9ad4-9b45aca78557';
+  $pane->panel = 'content';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'os2web_base_panels_view_newslist-panel_pane_3';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'more_link' => 0,
+    'use_pager' => 0,
+    'pager_id' => '0',
+    'override_title' => 1,
+    'override_title_text' => 'Aktuelt',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6 alpha ',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '7c044c0d-8934-410f-9ad4-9b45aca78557';
+  $display->content['new-7c044c0d-8934-410f-9ad4-9b45aca78557'] = $pane;
+  $display->panels['content'][1] = 'new-7c044c0d-8934-410f-9ad4-9b45aca78557';
+  $pane = new stdClass();
+  $pane->pid = 'new-0306fc34-608a-466b-a667-efcd3ceb21e7';
+  $pane->panel = 'content';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_5';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'arguments' => array(
+      'nid' => '',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'grid-6 alpha ',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '0306fc34-608a-466b-a667-efcd3ceb21e7';
+  $display->content['new-0306fc34-608a-466b-a667-efcd3ceb21e7'] = $pane;
+  $display->panels['content'][2] = 'new-0306fc34-608a-466b-a667-efcd3ceb21e7';
+  $pane = new stdClass();
+  $pane->pid = 'new-fd4e18b5-d7b1-42b7-8cb0-ac00cbd0e138';
+  $pane->panel = 'sidebar';
   $pane->type = 'views';
   $pane->subtype = 'os2web_base_panels_view_selfserv';
   $pane->shown = TRUE;
@@ -169,42 +255,14 @@ function os2web_portals_business_default_page_manager_handlers() {
     'css_class' => 'grid-3 omega',
   );
   $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = '5907289f-562a-4dfc-a4a0-c982bbf9952a';
-  $display->content['new-5907289f-562a-4dfc-a4a0-c982bbf9952a'] = $pane;
-  $display->panels['lead'][1] = 'new-5907289f-562a-4dfc-a4a0-c982bbf9952a';
-  $pane = new stdClass();
-  $pane->pid = 'new-cafb2f64-bb50-4249-b511-0f4e024dfb60';
-  $pane->panel = 'middle_top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'os2web_base_panels_view_newslist-panel_pane_3';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'more_link' => 0,
-    'use_pager' => 0,
-    'pager_id' => '0',
-    'override_title' => 1,
-    'override_title_text' => 'Aktuelt',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'grid-6 alpha ',
-  );
-  $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = 'cafb2f64-bb50-4249-b511-0f4e024dfb60';
-  $display->content['new-cafb2f64-bb50-4249-b511-0f4e024dfb60'] = $pane;
-  $display->panels['middle_top'][0] = 'new-cafb2f64-bb50-4249-b511-0f4e024dfb60';
+  $pane->uuid = 'fd4e18b5-d7b1-42b7-8cb0-ac00cbd0e138';
+  $display->content['new-fd4e18b5-d7b1-42b7-8cb0-ac00cbd0e138'] = $pane;
+  $display->panels['sidebar'][0] = 'new-fd4e18b5-d7b1-42b7-8cb0-ac00cbd0e138';
   $pane = new stdClass();
-  $pane->pid = 'new-1919cdcd-fd73-4800-aa3a-52340dd5c6cd';
-  $pane->panel = 'middle_top';
+  $pane->pid = 'new-1e843053-b940-41ed-9053-f5d1afe06bc6';
+  $pane->panel = 'sidebar';
   $pane->type = 'block';
   $pane->subtype = 'block-7';
   $pane->shown = TRUE;
@@ -224,40 +282,12 @@ function os2web_portals_business_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
-  $pane->uuid = '1919cdcd-fd73-4800-aa3a-52340dd5c6cd';
-  $display->content['new-1919cdcd-fd73-4800-aa3a-52340dd5c6cd'] = $pane;
-  $display->panels['middle_top'][1] = 'new-1919cdcd-fd73-4800-aa3a-52340dd5c6cd';
+  $pane->uuid = '1e843053-b940-41ed-9053-f5d1afe06bc6';
+  $display->content['new-1e843053-b940-41ed-9053-f5d1afe06bc6'] = $pane;
+  $display->panels['sidebar'][1] = 'new-1e843053-b940-41ed-9053-f5d1afe06bc6';
   $pane = new stdClass();
-  $pane->pid = 'new-c0ff5baf-6c1c-4bac-a7de-d04de6720620';
-  $pane->panel = 'middle_top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_5';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'arguments' => array(
-      'nid' => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'grid-6 alpha ',
-  );
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = 'c0ff5baf-6c1c-4bac-a7de-d04de6720620';
-  $display->content['new-c0ff5baf-6c1c-4bac-a7de-d04de6720620'] = $pane;
-  $display->panels['middle_top'][2] = 'new-c0ff5baf-6c1c-4bac-a7de-d04de6720620';
-  $pane = new stdClass();
-  $pane->pid = 'new-d2d8207b-c639-426f-93c2-d6405ab1f1f9';
-  $pane->panel = 'middle_top';
+  $pane->pid = 'new-aa687cad-7739-452c-a200-07af0a876da0';
+  $pane->panel = 'sidebar';
   $pane->type = 'block';
   $pane->subtype = 'block-6';
   $pane->shown = TRUE;
@@ -275,37 +305,11 @@ function os2web_portals_business_default_page_manager_handlers() {
     'css_class' => 'grid-3 omega links-erhverv',
   );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 2;
   $pane->locks = array();
-  $pane->uuid = 'd2d8207b-c639-426f-93c2-d6405ab1f1f9';
-  $display->content['new-d2d8207b-c639-426f-93c2-d6405ab1f1f9'] = $pane;
-  $display->panels['middle_top'][3] = 'new-d2d8207b-c639-426f-93c2-d6405ab1f1f9';
-  $pane = new stdClass();
-  $pane->pid = 'new-e0e1b715-67b9-403c-a329-a878d6780113';
-  $pane->panel = 'middle_top';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'os2web_spotbox_view_spots-panel_pane_6';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'arguments' => array(
-      'nid' => '292846,292845,292847',
-    ),
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'grid-9 alpha omega',
-  );
-  $pane->extras = array();
-  $pane->position = 4;
-  $pane->locks = array();
-  $pane->uuid = 'e0e1b715-67b9-403c-a329-a878d6780113';
-  $display->content['new-e0e1b715-67b9-403c-a329-a878d6780113'] = $pane;
-  $display->panels['middle_top'][4] = 'new-e0e1b715-67b9-403c-a329-a878d6780113';
+  $pane->uuid = 'aa687cad-7739-452c-a200-07af0a876da0';
+  $display->content['new-aa687cad-7739-452c-a200-07af0a876da0'] = $pane;
+  $display->panels['sidebar'][2] = 'new-aa687cad-7739-452c-a200-07af0a876da0';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
