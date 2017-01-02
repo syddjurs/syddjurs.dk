@@ -17328,7 +17328,6 @@ body .footer {
     padding-left: 10px;
     padding-right: 10px;
     /* Replaces .col-md-3; */
-    border: 1px solid #000;
   }
 }
 @media screen and (max-width: 767px) and (min-width: 992px) {
