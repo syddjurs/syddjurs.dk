@@ -7301,8 +7301,6 @@ button.close {
 .spotbox.spotbox-horisontal .view-content:after,
 .pane-os2web-citizenservices-view .item-list ul:before,
 .pane-os2web-citizenservices-view .item-list ul:after,
-#block-views-4d3a9500b766cd615283b4f23ec2f7c1:before,
-#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
 #mini-panel-footer_kontakt_info:before,
 #mini-panel-footer_kontakt_info:after {
   content: " ";
@@ -7345,7 +7343,6 @@ button.close {
 .view-os2web-spotbox-view-spot.spotbox-horisontal .view-content:after,
 .spotbox.spotbox-horisontal .view-content:after,
 .pane-os2web-citizenservices-view .item-list ul:after,
-#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
 #mini-panel-footer_kontakt_info:after {
   clear: both;
 }
@@ -22971,8 +22968,6 @@ ul.os2web_menus-container {
 }
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1 {
   background-color: #5bc0de;
-  margin-left: -10px;
-  margin-right: -10px;
 }
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1 .view-content {
   padding: 10px;
