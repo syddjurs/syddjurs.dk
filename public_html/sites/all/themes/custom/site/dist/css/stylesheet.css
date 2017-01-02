@@ -21182,6 +21182,7 @@ div.node--os2web_base_iframe--full iframe {
   text-transform: none;
 }
 .region-sidebar-second div.kontaktblok-overskrift,
+.region-sidebar-second .pane-os2web-contact-view-contact h2,
 .region-sidebar-second h2,
 .region-sidebar-second h3 {
   color: #9b185c;
@@ -21435,6 +21436,7 @@ div.breadcrumb.you-are-here {
   font-size: 13px;
   margin-left: 0;
   margin-right: 0;
+  margin-top: 20px;
   background: #f5f5f5;
   border-radius: 4px;
 }
