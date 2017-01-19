@@ -489,6 +489,7 @@ function site_menu_link(array $variables) {
     }
     else {
       $element['#attributes']['class'][] = 'has-children';
+      $sub_menu = drupal_render($element['#below']);
     }
   }
 
