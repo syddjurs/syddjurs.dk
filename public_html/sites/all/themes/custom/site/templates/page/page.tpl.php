@@ -35,17 +35,6 @@
     <!-- Begin - inner wrapper -->
       <div class="inner-wrapper" role="document">
 
-        <?php if (isset($emergency_grant)): ?>
-
-        <!-- Begin - emergency grant -->
-
-        <div class="os2-emergency-grant">
-          <?php print render($emergency_grant); ?>
-        </div>
-
-        <!-- End - emergency grant -->
-        <?php endif; ?>
-
         <!-- Begin - simple navigation -->
         <nav class="simple-navigation">
 
@@ -81,7 +70,7 @@
 
                 <!-- Begin - page header -->
                 <div class="os2-page-header">
-                  <div class="row user-row">
+                  <div class="row user-row hidden-xs">
 
                     <!-- Begin - preface first -->
                     <?php if (!empty($page['preface_first'])): ?>
@@ -108,7 +97,7 @@
                     <!-- End - user second -->
 
                   </div>
-                  <div class="row header-row">
+                  <div class="row header-row hidden-xs">
 
                     <!-- Begin - header second -->
                     <?php if (!empty($page['header_second'])): ?>
@@ -132,7 +121,7 @@
 
                     <!-- Begin - menu -->
                     <?php if (!empty($page['menu'])): ?>
-                    <div id="toplevelmenu" class="col-xs-12 col-sm-7 toplevelmenu">
+                    <div id="toplevelmenu" class="hidden-xs col-xs-12 col-sm-7 toplevelmenu">
                       <?php print render($page['menu']); ?>
                     </div>
                     <?php endif; ?>
@@ -284,7 +273,7 @@
 
                   <!-- Begin - footer second -->
                   <?php if (!empty($page['footer_second'])): ?>
-                  <footer class="footer region-footer-second">
+                  <footer class="footer region-footer-second hidden-xs">
                     <div class="footer-content">
                       <div class="row">
                         <div class="col-xs-12">
