@@ -5,26 +5,6 @@
  */
 function site_preprocess_html(&$variables) {
   $theme_path = path_to_theme();
-//
-//  // Add conditional stylesheets
-//  drupal_add_css($theme_path . '/dist/css/stylesheet.css', array(
-//    'type' => 'file',
-//    'group' => CSS_THEME,
-//  ));
-//  drupal_add_js($theme_path . '/dist/js/modernizr.js', array(
-//    'type' => 'file',
-//    'scope' => 'footer',
-//    'group' => JS_LIBRARY,
-//  ));
-//  drupal_add_js($theme_path . '/dist/js/app.js', array(
-//    'type' => 'file',
-//    'scope' => 'footer',
-//  ));
-//  drupal_add_js($theme_path . '/dist/js/ie9.js', array(
-//    'type' => 'file',
-//    'scope' => 'footer',
-//    'browsers' => array('IE' => 'lte IE 9', '!IE' => FALSE),
-//  ));
 
   drupal_add_js(drupal_get_path('module', 'os2web_borger_dk') . '/js/os2web_borger_dk.js', array(
     'type' => 'file',
@@ -49,9 +29,6 @@ function site_preprocess_html(&$variables) {
   // Body classes
   $variables['classes_array'][] = 'simple-navigation-enabled-xs';
   $variables['classes_array'][] = 'simple-navigation-sticky';
-
-  $variables['classes_array'][] = 'main-navigation-enabled-md';
-  $variables['classes_array'][] = 'main-navigation-enabled-lg';
 
   // Load jQuery UI
   drupal_add_library('system', 'ui');
@@ -93,7 +70,7 @@ function site_preprocess_page(&$variables) {
   }
 
   // Navigation
-  $variables['sidebar_tertiary'] = _bellcom_generate_menu('main-menu', 'sidebar', 2);
+  $variables['sidebar_tertiary'] = _bellcom_generate_menu('os2web-menu-contentmenu', 'sidebar', 2);
 
   // Tabs.
   $variables['tabs_primary'] = $variables['tabs'];
