@@ -2133,7 +2133,8 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	margin-bottom: 0;}
 
 .field-label,
-.field-items .field-item p {
+.field-items .field-item p,
+.field-items .field-item ul {
     color: #4a4a4a;
     font-size: 12px;
     line-height: 19px;
