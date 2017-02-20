@@ -2,6 +2,9 @@ logs
 sessions
 tmp
 site
+simplesamlphp
+*.sql
+*.sql.gz
 
 batch
 os2web-deploy
