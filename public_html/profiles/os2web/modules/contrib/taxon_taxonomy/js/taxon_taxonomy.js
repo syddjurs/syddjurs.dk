@@ -189,6 +189,9 @@
                 $(this).siblings("span").children(".state").attr('src', taxonomy_selected_image);
                 
                 var class_title = $(this).val();
+                if (class_title.includes('"') || class_title.includes(',')) {
+                  class_title = '"' + class_title + '"';
+                }
 
                 var classes = $(taxonomy_tag_name).val();
 
@@ -204,9 +207,12 @@
                 $(this).siblings("span").children(".state").attr('src', taxonomy_not_selected_image);
 
                 var class_title = $(this).val();
+                if (class_title.includes('"') || class_title.includes(',')) {
+                  class_title = '"' + class_title + '"';
+                }
 
                 // Get the class ID
-                var re = new RegExp("^([0-9\.]+).*$");
+                var re = new RegExp("^\"?([0-9\.]+).*$");
                 var classid = class_title.replace(re, "$1");
 
                 var classes = $(taxonomy_tag_name).val();
@@ -214,13 +220,22 @@
                 // Start
                 var re = new RegExp("^[ ]*" + classid + " [^\,]+\,? *");
                 classes = classes.replace(re, "");
+                //Start - name with comma
+                var re =  new RegExp("^\"[ ]*" + classid + " .+\"\,? *");
+                classes = classes.replace(re, "");
 
                 // Middle
                 var re = new RegExp(" *, *" + classid + " [^\,]+\, *");
                 classes = classes.replace(re, ",");
+                //Middle - name with comma
+                var re = new RegExp(" *, *\"" + classid + " .+\"\, *");
+                classes = classes.replace(re, ",");
 
                 // End
                 var re = new RegExp(" *, *" + classid + " .+$");
+                classes = classes.replace(re, "");
+                //End - name with comma
+                var re = new RegExp(" *, *\"" + classid + " .+$");
                 classes = classes.replace(re, "");
 
                 $(taxonomy_tag_name).val(jQuery.trim(classes));
@@ -232,6 +247,9 @@
                 // Add the class
                 $(this).children(".state").attr('src', taxonomy_selected_image);
                 var classid = $(this).siblings("input").val();
+                if (classid.includes('"') || classid.includes(',')) {
+                    classid = '"' + classid + '"';
+                }
 
                 var classes = $(taxonomy_tag_name).val();
 
@@ -257,13 +275,22 @@
                 // Start
                 var re = new RegExp("^[ ]*" + classid + " [^\,]+\,? *");
                 classes = classes.replace(re, "");
+                //Start - name with comma
+                var re =  new RegExp("^\"[ ]*" + classid + " .+\"\,? *");
+                classes = classes.replace(re, "");
 
                 // Middle
                 var re = new RegExp(" *, *" + classid + " [^\,]+\, *");
                 classes = classes.replace(re, ",");
+                //Middle - name with comma
+                var re = new RegExp(" *, *\"" + classid + " .+\"\, *");
+                classes = classes.replace(re, ",");
 
                 // End
                 var re = new RegExp(" *, *" + classid + " .+$");
+                classes = classes.replace(re, "");
+                //End - name with comma
+                var re = new RegExp(" *, *\"" + classid + " .+$");
                 classes = classes.replace(re, "");
 
                 $(taxonomy_tag_name).val(classes);
@@ -340,7 +367,7 @@
 
           var classids = [];
 
-          var re = /\,\s*([0-9][0-9\.]*(?:[0-9]| ))/g;
+          var re = /\,\s*\"?([0-9][0-9\.]*(?:[0-9]| ))\"?/g;
           var match = {};
 
           while (match = re.exec(classids_string)) {
