@@ -399,9 +399,13 @@ function _syddjurs_kle_autocomplete_callback($string = '') {
     $result = $query->execute();
     // Add matches to $matches.
     foreach ($result as $row) {
-        $row_name = $row->name;
-
-      $matches[$row_name] = check_plain($row_name);
+      $row_name = $row->name;
+      $n = $row_name;
+      // Term names containing commas or quotes must be wrapped in quotes.
+      if (strpos($row_name, ',') !== FALSE || strpos($row_name, '"') !== FALSE) {
+        $n = '"' . str_replace('"', '""', $row_name) . '"';
+      }
+      $matches[$n] = check_plain($row_name);
     }
   }
   drupal_json_output($matches);
