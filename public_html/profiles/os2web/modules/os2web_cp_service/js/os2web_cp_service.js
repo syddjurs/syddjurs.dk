@@ -6,7 +6,7 @@
 (function($) {
     $(document).ready(function() {
         // Convert all nonalphanumeric chars to /.
-        $('#views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1, #views-exposed-form-health-and-care-cp-case-search-panel-pane-1').live('submit', function(e) {
+        $('#views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1, #views-exposed-form-health-and-care-cp-case-search-panel-pane-1').on('submit', function(e) {
             // Prevent double submissions.
             var $form = $(this);
 
@@ -38,7 +38,7 @@
             }, 5000);
         });
 
-        if (typeof $("a.qtip-this[title]").qtip === 'function') {
+        if (typeof $("a.qtip-this[title]").qtip === 'function' && $("a.qtip-this[title]").length >0) {
             $("a.qtip-this[title]").qtip({
                 style: {
                     padding: 1,
@@ -66,7 +66,7 @@
     });
     Drupal.behaviors.exposedForm = {
         attach: function() {
-            $('#views-exposed-form-health-and-care-cp-case-search-block-1').live('submit', function(e) {
+            $('#views-exposed-form-health-and-care-cp-case-search-block-1').on('submit', function(e) {
                 // Prevent double submissions.
                 var $form = $(this);
                 // IE fix. Value and placeolder is the same on IE.
@@ -89,7 +89,7 @@
                 }, 5000);
             });
 
-            if (typeof $("a.qtip-this[title]").qtip === 'function') {
+            if (typeof $("a.qtip-this[title]").qtip === 'function' && $("a.qtip-this[title]").length >0) {
                 $("a.qtip-this[title]").qtip({
                     style: {
                         padding: 1,
