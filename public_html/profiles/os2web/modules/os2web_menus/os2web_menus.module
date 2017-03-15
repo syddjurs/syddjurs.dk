@@ -183,9 +183,11 @@ function os2web_menus_permissions() {
  * Implements hook_init().
  */
 function os2web_menus_init() {
-  if (variable_get('os2web_menus_use_default_js', TRUE)) {
-    drupal_add_js(drupal_get_path('module', 'os2web_menus') . '/js/os2web_menus.js', 'file');
-  }
+  //stan@bellcom.dk 15.03.2017 : no need to specifically add the js,
+  //as all the js is added as aggregated file elsewhere (grunt file)
+//  if (variable_get('os2web_menus_use_default_js', TRUE)) {
+//    drupal_add_js(drupal_get_path('module', 'os2web_menus') . '/js/os2web_menus.js', 'file');
+//  }
 }
 
 /**
