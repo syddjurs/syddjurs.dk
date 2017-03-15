@@ -38,7 +38,7 @@
             }, 5000);
         });
 
-        if (typeof $("a.qtip-this[title]").qtip === 'function' && $("a.qtip-this[title]").length >0) {
+        if (typeof $("a.qtip-this[title]").qtip === 'function') {
             $("a.qtip-this[title]").qtip({
                 style: {
                     padding: 1,
@@ -89,7 +89,7 @@
                 }, 5000);
             });
 
-            if (typeof $("a.qtip-this[title]").qtip === 'function' && $("a.qtip-this[title]").length >0) {
+            if (typeof $("a.qtip-this[title]").qtip === 'function') {
                 $("a.qtip-this[title]").qtip({
                     style: {
                         padding: 1,
