@@ -11,6 +11,10 @@
         <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
       <?php endif; ?>
     </header>
+  <?php elseif ($page && $title): ?>
+    <header>
+      <h1<?php print $title_attributes; ?>><?php print $title ?></h1>
+    </header>
   <?php endif; ?>
   <div class="clearfix">
     <?php if (!empty($content['links']) && !$teaser): ?>
