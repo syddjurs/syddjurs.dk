@@ -244,13 +244,6 @@ function os2web_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'linkchecker_cleanup_links_last';
-  $strongarm->value = 1482148801;
-  $export['linkchecker_cleanup_links_last'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'linkchecker_disable_link_check_for_urls';
   $strongarm->value = 'example.com
 example.net
