@@ -245,3 +245,35 @@
 
 // Accordion mixin
 .os2-mixin-accordion() {}
+
+
+.view-os2web-meetings-meeting-details {
+  tr {
+    .os2-accordion;
+    td {
+      .os2-accordion-heading;
+      background-color: transparent;
+      a.agenda-bullet-list {
+        .os2-accordion-heading-title;
+        .open {
+          &:before {
+          content: @fa-var-minus;
+          color: @os2-accordion-active-heading-title-icon-color;
+          }
+        }
+      }
+    }
+  }
+  .agenda-item {
+    ul {
+      padding-left: 0;
+      list-style: none;
+    li {
+      ul {
+        list-style: circle;
+        padding-left: 10px;
+      }
+    }
+    }
+  }
+}
