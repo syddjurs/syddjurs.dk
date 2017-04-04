@@ -15,7 +15,7 @@
 @os2-accordion-heading-border-radius: @border-radius-base;
 @os2-accordion-heading-inner-padding-top-bottom: 8px;
 @os2-accordion-heading-title-color: @text-color;
-@os2-accordion-heading-title-icon-color: @brand-quaternary;
+@os2-accordion-heading-title-icon-color: #8b0054;
 @os2-accordion-body-background-color: @os2-accordion-heading-background-color;
 
 // Active
@@ -255,16 +255,24 @@
       background-color: transparent;
       a.agenda-bullet-list {
         .os2-accordion-heading-title;
+        color: #8b0054;
         .open {
           &:before {
           content: @fa-var-minus;
-          color: @os2-accordion-active-heading-title-icon-color;
+          color: #8b0054;
           }
         }
       }
     }
   }
   .agenda-item {
+    .field-name-field-os2web-meetings-enclosures {
+      margin-top: 10px;
+      .list-group;
+      .field-item {
+        .list-group-item;
+      }
+    }
     ul {
       padding-left: 0;
       list-style: none;

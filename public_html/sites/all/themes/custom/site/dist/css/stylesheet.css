@@ -20837,7 +20837,7 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   float: left;
   font-family: FontAwesome;
   content: "\f067";
-  color: #be3a34;
+  color: #8b0054;
   margin-right: 5px;
 }
 .os2-accordion .os2-accordion-body {
@@ -20962,7 +20962,7 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   float: left;
   font-family: FontAwesome;
   content: "\f067";
-  color: #be3a34;
+  color: #8b0054;
   margin-right: 5px;
 }
 .view-os2web-meetings-meeting-details tr .os2-accordion-body {
@@ -21043,7 +21043,7 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   float: left;
   font-family: FontAwesome;
   content: "\f067";
-  color: #be3a34;
+  color: #8b0054;
   margin-right: 5px;
 }
 .view-os2web-meetings-meeting-details tr td a.agenda-bullet-list {
@@ -21055,17 +21055,81 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   color: #4a4a4a;
   padding: 0;
   margin: 0;
+  color: #8b0054;
 }
 .view-os2web-meetings-meeting-details tr td a.agenda-bullet-list:before {
   float: left;
   font-family: FontAwesome;
   content: "\f067";
-  color: #be3a34;
+  color: #8b0054;
   margin-right: 5px;
 }
 .view-os2web-meetings-meeting-details tr td a.agenda-bullet-list .open:before {
   content: "\f068";
-  color: #be3a34;
+  color: #8b0054;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:hover,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:focus {
+  background-color: #eeeeee;
+  color: #777777;
+  cursor: not-allowed;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled .list-group-item-heading,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:hover .list-group-item-heading,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:focus .list-group-item-heading {
+  color: inherit;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled .list-group-item-text,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:hover .list-group-item-text,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.disabled:focus .list-group-item-text {
+  color: #777777;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:hover,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #911653;
+  border-color: #911653;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active .list-group-item-heading,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:hover .list-group-item-heading,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus .list-group-item-heading,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active .list-group-item-heading > small,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:hover .list-group-item-heading > small,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus .list-group-item-heading > small,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active .list-group-item-heading > .small,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:hover .list-group-item-heading > .small,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus .list-group-item-heading > .small {
+  color: inherit;
+}
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active .list-group-item-text,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:hover .list-group-item-text,
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus .list-group-item-text {
+  color: #ed86b9;
 }
 .view-os2web-meetings-meeting-details .agenda-item ul {
   padding-left: 0;
