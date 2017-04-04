@@ -21230,6 +21230,10 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
 }
 @media print {
 }
+a:active,
+a:focus {
+  outline: 1px solid #8b0053;
+}
 .os2-page-header {
   padding-top: 0;
 }
