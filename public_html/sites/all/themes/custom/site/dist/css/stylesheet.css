@@ -7292,6 +7292,8 @@ button.close {
 .spotbox.spotbox-horisontal .view-content:after,
 .pane-os2web-citizenservices-view .item-list ul:before,
 .pane-os2web-citizenservices-view .item-list ul:after,
+#block-views-4d3a9500b766cd615283b4f23ec2f7c1:before,
+#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
 #mini-panel-footer_kontakt_info:before,
 #mini-panel-footer_kontakt_info:after {
   content: " ";
@@ -7334,6 +7336,7 @@ button.close {
 .view-os2web-spotbox-view-spot.spotbox-horisontal .view-content:after,
 .spotbox.spotbox-horisontal .view-content:after,
 .pane-os2web-citizenservices-view .item-list ul:after,
+#block-views-4d3a9500b766cd615283b4f23ec2f7c1:after,
 #mini-panel-footer_kontakt_info:after {
   clear: both;
 }
@@ -21230,10 +21233,6 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
 }
 @media print {
 }
-a:active,
-a:focus {
-  outline: 1px solid #8b0053;
-}
 .os2-page-header {
   padding-top: 0;
 }
@@ -21371,19 +21370,6 @@ div.node--os2web_base_iframe--full iframe {
 .region-sidebar-second .view-os2web-contact-view-contact h3 {
   font-size: 12px;
   font-weight: bold;
-  text-transform: none;
-}
-.node-type-os2web-base-news .pane-os2web-contact-view-contact .os2-box .os2-box-heading {
-  background-color: transparent;
-}
-.node-type-os2web-base-news .pane-os2web-contact-view-contact .os2-box .os2-box-heading .pane-title {
-  color: #9b185c;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0;
-  margin: 0 0 8px;
-  padding-bottom: 0;
-  padding-left: 0;
   text-transform: none;
 }
 .region-sidebar-second div.kontaktblok-overskrift,
@@ -21638,9 +21624,7 @@ div.breadcrumb.you-are-here {
   margin-right: -10px;
   height: 61px;
   font-size: 13px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 20px;
+  margin-left: -4px;
   background: #f5f5f5;
   border-radius: 4px;
 }
@@ -21840,9 +21824,13 @@ div.breadcrumb.you-are-here {
 }
 .news-list .view-header h3 {
   position: absolute;
-  left: 262px;
   margin: 20px 0;
   color: #222;
+}
+@media screen and (min-width: 768px) {
+  .news-list .view-header h3 {
+    left: 262px;
+  }
 }
 .news-list .view-display-id-attachment_1 {
   position: relative;
@@ -22092,13 +22080,14 @@ ul.os2web_menus-container {
   border-bottom: none;
 }
 #region-sidebar-first ul.menu h2.menuActive a {
+  color: #FFF;
   background-image: url(../img/menu-markeret-expanded.png);
   background-repeat: no-repeat;
   background-position: right;
   display: block;
   width: 97%;
-  text-transform: none;
-  color: #FFF;
+  text-transform: none
+    color: #FFF;
 }
 #region-sidebar-first #breadcrumb {
   padding: 20px 0 10px;
@@ -22498,7 +22487,7 @@ ul.os2web_menus-container {
 .pane-kulturnaut-events-lister h2 {
   font-weight: normal;
   font-size: 14px;
-  margin-bottom: 1px;
+  margin-bottom: 1px ;
   padding-left: 16px;
   text-transform: uppercase;
   background-image: url(../img/gaatilsyddjurslive.png);
@@ -22513,7 +22502,7 @@ ul.os2web_menus-container {
   color: #787878;
   font-size: 14px;
   font-weight: normal;
-  margin-bottom: 1px;
+  margin-bottom: 1px ;
   text-transform: uppercase;
 }
 .region-inner.region-content-inner {
@@ -22966,31 +22955,22 @@ ul.os2web_menus-container {
     width: 50%;
   }
 }
-@media (min-width: 992px) {
-  .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
-  .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
-  .portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1,
-  .portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 {
-    float: left;
-    width: 25%;
-  }
-}
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar {
   margin-top: 0;
 }
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-top {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-top {
   font-size: 7px;
 }
-.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom,
-.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .calendar .calendar-bottom {
+.portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-borger .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom,
+.portal-erhverv .view-id-os2web_kulturnaut_events_lists .views-row .views-field-imported-1 .make-md-column(3) .calendar .calendar-bottom {
   font-size: 15px;
 }
 .portal-side .view-id-os2web_kulturnaut_events_lists .views-row .views-field-title,
@@ -23171,6 +23151,8 @@ ul.os2web_menus-container {
 }
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1 {
   background-color: #5bc0de;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 #block-views-4d3a9500b766cd615283b4f23ec2f7c1 .view-content {
   padding: 10px;
@@ -23214,35 +23196,5 @@ ul.os2web_menus-container {
 #mini-panel-footer_kontakt_info .panel-col-first .inside,
 #mini-panel-footer_kontakt_info .panel-col-last .inside {
   margin: 0 10px;
-}
-.not-logged-in #region-preface-first .nice-menu-down .menu-path-nolink.last {
-  display: none;
-}
-#region-preface-first .nice-menu-down .menuparent {
-  background: #fff url(../img/arrow-down.png);
-  background-repeat: no-repeat;
-  background-position: right center;
-  display: block;
-}
-#region-preface-first .nice-menu-down .menuparent span.nolink,
-#region-preface-first .nice-menu-down .menuparent a {
-  cursor: pointer;
-  display: inline;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 27px;
-  padding: 5px 19px 5px 5px;
-}
-#region-preface-first .nice-menu-down .menuparent ul {
-  background-color: #911653;
-  z-index: 999;
-}
-#region-preface-first .nice-menu-down .menuparent ul li {
-  background-color: transparent;
-}
-#region-preface-first .nice-menu-down .menuparent ul li a {
-  color: #FFF;
-  font-size: 12px;
-  font-weight: normal;
 }
 /*# sourceMappingURL=./dist/css/stylesheet.css.map */
