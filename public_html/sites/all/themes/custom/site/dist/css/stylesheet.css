@@ -21056,6 +21056,7 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   padding: 0;
   margin: 0;
   color: #8b0054;
+  font-weight: normal;
 }
 .view-os2web-meetings-meeting-details tr td a.agenda-bullet-list:before {
   float: left;
