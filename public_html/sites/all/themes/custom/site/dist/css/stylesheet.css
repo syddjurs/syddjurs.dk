@@ -21827,7 +21827,7 @@ div.breadcrumb.you-are-here {
   margin: 20px 0;
   color: #222;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .news-list .view-header h3 {
     left: 262px;
   }
