@@ -22525,6 +22525,11 @@ ul.os2web_menus-container {
   background-color: #9b185c;
   border-radius: 0 0 4px 4px;
 }
+.front .view-os2web-base-panels-view-selfserv ul li {
+  clear: none;
+  float: left;
+  width: 50%;
+}
 .front .view-os2web-kulturnaut-events-lists ul {
   text-align: center;
   overflow: hidden;
