@@ -21402,6 +21402,8 @@ div.node--os2web_base_iframe--full iframe {
 .zone-footer .footer.region-footer-third {
   background-color: #911653;
   line-height: 0.95em;
+  margin-left: -1px;
+  margin-right: -1px;
 }
 .zone-footer .footer.region-footer-second .inverse,
 .zone-footer .footer.region-footer-third .inverse {
@@ -23241,6 +23243,10 @@ ul.os2web_menus-container {
     position: absolute;
     margin: 20px 10px;
     color: #222;
+  }
+  .zone-footer {
+    margin-left: -4px;
+    margin-right: -4px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
