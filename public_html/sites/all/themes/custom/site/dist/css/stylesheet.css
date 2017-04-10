@@ -22372,9 +22372,16 @@ ul.os2web_menus-container {
 .front .panel-pane.pane-os2web-base-panels-view-rotating {
   margin-bottom: 10px;
 }
+.front .spotbox-normal.spotbox-2-vertical .news-list-right {
+  padding-top: 30px;
+}
+.front .spotbox-normal.spotbox-2-vertical a {
+  font-size: 19px;
+  padding: 0;
+}
 .front .spotbox-normal.spotbox-2-vertical h2.pane-title a {
   line-height: 20px;
-  padding-top: 20px;
+  font-size: 17px;
 }
 .front .spotbox-normal.spotbox-2-vertical h2.pane-title a::after {
   content: none;
@@ -22433,7 +22440,6 @@ ul.os2web_menus-container {
 }
 .view-os2web-kulturnaut-events-lists .calendar-bottom {
   color: #991f68;
-  font-size: 17px;
   background: none;
 }
 .view-os2web-kulturnaut-events-lists .views-field-imported-1 {
@@ -22563,7 +22569,6 @@ ul.os2web_menus-container {
 }
 .front .view-os2web-kulturnaut-events-lists ul .views-row .views-field-title a {
   color: white;
-  font-size: 17px;
   background: none;
   line-height: 21px;
   padding: 3px 0 0 55px;
@@ -23083,7 +23088,7 @@ ul.os2web_menus-container {
   margin-top: 10px;
 }
 #block-os2web-menus-os2web-menus h2 a {
-  font-weight: 900;
+  font-weight: 700;
   font-family: Arial, 'Source Sans Pro', sans-serif;
 }
 #toplevelsearch .block-search {
@@ -23221,6 +23226,22 @@ ul.os2web_menus-container {
   ul.os2web_menus-container li.open {
     background-color: #f5f5f5;
   }
+  .front .spotbox-normal.spotbox-2-vertical .news-list-right {
+    padding-top: 10px;
+  }
+  .front .spotbox-normal.spotbox-2-vertical a {
+    font-size: 19px;
+    padding: 0;
+  }
+  .front .spotbox-normal.spotbox-2-vertical h2.pane-title a {
+    line-height: 17px;
+    font-size: 17px;
+  }
+  .front .news-list .view-header h3 {
+    position: absolute;
+    margin: 20px 10px;
+    color: #222;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .megamenu-panel {
@@ -23273,6 +23294,26 @@ ul.os2web_menus-container {
   }
   .region-sidebar-first .menu.nav {
     font-size: 100%;
+  }
+  .front .view-os2web-kulturnaut-events-lists ul .views-row .views-field-title a {
+    font-size: 17px;
+  }
+  .front .view-os2web-kulturnaut-events-lists .calendar-bottom {
+    font-size: 17px;
+  }
+  .front .spotbox-normal.spotbox-2-vertical .news-list-right {
+    padding-top: 30px;
+  }
+  .front .spotbox-normal.spotbox-2-vertical a {
+    font-size: 19px;
+    padding: 0;
+  }
+  .front .spotbox-normal.spotbox-2-vertical h2.pane-title a {
+    line-height: 17px;
+    font-size: 17px;
+  }
+  .front .news-list .view-header h3 {
+    margin: 20px 0;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
