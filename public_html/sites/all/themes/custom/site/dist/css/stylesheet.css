@@ -17039,32 +17039,24 @@ body .footer {
   border-radius: 0;
   background-color: transparent;
   line-height: 1.2em;
+  text-transform: uppercase;
 }
 .os2-breadcrumb-container .breadcrumb li {
   font-size: 11px;
 }
 .os2-breadcrumb-container .breadcrumb li a {
-  color: #911653;
+  color: #5C5C5C;
 }
 .os2-breadcrumb-container .breadcrumb li a:hover {
-  color: #911653;
+  color: #5C5C5C;
 }
 .os2-breadcrumb-container .breadcrumb li:before {
-  font-family: 'FontAwesome';
-  content: "\f054";
-  color: #be3a34;
-  padding: 0 5px;
-}
-.os2-breadcrumb-container .breadcrumb li:first-child a .icon:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-size: 14px;
-  content: "\f015";
-  color: #be3a34;
+  content: ">";
+  color: #5C5C5C;
   padding: 0 5px;
 }
 .os2-breadcrumb-container .breadcrumb li.active {
-  color: #911653;
+  color: #5C5C5C;
 }
 .os2-breadcrumb-container .breadcrumb li.active:before {
   display: none;
@@ -17089,21 +17081,21 @@ body .footer {
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .os2-breadcrumb-container .breadcrumb {
-    margin: 0 17px;
+    margin: 0 10px 0 5px;
   }
 }
 @media screen and (min-width: 992px) {
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .os2-breadcrumb-container .breadcrumb {
-    margin: 0 21px;
+    margin: 0 10px 0 5px;
   }
 }
 @media screen and (min-width: 1200px) {
 }
 @media screen and (min-width: 1200px) {
   .os2-breadcrumb-container .breadcrumb {
-    margin: 0 25px;
+    margin: 0 10px 0 5px;
   }
 }
 @media print {
@@ -21284,6 +21276,10 @@ div.node--os2web_base_iframe--full iframe {
   color: #5c5c5c;
   display: block;
 }
+.region-header-second {
+  text-align: right;
+  margin-top: 25px;
+}
 .region-header-second .block {
   display: inline-block;
 }
@@ -21294,6 +21290,10 @@ div.node--os2web_base_iframe--full iframe {
 .menu-row {
   padding-top: 14px;
   padding-bottom: 0;
+}
+.region-preface-first ul.nice-menu,
+.region-preface-first ul.nice-menu-down {
+  float: right;
 }
 .region-preface-first ul.nice-menu li span,
 .region-preface-first ul.nice-menu-down li span {
@@ -21315,13 +21315,30 @@ div.node--os2web_base_iframe--full iframe {
 }
 .region-preface-first ul.nice-menu li.menuparent,
 .region-preface-first ul.nice-menu-down li.menuparent {
-  background-color: #ffffff;
+  background: #FFF url(../img/arrow-down.png) right center no-repeat;
   color: #6d6e6d;
   margin-left: 25px;
 }
 .region-preface-first ul.nice-menu li.menuparent.first,
 .region-preface-first ul.nice-menu-down li.menuparent.first {
   margin-left: 0;
+}
+.region-preface-first ul.nice-menu li ul,
+.region-preface-first ul.nice-menu-down li ul {
+  background-color: #8b0053;
+  z-index: 9999;
+}
+.region-preface-first ul.nice-menu li ul li,
+.region-preface-first ul.nice-menu-down li ul li {
+  background-color: transparent;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+.region-preface-first ul.nice-menu li ul li a,
+.region-preface-first ul.nice-menu-down li ul li a {
+  color: #FFF;
+  font-weight: normal;
+  line-height: normal;
 }
 .region-preface-first ul.nice-menu-down {
   margin-right: 8px;
@@ -23209,10 +23226,52 @@ ul.os2web_menus-container {
     width: 710px;
   }
 }
+.region-preface-first ul.nice-menu li span,
+.region-preface-first ul.nice-menu-down li span {
+  font-size: 11px;
+  line-height: 22px;
+  padding: 5px 14px 5px 5px;
+  font-weight: normal;
+}
+.region-preface-first ul.nice-menu li a,
+.region-preface-first ul.nice-menu-down li a {
+  font-size: 13px;
+  line-height: 22px;
+  padding: 5px 10px 5px 5px;
+}
+.region-preface-first ul.nice-menu li.menuparent,
+.region-preface-first ul.nice-menu-down li.menuparent {
+  margin-left: 5px;
+  font-weight: normal;
+}
+.region-sidebar-first .menu.nav {
+  font-size: 90%;
+}
 @media screen and (min-width: 992px) {
   ul.os2web_menus-container li h2 a {
     margin: 0 15px;
     font-size: 18px;
+  }
+  .region-preface-first ul.nice-menu li span,
+  .region-preface-first ul.nice-menu-down li span {
+    font-size: 13px;
+    line-height: 27px;
+    padding: 5px 14px 5px 5px;
+    font-weight: normal;
+  }
+  .region-preface-first ul.nice-menu li a,
+  .region-preface-first ul.nice-menu-down li a {
+    font-size: 13px;
+    line-height: 27px;
+    padding: 5px 19px 5px 5px;
+  }
+  .region-preface-first ul.nice-menu li.menuparent,
+  .region-preface-first ul.nice-menu-down li.menuparent {
+    margin-left: 20px;
+    font-weight: bold;
+  }
+  .region-sidebar-first .menu.nav {
+    font-size: 100%;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {

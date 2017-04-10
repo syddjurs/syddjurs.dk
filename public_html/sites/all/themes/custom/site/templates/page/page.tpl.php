@@ -56,7 +56,7 @@
                class="simple-navigation-logo-link">
                 <img src="<?php echo $path_img . '/logo-simple-navigation.png'; ?>"
                      class="simple-navigation-logo-image"
-                     alt="<?php echo t('fredericia.dk logo'); ?>"/>
+                     alt="<?php echo t('Syddjurs.dk logo'); ?>"/>
             </a>
           <!-- End - logo -->
 
@@ -70,53 +70,50 @@
 
                 <!-- Begin - page header -->
                 <div class="os2-page-header">
-                  <div class="row user-row hidden-xs">
+                  <div class="row page-header-user-rows hidden-xs col-xs-12 col-sm-9 col-sm-push-3 ">
+                    <div class="row user-row">
 
-                    <!-- Begin - preface first -->
-                    <?php if (!empty($page['preface_first'])): ?>
-                    <div id="region-preface-first" class="col-xs-12 col-sm-8 col-sm-push-4 region-preface-first">
-                      <?php print render($page['preface_first']); ?>
+                      <!-- Begin - preface first -->
+                      <?php if (!empty($page['preface_first'])): ?>
+                      <div id="region-preface-first" class="col-xs-12 region-preface-first">
+                        <?php print render($page['preface_first']); ?>
+                      </div>
+                      <?php endif; ?>
+                      <!-- End - preface first -->
+
+                      <!-- Begin - user first -->
+                      <?php if (!empty($page['user_first'])): ?>
+                      <div id="region-user-first" class="col-xs-12 region-user-first">
+                        <?php print render($page['user_first']); ?>
+                      </div>
+                      <?php endif; ?>
+                      <!-- End - user first -->
+
+                      <!-- Begin - user second -->
+                      <?php if (!empty($page['user_second'])): ?>
+                      <div id="region-user-second" class="col-xs-12 region-user-second">
+                        <?php print render($page['user_second']); ?>
+                      </div>
+                      <?php endif; ?>
+                      <!-- End - user second -->
+
                     </div>
-                    <?php endif; ?>
-                    <!-- End - preface first -->
+                    <div class="row header-row">
 
-                    <!-- Begin - user first -->
-                    <?php if (!empty($page['user_first'])): ?>
-                    <div id="region-user-first" class="col-xs-12 col-sm-4 col-sm-pull-8 region-user-first">
-                      <?php print render($page['user_first']); ?>
+                      <!-- Begin - header second -->
+                      <?php if (!empty($page['header_second'])): ?>
+                      <div id="region-header-second" class="col-xs-12 region-header-second">
+                        <?php print render($page['header_second']); ?>
+                      </div>
+                      <?php endif; ?>
+                      <!-- End - header second -->
                     </div>
-                    <?php endif; ?>
-                    <!-- End - user first -->
-
-                    <!-- Begin - user second -->
-                    <?php if (!empty($page['user_second'])): ?>
-                    <div id="region-user-second" class="col-xs-12 col-sm-4 col-sm-pull-8 region-user-second">
-                      <?php print render($page['user_second']); ?>
-                    </div>
-                    <?php endif; ?>
-                    <!-- End - user second -->
-
                   </div>
-                  <div class="row header-row hidden-xs">
-
-                    <!-- Begin - header second -->
-                    <?php if (!empty($page['header_second'])): ?>
-                    <div id="region-header-second" class="col-xs-12 col-sm-7 col-sm-push-5 region-header-second">
-                      <?php print render($page['header_second']); ?>
-                    </div>
-                    <?php endif; ?>
-                    <!-- End - header second -->
-
-                    <!-- Begin - branding -->
-                    <?php if (!empty($page['branding'])): ?>
-                    <div id="region-branding" class="col-xs-12 col-sm-5 col-sm-pull-7 region-branding">
-                      <?php print render($page['branding']); ?>
-                    </div>
-                    <?php endif; ?>
-                    <!-- End - branding -->
-
+                  <div class="col-xs-12 col-sm-3 col-sm-pull-9">
+                    <a href="/" rel="home" title="Syddjurs Kommune">
+                      <img src="<?php echo $path_img . '/logo.png'; ?>" id="logo">
+                    </a>
                   </div>
-
                   <div class="row menu-row">
 
                     <!-- Begin - menu -->
@@ -162,10 +159,10 @@
 
                 <?php if (!empty($breadcrumb)): ?>
                 <!-- Begin - breadcrumb -->
-                <section class="os2-breadcrumb-container">
+                <section class="os2-breadcrumb-container" id="breadcrumb">
                   <div class="row breadcrumb-row">
                     <div class="col-xs-12">
-                      <?php print $breadcrumb; ?>
+                     <span class="breadcrumb">Du er her: </span><?php print $breadcrumb; ?>
                     </div>
                   </div>
                   </section>
@@ -186,7 +183,7 @@
 
                     <?php if (!empty($tabs_primary)): ?>
                     <!-- Begin - tabs primary -->
-                    <div class="os2-tabs-container os2-tabs-variant-default">
+                    <div class="os2-tabs-container os2-tabs-variant-primary">
                       <?php print render($tabs_primary); ?>
                     </div>
                     <!-- End - tabs primary -->
