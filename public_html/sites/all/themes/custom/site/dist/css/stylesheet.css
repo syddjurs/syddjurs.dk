@@ -22669,6 +22669,12 @@ ul.os2web_menus-container {
 .view-os2web-spotbox-view-spots .news-list {
   margin-bottom: 10px;
 }
+@media screen and (max-width: 767px) {
+  .view-os2web-spotbox-view-spot img.img-responsive,
+  .spotbox img.img-responsive {
+    min-width: 100%;
+  }
+}
 .view-os2web-spotbox-view-spot .views-row,
 .spotbox .views-row {
   border: 2px solid #f5f5f5;
