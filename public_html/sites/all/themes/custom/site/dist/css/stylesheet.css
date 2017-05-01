@@ -21518,9 +21518,10 @@ div.node--os2web_base_iframe--full iframe {
   min-height: 1px;
   padding-left: 10px;
   padding-right: 10px;
-  display: inline-block;
   height: 50px;
-  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @media (min-width: 992px) {
   #block-block-3 .footer-address {
