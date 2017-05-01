@@ -21490,12 +21490,14 @@ div.node--os2web_base_iframe--full iframe {
 }
 .icon-syddjurs-medium.icon-inverse {
   background: url('../img/icon-syddjurs-medium-inverse.png');
+  background-repeat: no-repeat;
 }
 .icon-phone-large {
   background-image: url(../img/telefon.png);
   display: inline-block;
   height: 32px;
   width: 23px;
+  background-repeat: no-repeat;
 }
 .icon-gt-purple {
   background: url('../img/mega_dd_arrow_right.png');
@@ -21554,6 +21556,7 @@ div.node--os2web_base_iframe--full iframe {
 }
 .icon-co2neutral-medium.icon-inverse {
   background: url('../img/icon-co2neutral-medium-inverse.png');
+  background-repeat: no-repeat;
 }
 .phonenumber {
   font-size: 25px;
