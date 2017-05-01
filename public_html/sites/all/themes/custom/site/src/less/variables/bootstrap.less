@@ -14,7 +14,8 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #6B2D52; // Var tidligere: #911653 / Lys: #c6858f
+@brand-primary:         #6B2D52; // Var tidligere: #911653 / Lys: @brand-primary-light
+@brand-primary-light:   #D599A9;
 @brand-success:         #A2AC16;
 @brand-info:            #81C3E7;
 @brand-warning:         #F3EC69;
@@ -75,7 +76,7 @@
 @headings-font-family:    @font-family-sans-serif;
 @headings-font-weight:    300;
 @headings-line-height:    1.15;
-@headings-color:          #9b185c;
+@headings-color:          @brand-primary;
 
 
 //== Iconography

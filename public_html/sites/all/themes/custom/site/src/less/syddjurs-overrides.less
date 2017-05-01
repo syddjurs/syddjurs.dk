@@ -105,7 +105,7 @@ div.node--os2web_base_iframe--full {
         }
       }
       ul {
-        background-color: #8b0053;
+        background-color: @brand-primary;
         z-index: 9999;
         li {
           background-color: transparent;
@@ -140,7 +140,7 @@ div.node--os2web_base_iframe--full {
 .region-sidebar-second div.kontaktblok-overskrift,
 .region-sidebar-second h2,
 .region-sidebar-second h3 {
-    color: #9b185c;
+    color: @brand-primary;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 0;
@@ -180,7 +180,7 @@ div.node--os2web_base_iframe--full {
           padding: 10px;
           a { color: #FFF;}
           h2, h3 {
-           color: #c6858f;
+           color: @brand-primary-light;
           }
         }
       }
@@ -199,7 +199,7 @@ div.node--os2web_base_iframe--full {
         .os2-box-heading {
           padding: 0;
           h2 {
-            color: #c6858f;
+            color: @brand-primary-light;
             margin-bottom: 10px;
             padding: 0;
             font-family: @font-family-sans-serif;
@@ -248,7 +248,7 @@ div.node--os2web_base_iframe--full {
 }
 
 .inverse {
-  background: @brand-dark;
+  background: @brand-primary;
 }
 
 .inverse h1
@@ -301,10 +301,22 @@ div.node--os2web_base_iframe--full {
 .icon-phone-large.icon-inverse {
   background: url('../img/icon-phone-large-inverse.png');
 }
-
+#block-block-3 {
+  .make-row();
+    .footer-address {
+    font-size: 12px;
+    .make-md-column(8);
+    display: inline-block;
+    height: 50px;
+    vertical-align: middle;
+  }
+  .icon-syddjurs-medium {
+    .make-md-column(2);
+  }
+}
 .icon-co2neutral-medium{
   height: 54px;
-  width: 135px;
+  .make-md-column(2);
   display: inline-block;
 }
 
@@ -349,14 +361,7 @@ div.node--os2web_base_iframe--full {
   line-height: 16px;
 }
 
-.footer-address {
-  font-size: 12px;
-  width: 655px;
-  display: inline-block;
-  height: 50px;
-  margin-left: 19px;
-  vertical-align: middle;
-}
+
 
 #block-panels-mini-os2web-base-panels-mini-footer .pane-content a {
 	color: #fff;
@@ -561,7 +566,7 @@ div.breadcrumb.you-are-here {
       padding: 0;
       margin: 0;
       a {
-        color: #8b0053;
+        color: @brand-primary;
       }
     }
   }
@@ -676,7 +681,7 @@ div.breadcrumb.you-are-here {
 }
 
 .custom-slideshow .views-field-body a {
-  color: #8b0053;
+  color: @brand-primary;
   font-size: 21px;
   display: block;
 }
@@ -710,7 +715,7 @@ div.breadcrumb.you-are-here {
     text-align: right;
     font-style: italic;
     a {
-      color: #8b0053;
+      color: @brand-primary;
       font-weight: bold;
     }
   }
@@ -857,7 +862,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   }
 
   ul.menuActive {
-    border-bottom: solid 1px #8b0053 !important;
+    border-bottom: solid 1px @brand-primary !important;
   }
 
   ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right}
@@ -890,7 +895,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 }
 
   ul.menu li.expanded.active {
-  border-bottom: #8b0053 solid 1px;
+  border-bottom: @brand-primary solid 1px;
 }
 
 
@@ -900,7 +905,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
   ul.menu li.active-trail.active a.active {
     background-image: url(../img/v-arrow-expanded-on.png);
-    background-color: #9b185c;
+    background-color: @brand-primary;
     color: #fff;
     border-radius: 4px;
   }
@@ -942,7 +947,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     text-transform: none;
   }
   h3 {
-    background-color: #8b0053;
+    background-color: @brand-primary;
     border-radius: 4px;
     padding: 8px;
     margin-top: 0;
@@ -1182,7 +1187,10 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     color: #991f68;
     background: none;
 }
-
+.selbetjening-bund {
+  background-color: @brand-primary;
+  min-height: 40px;
+}
 .view-os2web-kulturnaut-events-lists .views-field-imported-1 {float: left; clear: left;padding-left: 20px; }
 .panels-flexible-region-os2web_base_panels_layout_front-left-inside .views-field-imported-1 {
   width: 230px;
@@ -1268,16 +1276,18 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .front .view-os2web-kulturnaut-events-lists .view-content {
   padding: 0;
-  background-color: #9b185c;
+  background-color: @brand-primary;
   border-radius: 0 0 4px 4px;
 }
 .front {
-  .view-os2web-base-panels-view-selfserv {
-    ul {
-      li {
-        clear: none;
-        float: left;
-        width: 50%;
+  .os2-panels-right-sidebar {
+    .view-os2web-base-panels-view-selfserv {
+      ul {
+        li {
+          clear: none;
+          float: left;
+          width: 50%;
+        }
       }
     }
   }
@@ -1665,7 +1675,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     margin-right: 3px;
   }
   .input-group {
-    border: 2px solid #8b0053;
+    border: 2px solid @brand-primary;
     border-radius: 4px;
   }
   input.form-text {
@@ -1790,7 +1800,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
           padding: 6px 0 6px;
           text-transform: uppercase;
             &.active {
-              border-bottom: 3px solid #9b185c;
+              border-bottom: 3px solid @brand-primary;
             }
           }
         }
