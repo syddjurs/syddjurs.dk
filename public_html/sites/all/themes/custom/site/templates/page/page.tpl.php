@@ -109,7 +109,7 @@
                       <!-- End - header second -->
                     </div>
                   </div>
-                  <div class="col-xs-12 col-sm-3 col-sm-pull-9">
+                  <div class="col-xs-12 col-sm-3 col-sm-pull-9 hidden-xs">
                     <a href="/" rel="home" title="Syddjurs Kommune">
                       <img src="<?php echo $path_img . '/logo.png'; ?>" id="logo">
                     </a>
