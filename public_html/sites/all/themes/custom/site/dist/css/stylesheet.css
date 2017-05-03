@@ -22464,6 +22464,12 @@ ul.os2web_menus-container {
   display: block;
   height: 57px;
   font-size: 14px;
+  color: white;
+  font-size: 17px;
+  background: none;
+  line-height: 21px;
+  padding: 11px 0 0 55px;
+  height: auto;
 }
 .view-os2web-kulturnaut-events-lists .views-field-title a:focus,
 .view-os2web-kulturnaut-events-lists .views-field-title a:active {
@@ -22613,13 +22619,13 @@ ul.os2web_menus-container {
   padding-right: 10px;
   border: none;
   float: right;
-  text-align: left;
+  text-align: right;
   clear: none;
 }
 @media (min-width: 768px) {
   .front .view-os2web-kulturnaut-events-lists ul .views-row {
     float: left;
-    width: 50%;
+    width: 41.66666667%;
   }
 }
 .front .view-os2web-kulturnaut-events-lists ul .views-row .views-field {
@@ -22633,7 +22639,8 @@ ul.os2web_menus-container {
   color: white;
   background: none;
   line-height: 21px;
-  padding: 3px 0 0 55px;
+  padding: 3px 0 0 70px;
+  text-align: left;
   height: auto;
   margin-bottom: 10px;
 }
