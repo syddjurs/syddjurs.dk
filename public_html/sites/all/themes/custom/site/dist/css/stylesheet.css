@@ -21406,7 +21406,7 @@ div.node--os2web_base_iframe--full iframe {
 }
 .zone-footer .footer.region-footer-first .footer-content .inverse h2,
 .zone-footer .footer.region-footer-first .footer-content .inverse h3 {
-  color: #D599A9;
+  color: #FFF;
 }
 .zone-footer .footer.region-footer-second,
 .zone-footer .footer.region-footer-third {
@@ -22066,7 +22066,7 @@ div.breadcrumb.you-are-here {
   width: 95%;
   border-bottom: 1px solid #ccc;
   background: url(../img/mega_dd_arrow_right.png) no-repeat left 8px;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 25px;
 }
 ul.os2web_menus-container {
