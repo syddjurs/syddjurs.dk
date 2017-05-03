@@ -23300,6 +23300,9 @@ ul.os2web_menus-container {
   #region-sidebar-first ul.menu li.collapsed {
     display: none;
   }
+  #block-feedback-form {
+    display: none;
+  }
 }
 @media screen and (min-width: 768px) {
   .footer-contact-inner {
