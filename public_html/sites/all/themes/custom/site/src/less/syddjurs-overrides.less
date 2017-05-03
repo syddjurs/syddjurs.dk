@@ -156,6 +156,7 @@ div.node--os2web_base_iframe--full {
 .zone-footer {
   .footer {
   .footer-content {
+    font-size: 12px;
     }
     &.region-footer-first {
       background-color: #FFF;
@@ -184,6 +185,7 @@ div.node--os2web_base_iframe--full {
           a { color: #FFF;}
           h2, h3 {
            color: #FFF;
+           font-size: 29px;
           }
         }
       }
@@ -245,11 +247,6 @@ div.node--os2web_base_iframe--full {
   }
 }
 
-
-.footer-contact-inner {
-  padding-left: 15px;
-}
-
 .inverse {
   background: @brand-primary;
 }
@@ -307,22 +304,31 @@ div.node--os2web_base_iframe--full {
   background: url('../img/icon-phone-large-inverse.png');
 }
 #block-block-3 {
-  .make-row();
-    .footer-address {
-    font-size: 12px;
-    .make-md-column(8);
-    height: 50px;
+  .inverse {
+    .make-row();
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .icon-syddjurs-medium {
-    .make-md-column(2);
+    flex-direction: row;
+    .footer-address {
+      font-size: 12px;
+      .make-xs-column(9);
+      .make-md-column(8);
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 24px;
+    }
+    .icon-syddjurs-medium {
+      .make-md-column(2);
+    }
   }
 }
 .icon-co2neutral-medium{
   height: 54px;
-  .make-md-column(2);
+  float: right;
+  min-width: 140px;
   display: inline-block;
 }
 
@@ -434,7 +440,7 @@ div.breadcrumb.you-are-here {
   height: 61px;
   font-size: 13px;
   margin-left: -4px;
-  background: #f5f5f5;
+  background: #f1f0ec;
   border-radius: 4px;
   a {
     text-decoration: none;
@@ -525,7 +531,7 @@ div.breadcrumb.you-are-here {
 
 .news-list {
   .make-row();
-  background-color: #f5f5f5;
+  background-color: #f1f0ec;
   color: #4b494a;
   border-radius: 4px;
   margin-left: 0;
@@ -718,7 +724,7 @@ div.breadcrumb.you-are-here {
   top: 39px;
   left: 0;
   margin-left: -5px;
-  background: #f5f5f5;
+  background: #f1f0ec;
   z-index: 999;
   .os2-box {
     margin-bottom: 0 !important;
@@ -1086,7 +1092,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .front {
   .pane-os2web-hearings {
-    border: 2px solid #f5f5f5;
+    border: 2px solid #f1f0ec;
     border-radius: 4px;
     padding: 10px;
     a {
@@ -1225,7 +1231,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .view-os2web-kulturnaut-events-lists .view-content {
     padding: 5px 0 0 0px;
-    background-color: #f5f5f5;
+    background-color: #f1f0ec;
 }
 
 .pane-kulturnaut-events-lister {
@@ -1386,7 +1392,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
   .views-row {
-    border: 2px solid #f5f5f5;
+    border: 2px solid #f1f0ec;
     border-radius: 4px;
     padding: 10px;
     width: auto;
@@ -1419,8 +1425,8 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         .make-sm-column(6);
         .make-md-column(4);
         &.views-row-even {
-          border-left: 1px solid #f5f5f5;
-          border-right: 1px solid #f5f5f5;
+          border-left: 1px solid #f1f0ec;
+          border-right: 1px solid #f1f0ec;
         }
       }
     }
@@ -1435,7 +1441,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         .make-sm-column(6);
         padding-left: 5px;
         .wrapper {
-          border: solid 1px #f5f5f5;
+          border: solid 1px #f1f0ec;
           margin-bottom: 10px;
           padding: 10px;
           h2.pane-title {
@@ -1479,7 +1485,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   background-position: 5px 18px;
   font-size: 15px;
   line-height: 16px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #f1f0ec;
   .border-bottom-radius(4px);
   a {
     color: #333;
@@ -1550,7 +1556,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
   .custom-slideshow .views-field-body a {
     margin-top: 0px;
-    border: 1px solid #f5f5f5;
+    border: 1px solid #f1f0ec;
     .border-bottom-radius(4px);
   }
   .view-os2web-base-panels-view-newslist {
@@ -1594,7 +1600,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
   .pane-os2web-base-panels-view-selfserv {
-    background-color: #f5f5f5;
+    background-color: #f1f0ec;
   }
 
   .view-id-os2web_kulturnaut_events_lists {
@@ -1637,7 +1643,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   .links-erhverv,
   .erhvervsraadgiver {
     .os2-box {
-      background-color: #f5f5f5;
+      background-color: #f1f0ec;
       .os2-box-heading {
         border-bottom: 1px solid #FFF;
         h2 {
@@ -1812,10 +1818,26 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   	  }
 	  }
 	}
+	#block-block-3 .inverse {
+  	display: block;
+	}
+  .icon-co2neutral-medium{
+    height: 54px;
+    float: none;
+    min-width: 140px;
+    display: inline-block;
+    .make-xs-column(12);
+  }
+
 }
+
+
 
 // Tablet
 @media @media-query-tablet {
+  .footer-contact-inner {
+    padding-left: 15px;
+  }
   .megamenu-panel {
       width: 710px;
   }
@@ -1855,7 +1877,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
           }
         }
       &.open {
-        background-color: #f5f5f5;
+        background-color: #f1f0ec;
       }
     }
 
