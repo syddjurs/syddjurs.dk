@@ -23294,6 +23294,9 @@ ul.os2web_menus-container {
     padding-left: 10px;
     padding-right: 10px;
   }
+  #region-sidebar-first ul.menu li.collapsed {
+    display: none;
+  }
 }
 @media screen and (min-width: 768px) {
   .footer-contact-inner {
