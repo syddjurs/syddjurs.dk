@@ -23415,6 +23415,9 @@ ul.os2web_menus-container {
   .region-sidebar-first .menu.nav {
     font-size: 100%;
   }
+  .front .view-os2web-kulturnaut-events-lists ul .views-row {
+    float: right;
+  }
   .front .view-os2web-kulturnaut-events-lists ul .views-row .views-field-title a {
     font-size: 17px;
   }
