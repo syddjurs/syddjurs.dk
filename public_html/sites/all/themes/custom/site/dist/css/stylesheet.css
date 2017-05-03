@@ -23294,6 +23294,9 @@ ul.os2web_menus-container {
     padding-left: 10px;
     padding-right: 10px;
   }
+  #region-sidebar-first ul.menu li {
+    background-size: cover;
+  }
   #region-sidebar-first ul.menu li.collapsed {
     display: none;
   }
