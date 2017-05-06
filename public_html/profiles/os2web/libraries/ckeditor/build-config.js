@@ -56,7 +56,7 @@ var CKBUILDER_CONFIG = {
 		'basicstyles' : 1,
 		'bidi' : 1,
 		'blockquote' : 1,
-		'bootstrapVisibility' : 1,
+		'bootstrapVisibility' : 0,
 		'chart' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
