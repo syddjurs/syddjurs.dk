@@ -4864,30 +4864,45 @@ var equalHeight = (function ($) {
   toggleMegamenu();
 
   function toggleMegamenu() {
-
     var $toggle = $('.js-megamenu-toggle');
+    var default_zone_menu_height = jQuery('#toplevelmenu').outerHeight();
+    $('.megamenu-panel').each(function() {
+      $('<a></a>').attr('href', '#').addClass('js-megamenu-close').appendTo(this);
+    });
 
     $toggle.on('click', function(event) {
       event.preventDefault();
 
       var $parent = $(this).parents('.megamenu'),
           $megamenu = $parent.find('.megamenu-panel');
-
-      $('.megamenu')
-        .not($parent)
-          .removeClass('open')
-        .find('.megamenu-panel')
-          .hide();
+      var megamenu_height =$megamenu.height();
+      if ($parent.hasClass('open'))
+        $('#toplevelmenu').animate({'height' : default_zone_menu_height}, 'swing', function(){
+          $('.megamenu')
+            .not($parent)
+            .find('.megamenu-panel')
+            .hide();
+        });
+      else
+        $('#toplevelmenu').animate({'height' : default_zone_menu_height + megamenu_height});
 
       $parent.toggleClass('open');
       $megamenu
         .addClass('clearfix')
         .toggle();
     });
+
+    $('.js-megamenu-close').on('click', function(event){
+      event.preventDefault();
+      var $parent = $(this).closest('.megamenu');
+      if($parent.hasClass('open')){
+        $parent.removeClass('open');
+        $('#toplevelmenu').animate({'height' : default_zone_menu_height}, 'swing', function(){
+        $('.megamenu-panel').hide();
+        });
+      }
+    });
   }
-
-
-
 
 })(jQuery);
 

@@ -22000,6 +22000,16 @@ div.breadcrumb.you-are-here {
   background: #f1f0ec;
   z-index: 999;
 }
+.megamenu-panel .js-megamenu-close {
+  background-image: url(../img/delete-icon.png);
+  height: 18px;
+  width: 18px;
+  display: block;
+  background-size: 18px 18px;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}
 .megamenu-panel .os2-box {
   margin-bottom: 0 !important;
 }
