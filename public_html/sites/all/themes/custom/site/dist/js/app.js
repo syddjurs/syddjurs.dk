@@ -4900,7 +4900,6 @@ var equalHeight = (function ($) {
       }
     });
   }
-
 })(jQuery);
 
 /*
