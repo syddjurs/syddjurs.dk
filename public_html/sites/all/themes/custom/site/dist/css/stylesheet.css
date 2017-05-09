@@ -16419,7 +16419,7 @@ body .footer {
   position: relative;
   line-height: inherit;
   float: left;
-  width: 60px;
+  width: 120px;
 }
 .simple-navigation .simple-navigation-list > li.simple-navigation-button a {
   display: block;
@@ -16430,6 +16430,8 @@ body .footer {
   border-radius: 0;
   background-color: #592544;
   color: #fff;
+  font-size: 23px;
+  text-transform: uppercase;
 }
 .simple-navigation .simple-navigation-list > li.simple-navigation-button a .icon {
   font-size: 24px;

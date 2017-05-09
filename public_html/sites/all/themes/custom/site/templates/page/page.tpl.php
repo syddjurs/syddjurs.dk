@@ -44,7 +44,7 @@
               <!-- Begin - button -->
                 <li class="simple-navigation-button">
                     <a href="#" data-sidebar-toggle="left">
-                        <span class="fa icon fa-bars"></span> </a>
+                        <span class="fa icon fa-bars"></span> Menu</a>
                 </li>
               <!-- End - button -->
 
