@@ -13,17 +13,17 @@
 
     <?php if ($content['sidebar']): ?>
 
-        <!-- Begin - sidebar -->
-        <div class="col-sm-4 col-sm-push-8 hidden-print os2-panels-right-sidebar">
-            <?php print $content['sidebar']; ?>
-        </div>
-        <!-- End - sidebar -->
-
         <!-- Begin - content -->
-        <div class="col-sm-8 col-sm-pull-4 os2-panels-main-content">
+        <div class="col-sm-8 os2-panels-main-content">
             <?php print $content['content']; ?>
         </div>
         <!-- End - content -->
+
+        <!-- Begin - sidebar -->
+        <div class="col-sm-4 hidden-print os2-panels-right-sidebar">
+            <?php print $content['sidebar']; ?>
+        </div>
+        <!-- End - sidebar -->
 
     <?php else: ?>
 
