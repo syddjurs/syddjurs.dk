@@ -16,7 +16,7 @@
       <h1<?php print $title_attributes; ?>><?php print $title ?></h1>
     </header>
   <?php endif; ?>
-  <div class="clearfix">
+  <div class="content-area clearfix">
     <?php if (!empty($content['links']) && !$teaser): ?>
       <nav class="links node-links clearfix"><?php print render($content['links']); ?></nav>
     <?php endif; ?>

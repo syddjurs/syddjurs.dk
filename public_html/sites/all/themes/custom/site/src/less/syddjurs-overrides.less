@@ -140,18 +140,83 @@ div.node--os2web_base_iframe--full {
     text-transform: none;
 }
 
-.region-sidebar-second div.kontaktblok-overskrift,
-.region-sidebar-second h2,
-.region-sidebar-second h3 {
-    color: @brand-primary;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0;
-    margin: 0 0 8px;
-    padding-bottom: 0;
-    padding-left: 0;
-    text-transform: none;
+.region-sidebar-second {
+  div.kontaktblok-overskrift,
+  h2,
+  h3 {
+      color: @brand-primary;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0;
+      margin: 0 0 8px;
+      padding-bottom: 0;
+      padding-left: 0;
+      text-transform: none;
+  }
+  .view-os2web-contact-view-contact {
+    font-size: @font-size-small;
+    div.dag {
+      float: left;
+      width: 40%;
+      display: block;
+      clear: left;
+    }
+    .field-content p {
+      margin-top: 10px;
+    }
+    .view-footer {
+      margin-top: @padding-large-vertical;
+      a {
+        display: inline-block;
+        background: @brand-primary;
+        border-radius: @border-radius-base;
+        text-align: center;
+        font-size: @font-size-h5;
+        color: white;
+        padding: @padding-large-vertical @padding-large-horizontal;
+        .btn;
+        .btn-primary;
+      }   
+    }    
+  }
 }
+
+.telfonnummer {
+  background-image: url(../img/telefon.png);
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  a {
+      font-size: @font-size-h2;
+      color: @brand-primary;
+      font-weight: bold;
+      line-height: 37px;
+  }
+}
+.content-area {
+  margin-bottom: @padding-large-vertical;
+  .field-name-field-os2web-base-field-summary {
+    .lead;
+  }
+  .field-name-field-os2web-base-field-selfserv.field-type-node-reference {
+    border-bottom: 3px solid @brand-primary;
+    padding-bottom: 8px;
+    margin-bottom: @padding-large-vertical;
+    .field-label {
+      font-size: @font-size-h3;
+      background: @brand-primary;
+      color: #FFF;
+      padding: 10px;
+      border-radius: @border-radius-base;
+      font-weight: normal;
+      margin-bottom: @padding-large-vertical;
+    }
+    .field-items {
+      
+    }
+  }
+}
+
 
 .zone-footer {
   .footer {
