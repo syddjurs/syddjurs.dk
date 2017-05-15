@@ -21377,6 +21377,14 @@ div.node--os2web_base_iframe--full iframe {
   padding-left: 0;
   text-transform: none;
 }
+.region-sidebar-second .view-os2web-spotbox-view-spot .views-row,
+.region-sidebar-second .spotbox .views-row {
+  margin-bottom: 10px;
+}
+.region-sidebar-second .view-os2web-spotbox-view-spot h2.pane-title,
+.region-sidebar-second .spotbox h2.pane-title {
+  padding-top: 0;
+}
 .region-sidebar-second .view-os2web-base-panels-view-kle-link div.item-list ul {
   margin: 0 0 0 0;
   padding: 0 12px;
