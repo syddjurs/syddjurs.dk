@@ -2,7 +2,7 @@
   <?php print $user_picture; ?>
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
-    <header>
+    <header class="content-header">
       <?php if ($view_mode != 'os2web_meetings_meeting_detail_view' && !$teaser): ?>
         <h2<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
       <?php elseif ($teaser): ?>
@@ -12,8 +12,9 @@
       <?php endif; ?>
     </header>
   <?php elseif ($page && $title): ?>
-    <header>
-      <h1<?php print $title_attributes; ?>><?php print $title ?></h1>
+    <header class="content-header">
+      <a class="print" href="/print/<?php print $nid; ?>"></a>
+      <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
     </header>
   <?php endif; ?>
   <div class="content-area clearfix">
