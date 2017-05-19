@@ -977,6 +977,14 @@ div.breadcrumb.you-are-here {
   .menu-name-os2web-menu-contentmenu {
     ul.menu.nav {
       .make-row();
+      display: flex;
+      -webkit-flex-flow: column wrap;
+      flex-flow: column wrap;
+      height: 12em;
+      @media @media-query-tablet-only {
+        height: 18em;        
+      }
+
       li {
         .make-sm-column(6);
         .make-md-column(3);
@@ -1916,6 +1924,9 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         content: none;
       }
     }
+  }
+  iframe {
+    max-width: 100%;
   }
 }
 .os2-node-full {
