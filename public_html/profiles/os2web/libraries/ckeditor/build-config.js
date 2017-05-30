@@ -1,5 +1,5 @@
 ﻿/**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
@@ -13,10 +13,10 @@
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/51772cf3b2b22b69c8cb3c9768b1f7a4
+ * (2) http://ckeditor.com/builder/09e36640eb97c5e9185d53daad5ba523
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/51772cf3b2b22b69c8cb3c9768b1f7a4
+ * (3) http://ckeditor.com/builder/download/09e36640eb97c5e9185d53daad5ba523
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,42 +25,39 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'flat',
+	skin: 'moono-lisa',
 	preset: 'full',
 	ignore: [
-		'.bender',
-		'bender.js',
-		'bender-err.log',
-		'bender-out.log',
-		'dev',
 		'.DS_Store',
+		'.bender',
 		'.editorconfig',
 		'.gitattributes',
 		'.gitignore',
-		'gruntfile.js',
 		'.idea',
 		'.jscsrc',
 		'.jshintignore',
 		'.jshintrc',
-		'less',
 		'.mailmap',
+		'bender-err.log',
+		'bender-out.log',
+		'bender.js',
+		'dev',
+		'gruntfile.js',
+		'less',
 		'node_modules',
 		'package.json',
-		'README.md',
 		'tests'
 	],
 	plugins : {
 		'a11ychecker' : 1,
 		'a11yhelp' : 1,
 		'about' : 1,
+		'autolink' : 1,
 		'basicstyles' : 1,
 		'bidi' : 1,
 		'blockquote' : 1,
-		'bootstrapVisibility' : 1,
-		'chart' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
-		'colordialog' : 1,
 		'contextmenu' : 1,
 		'dialogadvtab' : 1,
 		'div' : 1,
@@ -89,7 +86,6 @@ var CKBUILDER_CONFIG = {
 		'magicline' : 1,
 		'maximize' : 1,
 		'newpage' : 1,
-		'oembed' : 1,
 		'pagebreak' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
@@ -100,6 +96,7 @@ var CKBUILDER_CONFIG = {
 		'save' : 1,
 		'scayt' : 1,
 		'selectall' : 1,
+		'sharedspace' : 1,
 		'showblocks' : 1,
 		'showborders' : 1,
 		'smiley' : 1,
@@ -113,9 +110,6 @@ var CKBUILDER_CONFIG = {
 		'templates' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
-		'widgetbootstrap' : 1,
-		'widgetcommon' : 1,
-		'widgettemplatemenu' : 1,
 		'wsc' : 1,
 		'wysiwygarea' : 1
 	},

@@ -371,7 +371,7 @@ function os2web_base_panels_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'grid-3 alpha',
+    'css_class' => 'grid-3 alpha col-md-3',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -396,7 +396,7 @@ function os2web_base_panels_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'grid-3',
+    'css_class' => 'grid-3 col-md-3',
   );
   $pane->extras = array();
   $pane->position = 1;
@@ -421,7 +421,7 @@ function os2web_base_panels_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'grid-3',
+    'css_class' => 'grid-3 col-md-3',
   );
   $pane->extras = array();
   $pane->position = 2;
@@ -458,7 +458,7 @@ function os2web_base_panels_default_panels_mini() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'grid-3 omega',
+    'css_class' => 'grid-3 omega col-md-3',
   );
   $pane->extras = array();
   $pane->position = 3;

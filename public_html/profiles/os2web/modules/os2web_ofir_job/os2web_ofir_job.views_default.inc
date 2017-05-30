@@ -48,43 +48,45 @@ function os2web_ofir_job_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = FALSE;
-  /* Overskrift: Global: Unfiltered text */
+  /* Overskrift: Global: Ufiltreret tekst */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Syddjurs Kommune.<br />Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p><p><a href="https://syddjurs.emply.net/career/" target="_blank">Klik her for at gå til Karriercenter og jobagent</a></p>';
-  /* Forbindelse: Content: Stillingskategori (field_os2web_ofir_category) */
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Syddjurs Kommune.<br />
+Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>
+<p><a href="https://syddjurs.emply.net/career/" target="_blank">Klik her for at gå til Karriercenter og jobagent</a></p>';
+  /* Forbindelse: Indhold: Stillingskategori (field_os2web_ofir_category) */
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['id'] = 'field_os2web_ofir_category_tid';
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['table'] = 'field_data_field_os2web_ofir_category';
   $handler->display->display_options['relationships']['field_os2web_ofir_category_tid']['field'] = 'field_os2web_ofir_category_tid';
-  /* Felt: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filterkriterie: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2web_ofir_job' => 'os2web_ofir_job',
   );
-  /* Filterkriterie: Content: Stillingskategori (field_os2web_ofir_category) */
+  /* Filterkriterie: Indhold: Stillingskategori (field_os2web_ofir_category) */
   $handler->display->display_options['filters']['field_os2web_ofir_category_tid']['id'] = 'field_os2web_ofir_category_tid';
   $handler->display->display_options['filters']['field_os2web_ofir_category_tid']['table'] = 'field_data_field_os2web_ofir_category';
   $handler->display->display_options['filters']['field_os2web_ofir_category_tid']['field'] = 'field_os2web_ofir_category_tid';
@@ -111,7 +113,7 @@ function os2web_ofir_job_views_default_views() {
   );
   $handler->display->display_options['filters']['field_os2web_ofir_category_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_os2web_ofir_category_tid']['vocabulary'] = 'os2web_job_categories';
-  /* Filterkriterie: Content: Ansøgningsfrist - end date (field_os2web_ofir_job_period:value2) */
+  /* Filterkriterie: Indhold: Ansøgningsfrist - slutdato (field_os2web_ofir_job_period:value2) */
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['id'] = 'field_os2web_ofir_job_period_value2';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['table'] = 'field_data_field_os2web_ofir_job_period';
   $handler->display->display_options['filters']['field_os2web_ofir_job_period_value2']['field'] = 'field_os2web_ofir_job_period_value2';
@@ -139,10 +141,10 @@ function os2web_ofir_job_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('<p>Her kan du få et overblik over ledige stillinger i Syddjurs Kommune.<br />
-Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>'),
-    t('term from field_os2web_ofir_category'),
+Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>
+<p><a href="https://syddjurs.emply.net/career/" target="_blank">Klik her for at gå til Karriercenter og jobagent</a></p>'),
+    t('term fra field_os2web_ofir_category'),
     t('Page'),
-    t('more'),
   );
   $export['job_liste'] = $view;
 
@@ -183,11 +185,11 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Forbindelse: Content: Design (field_os2web_ofir_design) */
+  /* Forbindelse: Indhold: Design (field_os2web_ofir_design) */
   $handler->display->display_options['relationships']['field_os2web_ofir_design_tid']['id'] = 'field_os2web_ofir_design_tid';
   $handler->display->display_options['relationships']['field_os2web_ofir_design_tid']['table'] = 'field_data_field_os2web_ofir_design';
   $handler->display->display_options['relationships']['field_os2web_ofir_design_tid']['field'] = 'field_os2web_ofir_design_tid';
-  /* Felt: Taxonomy term: Billede */
+  /* Felt: Ord i ordforråd: Billede */
   $handler->display->display_options['fields']['field_os2web_job_image']['id'] = 'field_os2web_job_image';
   $handler->display->display_options['fields']['field_os2web_job_image']['table'] = 'field_data_field_os2web_job_image';
   $handler->display->display_options['fields']['field_os2web_job_image']['field'] = 'field_os2web_job_image';
@@ -199,12 +201,12 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
     'image_style' => 'syddjurs_content_image',
     'image_link' => '',
   );
-  /* Sorteringskriterie: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Kontekstuelt filter: Content: Nid */
+  /* Kontekstuelt filter: Indhold: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -219,14 +221,14 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'os2web_ofir_job' => 'os2web_ofir_job',
   );
-  /* Filterkriterie: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -265,7 +267,7 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Content: Stillingskategori */
+  /* Felt: Indhold: Stillingskategori */
   $handler->display->display_options['fields']['field_os2web_ofir_category']['id'] = 'field_os2web_ofir_category';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['table'] = 'field_data_field_os2web_ofir_category';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['field'] = 'field_os2web_ofir_category';
@@ -274,7 +276,7 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
 [field_os2web_ofir_category]';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['element_wrapper_type'] = 'div';
-  /* Felt: Content: Ansøgningsfrist */
+  /* Felt: Indhold: Ansøgningsfrist */
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['id'] = 'field_os2web_ofir_job_period';
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['table'] = 'field_data_field_os2web_ofir_job_period';
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['field'] = 'field_os2web_ofir_job_period';
@@ -290,7 +292,7 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Content: Kontaktperson */
+  /* Felt: Indhold: Kontaktperson */
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['id'] = 'field_os2web_ofir_contact_person';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['table'] = 'field_data_field_os2web_ofir_contact_person';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['field'] = 'field_os2web_ofir_contact_person';
@@ -299,7 +301,7 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
 [field_os2web_ofir_contact_person]';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['element_wrapper_type'] = 'div';
-  /* Felt: Content: Telefonnummer */
+  /* Felt: Indhold: Telefonnummer */
   $handler->display->display_options['fields']['field_os2web_ofir_contact_no']['id'] = 'field_os2web_ofir_contact_no';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_no']['table'] = 'field_data_field_os2web_ofir_contact_no';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_no']['field'] = 'field_os2web_ofir_contact_no';
@@ -308,7 +310,7 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
 [field_os2web_ofir_contact_no]';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_no']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_os2web_ofir_contact_no']['element_wrapper_type'] = 'div';
-  /* Felt: Content: Apply Link */
+  /* Felt: Indhold: Apply Link */
   $handler->display->display_options['fields']['field_os2web_ofir_apply_link']['id'] = 'field_os2web_ofir_apply_link';
   $handler->display->display_options['fields']['field_os2web_ofir_apply_link']['table'] = 'field_data_field_os2web_ofir_apply_link';
   $handler->display->display_options['fields']['field_os2web_ofir_apply_link']['field'] = 'field_os2web_ofir_apply_link';
@@ -332,10 +334,9 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('term from field_os2web_ofir_design'),
+    t('term fra field_os2web_ofir_design'),
     t('Alle'),
     t('Job header image'),
-    t('more'),
     t('Job Facts'),
     t('Stillingskategori'),
     t('<br />

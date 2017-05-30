@@ -10,7 +10,7 @@
 function os2web_webform_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-webform-body'
+  // Exported field_instance: 'node-webform-body'.
   $field_instances['node-webform-body'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -58,7 +58,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_attach'
+  // Exported field_instance: 'node-webform-field_os2web_webform_attach'.
   $field_instances['node-webform-field_os2web_webform_attach'] = array(
     'bundle' => 'webform',
     'deleted' => 0,
@@ -121,7 +121,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_editortags'
+  // Exported field_instance: 'node-webform-field_os2web_webform_editortags'.
   $field_instances['node-webform-field_os2web_webform_editortags'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -167,7 +167,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_kle'
+  // Exported field_instance: 'node-webform-field_os2web_webform_kle'.
   $field_instances['node-webform-field_os2web_webform_kle'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -213,7 +213,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_org'
+  // Exported field_instance: 'node-webform-field_os2web_webform_org'.
   $field_instances['node-webform-field_os2web_webform_org'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -259,7 +259,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_place'
+  // Exported field_instance: 'node-webform-field_os2web_webform_place'.
   $field_instances['node-webform-field_os2web_webform_place'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -305,7 +305,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_sitestruct'
+  // Exported field_instance: 'node-webform-field_os2web_webform_sitestruct'.
   $field_instances['node-webform-field_os2web_webform_sitestruct'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -349,7 +349,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_sofd'
+  // Exported field_instance: 'node-webform-field_os2web_webform_sofd'.
   $field_instances['node-webform-field_os2web_webform_sofd'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -395,7 +395,7 @@ function os2web_webform_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_os2web_webform_summary'
+  // Exported field_instance: 'node-webform-field_os2web_webform_summary'.
   $field_instances['node-webform-field_os2web_webform_summary'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,

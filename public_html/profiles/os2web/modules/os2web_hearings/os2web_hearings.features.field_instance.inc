@@ -10,7 +10,7 @@
 function os2web_hearings_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2web_hearings_hearing-body'
+  // Exported field_instance: 'node-os2web_hearings_hearing-body'.
   $field_instances['node-os2web_hearings_hearing-body'] = array(
     'bundle' => 'os2web_hearings_hearing',
     'default_value' => NULL,
@@ -61,7 +61,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing-field_os2web_hearings_enddate'
+  // 'node-os2web_hearings_hearing-field_os2web_hearings_enddate'.
   $field_instances['node-os2web_hearings_hearing-field_os2web_hearings_enddate'] = array(
     'bundle' => 'os2web_hearings_hearing',
     'default_value' => NULL,
@@ -77,6 +77,7 @@ function os2web_hearings_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -122,7 +123,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing-field_os2web_hearings_startdate'
+  // 'node-os2web_hearings_hearing-field_os2web_hearings_startdate'.
   $field_instances['node-os2web_hearings_hearing-field_os2web_hearings_startdate'] = array(
     'bundle' => 'os2web_hearings_hearing',
     'deleted' => 0,
@@ -137,6 +138,7 @@ function os2web_hearings_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 3,
@@ -182,7 +184,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing-field_os2web_hearings_url'
+  // 'node-os2web_hearings_hearing-field_os2web_hearings_url'.
   $field_instances['node-os2web_hearings_hearing-field_os2web_hearings_url'] = array(
     'bundle' => 'os2web_hearings_hearing',
     'default_value' => NULL,
@@ -266,7 +268,7 @@ function os2web_hearings_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2web_hearings_hearing_case-body'
+  // Exported field_instance: 'node-os2web_hearings_hearing_case-body'.
   $field_instances['node-os2web_hearings_hearing_case-body'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -346,7 +348,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_case_no'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_case_no'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_case_no'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -429,7 +431,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -469,7 +471,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_kle_ref'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_kle_ref'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_kle_ref'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -509,7 +511,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_lead_img'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_lead_img'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_lead_img'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'deleted' => 0,
@@ -578,7 +580,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_loca_ref'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_loca_ref'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_loca_ref'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -618,7 +620,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_organiz'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_organiz'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_organiz'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -658,7 +660,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_politics'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_politics'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_politics'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -699,7 +701,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_summary'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_summary'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_summary'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -775,7 +777,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_base_send_to_acadre'
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_send_to_acadre'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_send_to_acadre'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => array(
@@ -818,7 +820,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_enddate'
+  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_enddate'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_enddate'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'deleted' => 0,
@@ -833,6 +835,7 @@ function os2web_hearings_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -872,7 +875,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_files'
+  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_files'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_files'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'deleted' => 0,
@@ -932,7 +935,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_meeting'
+  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_meeting'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_meeting'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -976,7 +979,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_type'
+  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_type'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_type'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,
@@ -1015,7 +1018,7 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_piwik_stats'
+  // 'node-os2web_hearings_hearing_case-field_piwik_stats'.
   $field_instances['node-os2web_hearings_hearing_case-field_piwik_stats'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
     'default_value' => NULL,

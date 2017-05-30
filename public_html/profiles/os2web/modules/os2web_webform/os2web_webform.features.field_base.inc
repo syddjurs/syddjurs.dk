@@ -10,7 +10,7 @@
 function os2web_webform_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_webform_attach'
+  // Exported field_base: 'field_os2web_webform_attach'.
   $field_bases['field_os2web_webform_attach'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -33,7 +33,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_webform_editortags'
+  // Exported field_base: 'field_os2web_webform_editortags'.
   $field_bases['field_os2web_webform_editortags'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -60,7 +60,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_kle'
+  // Exported field_base: 'field_os2web_webform_kle'.
   $field_bases['field_os2web_webform_kle'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -87,7 +87,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_org'
+  // Exported field_base: 'field_os2web_webform_org'.
   $field_bases['field_os2web_webform_org'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -114,7 +114,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_place'
+  // Exported field_base: 'field_os2web_webform_place'.
   $field_bases['field_os2web_webform_place'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -141,7 +141,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_sitestruct'
+  // Exported field_base: 'field_os2web_webform_sitestruct'.
   $field_bases['field_os2web_webform_sitestruct'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -169,7 +169,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_sofd'
+  // Exported field_base: 'field_os2web_webform_sofd'.
   $field_bases['field_os2web_webform_sofd'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -196,7 +196,7 @@ function os2web_webform_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_os2web_webform_summary'
+  // Exported field_base: 'field_os2web_webform_summary'.
   $field_bases['field_os2web_webform_summary'] = array(
     'active' => 1,
     'cardinality' => 1,
