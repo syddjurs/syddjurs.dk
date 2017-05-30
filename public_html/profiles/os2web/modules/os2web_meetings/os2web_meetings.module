@@ -172,7 +172,7 @@ function _os2web_meetings_generate_search_data($entity) {
         foreach ($bpas as $bpa) {
           $node2 = node_load($bpa['target_id']);
           $body = field_get_items($entity_type, $node2, 'field_os2web_meetings_bpa_body');
-          $text = html_entity_decode(strip_tags(check_markup(array_pop(array_pop($body)), 'filtered_html')), 0, 'UTF-8');
+          $text = strip_tags(check_markup(array_pop(array_pop($body)), 'filtered_html'));
           $text = trim(preg_replace('/[\",;:.\'\(\)]/', ' ', $text));
           $text = trim(preg_replace('/\s\s+/', ' ', $text));
           $bps .= ' ' . $text;

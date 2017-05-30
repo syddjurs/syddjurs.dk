@@ -1,8 +1,11 @@
 logs
 sessions
 tmp
+site
 .idea
-
+simplesamlphp
+*.sql
+*.sql.gz
 batch
 os2web-deploy
 apache-nutch-1.6
@@ -14,3 +17,4 @@ public_html/sitemap_os2webscanner.xml
 /public_html/sites/syddjurs-bs3-30dec.dd
 /public_html/sites/syddjurs-bs3.dd
 /public_html/sites/syddjurs16.dd
+*.dd

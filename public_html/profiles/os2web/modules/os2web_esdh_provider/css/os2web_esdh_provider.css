@@ -11,6 +11,9 @@
 .agenda-item .item-list .field-items ul li {
     list-style: initial;
 }
+.agenda-item .item-list .field-items ol li{
+    list-style: decimal;
+}
 
 .item-list hr {
   background: #323232;
