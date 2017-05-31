@@ -221,11 +221,11 @@
                     <!-- Begin - content main -->
 
                     <?php if (!empty($page['sidebar_first']) && !empty($page['sidebar_second'])): ?>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-sm-6">
                     <?php endif; ?>
 
                     <?php if ( (!empty($page['sidebar_first']) && empty($page['sidebar_second'])) OR (empty($page['sidebar_first']) && !empty($page['sidebar_second']))): ?>
-                    <div class="col-xs-12 col-md-9">
+                    <div class="col-xs-12 col-sm-9">
                     <?php endif; ?>
 
                     <?php if (empty($page['sidebar_first']) && empty($page['sidebar_second'])): ?>
