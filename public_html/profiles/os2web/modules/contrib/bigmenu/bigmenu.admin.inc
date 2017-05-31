@@ -24,9 +24,9 @@ function bigmenu_overview_form($form, &$form_state, $menu, $depth = 1) {
     SELECT m.load_functions, m.to_arg_functions, m.access_callback, m.access_arguments, m.page_callback, m.page_arguments, m.title, m.title_callback, m.title_arguments, m.type, m.description, ml.*
     FROM {menu_links} ml LEFT JOIN {menu_router} m ON m.path = ml.router_path
     WHERE ml.menu_name = :menu_name
-    AND :p_depth = 0
+    AND $p_depth = 0
     ORDER BY p1 ASC, p2 ASC, p3 ASC, p4 ASC, p5 ASC, p6 ASC, p7 ASC, p8 ASC, p9 ASC";
-  $result = db_query($sql, array(':menu_name' => $menu['menu_name'], ':p_depth' => $p_depth), array('fetch' => PDO::FETCH_ASSOC));
+  $result = db_query($sql, array(':menu_name' => $menu['menu_name']), array('fetch' => PDO::FETCH_ASSOC));
   $links = array();
   foreach ($result as $item) {
     $links[] = $item;
@@ -39,7 +39,11 @@ function bigmenu_overview_form($form, &$form_state, $menu, $depth = 1) {
   menu_tree_check_access($tree, $node_links);
   $menu_admin = FALSE;
 
-  $new_form = _bigmenu_overview_tree_form($tree);
+  // If the user doesn't have the permission to use big menu, use core's form
+  $new_form = user_access('use bigmenu') ? _bigmenu_overview_tree_form($tree) : _menu_overview_tree_form($tree);
+  $cached_mlids = bigmenu_get_cached_mlids($form_state);
+  $new_form = array_merge($new_form, $cached_mlids);
+
   $new_form['#menu'] =  $menu;
   if (element_children($new_form)) {
     $new_form['submit'] = array(
@@ -55,6 +59,32 @@ function bigmenu_overview_form($form, &$form_state, $menu, $depth = 1) {
 }
 
 /**
+ * Get the menu items that have already been expanded to merge in with the form during it's construction
+ * @param $form_state
+ * @return array - The previously cached mlids, including those from expanded parents
+ */
+function bigmenu_get_cached_mlids($form_state) {
+  $cached_mlids = array();
+  if (!empty($form_state) && !empty($form_state['rebuild_info']) && !empty($form_state['rebuild_info']['copy'])) {
+    $form_build_id = $form_state['rebuild_info']['copy']['#build_id'];
+    $cached_form = form_get_cache($form_build_id, $form_state);
+
+    if (!empty($cached_form)) {
+      // We have previously expanded one of the menu items so extract the items that were in the cached form
+      // so that we can add them to the form that is being built now.
+      foreach ($cached_form as $key => $value) {
+        $matches = array();
+        if (preg_match('/mlid:([0-9]*)/', $key, $matches)) {
+          $cached_mlids[$key] = $value;
+        }
+      }
+    }
+  }
+
+  return $cached_mlids;
+}
+
+/**
  * Form for editing the immediate children of the given menu item id
  *
  * Invoked by menu callback or by json request
@@ -62,7 +92,6 @@ function bigmenu_overview_form($form, &$form_state, $menu, $depth = 1) {
  * @return FAPI form.
  */
 function bigmenu_slice_form($form, &$form_state, $menu, $menu_link, $depth = 2) {
-  $menu_slice = menu_get_menus();
 
   // DB lookup the children of this item
   global $menu_admin;
@@ -133,7 +162,7 @@ function bigmenu_slice_form_js($menu, $menu_link, $form_id, $form_build_id) {
   $form_state['build_info']['args'] = $args;
   $form_state['values'] = array();
   $form_state['rebuild_info']['copy']['#build_id'] = $form_build_id;
-  $form = drupal_rebuild_form($form_id, $form_state, array('#build_id' => $form_build_id));
+  drupal_rebuild_form($form_id, $form_state, array('#build_id' => $form_build_id));
 
   exit;
 }
@@ -189,7 +218,6 @@ function bigmenu_settings($form, &$form_state) {
 function _bigmenu_overview_tree_form($tree, $depth = 0) {
   $form = &drupal_static(__FUNCTION__, array('#tree' => TRUE));
   foreach ($tree as $data) {
-    $title = '';
     $item = $data['link'];
     // Don't show callbacks; these have $item['hidden'] < 0.
     if ($item && $item['hidden'] >= 0) {
@@ -244,7 +272,7 @@ function _bigmenu_overview_tree_form($tree, $depth = 0) {
           '!tooltip' => t('Click to expand and show child items'),
         );
         $text = strtr('<span class="bigmenu-toggle">+</span> <span class="count" title="!tooltip"><span class="hide-show">!show_children</span> (%count)</span>', $strings);
-        $indicator = l($text, "admin/structure/bigmenu-customize/{$item['menu_name']}/subform/{$item['mlid']}", array('html' => TRUE, 'attributes' => array('class' => array('bigmenu-childindictor'))));
+        $indicator = l($text, "admin/structure/menu/manage/{$item['menu_name']}/bigmenu-customize/subform/{$item['mlid']}", array('html' => TRUE, 'attributes' => array('class' => array('bigmenu-childindictor'))));
         $form[$mlid]['title']['#markup'] .= '<br/>' . $indicator;
         $form[$mlid]['#attributes']['class'][] = 'bigmenu-collapsed';
 

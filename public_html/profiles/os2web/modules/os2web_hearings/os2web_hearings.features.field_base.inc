@@ -10,7 +10,7 @@
 function os2web_hearings_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_os2web_base_case_no'
+  // Exported field_base: 'field_os2web_base_case_no'.
   $field_bases['field_os2web_base_case_no'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_os2web_base_send_to_acadre'
+  // Exported field_base: 'field_os2web_base_send_to_acadre'.
   $field_bases['field_os2web_base_send_to_acadre'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -56,7 +56,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_os2web_hearings_enddate'
+  // Exported field_base: 'field_os2web_hearings_enddate'.
   $field_bases['field_os2web_hearings_enddate'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -85,7 +85,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_hearings_files'
+  // Exported field_base: 'field_os2web_hearings_files'.
   $field_bases['field_os2web_hearings_files'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -108,7 +108,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_os2web_hearings_meeting'
+  // Exported field_base: 'field_os2web_hearings_meeting'.
   $field_bases['field_os2web_hearings_meeting'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -143,7 +143,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_os2web_hearings_startdate'
+  // Exported field_base: 'field_os2web_hearings_startdate'.
   $field_bases['field_os2web_hearings_startdate'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -172,7 +172,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_os2web_hearings_type'
+  // Exported field_base: 'field_os2web_hearings_type'.
   $field_bases['field_os2web_hearings_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -197,7 +197,7 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_os2web_hearings_url'
+  // Exported field_base: 'field_os2web_hearings_url'.
   $field_bases['field_os2web_hearings_url'] = array(
     'active' => 1,
     'cardinality' => 1,

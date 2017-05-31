@@ -1047,7 +1047,6 @@ function os2web_cp_service_preprocess_views_exposed_form(&$variables) {
           break;
 
         case 'filter-combine' && $variables['form']['#id'] == 'views-exposed-form-health-and-care-cp-case-search-block-1':
-          $widget->prefix = '<div class="filter-widgets-wrapper clearfix">';
           $widget->suffix = '<input type="submit" name="" value="Søg" class="form-submit"><div class="os2web_cp_service-ajax-loader ajax-loader"></div></div>';
           break;
 
@@ -1058,7 +1057,7 @@ function os2web_cp_service_preprocess_views_exposed_form(&$variables) {
       }
     }
  }
- 
+
   if ($variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-page' ||
       $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-panel-pane-1' ||
       $variables['form']['#id'] == 'views-exposed-form-os2web-cp-service-cp-case-search-default'){
