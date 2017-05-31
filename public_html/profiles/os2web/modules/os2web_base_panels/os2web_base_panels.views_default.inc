@@ -2557,7 +2557,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
 <div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
-<div class="selbetjening-bund" style="min-height: 40px; background-color: #8b0053"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>
+<div class="selbetjening-bund"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>
 ';
   $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -3811,7 +3811,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
 <div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
-<div class="selbetjening-bund" style="min-height: 40px; background-color: #8b0053"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>
+<div class="selbetjening-bund"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>
 '),
     t('<div class="sb-block-left"><ul class=""><li><a href="http://www.jobcentersyddjurs.dk/" title = "Jobcenter Syddjurs">Jobcenter Syddjurs</a></li><li><a href="https://www.borgeronline.dk/Default.aspx?municipalityId=706&groupId=6347155989974&formId=6347155998224" title="Plejebolig, Ansøg om">Plejebolig, Ansøg om</a></li><li><a href="/node/296665" title="Husk pas til ferien">Husk pas til ferien</a></li></ul></div>
 <div class="sb-block-right"><ul class=""><li><a href="/indhold/flytte" title="Flytte - flytteanmeldelse">Flytte - flytteanmeldelse</a></li><li><a href="http://webkort.syddjurs.dk/?profile=lokalplaner-borger" tabindex="118">Kort</a></li><li><a href="https://www.borgeronline.dk/Default.aspx?municipalityId=706&groupId=80&formId=kb7603ff" title="Børn/unge, underret om">Børn/unge, underret om</a></li></ul></div>
