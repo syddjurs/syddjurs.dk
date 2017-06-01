@@ -21,3 +21,12 @@ function syddjurs_special_content_render_children($node_nids) {
 
 
 }
+function syddjurs_special_content_preprocess_field(&$variables, $hook) {
+  if ($variables['element']['#field_name'] == "field_os2web_base_field_media") {
+    foreach ($variables['items'] as $key => $item) {
+      foreach ($item['#items'] as $item_key => $val) {
+        $variables['items'][$key]['#items'][$item_key]['filename'] = str_replace("_", " ", $val['filename']);
+      }
+    }
+  }
+}
