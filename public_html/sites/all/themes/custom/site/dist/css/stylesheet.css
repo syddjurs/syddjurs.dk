@@ -742,6 +742,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 .os2-node-full-body a {
   color: #D599A9;
 }
+.documenttable table {
+  width: 100%;
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
