@@ -17589,6 +17589,12 @@ fieldset[disabled] .os2-page-header .os2-page-header-search-form form .btn.focus
   content: "\f002";
   color: #ffffff;
 }
+html body {
+  -webkit-overflow-scrolling: visible;
+  overflow-scrolling: visible;
+  overflow-y: visible;
+  overflow-x: visible;
+}
 body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-link {
   display: block;
   background-color: rgba(0, 0, 0, 0.2);
