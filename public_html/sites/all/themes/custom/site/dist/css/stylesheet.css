@@ -407,7 +407,7 @@ ul.pagination li > a.progress-disabled {
 }
 .ajax-progress-bar {
   border-radius: 0 0 4px 4px;
-  border: 1px solid #f1f0ec;
+  border: 1px solid #f4eded;
   margin: -1px 0 0;
   padding: 6px 12px;
   width: 100%;
@@ -3313,7 +3313,7 @@ output {
   color: #9C1A5E;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #f1f0ec;
+  border: 1px solid #f4eded;
   border-radius: 4px;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -4670,7 +4670,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #9C1A5E;
   text-align: center;
   background-color: #ffffff;
-  border: 1px solid #f1f0ec;
+  border: 1px solid #f4eded;
   border-radius: 4px;
 }
 .input-group-addon.input-sm {
@@ -7277,8 +7277,6 @@ button.close {
 #block-block-3 .inverse:after,
 .inverse.contact-phonenumber-items:before,
 .inverse.contact-phonenumber-items:after,
-.del-bund:before,
-.del-bund:after,
 .news-list:before,
 .news-list:after,
 .megamenu-panel:before,
@@ -7332,7 +7330,6 @@ button.close {
 .quicktabs-wrapper .quicktabs-tabs:after,
 #block-block-3 .inverse:after,
 .inverse.contact-phonenumber-items:after,
-.del-bund:after,
 .news-list:after,
 .megamenu-panel:after,
 .megamenu-panel .menu-name-os2web-menu-contentmenu ul.menu.nav:after,
@@ -10117,7 +10114,7 @@ body .lead {
   background-color: #322354;
 }
 .background-color-light {
-  background-color: #f1f0ec;
+  background-color: #f4eded;
 }
 .background-overlay-dark {
   background-color: #25201f;
@@ -11003,26 +11000,26 @@ fieldset[disabled] .btn-quinary-faceless.focus {
 }
 .btn-light {
   color: #fff;
-  background-color: #f1f0ec;
-  border-color: #e6e4dd;
+  background-color: #f4eded;
+  border-color: #eadddd;
 }
 .btn-light:focus,
 .btn-light.focus {
   color: #fff;
-  background-color: #dbd9cf;
-  border-color: #b0aa94;
+  background-color: #e1cdcd;
+  border-color: #ba8e8e;
 }
 .btn-light:hover {
   color: #fff;
-  background-color: #dbd9cf;
-  border-color: #ccc9ba;
+  background-color: #e1cdcd;
+  border-color: #d3b7b7;
 }
 .btn-light:active,
 .btn-light.active,
 .open > .dropdown-toggle.btn-light {
   color: #fff;
-  background-color: #dbd9cf;
-  border-color: #ccc9ba;
+  background-color: #e1cdcd;
+  border-color: #d3b7b7;
 }
 .btn-light:active:hover,
 .btn-light.active:hover,
@@ -11034,8 +11031,8 @@ fieldset[disabled] .btn-quinary-faceless.focus {
 .btn-light.active.focus,
 .open > .dropdown-toggle.btn-light.focus {
   color: #fff;
-  background-color: #ccc9ba;
-  border-color: #b0aa94;
+  background-color: #d3b7b7;
+  border-color: #ba8e8e;
 }
 .btn-light:active,
 .btn-light.active,
@@ -11051,35 +11048,35 @@ fieldset[disabled] .btn-light:focus,
 .btn-light.disabled.focus,
 .btn-light[disabled].focus,
 fieldset[disabled] .btn-light.focus {
-  background-color: #f1f0ec;
-  border-color: #e6e4dd;
+  background-color: #f4eded;
+  border-color: #eadddd;
 }
 .btn-light .badge {
-  color: #f1f0ec;
+  color: #f4eded;
   background-color: #fff;
 }
 .btn-light-faceless {
   color: #fff;
   background-color: transparent;
-  border-color: #e6e4dd;
+  border-color: #eadddd;
 }
 .btn-light-faceless:focus,
 .btn-light-faceless.focus {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  border-color: #b0aa94;
+  border-color: #ba8e8e;
 }
 .btn-light-faceless:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  border-color: #ccc9ba;
+  border-color: #d3b7b7;
 }
 .btn-light-faceless:active,
 .btn-light-faceless.active,
 .open > .dropdown-toggle.btn-light-faceless {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  border-color: #ccc9ba;
+  border-color: #d3b7b7;
 }
 .btn-light-faceless:active:hover,
 .btn-light-faceless.active:hover,
@@ -11092,7 +11089,7 @@ fieldset[disabled] .btn-light.focus {
 .open > .dropdown-toggle.btn-light-faceless.focus {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  border-color: #b0aa94;
+  border-color: #ba8e8e;
 }
 .btn-light-faceless:active,
 .btn-light-faceless.active,
@@ -11109,7 +11106,7 @@ fieldset[disabled] .btn-light-faceless:focus,
 .btn-light-faceless[disabled].focus,
 fieldset[disabled] .btn-light-faceless.focus {
   background-color: transparent;
-  border-color: #e6e4dd;
+  border-color: #eadddd;
 }
 .btn-light-faceless .badge {
   color: transparent;
@@ -16559,7 +16556,7 @@ body .footer {
 .select2-container .select2-choices {
   background: none;
   padding: 0;
-  border-color: #f1f0ec;
+  border-color: #f4eded;
   border-radius: 4px;
   color: #9C1A5E;
   font-family: Arial, 'Source Sans Pro', sans-serif;
@@ -16570,7 +16567,7 @@ body .footer {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .select2-search input {
-  border-color: #f1f0ec;
+  border-color: #f4eded;
   border-radius: 4px;
   color: #9C1A5E;
   font-family: Arial, 'Source Sans Pro', sans-serif;
@@ -16934,7 +16931,7 @@ body .footer {
 .select2-container.select2-container-disabled .select2-choices {
   cursor: not-allowed;
   background-color: #ffffff;
-  border-color: #f1f0ec;
+  border-color: #f4eded;
 }
 .select2-container.select2-container-disabled .select2-choice .select2-arrow,
 .select2-container.select2-container-disabled .select2-choices .select2-arrow,
@@ -21265,7 +21262,6 @@ h2.block-title {
   margin-bottom: 20px;
 }
 .node-children article {
-  margin: 10px 20px;
   padding: 10px 10px;
   background-color: #f4eded;
   border-radius: 4px 4px;
@@ -21417,16 +21413,17 @@ div.node--os2web_base_iframe--full iframe {
 }
 .region-sidebar-second .view-os2web-base-panels-view-kle-link div.item-list ul {
   margin: 0 0 0 0;
-  padding: 0 12px;
-  background-color: #fafafa;
+  padding: 0 0 0 0;
+  background-color: #f4eded;
 }
 .region-sidebar-second .view-os2web-base-panels-view-kle-link div.item-list ul li {
   background-image: url(../img/right-links-block-item.png);
+  background-position-x: 5px;
   background-repeat: no-repeat;
   padding: 7px 0 7px 0;
   margin: 0 0 0 0;
   display: block;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #fff;
 }
 .region-sidebar-second .view-os2web-base-panels-view-kle-link div.item-list ul li span.field-content {
   display: block;
@@ -21689,7 +21686,7 @@ fieldset[disabled] .region-sidebar-second .view-os2web-contact-view-contact .vie
   background-color: #FFF;
 }
 .zone-footer .footer.region-footer-first .footer-content {
-  background: #f1f0ec;
+  background: #f4eded;
   margin: 3px;
   padding-top: 15px;
   color: #1a1a1a;
@@ -21776,7 +21773,7 @@ fieldset[disabled] .region-sidebar-second .view-os2web-contact-view-contact .vie
 .inverse h1 .inverse h2,
 .inverse h3,
 .inverse h4 {
-  color: #f1f0ec;
+  color: #f4eded;
 }
 .zone-footer h3 {
   font-size: 22px;
@@ -21957,12 +21954,9 @@ div.breadcrumb.you-are-here {
   color: #b4b4b4;
 }
 .del-bund {
-  margin-left: -10px;
-  margin-right: -10px;
   height: 61px;
   font-size: 13px;
-  margin-left: -4px;
-  background: #f1f0ec;
+  background: #f4eded;
   border-radius: 4px;
 }
 .del-bund a {
@@ -22159,7 +22153,7 @@ div.breadcrumb.you-are-here {
 .news-list {
   margin-left: -10px;
   margin-right: -10px;
-  background-color: #f1f0ec;
+  background-color: #f4eded;
   color: #4b494a;
   margin-left: 0;
   margin-right: 0;
@@ -22402,7 +22396,7 @@ div.breadcrumb.you-are-here {
   top: 39px;
   left: 0;
   margin-left: -5px;
-  background: #f1f0ec;
+  background: #f4eded;
   z-index: 999;
 }
 .megamenu-panel .js-megamenu-close {
@@ -22810,7 +22804,7 @@ ul.os2web_menus-container {
   background-image: url(../img/borgerdk-trans.png);
 }
 .front .pane-os2web-hearings {
-  border: 2px solid #f1f0ec;
+  border: 2px solid #f4eded;
   border-radius: 4px;
   padding: 10px;
 }
@@ -22950,7 +22944,7 @@ ul.os2web_menus-container {
 }
 .view-os2web-kulturnaut-events-lists .view-content {
   padding: 5px 0 0 0px;
-  background-color: #f1f0ec;
+  background-color: #f4eded;
 }
 .pane-kulturnaut-events-lister {
   margin-top: 20px;
@@ -23182,7 +23176,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 }
 .view-os2web-spotbox-view-spot .views-row,
 .spotbox .views-row {
-  border: 2px solid #f1f0ec;
+  border: 2px solid #f4eded;
   border-radius: 4px;
   padding: 10px;
   width: auto;
@@ -23238,8 +23232,8 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 }
 .view-os2web-spotbox-view-spot.spotbox-horisontal-3 .view-content .spotbox-row.views-row-even,
 .spotbox.spotbox-horisontal-3 .view-content .spotbox-row.views-row-even {
-  border-left: 1px solid #f1f0ec;
-  border-right: 1px solid #f1f0ec;
+  border-left: 1px solid #f4eded;
+  border-right: 1px solid #f4eded;
 }
 .view-os2web-spotbox-view-spot.spotbox-indhold,
 .spotbox.spotbox-indhold {
@@ -23267,7 +23261,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 }
 .view-os2web-spotbox-view-spot.spotbox-horisontal .view-content .spotbox-row .wrapper,
 .spotbox.spotbox-horisontal .view-content .spotbox-row .wrapper {
-  border: solid 1px #f1f0ec;
+  border: solid 1px #f4eded;
   margin-bottom: 10px;
   padding: 10px;
 }
@@ -23313,7 +23307,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
   background-position: 5px 18px;
   font-size: 15px;
   line-height: 16px;
-  border: 1px solid #f1f0ec;
+  border: 1px solid #f4eded;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
@@ -23401,7 +23395,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 .portal-borger .custom-slideshow .views-field-body a,
 .portal-erhverv .custom-slideshow .views-field-body a {
   margin-top: 0px;
-  border: 1px solid #f1f0ec;
+  border: 1px solid #f4eded;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
@@ -23479,7 +23473,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 .portal-politik-og-planer .pane-os2web-base-panels-view-selfserv,
 .portal-borger .pane-os2web-base-panels-view-selfserv,
 .portal-erhverv .pane-os2web-base-panels-view-selfserv {
-  background-color: #f1f0ec;
+  background-color: #f4eded;
 }
 .portal-side .view-id-os2web_kulturnaut_events_lists .views-row,
 .portal-politik-og-planer .view-id-os2web_kulturnaut_events_lists .views-row,
@@ -23574,7 +23568,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 .portal-politik-og-planer .erhvervsraadgiver .os2-box,
 .portal-borger .erhvervsraadgiver .os2-box,
 .portal-erhverv .erhvervsraadgiver .os2-box {
-  background-color: #f1f0ec;
+  background-color: #f4eded;
 }
 .portal-side .links-erhverv .os2-box .os2-box-heading,
 .portal-politik-og-planer .links-erhverv .os2-box .os2-box-heading,
@@ -23856,7 +23850,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
     border-bottom: 3px solid #9C1A5E;
   }
   ul.os2web_menus-container li.open {
-    background-color: #f1f0ec;
+    background-color: #f4eded;
   }
   .front .spotbox-normal.spotbox-2-vertical .news-list-right {
     padding-top: 10px;

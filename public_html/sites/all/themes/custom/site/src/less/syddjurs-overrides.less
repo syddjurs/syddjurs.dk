@@ -18,15 +18,14 @@ h2.block-title {
     }
 .node-children {
   margin-bottom: 20px;
-}
-.node-children article {
-  margin: 10px 20px;
+  article {
   padding: 10px 10px;
-  background-color: #f4eded;
+  background-color: @brand-light;
   border-radius: 4px 4px;
-}
-.node-children article h3 a {
-  border-bottom: 2px solid;
+    h3 a {
+    border-bottom: 2px solid;
+    }
+  }
 }
 
 h2.pane-title a,
@@ -189,15 +188,16 @@ div.node--os2web_base_iframe--full {
   .view-os2web-base-panels-view-kle-link {
     div.item-list ul {
       margin: 0 0 0 0;
-      padding: 0 12px;
-      background-color: #fafafa;  
+      padding: 0 0 0 0;
+      background-color: @brand-light;  
       li {
         background-image: url(../img/right-links-block-item.png);
+        background-position-x: 5px;
         background-repeat: no-repeat;
         padding: 7px 0 7px 0;
         margin: 0 0 0 0;
         display: block;
-        border-bottom: 1px solid #ededed;
+        border-bottom: 1px solid #fff;
         span.field-content {
           display: block;
           margin: 0 20px;
@@ -577,11 +577,9 @@ div.breadcrumb.you-are-here {
 }
 
 .del-bund {
-  .make-row();
   height: 61px;
   font-size: 13px;
-  margin-left: -4px;
-  background: #f1f0ec;
+  background: @brand-light;
   border-radius: 4px;
   a {
     text-decoration: none;
@@ -747,7 +745,7 @@ div.breadcrumb.you-are-here {
 
 .news-list {
   .make-row();
-  background-color: #f1f0ec;
+  background-color: @brand-light;
   color: #4b494a;
   border-radius: 4px;
   margin-left: 0;
@@ -940,7 +938,7 @@ div.breadcrumb.you-are-here {
   top: 39px;
   left: 0;
   margin-left: -5px;
-  background: #f1f0ec;
+  background: @brand-light;
   z-index: 999;
   .js-megamenu-close {
     background-image: url(../img/delete-icon.png);
@@ -1328,7 +1326,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .front {
   .pane-os2web-hearings {
-    border: 2px solid #f1f0ec;
+    border: 2px solid @brand-light;
     border-radius: 4px;
     padding: 10px;
     a {
@@ -1473,7 +1471,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 .view-os2web-kulturnaut-events-lists .view-content {
     padding: 5px 0 0 0px;
-    background-color: #f1f0ec;
+    background-color: @brand-light;
 }
 
 .pane-kulturnaut-events-lister {
@@ -1650,7 +1648,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
   .views-row {
-    border: 2px solid #f1f0ec;
+    border: 2px solid @brand-light;
     border-radius: 4px;
     padding: 10px;
     width: auto;
@@ -1683,8 +1681,8 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         .make-sm-column(6);
         .make-md-column(4);
         &.views-row-even {
-          border-left: 1px solid #f1f0ec;
-          border-right: 1px solid #f1f0ec;
+          border-left: 1px solid @brand-light;
+          border-right: 1px solid @brand-light;
         }
       }
     }
@@ -1699,7 +1697,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
         .make-sm-column(6);
         padding-left: 5px;
         .wrapper {
-          border: solid 1px #f1f0ec;
+          border: solid 1px @brand-light;
           margin-bottom: 10px;
           padding: 10px;
           h2.pane-title {
@@ -1743,7 +1741,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   background-position: 5px 18px;
   font-size: 15px;
   line-height: 16px;
-  border: 1px solid #f1f0ec;
+  border: 1px solid @brand-light;
   .border-bottom-radius(4px);
   a {
     color: #333;
@@ -1814,7 +1812,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
   .custom-slideshow .views-field-body a {
     margin-top: 0px;
-    border: 1px solid #f1f0ec;
+    border: 1px solid @brand-light;
     .border-bottom-radius(4px);
   }
   .view-os2web-base-panels-view-newslist {
@@ -1858,7 +1856,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
     }
   }
   .pane-os2web-base-panels-view-selfserv {
-    background-color: #f1f0ec;
+    background-color: @brand-light;
   }
 
   .view-id-os2web_kulturnaut_events_lists {
@@ -1901,7 +1899,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
   .links-erhverv,
   .erhvervsraadgiver {
     .os2-box {
-      background-color: #f1f0ec;
+      background-color: @brand-light;
       .os2-box-heading {
         border-bottom: 1px solid #FFF;
         h2 {
@@ -2153,7 +2151,7 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
           }
         }
       &.open {
-        background-color: #f1f0ec;
+        background-color: @brand-light;
       }
     }
 
