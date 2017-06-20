@@ -40,7 +40,6 @@
   </div>
   <?php if ($view_mode != 'os2web_meetings_meeting_detail_view'): ?>
 
-    <?php print render($content['comments']); ?>
     <?php if (arg(0) == 'node' && is_numeric(arg(1)) && $page) : ?>
       <div class="del-bund">
         <div class="del">
