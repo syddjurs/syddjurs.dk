@@ -21261,6 +21261,18 @@ h2.block-title {
   padding-top: 7px;
   font-weight: bolder;
 }
+.node-children {
+  margin-bottom: 20px;
+}
+.node-children article {
+  margin: 10px 20px;
+  padding: 10px 10px;
+  background-color: #f4eded;
+  border-radius: 4px 4px;
+}
+.node-children article h3 a {
+  border-bottom: 2px solid;
+}
 h2.pane-title a,
 h2.block-title a {
   line-height: 24px;

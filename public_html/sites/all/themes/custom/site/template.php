@@ -3,6 +3,9 @@
 /**
  * Implements theme_preprocess_html().
  */
+ 
+
+
 function site_preprocess_html(&$variables) {
   $theme_path = path_to_theme();
 
@@ -51,7 +54,32 @@ function site_css_alter(&$css) {
 /*
  * Implements theme_preprocess_page().
  */
+ 
 function site_preprocess_page(&$variables) {
+  $node = NULL;
+  if (isset($variables['node']) && !empty($variables['node']->nid)) {
+    $node = $variables['node'];
+  }
+  // If display children is been set, so get the children nodes..
+  if ($node && $display_children = field_get_items('node', $node, 'field_os2web_base_field_children')) {
+    if ($node->type == 'os2web_base_contentpage' && $display_children[0]['value'] == 1) {
+      $children = syddjurs_special_content_get_children();
+      if ($children) {
+        $children_render = syddjurs_special_content_render_children($children);
+        $variables['page']['content']['content']['content']['system_main']['nodes'][$node->nid]['node_children'] = array(
+          'node_children' => array(
+            '#markup' => drupal_render($children_render),
+          ),
+          '#theme_wrappers' => array('container'),
+          '#attributes' => array(
+            'class' => array('node-children'),
+          ),
+          '#weight' => 10,
+        );
+      }
+    }
+  }
+
   $current_theme = variable_get('theme_default','none');
   $primary_navigation_name = variable_get('menu_main_links_source', 'main-menu');
   $secondary_navigation_name = variable_get('menu_secondary_links_source', 'user-menu');

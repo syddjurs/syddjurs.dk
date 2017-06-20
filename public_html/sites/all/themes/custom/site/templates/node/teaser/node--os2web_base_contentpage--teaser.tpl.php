@@ -15,11 +15,11 @@
       <?php if (isset($content['field_os2web_base_field_summary'])): ?>
         <!-- Begin - intro -->
         <div class="os2-node-teaser-body-content">
-          <?php print render($content['field_os2web_base_field_summary']); ?>
+         <?php print render($content['field_os2web_base_field_summary']); ?>
         </div>
         <!-- End - intro -->
       <?php endif; ?>
-
+      <?php print render($content['body']); ?>
     </div>
     <!-- End - body -->
 
