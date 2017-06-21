@@ -35,6 +35,15 @@ function site_preprocess_html(&$variables) {
 
   // Load jQuery UI
   drupal_add_library('system', 'ui');
+
+  $format_detection = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'format-detection',
+      'content' => 'telephone=no',
+    ),
+  );
+  drupal_add_html_head($format_detection, 'format-detection-telephone');
 }
 
 /*
