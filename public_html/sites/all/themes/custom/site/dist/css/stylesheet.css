@@ -21269,6 +21269,9 @@ h2.block-title {
 .node-children article h3 a {
   border-bottom: 2px solid;
 }
+article .field-name-field-os2web-hearings-type {
+  font-weight: bold !important;
+}
 h2.pane-title a,
 h2.block-title a {
   line-height: 24px;
