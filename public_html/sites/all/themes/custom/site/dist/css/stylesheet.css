@@ -17633,6 +17633,10 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
   height: 5px;
   background-color: #4a4a4a;
 }
+.field-widget-imagefield-crop-widget img {
+  max-width: none !important;
+  height: none !important;
+}
 @media screen {
 }
 @media screen and (max-width: 767px) {
