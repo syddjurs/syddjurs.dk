@@ -92,7 +92,6 @@
 
   <?php
   if ($node->type == 'os2web_borger_dk_article') {
-
     $content_field = array();
     $fields = $node->os2web_borger_dk_article['field_settings'];
     // First get admin display settings.
