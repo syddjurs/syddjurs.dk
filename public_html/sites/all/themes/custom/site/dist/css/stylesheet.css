@@ -22301,6 +22301,87 @@ div.breadcrumb.you-are-here {
   color: #4b494a;
   float: left;
 }
+@media screen and (max-width: 767px) {
+  /* Selvbetjening */
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv ul li {
+    width: 100%!important;
+  }
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv .view-header {
+    margin-bottom: 15px;
+  }
+  .selvbetjening-block-forside a {
+    font-size: 16px!important;
+  }
+  .selvbetjening-block-forside .knapper a.nemindsigt {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv .selbetjening-bund {
+    margin-top: 25px;
+  }
+  .selbetjening-bund {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .selbetjening-bund a {
+    width: 100%!important;
+    background-position: left 20px center!important;
+    height: 50px;
+    background-size: 100px;
+  }
+  .selbetjening-bund a.nemid {
+    background-image: url('../img/nemid-hvid.png') !important;
+    position: relative;
+  }
+  .selbetjening-bund a.borgerdk {
+    background-image: url('../img/borgerdk-hvid.png') !important;
+    background-size: 125px;
+    position: relative;
+  }
+  .selbetjening-bund a.virkdk {
+    background-image: url('../img/virkdk-hvid.png') !important;
+    background-size: 150px;
+    position: relative;
+  }
+  a.nemid:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+  a.borgerdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+  a.virkdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+}
 .custom-slideshow .views-slideshow-pager-field-item.active .views-field-title .item-bg {
   background: url(../img/slide-nav-arrow.png) no-repeat 2% 48% transparent;
   color: #fff;
@@ -22768,8 +22849,8 @@ ul.os2web_menus-container {
 .item-list a {
   background: url("../img/mega_dd_arrow_right.png") no-repeat;
   background-position-x: 3px;
-  background-position-y: 3px;
-  padding-left: 15px;
+  background-position-y: 5px;
+  padding-left: 20px;
   display: block;
 }
 .item-list ul {
