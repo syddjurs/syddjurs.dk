@@ -202,7 +202,7 @@ function _os2web_hearings_send_to_acadre($node) {
 
   $params = array(
     'subject' => 'Høringspublicering: ' . $vars['case_no'],
-    'body'    => check_plain(theme('os2web_hearings_email', $vars)),
+    'body'    => theme('os2web_hearings_email', $vars),
     'from'    => $from,
   );
 
