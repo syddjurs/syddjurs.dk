@@ -22301,6 +22301,209 @@ div.breadcrumb.you-are-here {
   color: #4b494a;
   float: left;
 }
+@media screen and (max-width: 767px) {
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv ul li {
+    width: 100%!important;
+  }
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv .view-header {
+    margin-bottom: 15px;
+  }
+  .selvbetjening-block-forside a {
+    font-size: 16px!important;
+  }
+  .selvbetjening-block-forside .knapper a.nemindsigt {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .os2-panels-right-sidebar .view-os2web-base-panels-view-selfserv .selbetjening-bund {
+    margin-top: 25px;
+  }
+  .selbetjening-bund {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .selbetjening-bund a {
+    width: 100%!important;
+    background-position: left 20px center!important;
+    height: 50px;
+    background-size: 100px;
+  }
+  .selbetjening-bund a.nemid {
+    background-image: url('../img/nemid-hvid.png') !important;
+    position: relative;
+  }
+  .selbetjening-bund a.borgerdk {
+    background-image: url('../img/borgerdk-hvid.png') !important;
+    background-size: 125px;
+    position: relative;
+  }
+  .selbetjening-bund a.virkdk {
+    background-image: url('../img/virkdk-hvid.png') !important;
+    background-size: 150px;
+    position: relative;
+  }
+  a.nemid:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+  a.borgerdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+  a.virkdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+  .spotbox-row .news-list-right,
+  .spotbox-row .news-list-left {
+    padding-bottom: 10px;
+  }
+  .view-os2web-kulturnaut-events-lists .views-row-first {
+    display: flex;
+    align-items: center;
+  }
+  .view-os2web-kulturnaut-events-lists .views-row-first .views-field a {
+    padding: 0!important;
+    margin: 0!important;
+    height: inherit!important;
+    text-align: inherit!important;
+  }
+  .view-os2web-kulturnaut-events-lists .views-row {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+  .view-os2web-kulturnaut-events-lists ul .views-row .views-field-title a {
+    padding: 0!important;
+  }
+  .video-text {
+    border: none!important;
+  }
+  .spotbox.spotbox-horisontal .view-content .spotbox-row .wrapper {
+    border: none!important;
+  }
+  .footer-content .panel-display {
+    font-size: 14px!important;
+  }
+  .footer-contact-inner {
+    line-height: 22px!important;
+  }
+  .footer-contact-inner p {
+    margin-bottom: 10px;
+  }
+  .footer.content .panel-pane {
+    margin: 0!important;
+  }
+  #block-block-3 .inverse .footer-address {
+    font-size: 14px!important;
+    margin-top: 5px!important;
+  }
+  footer a {
+    background: url(../img/mega_dd_arrow_right.png) no-repeat !important;
+    background-size: 6px!important;
+    background-position: 0px!important;
+    padding-left: 15px;
+  }
+  .no-arrow {
+    background-image: none!important;
+    padding-left: 0!important;
+  }
+  .phonenumber a {
+    padding: 0;
+    font-weight: bold;
+    text-decoration: underline;
+    opacity: 0.80;
+  }
+  .phonenumber-item h3 {
+    margin-bottom: 10px!important;
+    margin-top: 10px!important;
+  }
+  .menu-block-wrapper .menu {
+    font-size: 16px!important;
+  }
+  .view-os2web-kulturnaut-events-lists .view-content {
+    background: none!important;
+  }
+  .view-os2web-kulturnaut-events-lists .view-content ul li {
+    background: #9C1A5E!important;
+    border-radius: 4px!important;
+    border: none!important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .view-os2web-kulturnaut-events-lists .view-content ul li a {
+    font-size: 16px!important;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+  }
+  .os2-box-body p {
+    font-size: 16px!important;
+  }
+  .links-erhverv .os2-box-body a {
+    background: url(../img/mega_dd_arrow_right.png) no-repeat !important;
+    background-size: 6px!important;
+    background-position: 0px!important;
+    padding-left: 15px;
+  }
+  .portal-erhverv .view-os2web-base-panels-view-newslist .news-list-right-small {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+  }
+  .portal-erhverv .view-os2web-base-panels-view-newslist .news-list-right-small a {
+    line-height: 22px!important;
+  }
+  .field-type-text-with-summary h2 a {
+    background: url(../img/mega_dd_arrow_right.png) no-repeat !important;
+    background-size: 6px!important;
+    background-position: 0px!important;
+    padding-left: 15px;
+  }
+  .region-sidebar-second .view-os2web-contact-view-contact {
+    font-size: 16px!important;
+  }
+  .view-os2web-base-panels-view-newslist .views-row {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    line-height: 22px!important;
+  }
+  article {
+    font-size: 16px!important;
+    line-height: 24px;
+  }
+}
+.portal-side .pane-os2web-base-panels-view-selfserv,
+.portal-politik-og-planer {
+  background: none!important;
+}
 .custom-slideshow .views-slideshow-pager-field-item.active .views-field-title .item-bg {
   background: url(../img/slide-nav-arrow.png) no-repeat 2% 48% transparent;
   color: #fff;
@@ -22768,8 +22971,8 @@ ul.os2web_menus-container {
 .item-list a {
   background: url("../img/mega_dd_arrow_right.png") no-repeat;
   background-position-x: 3px;
-  background-position-y: 3px;
-  padding-left: 15px;
+  background-position-y: 5px;
+  padding-left: 20px;
   display: block;
 }
 .item-list ul {
