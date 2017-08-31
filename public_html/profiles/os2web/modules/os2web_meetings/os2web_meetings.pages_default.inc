@@ -17,7 +17,7 @@ function os2web_meetings_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 3;
+  $handler->weight = -24;
   $handler->conf = array(
     'title' => 'Dagsordenvisning',
     'no_blocks' => 0,
