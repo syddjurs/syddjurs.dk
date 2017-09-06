@@ -766,6 +766,18 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 .documenttable table {
   width: 100%;
 }
+@media screen and (max-width: 767px) {
+  .table-responsive-stacked.table > thead > tr > th:before,
+  .table-responsive-stacked.table > tbody > tr > th:before,
+  .table-responsive-stacked.table > tfoot > tr > th:before,
+  .table-responsive-stacked.table > thead > tr > td:before,
+  .table-responsive-stacked.table > tbody > tr > td:before,
+  .table-responsive-stacked.table > tfoot > tr > td:before {
+    word-break: normal;
+    word-wrap: break-word;
+    white-space: pre-wrap !important;
+  }
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

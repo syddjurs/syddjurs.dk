@@ -841,3 +841,27 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 .documenttable table {
   width: 100%;
 }
+@media @media-query-mobile-only{
+
+  // Stacked responsive tables
+  .table-responsive-stacked {
+    &.table {
+      > thead,
+      > tbody,
+      > tfoot {
+
+        > tr {
+
+          > th,
+          > td {
+           &:before {
+            word-break: normal;
+            word-wrap: break-word;
+            white-space: pre-wrap !important;
+           }
+          }
+        }
+      }
+    }
+  }
+}
