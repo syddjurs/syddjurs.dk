@@ -23295,7 +23295,7 @@ ul.os2web_menus-container {
   content: 'Ansøgningsfrist';
   display: inline-block;
   float: right;
-  color: #333;
+  color: #9C1A5E;
   font-size: 12px;
   font-weight: bold;
 }
@@ -23303,11 +23303,21 @@ ul.os2web_menus-container {
   border-bottom: 3px solid #9C1A5E;
   padding-bottom: 5px;
   font-size: 16px;
+  margin-top: 30px;
+  font-weight: bold;
 }
 .view-emply-jobliste.view-display-id-panel_pane_1 .row {
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
+}
+.view-emply-jobliste.view-display-id-panel_pane_1 .row strong {
+  margin-bottom: 7px;
+  display: block;
+  color: #333;
+}
+.view-emply-jobliste.view-display-id-panel_pane_1 .row strong a {
+  color: #333;
 }
 .view-id-os2web_ofir_job_header_image.view-display-id-block_2 .views-field {
   margin-bottom: 20px;
