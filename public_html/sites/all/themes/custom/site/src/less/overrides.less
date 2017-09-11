@@ -842,7 +842,66 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   width: 100%;
 }
 @media @media-query-mobile-only{
+ .view-os2web-meetings-meeting-details .bullet-point-attachments {
+    .table-responsive-stacked {
+    &.table {
+      > thead,
+      > tbody,
+      > tfoot {
 
+        > tr {
+
+          > th,
+          > td {
+            &.views-field-title {
+              width: 80%;
+             &.open {
+             display: block;
+            } 
+            } 
+            
+          &,
+            &:first-child,
+            &:last-child {
+              padding-left: 0 !important;
+              display: inline-flex;
+            }
+          }
+        }
+      }
+    }
+    }
+    }
+   .view-os2web-meetings-meeting-details {
+    .table-responsive-stacked {
+    .field-name-field-os2web-meetings-bpa-body table {
+      > thead,
+      > tbody,
+      > tfoot {
+
+        > tr {
+
+          > th,
+          > td {
+            &.views-field-title {
+              width: 80%;
+             &.open {
+             display: block;
+            } 
+            } 
+            
+          &,
+            &:first-child,
+            &:last-child {
+              padding-left: 0 !important;
+              display: table-cell;
+            }
+          }
+        }
+      }
+    }
+    }
+    }
   // Stacked responsive tables
   .table-responsive-stacked {
     &.table {
