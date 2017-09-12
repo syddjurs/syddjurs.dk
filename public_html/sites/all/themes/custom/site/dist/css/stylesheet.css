@@ -767,6 +767,80 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   width: 100%;
 }
 @media screen and (max-width: 767px) {
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > td.views-field-title,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td.views-field-title,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td.views-field-title {
+    width: 80%;
+  }
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > td.views-field-title.open,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td.views-field-title.open,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td.views-field-title.open {
+    display: block;
+  }
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > th,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > th,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > th,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > td,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > thead > tr > td:last-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td:last-child,
+  .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td:last-child {
+    padding-left: 0 !important;
+    display: inline-block;
+  }
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > th.views-field-title,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > td.views-field-title,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > td.views-field-title,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > td.views-field-title {
+    width: 80%;
+  }
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > th.views-field-title.open,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > td.views-field-title.open,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > td.views-field-title.open,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > td.views-field-title.open {
+    display: block;
+  }
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > th,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > td,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > td,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > td,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > th:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > td:first-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > th:last-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > td:last-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > td:last-child,
+  .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tfoot > tr > td:last-child {
+    padding-left: 0 !important;
+    display: table-cell;
+  }
   .table-responsive-stacked.table > thead > tr > th:before,
   .table-responsive-stacked.table > tbody > tr > th:before,
   .table-responsive-stacked.table > tfoot > tr > th:before,
