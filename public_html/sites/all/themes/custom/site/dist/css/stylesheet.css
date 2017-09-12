@@ -802,7 +802,7 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tbody > tr > td:last-child,
   .view-os2web-meetings-meeting-details .bullet-point-attachments .table-responsive-stacked.table > tfoot > tr > td:last-child {
     padding-left: 0 !important;
-    display: inline-flex;
+    display: inline-block;
   }
   .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > thead > tr > th.views-field-title,
   .view-os2web-meetings-meeting-details .table-responsive-stacked .field-name-field-os2web-meetings-bpa-body table > tbody > tr > th.views-field-title,
