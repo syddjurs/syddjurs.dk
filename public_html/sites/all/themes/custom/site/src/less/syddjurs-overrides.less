@@ -838,6 +838,121 @@ div.breadcrumb.you-are-here {
   }
 }
 
+// Weird border on blocks
+
+.video-text, .spotbox-row .wrapper {
+    border: none!important;
+}
+
+// Selvbetjening
+
+.selbetjening-bund {
+    display: flex;
+    flex-direction: column;
+}
+.selbetjening-bund a {
+    width: 100%!important;
+    display: flex;
+}
+
+a.nemid:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+
+a.borgerdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+
+a.virkdk:after {
+    background: url(../img/mega_dd_arrow_right_sel.png) no-repeat !important;
+    background-size: 7px!important;
+    background-position: right 10px center!important;
+    content: " ";
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+
+
+.selbetjening-bund a.nemid {
+        background-image: url('../../dist/img/nemid-hvid.png')!important;
+        position: relative;
+    background-size: 70px;
+    background-position: 20px;
+    }
+
+.selbetjening-bund a.borgerdk {
+    background-image: url('../../dist/img/borgerdk-hvid.png')!important;
+       position: relative;
+    background-size: 100px;
+    background-position: 20px 13px;
+}
+
+.selbetjening-bund a.virkdk {
+        background-image: url('../../dist/img/virkdk-hvid.png')!important;
+      position: relative;
+    background-size: 100px;
+    background-position: 20px; 
+}
+
+
+
+// Footer
+    
+    .footer-content .panel-display {
+        font-size: 14px!important;
+    }
+    .footer-contact-inner {
+        line-height: 22px!important;
+    }
+    .footer-contact-inner p {
+        margin-bottom: 10px;
+    }
+    
+    .footer.content .panel-pane {
+        margin: 0!important;
+    }
+    #block-block-3 .inverse .footer-address {
+        font-size: 14px!important;
+        margin-top: 5px!important;
+    }
+    
+    // Link with correct arrow
+    
+    footer a {
+        background: url(../img/mega_dd_arrow_right.png) no-repeat!important;
+        background-size: 6px!important;
+        background-position: 0px!important;
+        padding-left: 15px;
+    }
+    
+    .no-arrow {
+        background-image: none!important;
+        padding-left: 0!important;
+    }
+    
+
 @media @media-query-mobile-only {
     // Frontpage
     
@@ -2508,6 +2623,66 @@ ul.menu li ul li a.active { color: #FFF; background-image: url(../img/menu-marke
 
 // Desktop
 @media @media-query-desktop {
+    
+    // Contact box 
+    .os2-box-body h3 {
+        font-size: 16px!important;
+    }
+    .selvbetjening-block-forside a {
+        font-size: 16px!important;
+    }
+    
+    .view-os2web-citizenservices-view li a {
+        padding-left: 20px!important;
+    }
+    
+    .view-os2web-base-panels-view-selfserv ul {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .field-name-field-os2web-base-field-image {
+        margin-bottom: 20px;
+    }
+    .region-sidebar-second .view-os2web-contact-view-contact {
+        font-size: 14px;
+        line-height: 24px;
+      
+    }
+      .view-id-os2web_contact_view_contact .telfonnummer {
+            margin-top: 15px!important;
+            margin-bottom: 0px!important;
+        }
+    .phonenumber a {
+        padding-left: 0!important;
+    }
+    .view-os2web-contact-view-contact h3, .region-sidebar-second .view-os2web-contact-view-contact h3 {
+        font-size: 16px;
+    }
+    
+    // Events 
+.front .view-os2web-kulturnaut-events-lists ul {
+    display: flex;
+    width: 100%;
+    margin: 0!important;
+    padding: 10px;
+    padding-top: 5px;
+}
+.view-os2web-kulturnaut-events-lists ul li {
+    width: 100%!important;
+}
+    
+    .view-os2web-kulturnaut-events-lists .views-field span a {
+        height: 100%!important;
+    display: flex!important;
+    justify-content: flex-start!important;
+    align-items: center!important;
+    margin: 0!important;
+    padding: 0!important;
+    }
+    .front .view-os2web-kulturnaut-events-lists .views-field-imported-1 {
+        padding-top: 5px;
+    }
 .megamenu-panel {
       width: (@container-lg - 30px);
 }
