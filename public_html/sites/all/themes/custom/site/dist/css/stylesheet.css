@@ -24324,7 +24324,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
     padding-left: 20px!important;
   }
   .view-os2web-base-panels-view-selfserv ul {
-    display: flex;
+   /* display: flex;*/
     flex-direction: column;
   }
   .field-name-field-os2web-base-field-image {
