@@ -2553,7 +2553,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['ui_name'] = '2 x1 links and 3 link and bottom';
   $handler->display->display_options['footer']['area']['content'] = '<div class="item-list" style="min-height: 40px; clear:both;">
-<div class="sb-block-left"><ul class=""><li><a href="/node/632364">Digital Post</a></li></ul></div>
+<div class="sb-block-left"><ul class=""><li><a href="/node/3171128">Digital Post</a></li></ul></div>
 <div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
@@ -3807,7 +3807,7 @@ os2web_base_panels_view_get_link_attributes($row->nid);
     t('two buttons '),
     t('<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87"><strong>Åben Indsigt</strong> - søg i alle kommunens sager</a></div>'),
     t('<div class="item-list" style="min-height: 40px; clear:both;">
-<div class="sb-block-left"><ul class=""><li><a href="/node/632364">Digital Post</a></li></ul></div>
+<div class="sb-block-left"><ul class=""><li><a href="/node/3171128">Digital Post</a></li></ul></div>
 <div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
