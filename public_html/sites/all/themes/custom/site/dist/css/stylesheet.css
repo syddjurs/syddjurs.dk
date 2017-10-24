@@ -22454,7 +22454,7 @@ a.virkdk:after {
   background-position: 20px;
 }
 .footer-content .panel-display {
-  font-size: 14px!important;
+ /* font-size: 14px!important;*/
 }
 .footer-contact-inner {
   line-height: 22px!important;
@@ -22466,7 +22466,7 @@ a.virkdk:after {
   margin: 0!important;
 }
 #block-block-3 .inverse .footer-address {
-  font-size: 14px!important;
+ /*font-size: 14px!important;*/
   margin-top: 5px!important;
 }
 footer a {
@@ -24318,13 +24318,13 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
     font-size: 16px!important;
   }
   .selvbetjening-block-forside a {
-    font-size: 16px!important;
+    /*font-size: 16px!important;*/
   }
   .view-os2web-citizenservices-view li a {
     padding-left: 20px!important;
   }
   .view-os2web-base-panels-view-selfserv ul {
-    display: flex;
+   /* display: flex;*/
     flex-direction: column;
   }
   .field-name-field-os2web-base-field-image {
