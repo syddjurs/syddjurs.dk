@@ -391,7 +391,7 @@ function _syddjurs_kle_autocomplete_callback($string = '') {
       ->condition('t.vid', $vid, '=')
       ->condition('t.name', '%' . db_like($string) . '%', 'LIKE');
       if ($discontinued) {
-        $query->condition('t.name', '%[udg%', 'NOT LIKE');
+        $query->condition('t.name', '%[udgået]%', 'NOT LIKE');
       }
       $query
       ->orderBy('t.tid', 'ASC')
