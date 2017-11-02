@@ -10,7 +10,6 @@
 // | - Enable BS3 tooltips on non-touch devices
 // | - Disable form autocomplete on non-touch devices
 // | - Apply loader icon to .btn.btn-loader on click
-// | - Use appear on non-touch devices
 // |
 
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
@@ -33,7 +32,6 @@ var bs3Designer = (function ($) {
      */
     function registerBootEventHandlers() {
         optimizeFormElements();
-        appear();
         bs3Tooltip();
     }
 
