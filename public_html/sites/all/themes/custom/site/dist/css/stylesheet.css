@@ -21605,6 +21605,9 @@ div.node--os2web_base_iframe--full iframe {
   letter-spacing: 0.75;
   margin-bottom: 4px;
 }
+.region-sidebar-second .views-field-field-os2web-contact-field-callc .field-content div {
+  display: inline-block;
+}
 .region-sidebar-second .view-os2web-contact-view-contact {
   font-size: 11px;
 }
@@ -21615,9 +21618,6 @@ div.node--os2web_base_iframe--full iframe {
 }
 .region-sidebar-second .view-os2web-contact-view-contact .field-content p {
   margin-top: 10px;
-}
-.region-sidebar-second .view-os2web-contact-view-contact .field-content div {
-  display: inline-block;
 }
 .region-sidebar-second .view-os2web-contact-view-contact .view-footer {
   margin-top: 14px;
