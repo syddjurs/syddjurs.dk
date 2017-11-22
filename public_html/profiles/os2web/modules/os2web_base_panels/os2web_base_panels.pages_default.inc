@@ -17,7 +17,7 @@ function os2web_base_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 0;
+  $handler->weight = -27;
   $handler->conf = array(
     'title' => 'Panel',
     'no_blocks' => 0,
@@ -256,7 +256,7 @@ function os2web_base_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 1;
+  $handler->weight = -26;
   $handler->conf = array(
     'title' => 'Nyhed',
     'no_blocks' => 0,
