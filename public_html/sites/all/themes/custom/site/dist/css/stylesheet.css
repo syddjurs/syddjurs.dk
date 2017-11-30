@@ -22599,8 +22599,11 @@ footer a {
 .selvbetjening-block-forside a {
   font-size: 14px!important;
 }
+.footer .view-os2web-base-panels-view-selfserv .item-list ul {
+  display: block;
+}
 .view-os2web-base-panels-view-selfserv .item-list ul {
-  display: grid!important;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 .view-os2web-base-panels-view-selfserv .item-list ul li {
