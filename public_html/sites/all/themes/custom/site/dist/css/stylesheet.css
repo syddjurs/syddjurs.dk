@@ -21990,10 +21990,7 @@ fieldset[disabled] .region-sidebar-second .view-os2web-contact-view-contact .vie
   padding-left: 10px;
   padding-right: 10px;
   height: 50px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: inline-block;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -22004,6 +22001,10 @@ fieldset[disabled] .region-sidebar-second .view-os2web-contact-view-contact .vie
       -ms-flex-pack: center;
           justify-content: center;
   line-height: 24px;
+}
+#block-block-3 .inverse .footer-address a {
+  background: none;
+  padding-left: 0;
 }
 @media (min-width: 992px) {
   #block-block-3 .inverse .footer-address {
