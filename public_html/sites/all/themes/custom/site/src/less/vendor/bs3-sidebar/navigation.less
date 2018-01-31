@@ -135,6 +135,7 @@
 		.transition(all @bs3-sidebar-transition-time ease-in-out);
 	}
 
+	span.nolink,
 	a {
 		display: block;
 		color: @bs3-sidebar-navigation-link-font-color;
@@ -257,6 +258,7 @@
 	// Navigation
 	.sidebar-navigation {
 
+		span.nolink,
 		a {
 
 			&,
@@ -287,6 +289,7 @@
 		> li {
 			position: relative;
 
+			> span.nolink,
 			> a {
 				font-size: 0;
 				padding-top: @bs3-sidebar-navigation-parent-level-link-top-bottom-spacing;
@@ -324,6 +327,7 @@
 				min-height: 0;
 				.transition(all @bs3-designer-transition-time);
 
+				> span.nolink,
 				> a {
 					display: block;
 					border-bottom-width: @bs3-sidebar-narrow-navigation-dropdown-menu-link-border-width;
@@ -340,6 +344,7 @@
 
 				&.sidebar-navigation-dropdown {
 
+					> span.nolink,
 					> a {
 						padding-right: floor( (@bs3-sidebar-narrow-navigation-dropdown-menu-link-left-right-padding * 2) );
 					}
@@ -347,6 +352,7 @@
 
 				&:hover {
 
+					> span.nolink,
 					> a {
 						background-color: @bs3-sidebar-narrow-navigation-dropdown-menu-link-hover-background-color;
 						background-color: @bs3-sidebar-narrow-navigation-dropdown-menu-link-hover-background-color-rgba;
@@ -360,6 +366,7 @@
 					&,
 					&.active-trail {
 
+						> span.nolink,
 						> a {
 
 							&,
@@ -375,6 +382,7 @@
 
 				&.active-trail {
 
+					> span.nolink,
 					> a {
 
 						&,
@@ -388,6 +396,7 @@
 
 				&:last-child {
 
+					> span.nolink,
 					> a {
 						border-bottom: 0;
 					}
@@ -445,6 +454,7 @@
 
 		> li {
 
+			span.nolink,
 			a {
 
 				@{bs3-sidebar-navigation-link-icon-identifier} {
@@ -453,6 +463,7 @@
 				}
 			}
 
+			> span.nolink,
 			> a {
 				font-family: @bs3-sidebar-navigation-parent-level-link-font-family;
 				font-weight: @bs3-sidebar-navigation-parent-level-link-font-weight;
@@ -471,18 +482,21 @@
 			// Indentation
 			> ul > li {
 
+				> span.nolink,
 				> a {
 					padding-left: 35px;
 				}
 
 				> ul > li {
 
+					> span.nolink,
 					> a {
 						padding-left: 45px;
 					}
 
 					> ul > li {
 
+						> span.nolink,
 						> a {
 							padding-left: 55px;
 						}
@@ -493,6 +507,7 @@
 
 		.sidebar-navigation-dropdown {
 
+			> span.nolink,
 			> a {
 				position: relative;
 				padding-right: @bs3-sidebar-navigation-dropdown-toggle-width;
@@ -527,6 +542,7 @@
 				background-color: @bs3-sidebar-navigation-dropdown-active-background-color;
 				background-color: @bs3-sidebar-navigation-dropdown-active-background-color-rgba;
 
+				> span.nolink,
 				> a {
 
 					&,
@@ -552,6 +568,7 @@
 				display: block;
 			}
 
+			span.nolink,
 			a {
 				font-family: @bs3-sidebar-navigation-child-level-link-font-family;
 				font-weight: @bs3-sidebar-navigation-child-level-link-font-weight;

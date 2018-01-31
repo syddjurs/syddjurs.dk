@@ -108,6 +108,7 @@ function site_preprocess_page(&$variables) {
 
   // Navigation
   $variables['sidebar_tertiary'] = _bellcom_generate_menu('os2web-menu-contentmenu', 'sidebar', 2);
+  $variables['sidebar_other_sites'] = _bellcom_generate_menu('os2web-menu-other-sites', 'sidebar', 2);
 
   // Tabs.
   $variables['tabs_primary'] = $variables['tabs'];
@@ -120,7 +121,6 @@ function site_preprocess_page(&$variables) {
 
   // Tabbed navigation
   $variables['tabbed_navigation'] = _bellcom_generate_menu($primary_navigation_name, 'tabbed', 1);
-
 }
 
 /**
