@@ -19,3 +19,10 @@ public_html/sitemap_os2webscanner.xml
 /public_html/sites/syddjurs16.dd
 *.dd
 /public_html/nbproject/private/
+public_html/sitemap_aaben_indsigt.xml.gz
+public_html/.htaccess.backup
+public_html/.htaccess.newer
+public_html/.links2/
+public_html/Portaler/
+public_html/custom/
+public_html/images/emailsignatur/*
