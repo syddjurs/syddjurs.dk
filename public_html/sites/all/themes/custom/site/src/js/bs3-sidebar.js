@@ -35,7 +35,7 @@ var bs3Sidebar = (function ($) {
     });
 
     // Toggle dropdown
-    $('.sidebar .sidebar-navigation-dropdown > a > .sidebar-navigation-dropdown-toggle').on('click touchstart', function (event) {
+    $('.sidebar .sidebar-navigation-dropdown > a > .sidebar-navigation-dropdown-toggle, .sidebar .sidebar-navigation-dropdown > span.nolink > .sidebar-navigation-dropdown-toggle').on('click touchstart', function (event) {
       event.preventDefault();
 
       var $element = $(this);
