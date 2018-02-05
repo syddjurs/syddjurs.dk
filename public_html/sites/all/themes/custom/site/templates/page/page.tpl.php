@@ -20,11 +20,21 @@
               </div>
             <!-- End - logo -->
 
-            <?php if (isset($sidebar_tertiary)): ?>
-              <!-- Begin - navigation -->
-                <?php print render($sidebar_tertiary); ?>
-              <!-- End - navigation -->
-            <?php endif; ?>
+              <div class="navigation-wrapper navigation-wrapper--first">
+                  <?php if (isset($sidebar_tertiary)): ?>
+                      <!-- Begin - navigation -->
+                      <?php print render($sidebar_tertiary); ?>
+                      <!-- End - navigation -->
+                  <?php endif; ?>
+              </div>
+
+              <div class="navigation-wrapper navigation-wrapper--second">
+                  <?php if (isset($sidebar_other_sites)): ?>
+                      <!-- Begin - navigation -->
+                      <?php print render($sidebar_other_sites); ?>
+                      <!-- End - navigation -->
+                  <?php endif; ?>
+              </div>
 
           </div>
         <!-- End - inner wrapper -->
