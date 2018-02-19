@@ -24664,11 +24664,7 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
     padding-right: 10px;
   }
   #region-sidebar-first ul.menu li {
-    -webkit-background-size: cover;
-            background-size: cover;
-  }
-  #region-sidebar-first ul.menu li.collapsed {
-    display: none;
+    background-size: cover;
   }
   #block-feedback-form {
     display: none;
