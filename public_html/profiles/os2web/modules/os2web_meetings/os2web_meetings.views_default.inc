@@ -2258,6 +2258,11 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['footer']['view']['table'] = 'views';
   $handler->display->display_options['footer']['view']['field'] = 'view';
   $handler->display->display_options['footer']['view']['view_to_insert'] = 'os2web_meetings_view_search:block_1';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Forbindelse: Indhold: Committee (field_os2web_meetings_committee) */
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['id'] = 'field_os2web_meetings_committee_tid';
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['table'] = 'field_data_field_os2web_meetings_committee';
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['field'] = 'field_os2web_meetings_committee_tid';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Global: PHP */
@@ -2341,11 +2346,11 @@ return TRUE;
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_os2web_meetings_date_value2']['year_range'] = '2007:+3';
-  /* Filterkriterie: Indhold: Committee (field_os2web_meetings_committee) */
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['id'] = 'field_os2web_meetings_committee_tid';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['table'] = 'field_data_field_os2web_meetings_committee';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['field'] = 'field_os2web_meetings_committee_tid';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['value'] = array(
+  /* Filterkriterie: Indhold: Has taxonomy terms with depth (using joins) */
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['id'] = 'term_node_tid_depth_join';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['table'] = 'node';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['field'] = 'term_node_tid_depth_join';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['value'] = array(
     10974 => '10974',
     10976 => '10976',
     10983 => '10983',
@@ -2360,13 +2365,13 @@ return TRUE;
     10975 => '10975',
     10972 => '10972',
   );
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['operator_id'] = 'field_os2web_meetings_committee_tid_op';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['label'] = 'Vælg hvilket udvalg du vil se dagsordner og referater fra.';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['operator'] = 'field_os2web_meetings_committee_tid_op';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['identifier'] = 'os2web_meetings_tax_committee';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['group'] = 1;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['operator_id'] = 'term_node_tid_depth_join_op';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['label'] = 'Vælg hvilket udvalg du vil se dagsordner og referater fra.';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['operator'] = 'term_node_tid_depth_join_op';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['identifier'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -2375,10 +2380,11 @@ return TRUE;
     3 => 0,
     5 => 0,
   );
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['vocabulary'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['type'] = 'select';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['vocabulary'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['depth'] = '1';
   /* Filterkriterie: Addenum */
   $handler->display->display_options['filters']['field_os2web_meetings_addendum_nid']['id'] = 'field_os2web_meetings_addendum_nid';
   $handler->display->display_options['filters']['field_os2web_meetings_addendum_nid']['table'] = 'field_data_field_os2web_meetings_addendum';
@@ -2875,6 +2881,7 @@ return TRUE;
     t('<div class="help-button" title="Help text goes here"></div>'),
     t('Avanceret søgning'),
     t('<div class="meetings-advanced-search-link">Du kan søge efter fritekst <a href="/dagsorden-og-referat-avanceret" title="Advanceret søgning">her</a></div>'),
+    t('term fra field_os2web_meetings_committee'),
     t('Møder fra dato'),
     t('Til dato'),
     t('Vælg hvilket udvalg du vil se dagsordner og referater fra.'),
