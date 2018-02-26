@@ -2650,6 +2650,10 @@ return TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Forbindelse: Indhold: Committee (field_os2web_meetings_committee) */
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['id'] = 'field_os2web_meetings_committee_tid';
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['table'] = 'field_data_field_os2web_meetings_committee';
+  $handler->display->display_options['relationships']['field_os2web_meetings_committee_tid']['field'] = 'field_os2web_meetings_committee_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Felt: Indhold: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -2743,31 +2747,31 @@ return TRUE;
   $handler->display->display_options['filters']['field_os2web_meetings_searchdata_value']['expose']['operator_id'] = 'field_os2web_meetings_searchdata_value_op';
   $handler->display->display_options['filters']['field_os2web_meetings_searchdata_value']['expose']['operator'] = 'field_os2web_meetings_searchdata_value_op';
   $handler->display->display_options['filters']['field_os2web_meetings_searchdata_value']['expose']['identifier'] = 'field_meeting_search_advanced_meta_date_value';
-  /* Filterkriterie: Indhold: Committee (field_os2web_meetings_committee) */
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['id'] = 'field_os2web_meetings_committee_tid';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['table'] = 'field_data_field_os2web_meetings_committee';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['field'] = 'field_os2web_meetings_committee_tid';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['value'] = array(
-    10974 => '10974',
-    10976 => '10976',
-    10983 => '10983',
+  /* Filterkriterie: Indhold: Has taxonomy terms with depth (using joins) */
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['id'] = 'term_node_tid_depth_join';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['table'] = 'node';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['field'] = 'term_node_tid_depth_join';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['value'] = array(
+    10975 => '10975',
+    16257 => '16257',
+    10972 => '10972',
     10989 => '10989',
+    10983 => '10983',
+    10976 => '10976',
     19779 => '19779',
     10990 => '10990',
-    19371 => '19371',
-    16254 => '16254',
+    10974 => '10974',
     16256 => '16256',
+    16254 => '16254',
+    19371 => '19371',
     16258 => '16258',
-    16257 => '16257',
-    10975 => '10975',
-    10972 => '10972',
   );
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['operator_id'] = 'field_os2web_meetings_committee_tid_op';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['operator'] = 'field_os2web_meetings_committee_tid_op';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['identifier'] = 'os2web_meetings_tax_committee';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['group'] = 1;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['operator_id'] = 'term_node_tid_depth_join_op';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['operator'] = 'term_node_tid_depth_join_op';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['identifier'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -2776,10 +2780,11 @@ return TRUE;
     3 => 0,
     5 => 0,
   );
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_os2web_meetings_committee_tid']['vocabulary'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['type'] = 'select';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['vocabulary'] = 'os2web_meetings_tax_committee';
+  $handler->display->display_options['filters']['term_node_tid_depth_join']['depth'] = '1';
   /* Filterkriterie: Addenum */
   $handler->display->display_options['filters']['field_os2web_meetings_addendum_nid']['id'] = 'field_os2web_meetings_addendum_nid';
   $handler->display->display_options['filters']['field_os2web_meetings_addendum_nid']['table'] = 'field_data_field_os2web_meetings_addendum';
