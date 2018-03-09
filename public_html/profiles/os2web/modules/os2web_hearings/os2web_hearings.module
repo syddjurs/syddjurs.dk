@@ -72,7 +72,7 @@ function os2web_hearings_form_views_exposed_form_alter(&$form, &$form_state){
   }
 
     // Add a little js to make the calendar icons clickable.
-    $cal_icon = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . "/images/cal.png");
+    $cal_icon = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . "/dist/img/cal.png");
     $datepicker = '
 
 
