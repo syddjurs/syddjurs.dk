@@ -57,7 +57,7 @@ function os2web_frontend_field_default_field_bases() {
     'locked' => 0,
     'module' => 'piwik_stats',
     'settings' => array(
-      'period' => 'month',
+      'period' => 'year',
       'show_in_statistics_page' => 1,
     ),
     'translatable' => 0,
