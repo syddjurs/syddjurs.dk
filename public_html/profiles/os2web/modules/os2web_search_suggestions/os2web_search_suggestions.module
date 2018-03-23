@@ -127,7 +127,7 @@ function os2web_search_suggestions_view_search_suggestion() {
   $query = new EntityFieldQuery();
 
   $query->entityCondition('entity_type', 'search_suggestion', '=');
-  $result = $query->execute();  
+  $result = $query->execute();
 
   $form['searches'] = array(
     '#prefix' => '<table class="views-table table table-hover table-striped table-responsive-stacked">',
@@ -189,4 +189,42 @@ function os2web_search_suggestions_delete_form_submit($form, &$form_state) {
   // Redirect user.
   drupal_set_message(t('Entity  deleted.'));
   $form_state['redirect'] = '/admin/structure/os2web_search_suggestions';
+}
+
+function os2web_search_suggestions_block_info() {
+  $blocks['os2web_search_suggestions'] = array(
+    // info: The name of the block.
+    'info' => t('OS2Web Search suggestions'),
+  );
+
+  return $blocks;
+}
+
+function os2web_search_suggestions_block_view($delta = '') {
+  // The $delta parameter tells us which block is being requested.
+  $content = "";
+  switch ($delta) {
+    case 'os2web_search_suggestions':
+      // Create your block content here
+      $block['subject'] = t('Search suggestions');
+      $url = request_uri();
+      $search_key = end(explode("/", request_uri()));
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'search_suggestion', '=');
+      $result = $query->execute();
+      if (is_array($result['search_suggestion'])) {
+        $content .= "<ul>";
+        foreach ($result['search_suggestion'] as $search) {
+          $entity = reset(entity_load('search_suggestion', array($search->id)));
+          $content .= '<li>' . $entity->text_before_link . '<a href = "' . $entity->search_url . '/' . $search_key . '">' . $entity->link_text . '</a>' . $entity->text_aftre_link . '</li>';
+        }
+        $content .= "</ul>";
+      }
+      $block['content'] = $content;
+
+      break;
+
+   }
+
+  return $block;
 }
