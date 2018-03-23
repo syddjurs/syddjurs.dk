@@ -53,7 +53,7 @@ function piwik_stats_tab_page($entity_type, $entity) {
         'colgroups' => array(),
         'sticky' => FALSE,
         'empty' => t('Sorry, no data available yet.'),
-        'attributes' => array('piwik-statistics', $field_name),
+        'attributes' => array('class' => array('piwik-statistics', $field_name)),
         'rows' => array(),
       );
 
