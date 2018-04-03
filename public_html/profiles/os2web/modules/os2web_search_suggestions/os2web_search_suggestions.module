@@ -220,7 +220,7 @@ function os2web_search_suggestions_block_view($delta = '') {
         $content .= "<ul>";
         foreach ($result['search_suggestion'] as $search) {
           $entity = reset(entity_load('search_suggestion', array($search->id)));
-          $content .= '<li>' . $entity->text_before_link . ' <a href = "' . $entity->search_url . $search_key . '" targer="_blank">' . $entity->link_text . '</a> ' . $entity->text_aftre_link . '</li>';
+          $content .= '<li>' . $entity->text_before_link . ' <a href = "' . $entity->search_url . $search_key . '" target="_blank">' . $entity->link_text . '</a> ' . $entity->text_aftre_link . '</li>';
         }
         $content .= "</ul>";
       }
