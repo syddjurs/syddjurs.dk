@@ -70,7 +70,7 @@ function os2web_search_suggestions_entity_form($form, &$form_state, $entity_id =
      $wrapper = entity_metadata_wrapper('search_suggestion', $entity_id);
   }
   $form_state['entity'] = $entity;
- 
+
   $form['sitename'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
@@ -100,7 +100,14 @@ function os2web_search_suggestions_entity_form($form, &$form_state, $entity_id =
     '#required' => TRUE,
     '#default_value' => isset($wrapper) ? $wrapper->text_after_link->value() : "",
   );
-
+  $form['available_variables'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#value' => t('Can be used in all text fields') . '<br/>
+    <b>!search_text</b> - ' . t('Search phrase') . '<br/>',
+    '#title' => t('Available variables'),
+  );
 
   $form['actions'] = array(
     '#weight' => 100,
@@ -209,10 +216,13 @@ function os2web_search_suggestions_block_view($delta = '') {
   $content = "";
   switch ($delta) {
     case 'os2web_search_suggestions':
+
       // Create your block content here
       $block['subject'] = t('Search suggestions');
       $url = request_uri();
       $search_key = end(explode("/", request_uri()));
+      $tokens = array('!search_text');
+      $replace = array($search_key);
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'search_suggestion', '=');
       $result = $query->execute();
@@ -220,12 +230,11 @@ function os2web_search_suggestions_block_view($delta = '') {
         $content .= "<ul>";
         foreach ($result['search_suggestion'] as $search) {
           $entity = reset(entity_load('search_suggestion', array($search->id)));
-          $content .= '<li>' . $entity->text_before_link . ' <a href = "' . $entity->search_url . $search_key . '" target="_blank">' . $entity->link_text . '</a> ' . $entity->text_aftre_link . '</li>';
+          $content .= '<li>' . str_replace( $tokens, $replace, $entity->text_before_link) . ' <a href = "' . $entity->search_url . $search_key . '" target="_blank">' . str_replace($tokens, $replace, $entity->link_text) . '</a> ' . str_replace($tokens, $replace, $entity->text_after_link) . '</li>';
         }
         $content .= "</ul>";
       }
       $block['content'] = $content;
-
       break;
 
    }
