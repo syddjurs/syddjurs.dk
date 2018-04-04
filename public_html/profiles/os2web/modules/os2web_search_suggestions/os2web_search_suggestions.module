@@ -210,7 +210,54 @@ function os2web_search_suggestions_block_info() {
 
   return $blocks;
 }
+/**
+ * Implements hook_block_configure().
+ * all examples are for a module named myproject_blocks
+ */
 
+function os2web_search_suggestions_block_configure($delta = '') {
+  $form = array();
+  switch ($delta) {
+    case 'os2web_search_suggestions':
+     $form['text_before_links'] = array(
+        '#type' => 'text_format',
+        '#title' => t('Text before links'),
+        '#format' => 'filtered_html',
+        '#default_value' => variable_get('os2web_search_suggestions_text_before_links', ''),
+      );
+      $form['text_after_links'] = array(
+        '#type' => 'text_format',
+        '#title' => t('Text after links'),
+        '#format' => 'filtered_html',
+        '#default_value' => variable_get('os2web_search_suggestions_text_after_links', ''),
+      );
+      $form['available_variables'] = array(
+        '#type' => 'fieldset',
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#value' => t('Can be used in all text fields') . '<br/>
+        <b>!search_text</b> - ' . t('Search phrase') . '<br/>',
+        '#title' => t('Available variables')
+      );
+      break;
+  }
+   /** add other cases for additional blocks **/
+  return $form;
+}
+
+/**
+ * Implements hook_block_save($delta = '', $edit = array().
+ * all examples are for a module named myproject_blocks
+ */
+function os2web_search_suggestions_block_save($delta = '', $edit = array()) {
+  switch ($delta) {
+    case 'os2web_search_suggestions':
+      variable_set('os2web_search_suggestions_text_after_links', $edit['text_after_links']['value']);
+      variable_set('os2web_search_suggestions_text_before_links', $edit['text_before_links']['value']);
+      break;
+  }
+  /** It's best to create on module per block so that you can turn on/off blocks 1 by 1.  But this will also work if you combine blocks together in one module. **/
+}
 function os2web_search_suggestions_block_view($delta = '') {
   // The $delta parameter tells us which block is being requested.
   $content = "";
@@ -227,13 +274,16 @@ function os2web_search_suggestions_block_view($delta = '') {
       $query->entityCondition('entity_type', 'search_suggestion', '=');
       $result = $query->execute();
       if (is_array($result['search_suggestion'])) {
+        $content .= str_replace( $tokens, $replace, variable_get('os2web_search_suggestions_text_before_links', ''));
         $content .= "<ul>";
         foreach ($result['search_suggestion'] as $search) {
           $entity = reset(entity_load('search_suggestion', array($search->id)));
           $content .= '<li>' . str_replace( $tokens, $replace, $entity->text_before_link) . ' <a href = "' . $entity->search_url . $search_key . '" target="_blank">' . str_replace($tokens, $replace, $entity->link_text) . '</a> ' . str_replace($tokens, $replace, $entity->text_after_link) . '</li>';
         }
         $content .= "</ul>";
+        $content .= str_replace( $tokens, $replace, variable_get('os2web_search_suggestions_text_after_links', ''));
       }
+
       $block['content'] = $content;
       break;
 
