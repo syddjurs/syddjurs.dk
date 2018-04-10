@@ -95,7 +95,123 @@ function os2web_ofir_job_settings_form() {
     '#options' => $import_options,
     '#default_value' => variable_get('os2web_ofir_job_import_period', 3),
   );
+  // Settings for fields mapping.
+  $form['os2web_ofir_job_mapping'] = array(
+    '#type'          => 'fieldset',
+    '#title'         => t('Fields mapping'),
+    '#collapsible'   => TRUE,
+  );
+  $xml_fields = _os2web_ofir_job_get_xml_fields();
+  $ofir_job_fields_select = os2web_ofir_job_get_os2web_ofir_job_fields();
+  $form['os2web_ofir_job_mapping']['os2web_ofir_job_period_field'] = array(
+      '#type'          => 'select',
+      '#title'         => t("Application period field"),
+      '#description'   => t('The name of field which contain aplication period'),
+      '#options'       => $ofir_job_fields_select,
+      '#default_value' => variable_get('os2web_ofir_job_period_field'),
+    );
+   $form['os2web_ofir_job_mapping']['os2web_ofir_job_description_field'] = array(
+      '#type'          => 'select',
+      '#title'         => t("Job description field"),
+      '#description'   => t('The name of field which contain description of the job.'),
+      '#options'       => $ofir_job_fields_select,
+      '#default_value' => variable_get('os2web_ofir_job_description_field'),
+    );
+  foreach ($ofir_job_fields_select as $field_name => $label) {
+    if ($field_name == variable_get('os2web_ofir_job_period_field')) {
+      $form['os2web_ofir_job_mapping']['os2web_ofir_job_mapping_' . $field_name . '_start_date'] = array(
+      '#type'          => 'select',
+      '#title'         => t($label . ' start date'),
+      '#options'       => $xml_fields,
+      '#default_value' => variable_get('os2web_ofir_job_mapping_'.$field_name . '_start_date'),
+    );
+
+      $form['os2web_ofir_job_mapping']['os2web_ofir_job_mapping_' . $field_name . '_end_date'] = array(
+      '#type'          => 'select',
+      '#title'         => t($label . ' end date'),
+      '#options'       => $xml_fields,
+      '#default_value' => variable_get('os2web_ofir_job_mapping_'.$field_name . '_end_date'),
+    );
+      continue;
+    }
+    $form['os2web_ofir_job_mapping']['os2web_ofir_job_mapping_' . $field_name] = array(
+      '#type'          => 'select',
+      '#title'         => t($label),
+      '#options'       => $xml_fields,
+      '#default_value' => variable_get('os2web_ofir_job_mapping_'.$field_name),
+    );
+    if ($field_name == variable_get('os2web_ofir_job_description_field'))
+      $form['os2web_ofir_job_mapping']['os2web_ofir_job_mapping_' . $field_name . '_summary'] = array(
+      '#type'          => 'select',
+      '#title'         => t($label . ' summary'),
+      '#options'       => $xml_fields,
+      '#default_value' => variable_get('os2web_ofir_job_mapping_'.$field_name . '_summary'),
+    );
+  }
+  $form['os2web_ofir_job_import_run_now'] = array(
+    '#type'   => 'submit',
+    '#value'  => t('Import now'),
+    '#submit' => array('os2web_ofir_job_run_import'),
+  );
   return system_settings_form($form);
+}
+
+function os2web_ofir_job_run_import() {
+  _os2web_ofir_job_cronbatch();
+  drupal_set_message('Import finished');
+}
+
+/*
+ * Helper function to parsing XML structure.
+ */
+function _os2web_ofir_job_get_xml_fields() {
+  $wsdl = variable_get('os2web_ofir_job_webservice', 'https://syddjurs.emply.net/api.asmx?WSDL');
+  $api_key = variable_get('os2web_ofir_job_apiKey', '4dccbf6d-5e82-4303-89bd-0322ce8f2c30');
+  $media_id = variable_get('os2web_ofir_job_mediaId', '537a7324-00fa-42c1-822d-d0256092ddb9');
+  $jobs = _os2web_ofir_job_GetProjects($wsdl, $api_key, $media_id);
+
+  // We must check if the webservice throws ANY errors.
+  $any_webservice_errors = FALSE;
+  $xml_fields =  array('none' => t('NONE'));
+  // For each of the inexistent jobs we import them.
+  foreach ($jobs as $job) {
+    if ($job == 'error_code' || $job == 'error_string') {
+      $any_webservice_errors = TRUE;
+      continue;
+    }
+    _os2web_ofir_job_get_xml_fields_structure($job, $xml_fields);
+
+    break;
+}
+return $xml_fields;
+}
+
+/*
+ * Helper function to return structure of XML (tags names, attributies etc.)
+ */
+function _os2web_ofir_job_get_xml_fields_structure($xml, &$xml_fields, $parent_name = "") {
+  $name = $xml->getName();
+  if ($name == 'facts') {
+    foreach($xml->fact as $fact){
+    $title_attr = _os2web_ofir_job_xml_attribute($fact, 'title');
+    $xml_fields['fact-title-' . $title_attr] = 'fact_' . $title_attr;
+    }
+   return;
+  }
+  $attr = (array) $xml->attributes();
+    if(isset($attr['@attributes']) && is_array($attr['@attributes'])) {
+      foreach ($attr['@attributes'] as $key => $value) {
+        $xml_fields[$name . '-attr-' . $key] = $name . '_'.$key;
+      }
+    }
+    if(!empty((array)$xml->children())) {
+      foreach($xml->children() as $child) {
+        _os2web_ofir_job_get_xml_fields_structure($child, $xml_fields, $name);
+      }
+    }
+    else {
+      $xml_fields[$parent_name . '-tag-' . $xml->getName()] = $parent_name . '_' . $name;
+}
 }
 
 /**
@@ -171,11 +287,90 @@ function _os2web_ofir_job_cronbatch() {
     );
   }
 }
-
 /**
  * Create ofir job node.
  */
 function os2web_ofir_job_import_job($job_text) {
+
+  if (!empty($job_text)) {
+    $entity_id = "";
+
+    if ($job_text['os2web_ofir_job_mapping_field_os2web_ofir_job_ad_id']){
+       $entity_id = db_query('SELECT entity_id FROM {field_data_field_os2web_ofir_job_ad_id} WHERE field_os2web_ofir_job_ad_id_value = :ad_id', array(
+              ':ad_id' => $job_text['os2web_ofir_job_mapping_field_os2web_ofir_job_ad_id']))->fetchField();
+    }
+    if (!empty($entity_id)){
+      $node =  node_load($entity_id);
+    }
+    else {
+      $node = new stdClass();
+      $node->validated = TRUE;
+      $node->uid = 1;
+      $node->language = 'da';
+    // Insert default value of a new node.
+      $node->type = 'os2web_ofir_job';
+    }
+      $node_fields = os2web_ofir_job_get_os2web_ofir_job_fields();
+    foreach($node_fields as $field_name => $label) {
+      switch ($field_name) {
+        case 'title' :
+          $node->title = (!empty($job_text['os2web_ofir_job_mapping_title'])) ? $job_text['os2web_ofir_job_mapping_title'] : '';
+          break;
+        case 'created' :
+          $node->created = !empty($job_text['os2web_ofir_job_mapping_created']) ? strtotime($job_text['os2web_ofir_job_mapping_created']) : REQUEST_TIME;
+          break;
+        case 'os2web_ofir_job_mapping_field_os2web_ofir_job_text_summary':
+          break;
+        default:
+          $field_info = field_info_field($field_name);
+          switch ($field_info['type']) {
+            case 'text_long':
+              $node->{$field_name}['und'][0]['value'] = html_entity_decode($job_text['os2web_ofir_job_mapping_' . $field_name]);
+              $node->{$field_name}['und'][0]['safe_value'] = html_entity_decode($job_text['os2web_ofir_job_mapping_' . $field_name]);
+              $node->{$field_name}['und'][0]['format'] = 'full_html';
+              if ($field_name == variable_get('os2web_ofir_job_description_field') &&!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_summary'])) {
+                $node->{$field_name}['und'][0]['summary'] = html_entity_decode($job_text['os2web_ofir_job_mapping_' . $field_name . '_summary']);
+              }
+              break;
+            case 'datetime':
+              if ($field_name == variable_get('os2web_ofir_job_period_field')) {
+                $deadline = (!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'])) ? $job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'] : '';
+                $deadline = date('Y-m-d H:i:s', strtotime($deadline));
+                $node->{$field_name}['und'][0]['value'] = date('Y-m-d H:i:s', strtotime($job_text['os2web_ofir_job_mapping_' . $field_name . '_start_date']));
+                $node->{$field_name}['und'][0]['value2'] = $deadline;
+              }
+              break;
+            case 'text':
+              if ($field_name == 'field_os2web_ofir_apply_link') {
+                $job_text['os2web_ofir_job_mapping_' . $field_name] = str_replace('vacancyAd', 'vacancyapply', $job_text['os2web_ofir_job_mapping_' . $field_name]);
+              }
+              $node->{$field_name}['und'][0]['value'] = $job_text['os2web_ofir_job_mapping_' . $field_name];
+              $node->{$field_name}['und'][0]['safe_value'] = $job_text['os2web_ofir_job_mapping_' . $field_name];
+              break;
+            case 'taxonomy_term_reference':
+              $voc =  $field_info['settings']['allowed_values'][0]['vocabulary'];
+               if (!empty($job_text['os2web_ofir_job_mapping_' . $field_name])) {
+                 $tid = _os2web_ofir_job_insert_term($job_text['os2web_ofir_job_mapping_' . $field_name], $voc);
+                 if ($tid) {
+                  $node->{$field_name}['und'][0]['tid'] = $tid;
+                }
+              }
+
+              break;
+
+          }
+      }
+
+    }
+
+   node_save($node);
+  }
+}
+
+/**
+ * Create ofir job node.
+ */
+function os2web_ofir_job_import_job_old($job_text) {
 
   if (!empty($job_text)) {
     $entity_id = "";
@@ -367,58 +562,47 @@ function _os2web_ofir_job_GetProjects($wsdl, $api_key, $media_id) {
   return $jobs;
 }
 
-
 /**
  * Function _os2web_ofir_job_parse_job_text().
  */
 function _os2web_ofir_job_parse_job_text($xml) {
   // This function can parse a ofir job XML-feed and extract
   // all the field values we want for our Drupal-nodes.
-  $ofir_job['title']           = $xml->ad->header;
-  $ofir_job['ad_id']           = _os2web_ofir_job_xml_attribute($xml->ad, 'id');
-  $ofir_job['published']       = _os2web_ofir_job_xml_attribute($xml, 'published');
-  $ofir_job['deadline']        = _os2web_ofir_job_xml_attribute($xml, 'deadline');
-  $ofir_job['description']     = html_entity_decode((string) $xml->ad->description);
-  $ofir_job['shorttext']        = html_entity_decode((string) $xml->ad->shorttext);
-  $ofir_job['department_name'] = _os2web_ofir_job_xml_attribute($xml, 'department_name');
-  $ofir_job['design']          = _os2web_ofir_job_xml_attribute($xml->ad, 'design');
-  $apply_link                  = _os2web_ofir_job_xml_attribute($xml, 'apply_link');
-  $apply_link                  = str_replace('vacancyAd', 'vacancyapply', $apply_link);
-  $ofir_job['apply_link']      = $apply_link;
 
+//b
+  $facts = array();
   foreach($xml->ad->facts->fact as $fact){
     $title_attr = _os2web_ofir_job_xml_attribute($fact, 'title');
-    switch($title_attr) {
-      case 'Stillingkatagorier':
-        $ofir_job['category'] = (string) $fact;
-        $ofir_job['job_type'] = (string) $fact;
-        break;
-      case 'Annoncen er':
-        $ofir_job['work_hours'] = (string)  $fact;
-        break;
-      case "Ansøgningsfrist":
-        $ofir_job['job_start_time'] = (string) $fact;
-        break;
-      case "Kontaktperson":
-        $ofir_job['contact_person'] = (string) $fact;
-        break;
-      case "Telefon":
-        $ofir_job['contact_no'] = (string) $fact;
-        break;
+    $facts[$title_attr] = (string) $fact;
+  }
+  //add specified fields for description and period
+  $os2web_ofir_job_node_fields = os2web_ofir_job_get_os2web_ofir_job_fields();
+  if ($period_field =  variable_get('os2web_ofir_job_period_field')) {
+    $os2web_ofir_job_node_fields[$period_field .'_start_date'] = $period_field . '_start_date';
+    $os2web_ofir_job_node_fields[$period_field . '_end_date'] = $period_field . '_end_date';
+  }
+  if($description_field = variable_get('os2web_ofir_job_description_field')) {
+    $os2web_ofir_job_node_fields[$description_field . '_summary'] = $description_field . '_summary';
+  }
+  //retrive data from XML
+  foreach ($os2web_ofir_job_node_fields as $field_name => $label){
+    if ($mapped_field = variable_get('os2web_ofir_job_mapping_' . $field_name)) {
+      $tag_parts = explode('-', $mapped_field);
+      switch ($tag_parts[1]) {
+        case 'tag':
+         $ofir_job['os2web_ofir_job_mapping_' . $field_name] = ($tag_parts[0] == 'project') ?(string) $xm->$tag_parts[2] : (string) $xml->$tag_parts[0]->$tag_parts[2];
+         break;
+        case 'attr':
+          $ofir_job['os2web_ofir_job_mapping_' . $field_name] =  ($tag_parts[0] == 'project') ? _os2web_ofir_job_xml_attribute($xml, $tag_parts[2]) : _os2web_ofir_job_xml_attribute($xml->$tag_parts[0], $tag_parts[2]);
+         break;
+         case 'title':
+           $ofir_job['os2web_ofir_job_mapping_' . $field_name] = $facts[$tag_parts[2]];
+           break;
+      }
     }
   }
-  // Facts
-  // @todo: If order of elements changes in array, data will not be mapped correctly to fields!!
-  /*$ofir_job['job_desc']       = (string) $xml->ad->facts->fact[0];
-  $ofir_job['work_hours']     = (string) $xml->ad->facts->fact[1];
-  $ofir_job['job_type']       = (string) $xml->ad->facts->fact[2];
-  $ofir_job['category']       = (string) $xml->ad->facts->fact[1];
-  $ofir_job['job_start_time'] = (string) $xml->ad->facts->fact[0];
-  $ofir_job['contact_person'] = (string) $xml->ad->facts->fact[4];
-  $ofir_job['contact_no']     = (string) $xml->ad->facts->fact[5];*/
   return $ofir_job;
 }
-
 /**
  * Check job is existed.
  *
@@ -487,4 +671,15 @@ function os2web_ofir_job_unpublish_expired() {
       node_save($node);
     }
   }
+}
+/*
+ * Helper function to get node fields list
+ */
+function os2web_ofir_job_get_os2web_ofir_job_fields() {
+  $ofir_job_fields = field_info_instances('node', 'os2web_ofir_job');
+    $ofir_job_fields_arr = array('title' => t('Title'), 'created' => t('Created'));
+    foreach ($ofir_job_fields as $field_name => $value) {
+      $ofir_job_fields_arr[$field_name] = $value['label'];
+    }
+   return  $ofir_job_fields_arr;
 }
