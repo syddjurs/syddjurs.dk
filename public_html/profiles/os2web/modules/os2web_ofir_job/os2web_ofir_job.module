@@ -334,7 +334,7 @@ function os2web_ofir_job_import_job($job_text) {
               break;
             case 'datetime':
               if ($field_name == variable_get('os2web_ofir_job_period_field')) {
-                $deadline = (!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'])) ? $job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'] : '';
+                $deadline = '';//(!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'])) ? $job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'] : '';
                 $deadline = date('Y-m-d H:i:s', strtotime($deadline));
                 $node->{$field_name}['und'][0]['value'] = date('Y-m-d H:i:s', strtotime($job_text['os2web_ofir_job_mapping_' . $field_name . '_start_date']));
                 $node->{$field_name}['und'][0]['value2'] = $deadline;
@@ -539,6 +539,7 @@ function os2web_ofir_job_unpublish_expired() {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'os2web_ofir_job')
     ->propertyCondition('status', 1)
+    ->fieldCondition('field_os2web_ofir_job_period', 'value2', date('c', 0), '!=')
     ->fieldCondition('field_os2web_ofir_job_period', 'value2', date('c'), '<');
   $result = $query->execute();
 
@@ -563,4 +564,15 @@ function os2web_ofir_job_get_os2web_ofir_job_fields() {
       $ofir_job_fields_arr[$field_name] = $value['label'];
     }
    return  $ofir_job_fields_arr;
+}
+
+function os2web_ofir_job_views_pre_render(&$view) {
+  if (($view->name == 'os2web_ofir_job_header_image' && $view->current_display == 'block_2') ||
+      ($view->name == 'emply_job_secondary' && $view->current_display == 'block')) {
+
+    if ($view->field['field_os2web_ofir_job_period']->view->result[0]
+        ->_field_data['nid']['entity']->field_os2web_ofir_job_period['und'][0]['value2'] == date('Y-m-d H:i:s', 0)) {
+       $view->field['field_os2web_ofir_job_period']->options['exclude'] = TRUE;
+        }
+  }
 }
