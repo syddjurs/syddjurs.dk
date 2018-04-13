@@ -255,6 +255,7 @@ function _os2web_ofir_job_cronbatch() {
   $any_webservice_errors = FALSE;
 
   $count = 0;
+  $job_ids = array();
   // For each of the inexistent jobs we import them.
   foreach ($jobs as $job) {
     if ($job == 'error_code' || $job == 'error_string') {
@@ -265,9 +266,26 @@ function _os2web_ofir_job_cronbatch() {
       continue;
     }*/
     $job_text = _os2web_ofir_job_parse_job_text($job);
+    $job_ids[] = $job_text['os2web_ofir_job_mapping_field_os2web_ofir_job_ad_id'];
     os2web_ofir_job_import_job($job_text);
     $count++;
   }
+
+  //unpublish nodes which are not in feed
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'os2web_ofir_job')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_os2web_ofir_job_ad_id', 'value', $job_ids , 'NOT IN');
+    $result = $query->execute();
+    // If results were found, unpublish nodes
+    if (isset($result['node'])) {
+      $nodes = node_load_multiple(array_keys($result['node']));
+      foreach ($nodes as $node) {
+        $node->status = 0;
+        node_save($node);
+      }
+    }
 
   // Now we must update the "last_updated" variable.
   // But only if no errors were encountered.
@@ -364,6 +382,7 @@ function os2web_ofir_job_import_job($job_text) {
     }
 
    node_save($node);
+   return $node->nid;
   }
 }
 
