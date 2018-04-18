@@ -276,6 +276,15 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
 [field_os2web_ofir_category]';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_os2web_ofir_category']['element_wrapper_type'] = 'div';
+  /* Felt: Indhold: Afdeling */
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['id'] = 'field_os2web_ofir_department';
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['table'] = 'field_data_field_os2web_ofir_department';
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['field'] = 'field_os2web_ofir_department';
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['alter']['text'] = '<br />
+[field_os2web_ofir_department-value] ';
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['element_label_type'] = 'strong';
+  $handler->display->display_options['fields']['field_os2web_ofir_department']['element_wrapper_type'] = 'div';
   /* Felt: Indhold: Ansøgningsfrist */
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['id'] = 'field_os2web_ofir_job_period';
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['table'] = 'field_data_field_os2web_ofir_job_period';
@@ -285,12 +294,15 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
 [field_os2web_ofir_job_period]';
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['element_label_type'] = 'strong';
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_os2web_ofir_job_period']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_os2web_ofir_job_period']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_ofir_job_period']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'value2',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
+    'show_remaining_days' => 0,
   );
   /* Felt: Indhold: Kontaktperson */
   $handler->display->display_options['fields']['field_os2web_ofir_contact_person']['id'] = 'field_os2web_ofir_contact_person';
@@ -341,6 +353,9 @@ Syddjurs Kommune vil gerne gøre det nemt for dig at blive opmærksom på de job
     t('Stillingskategori'),
     t('<br />
 [field_os2web_ofir_category]'),
+    t('Afdeling'),
+    t('<br />
+[field_os2web_ofir_department-value] '),
     t('Ansøgningsfrist'),
     t('<br />
 [field_os2web_ofir_job_period]'),
