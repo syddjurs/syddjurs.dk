@@ -352,7 +352,7 @@ function os2web_ofir_job_import_job($job_text) {
               break;
             case 'datetime':
               if ($field_name == variable_get('os2web_ofir_job_period_field')) {
-                $deadline = '';//(!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'])) ? $job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'] : '';
+                $deadline = (!empty($job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'])) ? $job_text['os2web_ofir_job_mapping_' . $field_name . '_end_date'] : '';
                 $deadline = date('Y-m-d H:i:s', strtotime($deadline));
                 $node->{$field_name}['und'][0]['value'] = date('Y-m-d H:i:s', strtotime($job_text['os2web_ofir_job_mapping_' . $field_name . '_start_date']));
                 $node->{$field_name}['und'][0]['value2'] = $deadline;
