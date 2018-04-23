@@ -21455,6 +21455,9 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
   background-color: #fff;
   border: 1px solid #ddd;
 }
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-bpa-body .field-item  table td{
+  width: auto;
+}
 .view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item:first-child {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
