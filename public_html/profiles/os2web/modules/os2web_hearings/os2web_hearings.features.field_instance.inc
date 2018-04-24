@@ -282,6 +282,12 @@ function os2web_hearings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'node_webform' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -362,6 +368,12 @@ function os2web_hearings_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -431,6 +443,50 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-os2web_hearings_hearing_case-field_os2web_base_field_doc'.
+  $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_doc'] = array(
+    'bundle' => 'os2web_hearings_hearing_case',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'os2web_esdh_field',
+        'settings' => array(),
+        'type' => 'os2web_esdh_field_doc_ident_for',
+        'weight' => 7,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_doc',
+    'label' => 'ESDH Dokument',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'os2web_esdh_field',
+      'settings' => array(),
+      'type' => 'os2web_esdh_field_doc_ident_wid',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_base_field_edi_tags'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
@@ -442,7 +498,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -482,7 +544,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 17,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -526,6 +594,12 @@ function os2web_hearings_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 0,
+      ),
+      'node_webform' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -591,7 +665,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -631,7 +711,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -671,7 +757,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -711,7 +803,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -791,7 +889,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 18,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -838,6 +942,12 @@ function os2web_hearings_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 2,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -886,6 +996,12 @@ function os2web_hearings_field_default_field_instances() {
         'settings' => array(),
         'type' => 'file_table',
         'weight' => 4,
+      ),
+      'node_webform' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -950,6 +1066,12 @@ function os2web_hearings_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 5,
       ),
+      'node_webform' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -992,6 +1114,12 @@ function os2web_hearings_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 1,
       ),
+      'node_webform' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1029,7 +1157,13 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1057,6 +1191,7 @@ function os2web_hearings_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('ESDH Dokument');
   t('Egenavne / stednavne');
   t('Filer');
   t('Høringsfrist / Klagefrist');

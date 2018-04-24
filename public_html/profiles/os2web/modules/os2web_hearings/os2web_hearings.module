@@ -39,6 +39,15 @@ function os2web_hearings_menu(){
     'access arguments' => array('administer site configuration'),
   );
 
+  $items['node/%node/formular'] = array(
+    'title callback' => 'node_page_title',
+    'title arguments' => array(1),
+    'page callback' => 'os2web_hearings_node_webform_view',
+    'page arguments' => array(1),
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 1),
+  );
+
   return $items;
 }
 
@@ -57,6 +66,37 @@ function os2web_hearings_settings_form(){
     '#default_value' => variable_get('os2web_hearings_email_to_acadre'),
     '#type' => 'textfield',
     '#required' => TRUE,
+  );
+
+  $form['os2web_hearings_webform_fs'] = array(
+    '#title' => t('Hearing case webform default values'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_to_email'] = array(
+    '#title' => t('To email'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('os2web_hearings_webform_to_email'),
+  );
+
+  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_subject'] = array(
+    '#title' => t('Email subject'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('os2web_hearings_webform_subject'),
+  );
+
+  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_name'] = array(
+    '#title' => t('From name'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('os2web_hearings_webform_from_name'),
+  );
+
+  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_email'] = array(
+    '#title' => t('From email'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('os2web_hearings_webform_from_email'),
   );
 
   return system_settings_form($form);
@@ -171,6 +211,25 @@ function os2web_hearings_node_update($node) {
 }
 
 /**
+ * Implements hook_node_presave().
+ */
+function os2web_hearings_node_presave($node) {
+  // Add a default e-mail configuration for new nodes.
+  if (empty($node->nid) && $node->is_new && $node->type == 'os2web_hearings_hearing_case') {
+    $node->webform['emails'][] = array(
+      'email' => variable_get('os2web_hearings_webform_to_email'),
+      'subject' => variable_get('os2web_hearings_webform_subject'),
+      'from_name' => variable_get('os2web_hearings_webform_from_name'),
+      'from_address' => variable_get('os2web_hearings_webform_from_email'),
+      'template' => theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node)),
+      'excluded_components' => array(),
+      'html' => 1,
+      'attachments' => 1,
+    );
+  }
+}
+
+/**
  * Generate mail.
  */
 function _os2web_hearings_send_to_acadre($node) {
@@ -240,6 +299,30 @@ function os2web_hearings_theme($existing, $type, $theme, $path) {
       'template' => 'os2web-hearings-email',
       'path' => drupal_get_path('module', 'os2web_hearings') . '/templates',
     ),
+    'os2web_hearings_webform_email' => array(
+      'template' => 'os2web-hearings-webform-email',
+      'path' => drupal_get_path('module', 'os2web_hearings') . '/templates',
+    ),
   );
+}
+
+/**
+ * Renders the webform view of a single node.
+ */
+function os2web_hearings_node_webform_view($node) {
+  // If there is a menu link to this node, the link becomes the last part
+  // of the active trail, and the link name becomes the page title.
+  // Thus, we must explicitly set the page title to be the node title.
+  drupal_set_title($node->title);
+  $uri = entity_uri('node', $node);
+  // Set the node path as the canonical URL to prevent duplicate content.
+  drupal_add_html_head_link(array('rel' => 'canonical', 'href' => url($uri['path'], $uri['options'])), TRUE);
+  // Set the non-aliased path as a default shortlink.
+  drupal_add_html_head_link(array('rel' => 'shortlink', 'href' => url($uri['path'], array_merge($uri['options'], array('alias' => TRUE)))), TRUE);
+
+  $node = node_load($node->nid);
+  $view = node_view($node, 'node_webform');
+  $rendered = drupal_render($view);
+  return $rendered;
 }
 
