@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Syddjurs Emply Jobvisning feature.
+ */
+
+include_once 'syddjurs_emply_jobvisning.features.inc';

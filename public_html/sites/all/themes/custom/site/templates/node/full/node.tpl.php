@@ -37,9 +37,18 @@
       hide($content['links']);
       hide($content['social_share']);
       print render($content);
-      if ($teaser && $node->type == 'os2web_ofir_job') {
-         print '<div class="changed"> Opdateret: ' . date('d/m/Y - H:i', $node->changed) . '</div>';
-      }
+      if ($node->type == 'os2web_ofir_job') {
+
+        if ($teaser ) {
+          print '<div class="changed"> Opdateret: ' . date('d/m/Y - H:i', $node->changed) . '</div>';
+        }
+        else
+          {
+            $emply_block = module_invoke('views', 'block_view', 'a65df961171e0f41166a39fbc1e50015');
+
+            print render($emply_block['content']);
+          }
+        }
       ?>
     </div>
   </div>
