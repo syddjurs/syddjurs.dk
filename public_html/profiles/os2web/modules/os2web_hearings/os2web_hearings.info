@@ -96,6 +96,7 @@ features[variable][] = node_preview_os2web_hearings_hearing
 features[variable][] = node_preview_os2web_hearings_hearing_case
 features[variable][] = node_submitted_os2web_hearings_hearing
 features[variable][] = node_submitted_os2web_hearings_hearing_case
+features[variable][] = webform_default_fields_allow_node_os2web_hearings_hearing_case
 features[variable][] = webform_default_fields_os2web_hearings_hearing_case
 features[variable][] = webform_node_os2web_hearings_hearing_case
 features[views_view][] = os2web_hearings
