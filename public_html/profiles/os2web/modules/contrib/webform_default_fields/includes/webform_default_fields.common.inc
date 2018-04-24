@@ -1,9 +1,17 @@
 <?php
+/**
+ * @file
+ * Commonly used functions.
+ */
 
 /**
- * Return keys node.
+ * Return node keys of given type.
+ *
  * @param string $type
+ *   Node type.
+ *
  * @return array
+ *   Return node keys.
  */
 function webform_default_fields_select_nodes($type) {
   module_load_include('inc', 'webform_default_fields', '/model/webform_default_fields.db');

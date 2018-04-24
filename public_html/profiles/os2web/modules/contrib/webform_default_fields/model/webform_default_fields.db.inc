@@ -1,8 +1,12 @@
 <?php
+/**
+ * @file
+ * Functions for database queries.
+ */
 
 /**
-* Select nodes certain type.
-*/
+ * Select nodes certain type.
+ */
 function webform_default_fields_db_select_nodes($type) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');

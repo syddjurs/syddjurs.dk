@@ -2,13 +2,14 @@
 
 /**
  * @file
- * Information management 
+ * Information management.
  */
 
 /**
- * Get node types which are webform-enabled
+ * Get node types which are webform-enabled.
  *
- * @return array Content types list
+ * @return array
+ *   Content types list.
  */
 function _webform_default_fields_webform_node_types() {
   $webform_enabled_types = webform_variable_get('webform_node_types');
@@ -17,7 +18,7 @@ function _webform_default_fields_webform_node_types() {
   foreach (node_type_get_types() as $type) {
     $type_name = $type->type;
 
-    // Ensure content type is webform-enabled
+    // Ensure content type is webform-enabled.
     if (!in_array($type_name, $webform_enabled_types)) {
       continue;
     }
@@ -30,10 +31,10 @@ function _webform_default_fields_webform_node_types() {
 }
 
 /**
- * Create "master-node" for content type
+ * Create "master-node" for content type.
  *
- * Master node contains all the data about webform
- *   fields for linked content type
+ * Master node contains all the data about webform fields for linked
+ * content type.
  *
  * @param string $content_type
  */
@@ -44,7 +45,7 @@ function _webform_default_fields_create_container_node($content_type) {
   $node->status = 0;
   $node->webform = array(
     'confirmation' => '',
-    'roles' => array_keys(user_roles())
+    'roles' => array_keys(user_roles()),
   );
   node_save($node);
   webform_ensure_record($node);
@@ -52,9 +53,9 @@ function _webform_default_fields_create_container_node($content_type) {
 }
 
 /**
- * Update "master-node" for content type
- * 
- * @param string $content_type 
+ * Update "master-node" for content type.
+ *
+ * @param string $content_type
  */
 function _webform_default_fields_update_container_node($content_type, $old_content_type) {
   if (variable_get('webform_default_fields_nid_' . $old_content_type, 0)) {
@@ -64,24 +65,27 @@ function _webform_default_fields_update_container_node($content_type, $old_conte
 }
 
 /**
- * Delete "master-node" for content type
- * 
- * @param string $content_type 
+ * Delete "master-node" for content type.
+ *
+ * @param string $content_type
  */
 function _webform_default_fields_delete_container_node($content_type, $rebuild = TRUE) {
   if ($nid = variable_get('webform_default_fields_nid_' . $content_type, 0)) {
-    node_delete($nid);      
+    node_delete($nid);
     if ($rebuild) {
       menu_rebuild();
-    }  
+    }
   }
 }
 
 /**
- * Get Master node by content type
+ * Get Master node by content type.
  *
- * @param string $content_type Target content type
- * @return int Master node NID
+ * @param string $content_type
+ *   Target content type.
+ *
+ * @return int
+ *   Master node NID.
  */
 function _webform_default_fields_container_node($content_type, $rebuild = TRUE) {
   if (!($nid = variable_get('webform_default_fields_nid_' . $content_type, 0))) {
