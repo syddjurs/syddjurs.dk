@@ -798,26 +798,21 @@ function os2web_ofir_job_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'alt_field_required' => 0,
+      'alt_field_required' => 1,
       'default_image' => 0,
       'epsacrop' => array(
         'styles' => array(
-          'os2web_gallery_thumbnails' => 0,
-          'os2web_spotbox_image' => 0,
-          'syddjurs_content_image' => 'syddjurs_content_image',
-          'syddjurs_spotbox' => 0,
+          'indholdsside' => 0,
+          'os2web_base_style_image' => 0,
         ),
       ),
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'focus' => 0,
-      'focus_lock_ratio' => 0,
-      'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
-      'title_field_required' => 0,
+      'title_field_required' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -826,29 +821,23 @@ function os2web_ofir_job_field_default_field_instances() {
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
-          'ustream' => 0,
           'youtube' => 0,
         ),
         'allowed_types' => array(
-          'application' => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'media_browser_plus--media_browser_my_files' => 0,
-          'media_browser_plus--media_browser_thumbnails' => 0,
           'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
           'upload' => 0,
-          'youtube' => 0,
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 41,
+      'weight' => 2,
     ),
   );
 

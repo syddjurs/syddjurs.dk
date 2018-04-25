@@ -14,8 +14,57 @@ function os2web_ofir_job_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_os2web_ofir_job';
-  $strongarm->value = 'edit-auto-nodetitle';
+  $strongarm->value = 'edit-social-share';
   $export['additional_settings__active_tab_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_os2web_ofir_job';
+  $strongarm->value = 0;
+  $export['comment_anonymous_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_os2web_ofir_job';
+  $strongarm->value = 1;
+  $export['comment_default_mode_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_os2web_ofir_job';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_os2web_ofir_job';
+  $strongarm->value = 1;
+  $export['comment_form_location_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_os2web_ofir_job';
+  $strongarm->value = '2';
+  $export['comment_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_os2web_ofir_job';
+  $strongarm->value = '1';
+  $export['comment_preview_os2web_ofir_job'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_os2web_ofir_job';
+  $strongarm->value = 1;
+  $export['comment_subject_field_os2web_ofir_job'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
