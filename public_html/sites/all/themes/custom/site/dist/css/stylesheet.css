@@ -24878,6 +24878,10 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
   .front .news-list .view-header h3 {
     margin: 20px 0;
   }
+  table.piwik-statistics {
+    display: inline;
+    margin: 15px;
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
 }
