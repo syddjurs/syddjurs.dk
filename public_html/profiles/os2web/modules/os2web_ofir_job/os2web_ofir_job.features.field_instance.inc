@@ -22,7 +22,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -110,7 +110,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -140,7 +140,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'content_taxonomy_opt_groups' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 11,
     ),
   );
 
@@ -156,7 +156,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -229,7 +229,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
@@ -245,7 +245,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -318,7 +318,93 @@ function os2web_ofir_job_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-os2web_ofir_job-field_os2web_ofir_department'.
+  $field_instances['node-os2web_ofir_job-field_os2web_ofir_department'] = array(
+    'bundle' => 'os2web_ofir_job',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_ofir_department',
+    'label' => 'Afdeling',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'blokindhold' => 'blokindhold',
+          'emails' => 'emails',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'os2web_html_purifier' => 'os2web_html_purifier',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'raw' => 'raw',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'blokindhold' => array(
+              'weight' => -7,
+            ),
+            'emails' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => -10,
+            ),
+            'full_html' => array(
+              'weight' => -9,
+            ),
+            'os2web_html_purifier' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -6,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+            'raw' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
     ),
   );
 
@@ -333,7 +419,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -378,7 +464,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -611,7 +697,7 @@ function os2web_ofir_job_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 1,
       ),
       'spotbox' => array(
         'label' => 'above',
@@ -769,6 +855,7 @@ function os2web_ofir_job_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Ad id');
+  t('Afdeling');
   t('Ansøgningsfrist');
   t('Apply Link');
   t('Beskrivelse');
