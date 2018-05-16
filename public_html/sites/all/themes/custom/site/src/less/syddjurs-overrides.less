@@ -608,6 +608,12 @@ div.breadcrumb.you-are-here {
       padding: 0 10px 0 0;
     }
     .social-share {
+      & ul {
+        padding-left: unset;
+        & li[class^="social-share-item-"]{
+          list-style-type: none;
+        }
+      }
       padding-top: 7px;
       span {
         margin-top: 4px;
@@ -1022,6 +1028,10 @@ a.virkdk:after {
 
 .view-os2web-citizenservices-view ul li {
     margin-bottom: 0.5em;
+}
+
+.panel-body.panel-collapse.collapse.fade.collapsed{
+  opacity: unset;
 }
 
 @media @media-query-mobile-only {
