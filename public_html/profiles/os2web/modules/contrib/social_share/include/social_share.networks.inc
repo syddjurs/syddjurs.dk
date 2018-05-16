@@ -13,6 +13,10 @@ function social_share_admin_networks($form, &$form_state) {
   $form['networks']['#tree'] = TRUE;
 
   foreach ($networks as $network) {
+    if (!isset($network['weight'])) {
+      $network['weight'] = count($networks);
+    }
+
     $form['networks'][$network['machine_name']] = array(
       'human_name' => array(
         '#markup' => $network['human_name'],
@@ -258,87 +262,86 @@ function social_share_admin_networks_remove_submit($form, &$form_state) {
   drupal_goto('admin/config/services/social-share/networks');
 }
 
+/**
+ * Get a list of default networks for installation.
+ *
+ * @return array
+ */
 function _social_share_get_networks() {
   $networks = array(
-    array(
+    'delicious' => array(
       'machine_name' => 'delicious',
       'human_name' => t('Delicious'),
       'url' => 'http://www.delicious.com/save?v=5&noui&jump=close&url=%URL%&title=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'digg' => array(
       'machine_name' => 'digg',
       'human_name' => t('Digg'),
       'url' => 'http://digg.com/share?url=%URL%&title=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'facebook' => array(
       'machine_name' => 'facebook',
       'human_name' => t('Facebook'),
       'url' => 'http://facebook.com/sharer.php?u=%URL%&t=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'googleplus' => array(
       'machine_name' => 'googleplus',
       'human_name' => t('Google Plus'),
       'url' => 'https://plus.google.com/share?url=%URL%',
       'locked' => TRUE,
     ),
-    array(
+    'hyves' => array(
       'machine_name' => 'hyves',
       'human_name' => t('Hyves'),
       'url' => 'http://www.hyves-share.nl/button/tip/?tipcategoryid=12&rating=5&title=%TITLE%&body=%DESC%Bron: [url=%URL%]%URL%[/url]',
       'locked' => TRUE,
     ),
-    array(
+    'linkedin' => array(
       'machine_name' => 'linkedin',
       'human_name' => t('LinkedIn'),
       'url' => 'http://www.linkedin.com/shareArticle?url=%URL%&mini=true&title=%TITLE%&ro=false&summary=%DESC%&source=',
       'locked' => TRUE,
     ),
-    array(
+    'msnlive' => array(
       'machine_name' => 'msnlive',
       'human_name' => t('MSN Live'),
       'url' => 'http://profile.live.com/badge/?url=%URL%&title=%TITLE%&description=%DESC%',
       'locked' => TRUE,
     ),
-    array(
+    'myspace' => array(
       'machine_name' => 'myspace',
       'human_name' => t('Myspace'),
       'url' => 'http://www.myspace.com/Modules/PostTo/Pages/default.aspx?u=%URL%&c=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
-      'machine_name' => 'orkut',
-      'human_name' => t('Orkut'),
-      'url' => 'http://promote.orkut.com/preview?nt=orkut.com&tt=%TITLE%&du=%URL%&cn=%DESC%',
-      'locked' => TRUE,
-    ),
-    array(
+    'pinterest' => array(
       'machine_name' => 'pinterest',
       'human_name' => t('Pinterest'),
       'url' => 'http://pinterest.com/pin/create/button/?url=%URL%&media=%IMAGE%&description=%DESC%',
       'locked' => TRUE,
     ),
-    array(
+    'reddit' => array(
       'machine_name' => 'reddit',
       'human_name' => t('Reddit'),
       'url' => 'http://reddit.com/submit?url=%URL%&title=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'stumbleupon' => array(
       'machine_name' => 'stumbleupon',
       'human_name' => t('StumbleUpon'),
       'url' => 'http://stumbleupon.com/submit?url=%URL%&title=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'twitter' => array(
       'machine_name' => 'twitter',
       'human_name' => t('Twitter'),
       'url' => 'http://twitter.com/intent/tweet?url=%URL%&text=%TITLE%',
       'locked' => TRUE,
     ),
-    array(
+    'yahoo' => array(
       'machine_name' => 'yahoo',
       'human_name' => t('Yahoo'),
       'url' => 'http://bookmarks.yahoo.com/toolbar/savebm?opener=tb&u=%URL%&t=%TITLE%&d=%DESC%',

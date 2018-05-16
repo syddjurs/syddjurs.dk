@@ -6,9 +6,12 @@ configure = admin/config/user-interface/menu_minipanels
 dependencies[] = menu
 dependencies[] = panels_mini
 
-; Information added by drupal.org packaging script on 2012-04-28
-version = "7.x-1.0-rc6"
+; Not a dependency, but strongly recommended.
+;dependencies[] = navigation404
+
+; Information added by drupal.org packaging script on 2012-12-01
+version = "7.x-1.1"
 core = "7.x"
 project = "menu_minipanels"
-datestamp = "1335587756"
+datestamp = "1354358783"
 
