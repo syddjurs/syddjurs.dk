@@ -427,7 +427,8 @@ function os2web_subscription_add_subscription_form($form, &$form_submit, $catego
       '#title' => t('Subscribe to !category.', array(
         '!category' => variable_get('os2web_subscription_title_' . $category, $category),
       )),
-      '#description' => t('Subscribe to !category by entering your Email and submit. When new content of a this type is created, you will recieve an email.', array(
+      '#description' => t('Subscribe to !category by entering your Email and submit. When new content of a this type is created, you will recieve an email.'
+          . 'We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive.', array(
         '!category' => variable_get('os2web_subscription_title_' . $category, $category),
       )),
     );
@@ -435,7 +436,8 @@ function os2web_subscription_add_subscription_form($form, &$form_submit, $catego
     $form['os2web_subscription_group'] = array(
       '#type' => 'fieldset',
       '#title' => $title ? $title : t('Subscribe'),
-      '#description' => t('Subscribe to categories below by entering your Email and submit. When new content of a this type is created, you will recieve an email.'),
+      '#description' => t('Subscribe to categories below by entering your Email and submit. When new content of a this type is created, you will recieve an email. '
+          . 'We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive.'),
     );
   }
 
