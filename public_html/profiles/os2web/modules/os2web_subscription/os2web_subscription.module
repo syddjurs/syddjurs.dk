@@ -428,14 +428,14 @@ function os2web_subscription_add_subscription_form($form, &$form_submit, $catego
         '!category' => variable_get('os2web_subscription_title_' . $category, $category),
       )),
       '#description' => t('Subscribe to !category by entering your Email and submit. When new content of a this type is created, you will recieve an email.', array(
-        '!category' => variable_get('os2web_subscription_title_' . $category, $category)
+        '!category' => variable_get('os2web_subscription_title_' . $category, $category),
       )),
     );
   } else {
     $form['os2web_subscription_group'] = array(
       '#type' => 'fieldset',
       '#title' => $title ? $title : t('Subscribe'),
-      '#description' => t('Subscribe to categories below by entering your Email and submit. When new content of a this type is created, you will recieve an email.')
+      '#description' => t('Subscribe to categories below by entering your Email and submit. When new content of a this type is created, you will recieve an email.'),
     );
   }
 
@@ -443,7 +443,7 @@ function os2web_subscription_add_subscription_form($form, &$form_submit, $catego
     '#type' => 'textfield',
     '#title' => t('Your Email'),
     '#required' => TRUE,
-     '#prefix' => '<div class="help-block">' . t('We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive.') . '</div>',
+    '#prefix' => '<div class="help-block">' . t('We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive.') . '</div>',
     '#element_validate' => array('os2web_subscription_add_subscription_form_email_validate'),
   );
   if (is_array($category)) {
