@@ -48,8 +48,8 @@ msgid "Your subscriptions"
 msgstr "Dine tilmeldinger"
 
 #: os2web_subscription.module:204
-msgid "Choose which of the categories you want to be notified of. When new content of a particular category is created, you will recieve an email. We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive."
-msgstr "Vælg hvilke kategorier du gerne vil modtage notifikationer fra. Når nyt indhold fra en kategorí er oprettet, vil du modtage en mail. "Vi videregiver ikke din mailadresse til andre parter og anvender den ikke til andre formål. Du kan til enhver tid afmelde dig ved at klikke på Afmeld i de mails du modtager."
+msgid "Choose which of the categories you want to be notified of. When new content of a particular category is created, you will recieve an email."
+msgstr "Vælg hvilke kategorier du gerne vil modtage notifikationer fra. Når nyt indhold fra en kategorí er oprettet, vil du modtage en mail."
 
 #: os2web_subscription.module:217
 msgid "Save subscriptions"
@@ -64,8 +64,8 @@ msgid "Subscribe to !category"
 msgstr "Abonner på !category"
 
 #: os2web_subscription.module:280
-msgid "Subscribe to !category by entering your Email and submit. When new content of a this type is created, you will recieve an email. We do not open your email address to other parties and do not use it for any other purpose. You can unsubscribe at any time by clicking Unsubscribe in the mails you receive."
-msgstr "Vil du abonnere på !category? – Tilmeld dig vores automatisk nyhedsmail - så får du en mail hver gang siden opdateres. "Vi videregiver ikke din mailadresse til andre parter og anvender den ikke til andre formål. Du kan til enhver tid afmelde dig ved at klikke på Afmeld i de mails du modtager."
+msgid "Subscribe to !category by entering your Email and submit. When new content of a this type is created, you will recieve an email"
+msgstr "Vil du abonnere på !category? – Tilmeld dig vores automatisk nyhedsmail - så får du en mail hver gang siden opdateres."
 
 #: os2web_subscription.module:288
 msgid "Save subscription"
