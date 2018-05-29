@@ -831,6 +831,10 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
     white-space: pre-wrap !important;
   }
 }
+.webform-component--GDPR a.panel-title {
+  color: #000 !important;
+  font-weight: bold;
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
