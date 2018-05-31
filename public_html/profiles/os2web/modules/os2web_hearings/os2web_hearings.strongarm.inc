@@ -76,6 +76,13 @@ function os2web_hearings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'fancyselect_dom_selector';
+  $strongarm->value = '.view-os2web-hearings select';
+  $export['fancyselect_dom_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__os2web_hearings_hearing_case';
   $strongarm->value = array(
     'view_modes' => array(
@@ -109,6 +116,9 @@ function os2web_hearings_strongarm() {
       'node_webform' => array(
         'custom_settings' => TRUE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -128,12 +138,16 @@ function os2web_hearings_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '9',
             'visible' => FALSE,
           ),
           'node_webform' => array(
             'weight' => '0',
             'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '3',
+            'visible' => FALSE,
           ),
         ),
       ),
@@ -229,7 +243,7 @@ function os2web_hearings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_os2web_hearings_hearing_case';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_os2web_hearings_hearing_case'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -243,7 +257,7 @@ function os2web_hearings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'webform_default_fields_nid_os2web_hearings_hearing_case';
-  $strongarm->value = '5627967';
+  $strongarm->value = '6116611';
   $export['webform_default_fields_nid_os2web_hearings_hearing_case'] = $strongarm;
 
   $strongarm = new stdClass();

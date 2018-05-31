@@ -106,40 +106,14 @@ function os2web_hearings_settings_form(){
  * Implements hook_form_alter()
  */
 function os2web_hearings_form_views_exposed_form_alter(&$form, &$form_state){
-  if($form['#id'] === 'views-exposed-form-os2web-hearings-page'){
-    $form['from_date']['value']['#date_format'] = 'd-m-Y';
-    $form['to_date']['value']['#date_format'] = 'd-m-Y';
-  }
+  $form['field_os2web_hearings_type_value']['#options']['All'] = t('All hearing types');
 
-    // Add a little js to make the calendar icons clickable.
-    $cal_icon = url(drupal_get_path('theme', variable_get('theme_default', NULL)) . "/dist/img/cal.png");
-    $datepicker = '
-
-
-      (function ($) {
-        Drupal.behaviors.os2web_meetings = {
-          attach: function(context, settings) {
-                      $("#edit-from-date-value-date").datepicker({
-                                    showOn: "both",
-                                    buttonImage: "' . $cal_icon . '",
-                                    buttonImageOnly: true,
-                                    dateFormat: "dd-mm-yy"
-                      });
-                      $("#edit-to-date-value-date").datepicker({
-                                    showOn: "both",
-                                    buttonImage: "' . $cal_icon . '",
-                                    buttonImageOnly: true,
-                                    dateFormat: "dd-mm-yy"
-                      });
-            }
-          }
-        }(jQuery));';
-
-    drupal_add_js($datepicker, array(
-      'type' => 'inline',
-      'scope' => 'footer',
-      'weight' => 5)
-    );
+  // Limiting the options for exposed filter operator.
+  $form['field_os2web_hearings_enddate_value_1_op']['#options'] = array (
+    'not empty' => t('All hearings'),
+    '>=' => t('Actual hearings'),
+    '<' => t('Past hearings')
+  );
 }
 
 /**
@@ -176,6 +150,17 @@ function os2web_hearings_os2web_help($sections) {
 function os2web_hearings_form_os2web_hearings_hearing_case_node_form_alter(&$form, &$form_state, $form_id) {
   // Set 'Send til Acadre ved publisering' checkbox to be checked as default, even if stored otherwise in the db
   $form['field_os2web_base_send_to_acadre']['und']['#default_value'] = TRUE;
+}
+
+/**
+ * Implement hook_form_alter().
+ *
+ * Changes submit button class for hearings webform.
+ */
+function os2web_hearings_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id,'webform_client_form') === 0 && $form['#node']->type === 'os2web_hearings_hearing_case') {
+    $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
+  }
 }
 
 
@@ -325,4 +310,3 @@ function os2web_hearings_node_webform_view($node) {
   $rendered = drupal_render($view);
   return $rendered;
 }
-

@@ -26,6 +26,44 @@
 	margin-bottom: @bs3-designer-margin-and-padding-xs-xl;
 	margin-top: @bs3-designer-margin-and-padding-xs-xl;
 	}
+
+    .featured-area {
+      padding: 15px 20px;
+      background: #f3edef;
+      margin-bottom: 40px;
+    }
+
+    &.node-os2web-hearings-hearing-case {
+      .field {
+        .field-label {
+          font-weight: normal;
+        }
+
+        margin-bottom: 20px;
+        &.field-name-field-os2web-hearings-enddate,
+        &.field-name-field-os2web-base-case-no {
+          font-weight: bold;
+        }
+        &.field-type-file {
+          thead {
+            th {
+              padding-bottom: 10px;
+              border: 0;
+              &:first-child {
+                padding-left: 0;
+                color: @brand-primary;
+              }
+            }
+          }
+          tbody {
+            td {
+              font-weight: bold;
+              border: 0;
+            }
+          }
+        }
+      }
+    }
 }
 
 // --------------------------------------------------
@@ -50,7 +88,16 @@
 @media @media-query-tablet {
 
 	// Full node
-	.os2-node-full {}
+  .os2-node-full {
+    &.node-os2web-hearings-hearing-case {
+      .field {
+        &.field-name-field-os2web-hearings-enddate,
+        &.field-name-field-os2web-base-case-no {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 // Tablet - only

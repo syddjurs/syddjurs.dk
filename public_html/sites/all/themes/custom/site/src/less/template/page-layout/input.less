@@ -11,3 +11,58 @@
     outline: 0;
   }
 }
+
+form .fancy-select {
+  div.trigger {
+    color: @btn-primary-color;
+    background: @brand-primary;
+    width: 100%;
+    border: 1px solid #f3edef;
+    border-top-color: #f3edef;
+    border-radius: 0;
+    box-shadow: none;
+    &.open {
+      color: @btn-primary-color;
+      background: @brand-primary;
+      box-shadow: none;
+      border: 1px solid #f3edef;
+      &:after {
+        border-top-color: inherit;
+      }
+    }
+    &:after {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: none;
+      border-left: 2px solid #fff;
+      border-top: 2px solid #fff;
+      -moz-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+      top: initial;
+      position: absolute;
+      right: 14px;
+    }
+  }
+  ul.options {
+    width: 100%;
+    padding: 0;
+    background: white;
+    border-radius: 0;
+    border-top-width: 0;
+    border: 1px solid #f3edef;
+    top: 37px;
+    li, li.selected, li.hover {
+      color: #4a4a4a;
+    }
+
+    li.selected, li.hover {
+      background: #f5f5f5;
+    }
+
+    &.open {
+      top: 37px;
+    }
+  }
+}

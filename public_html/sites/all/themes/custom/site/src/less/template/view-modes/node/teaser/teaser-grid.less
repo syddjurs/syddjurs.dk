@@ -1,0 +1,168 @@
+// |--------------------------------------------------------------------------
+// | Grid
+// |--------------------------------------------------------------------------
+// |
+// | This file contains styles for the following:
+// | - .os2-node-grid-teaser
+// |
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+@os2-node-grid-teaser-background-color: @body-bg;
+@os2-node-grid-teaser-border-radius: @border-radius-base;
+
+// Responsive
+@os2-node-grid-teaser-xs-stacked-spacing: floor( (@grid-gutter-width / 3) );
+@os2-node-grid-teaser-sm-stacked-spacing: floor( (@grid-gutter-width / 3) );
+@os2-node-grid-teaser-md-stacked-spacing: floor( (@grid-gutter-width / 2) );
+@os2-node-grid-teaser-lg-stacked-spacing: floor( (@grid-gutter-width / 2) );
+
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Grid
+.os2-node-grid-teaser {
+  border: 1px solid #f3edef;
+  border-radius: @os2-node-grid-teaser-border-radius;
+
+  padding: 10px;
+
+  .os2-node-teaser-heading {
+
+    .os2-node-teaser-heading-title {
+      .heading-h6;
+    }
+  }
+
+  .os2-node-teaser-body {
+  }
+
+  .os2-node-teaser-footer {
+    margin-top: 18px;
+  }
+
+  &.node-os2web-hearings-hearing-case {
+    .field {
+      .field-label {
+        font-weight: normal;
+      }
+
+      &.field-name-field-os2web-hearings-enddate {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Variants
+// --------------------------------------------------
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// Mobile - only
+@media @media-query-mobile-only {
+
+  // grid
+  .os2-node-grid-teaser {
+    margin-bottom: @os2-node-grid-teaser-xs-stacked-spacing !important;
+  }
+}
+
+// Tablet
+@media @media-query-tablet {
+
+  // grid
+  .os2-node-grid-teaser {
+    height: 250px;
+    .os2-node-teaser-heading {
+      h3 {
+        height: 32px;
+      }
+    }
+    .os2-node-teaser-body {
+      height: 72px;
+    }
+  }
+}
+
+// Tablet - only
+@media @media-query-tablet-only {
+
+  // grid
+  .os2-node-grid-teaser {
+    margin-bottom: @os2-node-grid-teaser-sm-stacked-spacing !important;
+  }
+}
+
+// Desktop
+@media @media-query-desktop {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// Desktop - only
+@media @media-query-desktop-only {
+
+  // grid
+  .os2-node-grid-teaser {
+    margin-bottom: @os2-node-grid-teaser-md-stacked-spacing !important;
+  }
+}
+
+// Large desktop
+@media @media-query-large-desktop {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// Large desktop - only
+@media @media-query-large-desktop-only {
+
+  // grid
+  .os2-node-grid-teaser {
+    margin-bottom: @os2-node-grid-teaser-lg-stacked-spacing !important;
+  }
+}
+
+// Print
+@media print {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// Touch
+.touchevents {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// No touch
+.no-touchevents {
+
+  // grid
+  .os2-node-grid-teaser {}
+}
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// grid mixin
+.os2-mixin-grid-teaser() {}

@@ -1,4 +1,4 @@
-<article<?php print $attributes; ?>>
+<article<?php print $attributes; ?> class="<?php print $classes; ?>">
   <?php print $user_picture; ?>
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
