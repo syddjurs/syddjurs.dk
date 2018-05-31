@@ -160,6 +160,11 @@ function os2web_hearings_form_os2web_hearings_hearing_case_node_form_alter(&$for
 function os2web_hearings_form_alter(&$form, &$form_state, $form_id) {
   if (strpos($form_id,'webform_client_form') === 0 && $form['#node']->type === 'os2web_hearings_hearing_case') {
     $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
+    $form['submitted']['zip']['#prefix'] = '<div class="row form-group"><div class="col-xs-3">';
+    $form['submitted']['zip']['#suffix'] = '</div>';
+
+    $form['submitted']['city']['#prefix'] = '<div class="col-xs-9">';
+    $form['submitted']['city']['#suffix'] = '</div></div>';
   }
 }
 
