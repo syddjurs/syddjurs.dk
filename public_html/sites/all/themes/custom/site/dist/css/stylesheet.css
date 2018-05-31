@@ -19038,6 +19038,9 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 .view-os2web-hearings .views-exposed-form .views-exposed-widget.views-widget-filter-field_os2web_hearings_enddate_value_1 .views-widget {
   display: none;
 }
+.view-os2web-hearings .views-exposed-form .views-exposed-widget.views-submit-button {
+  display: none;
+}
 .view-os2web-hearings .views-exposed-form .views-exposed-widget .btn {
   margin-top: 0;
 }
