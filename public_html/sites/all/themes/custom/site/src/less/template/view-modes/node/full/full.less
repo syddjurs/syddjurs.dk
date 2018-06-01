@@ -34,6 +34,13 @@
     }
 
     &.node-os2web-hearings-hearing-case {
+      .group_os2web_hearings_esdh_attac,
+      .group_os2web_hearings_esdh_reply {
+        h5 {
+          font-weight: bold;
+        }
+      }
+
       .field {
         .field-label {
           font-weight: normal;
@@ -44,22 +51,40 @@
         &.field-name-field-os2web-base-case-no {
           font-weight: bold;
         }
-        &.field-type-file {
-          thead {
-            th {
-              padding-bottom: 10px;
-              border: 0;
-              &:first-child {
-                padding-left: 0;
-                color: @brand-primary;
+        &.field-type-file,
+        &.field-type-os2web-esdh-field-case-ident,
+        &.field-type-os2web-esdh-field-doc-ident {
+          table {
+            width: 100%;
+            thead {
+              th {
+                padding-bottom: 10px;
+                border: 0;
+                &:first-child {
+                  padding-left: 0;
+                  color: @brand-primary;
+                  font-size: 16px;
+                }
+                &:nth-child(2) {
+                  width: 120px;
+                }
+              }
+            }
+            tbody {
+              td {
+                font-weight: bold;
+                border: 0;
+                &:nth-child(2) {
+                  width: 120px;
+                }
               }
             }
           }
-          tbody {
-            td {
-              font-weight: bold;
-              border: 0;
-            }
+        }
+        &.field-type-os2web-esdh-field-case-ident,
+        &.field-type-os2web-esdh-field-doc-ident {
+          thead {
+            display: none;
           }
         }
       }

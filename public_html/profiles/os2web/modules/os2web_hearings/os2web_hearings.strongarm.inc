@@ -138,7 +138,7 @@ function os2web_hearings_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '9',
+            'weight' => '14',
             'visible' => FALSE,
           ),
           'node_webform' => array(

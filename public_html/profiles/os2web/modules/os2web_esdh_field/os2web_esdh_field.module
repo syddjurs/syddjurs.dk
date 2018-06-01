@@ -172,7 +172,8 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
           foreach ($ids as $id) {
             $cases[] = trim($id);
           }
-          $element[$delta]['#markup'] = '<div class="fullcaserender">' . theme('os2web_esdh_case', array('id' => $cases)) . '</div>';
+
+          $element[$delta]['#markup'] = '<div class="fullcaserender table-responsive">' . theme('os2web_esdh_case', array('id' => $cases)) . '</div>';
         }
       }
       break;
@@ -185,7 +186,8 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
           foreach ($ids as $id) {
             $docs[] = trim($id);
           }
-          $element[$delta]['#markup'] = '<div class="documenttable">' . theme('os2web_esdh_document', array('id' => $docs)) . '</div>';
+
+          $element[$delta]['#markup'] = '<div class="documenttable table-responsive">' . theme('os2web_esdh_document', array('id' => $docs)) . '</div>';
         }
       }
       break;
@@ -291,7 +293,7 @@ function theme_os2web_esdh_document($vars) {
     'header' => $header,
     'rows' => $rows,
     'attributes' => array(
-      'class' => 'tablesorter',
+      'class' => array('tablesorter', 'table-responsive', 'table', 'table-striped'),
     ),
   ));
 

@@ -56,6 +56,36 @@ function os2web_hearings_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_os2web_hearings_attac_case'.
+  $field_bases['field_os2web_hearings_attac_case'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2web_hearings_attac_case',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'os2web_esdh_field',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'os2web_esdh_field_case_ident',
+  );
+
+  // Exported field_base: 'field_os2web_hearings_attac_doc'.
+  $field_bases['field_os2web_hearings_attac_doc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2web_hearings_attac_doc',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'os2web_esdh_field',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'os2web_esdh_field_doc_ident',
+  );
+
   // Exported field_base: 'field_os2web_hearings_enddate'.
   $field_bases['field_os2web_hearings_enddate'] = array(
     'active' => 1,
@@ -141,6 +171,36 @@ function os2web_hearings_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_os2web_hearings_reply_case'.
+  $field_bases['field_os2web_hearings_reply_case'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2web_hearings_reply_case',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'os2web_esdh_field',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'os2web_esdh_field_case_ident',
+  );
+
+  // Exported field_base: 'field_os2web_hearings_reply_doc'.
+  $field_bases['field_os2web_hearings_reply_doc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2web_hearings_reply_doc',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'os2web_esdh_field',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'os2web_esdh_field_doc_ident',
   );
 
   // Exported field_base: 'field_os2web_hearings_startdate'.

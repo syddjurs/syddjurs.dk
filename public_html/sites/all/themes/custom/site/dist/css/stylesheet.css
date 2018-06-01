@@ -18153,6 +18153,10 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
   background: #f3edef;
   margin-bottom: 40px;
 }
+.os2-node-full.node-os2web-hearings-hearing-case .group_os2web_hearings_esdh_attac h5,
+.os2-node-full.node-os2web-hearings-hearing-case .group_os2web_hearings_esdh_reply h5 {
+  font-weight: bold;
+}
 .os2-node-full.node-os2web-hearings-hearing-case .field {
   margin-bottom: 20px;
 }
@@ -18163,17 +18167,43 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 .os2-node-full.node-os2web-hearings-hearing-case .field.field-name-field-os2web-base-case-no {
   font-weight: bold;
 }
-.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file thead th {
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table {
+  width: 100%;
+}
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table thead th,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table thead th,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table thead th {
   padding-bottom: 10px;
   border: 0;
 }
-.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file thead th:first-child {
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table thead th:first-child,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table thead th:first-child,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table thead th:first-child {
   padding-left: 0;
   color: #9C1A5E;
+  font-size: 16px;
 }
-.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file tbody td {
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table thead th:nth-child(2),
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table thead th:nth-child(2),
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table thead th:nth-child(2) {
+  width: 120px;
+}
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table tbody td,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table tbody td,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table tbody td {
   font-weight: bold;
   border: 0;
+}
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-file table tbody td:nth-child(2),
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident table tbody td:nth-child(2),
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident table tbody td:nth-child(2) {
+  width: 120px;
+}
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-case-ident thead,
+.os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident thead {
+  display: none;
 }
 @media screen {
 }
@@ -18357,6 +18387,7 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0;
+  margin-bottom: 20px;
 }
 .os2-node-grid-teaser .os2-node-teaser-footer {
   margin-top: 18px;
@@ -19027,6 +19058,9 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 @media screen and (min-width: 1200px) {
 }
 @media print {
+}
+.view-os2web-hearings .view-header {
+  margin-bottom: 40px;
 }
 .view-os2web-hearings .views-exposed-form {
   margin-bottom: 20px;
