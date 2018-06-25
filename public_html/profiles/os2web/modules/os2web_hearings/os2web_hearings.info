@@ -83,6 +83,7 @@ features[field_instance][] = node-os2web_hearings_hearing_case-field_os2web_hear
 features[field_instance][] = node-os2web_hearings_hearing_case-field_os2web_hearings_reply_doc
 features[field_instance][] = node-os2web_hearings_hearing_case-field_os2web_hearings_type
 features[field_instance][] = node-os2web_hearings_hearing_case-field_piwik_stats
+features[image][] = os2web_base_style_image_wide
 features[node][] = os2web_hearings_hearing
 features[node][] = os2web_hearings_hearing_case
 features[variable][] = comment_anonymous_os2web_hearings_hearing_case
