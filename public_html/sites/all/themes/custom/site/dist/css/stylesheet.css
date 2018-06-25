@@ -852,6 +852,10 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
     white-space: pre-wrap !important;
   }
 }
+.webform-component--GDPR a.panel-title {
+  color: #000 !important;
+  font-weight: bold;
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -21645,6 +21649,9 @@ fieldset[disabled] .popover-button .popover-button-content .form-submit.focus {
 .view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-enclosures .field-item.active:focus .list-group-item-text {
   color: #ed95c3;
 }
+.view-os2web-meetings-meeting-details .agenda-item .field-name-field-os2web-meetings-bpa-body .field-item table td {
+  width: auto;
+}
 .view-os2web-meetings-meeting-details .agenda-item ul {
   padding-left: 0;
   list-style: none;
@@ -22495,6 +22502,12 @@ div.breadcrumb.you-are-here {
 .del-bund .del .social-share {
   padding-top: 7px;
 }
+.del-bund .del .social-share ul {
+  padding-left: unset;
+}
+.del-bund .del .social-share ul li[class^="social-share-item-"] {
+  list-style-type: none;
+}
 .del-bund .del .social-share span {
   margin-top: 4px;
   float: left;
@@ -22955,6 +22968,9 @@ footer a {
 }
 .view-os2web-citizenservices-view ul li {
   margin-bottom: 0.5em;
+}
+.panel-body.panel-collapse.collapse.fade.collapsed {
+  opacity: unset;
 }
 @media screen and (max-width: 767px) {
   .front .view-os2web-kulturnaut-events-lists ul {
@@ -24896,6 +24912,10 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
   }
   .front .news-list .view-header h3 {
     margin: 20px 0;
+  }
+  table.piwik-statistics {
+    display: inline;
+    margin: 15px;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {

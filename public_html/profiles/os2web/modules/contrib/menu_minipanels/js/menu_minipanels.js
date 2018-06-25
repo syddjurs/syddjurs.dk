@@ -10,83 +10,71 @@
    */
   Drupal.behaviors.menuMiniPanels = {
     attach: function(context, settings) {
-      // The base DOM structure to work from.
-      var dom_base = 'ul li a';
+      for (i in Drupal.settings.menuMinipanels.panels) {
+        var setting = Drupal.settings.menuMinipanels.panels[i];
+        $('a.menu-minipanel-' + setting.mlid + ':not(.minipanel-processed)')
+          .filter(function () {
+            // Prevent links in qTips from generating qTips themselves, prevents
+            // recursion.
+            return $(this).parents('.menu-minipanels').length < 1;
+          })
+          .each(function () {
+            $(this).addClass('minipanel-processed');
+            setting.content = $('div.menu-minipanel-' + setting.mlid).clone().show();
+            setting.hide.fixed = true;
 
-      // Add the hovers to each appropriate menu item.
-      $(dom_base + '.menu-minipanel:not(.minipanel-processed)', context).each(function() {
-        // Ensure that the panels are only processed once.
-        $(this).addClass('minipanel-processed');
+            // Specify a custom target.
+            if (setting.position.target == 'custom') {
+              var $target = $(setting.position.target_custom);
+              if ($target.length > 0) {
+                setting.position.target = $target;
+              }
+              else {
+                setting.position.target = false;
+              }
+            }
+            else {
+              setting.position.target = false;
+            }
 
-        var matches = $(this).attr('class').match('menu-minipanel-([0-9]+)');
-        var html = $('div.menu-minipanel-' + matches[1]).clone().show();
-        var settings = Drupal.settings.menuMinipanels.panels['panel_' + matches[1]];
-        settings['hide']['fixed'] = true;
-        // Specify a custom target.
-        if (settings['position']['target'] == 'custom') {
-          var target = $(settings['position']['target_custom']);
-          if (target.length > 0) {
-            settings['position']['target'] = target;
-          }
-          else {
-            settings['position']['target'] = false; 
-          }
-        }
-        else {
-          settings['position']['target'] = false; 
-        }
-        settings['content'] = html;
+            // Allowed names in qTip API.
+            setting.api = {};
+            var allowedNames = [
+              'beforeRender',
+              'onRender',
+              'beforePositionUpdate',
+              'onPositionUpdate',
+              'beforeShow',
+              'onShow',
+              'beforeHide',
+              'onHide',
+              'beforeContentUpdate',
+              'onContentUpdate',
+              'beforeContentLoad',
+              'onContentLoad',
+              'beforeTitleUpdate',
+              'onTitleUpdate',
+              'beforeDestroy',
+              'onDestroy',
+              'beforeFocus',
+              'onFocus'
+            ];
 
-        // Allowed names in qTip API.
-        settings['api'] = {};
-        var allowedNames = [
-          'beforeRender',
-          'onRender',
-          'beforePositionUpdate',
-          'onPositionUpdate',
-          'beforeShow',
-          'onShow',
-          'beforeHide',
-          'onHide',
-          'beforeContentUpdate',
-          'onContentUpdate',
-          'beforeContentLoad',
-          'onContentLoad',
-          'beforeTitleUpdate',
-          'onTitleUpdate',
-          'beforeDestroy',
-          'onDestroy',
-          'beforeFocus',
-          'onFocus'
-        ];
-        // Set function for each allowed callback.
-        jQuery.each(allowedNames, function(index, name) {
-          settings['api'][name] = function(event, content) {
-            return MenuMiniPanels.runCallback(name, this, event, content);
-          };
-        });
+            // Set function for each allowed callback.
+            $.each(allowedNames, function() {
+              var name = this;
+              setting.api[name] = function(event, content) {
+                return MenuMiniPanels.runCallback(name, this, event, content);
+              };
+            });
 
-        // Record what DOM element launched this qTip.
-        settings['activator'] = dom_base + '.' + matches[0];
+            // Record what DOM element launched this qTip.
+            setting.activator = 'a.menu-minipanel-' + setting.mlid;
 
-        // Initialize the qTip.
-        $(this).qtip(settings);
-      });
-
-      // Mark target element as selected.
-      MenuMiniPanels.setCallback('beforeShow', function(qTip, event, content) {
-        var $target = $(qTip.elements.target.get(0));
-        if ($target !== undefined) {
-          $target.addClass('qtip-hover');
-        }
-      });
-
-      // Unmark target element as selected.
-      MenuMiniPanels.setCallback('beforeHide', function(qTip, event, content) {
-        // Forceably remove the class off all DOM elements, avoid problems
-        // of it not being properly removed in certain scenarios.
-        $('.qtip-hover').removeClass('qtip-hover');
-      });
+            // Initialize the qTip.
+            $(this).qtip(setting);
+          });
+      }
     }
   };
 })(jQuery);

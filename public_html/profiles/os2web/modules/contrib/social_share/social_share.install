@@ -15,6 +15,7 @@ function social_share_schema() {
       'machine_name' => array(
         'type' => 'varchar',
         'length' => 255,
+        'not null' => TRUE,
       ),
       'human_name' => array(
         'type' => 'varchar',
@@ -77,11 +78,7 @@ function social_share_update_7200() {
 
   module_load_include('inc', 'social_share', 'include/social_share.networks');
   $networks = _social_share_get_networks();
-  foreach ($networks as $network) {
-    db_insert('social_share_networks')
-        ->fields($network)
-        ->execute();
-  }
+  _social_share_install_networks($networks);
 
   variable_set('social_share_utm_settings', array(
     'social_share_append_utm' => 0,
@@ -166,4 +163,23 @@ function social_share_update_7201() {
   }
 
   drupal_flush_all_caches();
+}
+
+/**
+ * Helper function to install a list of social networks
+ *
+ * @param array $networks
+ * @return boolean
+ */
+function _social_share_install_networks(array $networks) {
+  if (!count($networks)) {
+    return FALSE;
+  }
+
+  foreach ($networks as $network) {
+    db_insert('social_share_networks')
+        ->fields($network)
+        ->execute();
+  }
+  return TRUE;
 }

@@ -50,8 +50,12 @@ function theme_social_share_links($variables) {
   if ($block) {
     if (isset($settings['social_share_networks'])) {
       foreach ($settings['social_share_networks'] as $network => $enabled) {
+        // Ignore the added networks that aren't available anymore
+        if (!social_share_get_network($network)) {
+          $enabled = FALSE;
+        }
         if ($enabled) {
-          $content['networks'][] = theme($settings['social_share_theme'], array('network' => $network, 'block' => TRUE));
+          $content['networks']['social-share-item-' . $network] = theme($settings['social_share_theme'], array('network' => $network, 'block' => TRUE));
         }
       }
     }
@@ -65,21 +69,29 @@ function theme_social_share_links($variables) {
       $theme_func = variable_get('social_share_theme_' . $node->type, 'social_share_link');
 
       foreach ($networks as $network) {
-        $content['networks'][] = theme($theme_func, array('network' => $network, 'node' => $node));
+        // Ignore the added networks that aren't available anymore
+        if (!social_share_get_network($network)) {
+          continue;
+        }
+
+        $content['networks']['social-share-item-' . $network] = theme($theme_func, array('network' => $network, 'node' => $node));
       }
     }
     else {
       return array();
     }
   }
-
+  $content['networks'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('links', array('links' => $content['networks'], 'attributes' => array(), 'heading' => ''))
+  );
   return $content;
 }
 
 /**
  * Theme function to render a single social share link (for a node)
  */
-function theme_social_share_link($variables) {
+function social_share_preprocess_social_share_link(&$variables) {
   if (isset($variables['block']) && $variables['block']) {
     $variables['node'] = menu_get_object();
   }
@@ -160,28 +172,47 @@ function theme_social_share_link($variables) {
     $replacements[$k] = rawurlencode(decode_entities($v));
   }
 
+  // Pre-parse the link with the replacements
+  $network['parsed_url'] = str_replace(array_keys($replacements), array_values($replacements), $network['url']);
+
   $share_label = variable_get('social_share_label', NULL);
-  $link_options = array('attributes' => array('class' => 'social-share-' . str_replace('_', '-', $network['machine_name']), 'title' => t('Share to') . ' ' . $network['human_name']));
+  $link_attributes = array('class' => 'social-share-' . str_replace('_', '-', $network['machine_name']), 'title' => t('Share to') . ' ' . $network['human_name']);
   if (is_array($share_label)) {
     $share_label = (isset($share_label[$language->language])) ? $share_label[$language->language] : '';
   }
   if ($share_label != NULL) {
-    $link_options['attributes']['title'] = trim($share_label) . ' ' . $network['human_name'];
+    $link_attributes['title'] = trim($share_label) . ' ' . $network['human_name'];
   }
   if (variable_get('social_share_new_window', 0)) {
-    $link_options['attributes']['target'] = '_blank';
+    $link_attributes['target'] = '_blank';
   }
 
-  $link = array(
-    '#type' => 'link',
-    '#title' => $network['human_name'],
-    '#href' => str_replace(array_keys($replacements), array_values($replacements), $network['url']),
-    '#options' => $link_options,
-    '#suffix' => '&nbsp;',
+  // Attach the parameters seperatly
+  $variables['social_share_link_options'] = array(
+    'link_attributes' => $link_attributes,
+    'replacements' => $replacements,
+    'network' => $network
   );
+}
+
+/**
+ * Implements theme_HOOK().
+ */
+function theme_social_share_link($variables) {
+  // Initial values
+  $network = $variables['network'];
+  $link_attributes = array();
+
+  // extract all values in array to $key = $value
+  extract($variables['social_share_link_options']);
 
   // Return the link
-  return $link;
+  return array(
+    'type' => 'link',
+    'title' => $network['human_name'],
+    'href' => $network['parsed_url'],
+    'attributes' => $link_attributes,
+  );
 }
 
 /**
