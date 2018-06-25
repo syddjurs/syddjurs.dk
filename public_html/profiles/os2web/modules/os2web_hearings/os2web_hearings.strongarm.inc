@@ -249,6 +249,20 @@ function os2web_hearings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_os2web_hearings_hearing_case_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_os2web_hearings_hearing_case_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_os2web_hearings_hearing_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_os2web_hearings_hearing_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'webform_default_fields_allow_node_os2web_hearings_hearing_case';
   $strongarm->value = TRUE;
   $export['webform_default_fields_allow_node_os2web_hearings_hearing_case'] = $strongarm;
