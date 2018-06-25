@@ -225,13 +225,14 @@ function social_share_block_configure($delta = '') {
   );
 
   $networks = isset($settings['social_share_networks']) ? $settings['social_share_networks'] : array();
+  $selected_networks = array_filter(array_values($networks));
 
   $form['social_share']['social_share_networks'] = array(
     '#type' => 'fieldset',
     '#title' => t('Social Networks'),
     '#description' => t('Specify the social network(s) to enable in this block.'),
     '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
+    '#collapsed' => count($selected_networks),
     '#tree' => TRUE,
   );
 
@@ -394,13 +395,14 @@ function social_share_form_node_type_form_alter(&$form, &$form_state) {
   );
 
   $networks = variable_get('social_share_networks_' . $form['#node_type']->type, array());
+  $selected_networks = array_filter(array_values($networks));
 
   $form['social_share']['wrapper']['social_share_networks'] = array(
     '#type' => 'fieldset',
     '#title' => t('Social Networks'),
     '#description' => t('Specify the social network(s) to enable for this node type.'),
     '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
+    '#collapsed' => count($selected_networks),
     '#tree' => TRUE,
   );
 
@@ -429,8 +431,11 @@ function social_share_available_networks($reset = FALSE) {
         ->execute();
 
     while ($network = $result->fetchAssoc()) {
-      $networks[] = $network;
+      $networks[$network['machine_name']] = $network;
     }
+
+    $networks += module_invoke_all('social_networks');
+    ksort($networks);
   }
 
   return $networks;

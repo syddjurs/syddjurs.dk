@@ -1,3 +1,71 @@
+Menu_MiniPanels 7.x-1.1, 2012-12-01
+-----------------------------------
+#1854870 by DamienMcKenna: Replaced the array_replace_recursive() function with
+  one taken from php.net.
+#1851816 by DamienMcKenna: Cleaned up handling of default values and settings
+  for the shared settings form, resolves errors in 1.0.
+
+
+Menu_MiniPanels 7.x-1.0, 2012-11-24
+-----------------------------------
+#1847292 by patrickd: Drush Make integration for automatic downloading of the
+  necessary qTip library.
+#1844338 by willvincent, DamienMcKenna: Workaround for older versions of PHP
+  that don't have the array_replace_recursive function.
+#1148956 by DamienMcKenna, lussoluca: Support for qTip's position 'adjust'
+  settings.
+#1148956 by DamienMcKenna: Due to problems with qTip, both 'adjust' values must
+  be non-zero in order for them to work.
+#1798938 by DamienMcKenna: Separated the bundled qTip JS callback code so it
+  may be overridden & customized.
+#1021372 by DamienMcKenna: Remove each menu item's configuration in
+  hook_uninstall().
+#1840360 by DamienMcKenna: Check the entire menu tree when determining if qTip
+  should be loaded.
+#1849694 by DamienMcKenna: Disable integration with the Admin Menu and Devel
+  modules.
+#1849710 by DamienMcKenna: Drush download-qtip command could fail when the
+  Libraries API module is installed.
+
+
+Menu_MiniPanels 7.x-1.0-rc9, 2012-11-13
+---------------------------------------
+#1718012 by DamienMcKenna: Optional style setting fields were required; also
+  reorganized the style settings fieldset for a slight UX improvement.
+#1775482 by DamienMcKenna: Position Type selections are incorrect.
+#1218174 by DamienMcKenna: Allow the position container to be changed.
+#1837178 by DamienMcKenna: Corrected the Mini Panels admin link.
+#1810496 by DamienMcKenna: If the 'container' value is empty, don't output it.
+
+
+Menu_MiniPanels 7.x-1.0-rc8, 2012-08-21
+---------------------------------------
+#1580312 by codycraven, DamienMcKenna: Improved the custom JS to be cleaner and
+  more compatible with theming changes.
+#1661730 by DamienMcKenna: Replaced $.each with for() loop (minor performance
+  improvement).
+#1683872 by DamienMcKenna: Fixed callbacks, they were broken by the changes in
+  #1661730.
+#1633136 by DamienMcKenna: If the main menu and secondary menu are the same,
+  also process the second level of that menu.
+#1728018 by DamienMcKenna: Restructured the output generation so it happens
+  earlier in the page cycle to help avoid problems with other modules.
+
+
+Menu_MiniPanels 7.x-1.0-rc7, 2012-06-17
+---------------------------------------
+#1264738 by DamienMcKenna: Added a note about 404 pages and Navigation404.
+#1553144 by DamienMcKenna: Removed some unnecessary code from
+  menu_minipanels_prepare_links().
+#1586122 by DamienMcKenna: Bug in how menus were enabled, should work now.
+#1396032 by DamienMckenna: Manually re-load contextual menus on all qTip popups
+  and cleans up the output code to better use the render API.
+#1604638 by DamienMcKenna: Added a note to the README.txt about a compatibility
+  problem with old versions of Menu_Attributes.
+#1425046 by jwilson3: Hover class could still get stuck in certain scenarios.
+Added a note about compatibility problems with JavaScript widgets.
+
+
 Menu_MiniPanels 7.x-1.0-rc6, 2012-04-28
 ---------------------------------------
 #1440474 by davidwhthomas, DamienMcKenna: Allow pages to be skipped by path.

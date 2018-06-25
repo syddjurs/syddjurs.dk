@@ -30,6 +30,13 @@ Installation: Manual
  5. Enable the module from the modules admin page (admin/modules).
 
 
+Installation: Drush Make
+------------------------
+ 1. Add menu_minipanels to a .make file (see http://drupal.org/node/1006620).
+ 2. Execute the Drush Make file.
+ 3. Enable via the installation profile or manually on the modules admin page.
+
+
 Configuration
 -------------
  * Visit the "Menu Minipanels" settings page
@@ -53,9 +60,25 @@ minipanel to display, allowing it to be themed to match the normal :hover
 state.  There is not currently a way to make it retain the :hover state while
 the pointer is over the minipanel, so this is a work-around.
 
+If custom callbacks are needed it may be worthwhile to disable the default
+callback JavaScript code via the main settings page; it is suggested to copy
+the existing menu_minipanels.callbacks.js file's contents into a new file in
+either another module or a theme and customize from there. Note: this must be
+done in order to use the "beforeShow", "beforeHide" or 'onRender' callbacks.
+
 
 Known Issues
 ------------
+Due to a bug/feature in Drupal 7, no menus will be displayed on error pages,
+e.g. 404 / File Not Found pages. The best way to resolve this is to use the
+Navigation404 module, which will make all menus and minipanels be displayed
+again.
+
+There are compatibility problems between the qTip library and other JavaScript
+-enabled widgets that cause the widgets to not trigger when placed within a
+minipanel. This is noted to cause problems with Quicktabs, Commerce widgets,
+maps from Google Maps and other sources, and many others.
+
 If an error "Invalid calling object" shows on IE9's Javascript console, there
 may be another script or plugin loading on the page which is conflicting. In
 one case it was caused by DivX Player (http://drupal.org/node/1379542), once it
@@ -64,6 +87,9 @@ was removed the problem ended.
 The qTip library takes over the tooltip display DOM events so it is not
 possible to display normal link title tooltips on menu items which have
 minipanels attached.
+
+When also using the Menu Attributes module, use at least v7.x-1.0-rc2 of that
+module as earlier versions had a bug that conflicted with Menu MiniPanels.
 
 
 Author
