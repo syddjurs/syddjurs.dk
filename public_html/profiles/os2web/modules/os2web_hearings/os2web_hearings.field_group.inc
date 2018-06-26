@@ -53,7 +53,10 @@ function os2web_hearings_field_group_info() {
     'children' => array(
       0 => 'field_os2web_hearings_enddate',
       1 => 'field_os2web_hearings_type',
-      2 => 'path',
+      2 => 'field_os2web_base_field_contact',
+      3 => 'field_os2web_base_case_no',
+      4 => 'field_os2web_base_send_to_acadre',
+      5 => 'path',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -203,8 +206,7 @@ function os2web_hearings_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_os2web_hearings_attac_case',
-      1 => 'field_os2web_hearings_attac_cs',
-      2 => 'field_os2web_hearings_attac_doc',
+      1 => 'field_os2web_hearings_attac_doc',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -264,7 +266,6 @@ function os2web_hearings_field_group_info() {
     'children' => array(
       0 => 'field_os2web_hearings_reply_case',
       1 => 'field_os2web_hearings_reply_doc',
-      2 => 'field_os2web_hearings_reply_cs',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

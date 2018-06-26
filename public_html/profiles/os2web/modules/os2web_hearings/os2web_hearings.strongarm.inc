@@ -126,13 +126,13 @@ function os2web_hearings_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '17',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '3',
         ),
       ),
       'display' => array(

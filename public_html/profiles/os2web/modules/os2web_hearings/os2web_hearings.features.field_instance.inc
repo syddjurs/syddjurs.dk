@@ -438,7 +438,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 41,
+      'weight' => 10,
     ),
   );
 
@@ -874,7 +874,7 @@ function os2web_hearings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 42,
+      'weight' => 11,
     ),
   );
 
@@ -1031,7 +1031,7 @@ function os2web_hearings_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 16,
+      'weight' => 7,
     ),
   );
 
@@ -1232,7 +1232,7 @@ function os2web_hearings_field_default_field_instances() {
       'module' => 'os2web_esdh_field',
       'settings' => array(),
       'type' => 'os2web_esdh_field_doc_ident_wid',
-      'weight' => 48,
+      'weight' => 47,
     ),
   );
 
@@ -1279,7 +1279,7 @@ function os2web_hearings_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 6,
     ),
   );
 
@@ -1322,7 +1322,7 @@ function os2web_hearings_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 21,
+      'weight' => 2,
     ),
   );
 
