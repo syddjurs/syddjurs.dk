@@ -438,7 +438,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -874,7 +874,7 @@ function os2web_hearings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1030,8 +1030,8 @@ function os2web_hearings_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_select',
-      'weight' => 7,
+      'type' => 'date_popup',
+      'weight' => 11,
     ),
   );
 
@@ -1144,7 +1144,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 10,
     ),
   );
 

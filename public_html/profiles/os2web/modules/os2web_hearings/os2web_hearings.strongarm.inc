@@ -126,7 +126,7 @@ function os2web_hearings_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'metatags' => array(
           'weight' => '4',
