@@ -45,9 +45,16 @@
           </div>
 
           <div class="col-sm-4">
-            <a href="/node/<?php print $node->nid; ?>/formular" class="btn btn-success">
-              <?php print t('Write hearing reply'); ?>
-            </a>
+            <?php
+            if (strtotime($node->field_os2web_hearings_enddate['und'][0]['value']) >= strtotime("midnight", time())): ?>
+              <a href="/node/<?php print $node->nid; ?>/formular" class="btn btn-success">
+                <?php print t('Write hearing reply'); ?>
+              </a>
+            <?php else: ?>
+              <a class="btn btn-primary disabled">
+                <?php print t('Closed for hearing reply'); ?>
+              </a>
+            <?php endif ?>
           </div>
 
         </div>
