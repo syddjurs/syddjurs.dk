@@ -172,7 +172,7 @@ function os2web_hearings_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['ui_name'] = 'Page title';
-  $handler->display->display_options['header']['area']['content'] = '<h1>Høringer of Afgørelser</h1>';
+  $handler->display->display_options['header']['area']['content'] = '<h1>Høringer og Afgørelser</h1>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* Overskrift: Global: PHP */
   $handler->display->display_options['header']['php']['id'] = 'php';
@@ -305,7 +305,7 @@ if(is_object($node)){
     t('Høringer'),
     t('Search/overview page for hearings'),
     t('mere'),
-    t('<h1>Høringer of Afgørelser</h1>'),
+    t('<h1>Høringer og Afgørelser</h1>'),
     t('Høringer resume'),
     t('Resume, showing 3 latest hearings'),
     t('<a href="/hoeringer" title="Høring og afgørelser">Se alle i høring</a>'),
