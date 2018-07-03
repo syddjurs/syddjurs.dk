@@ -478,6 +478,11 @@ function site_menu_link__tabbed(array $variables) {
  */
 function site_preprocess_breadcrumb(&$variables) {
   $variables['breadcrumb'][0] = l('<span class="icon"></span>Forside', '<front>', array('html' => true));
+
+  // Setting the right breadcrumbs on hearings webform pages.
+  if (drupal_match_path(current_path(), 'node/*/formular')) {
+    $variables['breadcrumb'][count($variables['breadcrumb'])-1]['data'] = 'Svarformular';
+  }
 }
 
 /*

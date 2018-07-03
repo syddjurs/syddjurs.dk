@@ -302,6 +302,16 @@ function os2web_hearings_theme($existing, $type, $theme, $path) {
  * Renders the webform view of a single node.
  */
 function os2web_hearings_node_webform_view($node) {
+  $breadcrumb = array();
+  // First item is duplicated as it's removed during preprocess.
+  $breadcrumb[] = l('Home', '<front>');
+  $breadcrumb[] = l('Home', '<front>');
+  $breadcrumb[] = l('Høringer of afgørelser', 'hoeringer');
+  $breadcrumb[] = l($node->title, 'node/' . $node->nid);
+
+  // Set Breadcrumbs
+  drupal_set_breadcrumb($breadcrumb);
+
   // If there is a menu link to this node, the link becomes the last part
   // of the active trail, and the link name becomes the page title.
   // Thus, we must explicitly set the page title to be the node title.
