@@ -126,7 +126,7 @@ function os2web_hearings_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'metatags' => array(
           'weight' => '4',
@@ -250,7 +250,7 @@ function os2web_hearings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_os2web_hearings_hearing_case_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'hoeringer/[node:title]';
   $export['pathauto_node_os2web_hearings_hearing_case_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -266,13 +266,6 @@ function os2web_hearings_strongarm() {
   $strongarm->name = 'webform_default_fields_allow_node_os2web_hearings_hearing_case';
   $strongarm->value = TRUE;
   $export['webform_default_fields_allow_node_os2web_hearings_hearing_case'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'webform_default_fields_nid_os2web_hearings_hearing_case';
-  $strongarm->value = '6116611';
-  $export['webform_default_fields_nid_os2web_hearings_hearing_case'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
