@@ -481,6 +481,13 @@ function site_preprocess_breadcrumb(&$variables) {
 
   // Setting the right breadcrumbs on hearings webform pages.
   if (drupal_match_path(current_path(), 'node/*/formular')) {
+    $node = menu_get_object();
+
+    // Duplicating last element.
+    $variables['breadcrumb'][] = $variables['breadcrumb'][count($variables['breadcrumb'])-1];
+    // Adding link to the parent node.
+    $variables['breadcrumb'][count($variables['breadcrumb'])-2] = l($node->title, 'node/' . $node->nid);
+    // Renaming active breadcrumb item.
     $variables['breadcrumb'][count($variables['breadcrumb'])-1]['data'] = 'Svarformular';
   }
 }
