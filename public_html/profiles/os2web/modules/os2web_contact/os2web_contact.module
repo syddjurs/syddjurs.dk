@@ -31,10 +31,20 @@ function os2web_contact_get_block() {
     }
     else {
       $node = menu_get_object();
-      if($node) {
+      if ($node) {
         $field = field_get_items('node', $node,'field_os2web_base_field_contact');
+
+        if (empty($field)) {
+          // Check if the node is hearings, then user default block from the the settings page.
+          if ($node->type == 'os2web_hearings_hearing_case') {
+            if ($default_contact_block = variable_get('os2web_hearings_default_contact_block')) {
+              $field[0]['nid'] = $default_contact_block['entity_id'];
+            }
+          }
+        }
       }
     }
+
     if (isset($field[0]['nid'])) {
       $result = $field[0]['nid'];
       break;

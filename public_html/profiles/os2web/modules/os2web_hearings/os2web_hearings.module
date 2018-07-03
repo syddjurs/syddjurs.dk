@@ -68,6 +68,17 @@ function os2web_hearings_settings_form(){
     '#required' => TRUE,
   );
 
+  $form['os2web_hearings_default_contact_block'] = array(
+    '#type' => 'entityreference',
+    '#title' => t('Default contact block'),
+    '#default_value' => variable_get('os2web_hearings_default_contact_block'),
+    '#era_entity_type' => 'node',
+    '#era_bundles' => array('os2web_contact_contact'),
+    '#era_query_settings' => array(
+      'limit' => 15, // Default is 50.
+    ),
+  );
+
   $form['os2web_hearings_webform_fs'] = array(
     '#title' => t('Hearing case webform default values'),
     '#type' => 'fieldset',
