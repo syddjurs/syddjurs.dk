@@ -306,7 +306,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'wrapper_classes' => '',
             'css_classes' => '',
             'filtering' => array(
-              'size' => '2 MB',
+              'size' => '10 MB',
               'types' => array(
                 0 => 'txt',
                 1 => 'rtf',
