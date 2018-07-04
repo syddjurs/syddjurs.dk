@@ -17771,6 +17771,9 @@ form .fancy-select ul.options li.hover {
 form .fancy-select ul.options.open {
   top: 37px;
 }
+.file-widget .form-control.form-file {
+  padding: 0 0;
+}
 .os2-section-light {
   background-color: #fff;
 }
