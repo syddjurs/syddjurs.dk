@@ -355,7 +355,7 @@ function os2web_hearings_webform_default_fields_defaults() {
           'type' => 'select',
           'value' => '',
           'extra' => array(
-            'items' => '1|Jeg har læst vejledning at indgive høringssvar or er derudover indforstået med, at jeg ikke må skrive personfølsomme oplysninger som f.eks. cpr-nummer',
+            'items' => '1|Jeg har læst vejledning vedrørende at indgive høringssvar og er derudover indforstået med, at jeg ikke må skrive personfølsomme oplysninger som f.eks. cpr-nummer',
             'multiple' => 1,
             'title_display' => 'none',
             'description_above' => 0,
@@ -366,7 +366,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'empty_option' => '',
             'optrand' => 0,
             'other_option' => NULL,
-            'other_text' => 'Other...',
+            'other_text' => 'Andet...',
             'description' => '',
             'custom_keys' => FALSE,
             'options_source' => '',
