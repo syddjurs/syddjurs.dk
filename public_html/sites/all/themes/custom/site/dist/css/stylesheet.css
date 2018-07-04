@@ -18209,6 +18209,18 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 .os2-node-full.node-os2web-hearings-hearing-case .field.field-type-os2web-esdh-field-doc-ident thead {
   display: none;
 }
+.os2-node-full.node-os2web-hearings-hearing-case .del-bund,
+.os2-node-full.node-os2web-hearings-hearing-case .panel-heading,
+.os2-node-full.node-os2web-hearings-hearing-case .region-sidebar-second .view-os2web-contact-view-contact .view-footer a,
+.os2-node-full.node-os2web-hearings-hearing-case .form-control,
+.os2-node-full.node-os2web-hearings-hearing-case .btn,
+.os2-node-full.node-os2web-hearings-hearing-case .panel {
+  border-radius: 0;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
 @media screen {
 }
 @media screen and (max-width: 767px) {
@@ -19062,6 +19074,19 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 @media screen and (min-width: 1200px) {
 }
 @media print {
+}
+.page-hoeringer .del-bund,
+.page-hoeringer .panel-heading,
+.page-hoeringer .region-sidebar-second .view-os2web-contact-view-contact .view-footer a,
+.page-hoeringer .form-control,
+.page-hoeringer .btn,
+.page-hoeringer .panel,
+.page-hoeringer .os2-box {
+  border-radius: 0;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 .view-os2web-hearings .view-header {
   margin-bottom: 40px;
