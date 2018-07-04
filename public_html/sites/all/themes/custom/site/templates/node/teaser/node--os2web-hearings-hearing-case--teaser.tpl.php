@@ -37,7 +37,7 @@
             <?php print t("Open");?>
           </a>
         <?php else: ?>
-          <a class="btn btn-primary">
+          <a class="btn btn-quaternary disabled">
             <?php print t("Closed");?>
           </a>
         <?php endif; ?>

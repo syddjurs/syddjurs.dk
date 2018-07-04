@@ -51,7 +51,7 @@
                 <?php print t('Write hearing reply'); ?>
               </a>
             <?php else: ?>
-              <a class="btn btn-primary disabled">
+              <a class="btn btn-quaternary disabled">
                 <?php print t('Closed for hearing reply'); ?>
               </a>
             <?php endif ?>
