@@ -19110,6 +19110,15 @@ body .os2-page-header .os2-page-header-tabbed-menu .os2-page-header-tabbed-menu-
 .view-os2web-hearings .views-exposed-form .views-exposed-widget .btn {
   margin-top: 0;
 }
+.node-type-os2web-hearings-hearing-case .block-os2web-subscription .btn,
+.node-type-os2web-hearings-hearing-case .block-os2web-subscription .panel,
+.node-type-os2web-hearings-hearing-case .region-sidebar-second .view-os2web-contact-view-contact .view-footer a {
+  border-radius: 0;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
 @media screen and (min-width: 768px) {
 }
 .os2-tabs-container {
