@@ -383,12 +383,13 @@ function os2web_hearings_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_case_no',
-    'label' => 'Sagsnummer',
+    'label' => 'Sagsnummer - Kvittering for publicering',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'blokindhold' => 'blokindhold',
+          'emails' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'os2web_html_purifier' => 'os2web_html_purifier',
@@ -402,6 +403,9 @@ function os2web_hearings_field_default_field_instances() {
           'formats' => array(
             'blokindhold' => array(
               'weight' => -7,
+            ),
+            'emails' => array(
+              'weight' => 0,
             ),
             'filtered_html' => array(
               'weight' => -10,
@@ -438,7 +442,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 14,
     ),
   );
 
@@ -874,7 +878,7 @@ function os2web_hearings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 17,
     ),
   );
 
@@ -1011,7 +1015,7 @@ function os2web_hearings_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_hearings_enddate',
     'label' => 'Høringsfrist / Klagefrist',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -1027,11 +1031,12 @@ function os2web_hearings_field_default_field_instances() {
         'input_format' => 'Y-m-d H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 11,
+      'weight' => 15,
     ),
   );
 
@@ -1144,7 +1149,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 16,
     ),
   );
 
@@ -1178,8 +1183,8 @@ function os2web_hearings_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_hearings_reply_case',
-    'label' => 'Sag',
-    'required' => 0,
+    'label' => 'Sagsnummer - Høringssvar',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1188,51 +1193,7 @@ function os2web_hearings_field_default_field_instances() {
       'module' => 'os2web_esdh_field',
       'settings' => array(),
       'type' => 'os2web_esdh_field_case_ident_wid',
-      'weight' => 46,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_reply_doc'.
-  $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_reply_doc'] = array(
-    'bundle' => 'os2web_hearings_hearing_case',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'os2web_esdh_field',
-        'settings' => array(),
-        'type' => 'os2web_esdh_field_doc_ident_for',
-        'weight' => 9,
-      ),
-      'node_webform' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_os2web_hearings_reply_doc',
-    'label' => 'Dokument',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'os2web_esdh_field',
-      'settings' => array(),
-      'type' => 'os2web_esdh_field_doc_ident_wid',
-      'weight' => 47,
+      'weight' => 13,
     ),
   );
 
@@ -1279,7 +1240,7 @@ function os2web_hearings_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 12,
     ),
   );
 
@@ -1343,7 +1304,8 @@ function os2web_hearings_field_default_field_instances() {
   t('Primære billede');
   t('Resume (maks 2 linier!)');
   t('Sag');
-  t('Sagsnummer');
+  t('Sagsnummer - Høringssvar');
+  t('Sagsnummer - Kvittering for publicering');
   t('Send til Acadre ved publisering');
   t('Slutdato');
   t('Startdato');
