@@ -25,6 +25,7 @@ dependencies[] = os2web_esdh_field
 dependencies[] = os2web_frontend
 dependencies[] = os2web_taxonomies
 dependencies[] = piwik_stats
+dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
