@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = date
 dependencies[] = ds
 dependencies[] = entityreference
+dependencies[] = entityreference_autocomplete
 dependencies[] = fancyselect
 dependencies[] = features
 dependencies[] = feeds
