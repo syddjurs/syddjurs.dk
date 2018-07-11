@@ -452,7 +452,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -1046,7 +1046,7 @@ function os2web_hearings_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 15,
+      'weight' => 13,
     ),
   );
 
@@ -1203,7 +1203,7 @@ function os2web_hearings_field_default_field_instances() {
       'module' => 'os2web_esdh_field',
       'settings' => array(),
       'type' => 'os2web_esdh_field_case_ident_wid',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
