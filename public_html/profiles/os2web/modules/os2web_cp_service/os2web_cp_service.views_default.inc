@@ -325,7 +325,7 @@ return TRUE; // If no exposed inputs, remove all results
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['table'] = 'field_data_field_os2web_cp_service_org_unit';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['field'] = 'field_os2web_cp_service_org_unit_tid';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['value'] = array(
-    19709 => '19709',
+    19759 => '19759',
   );
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_os2web_cp_service_org_unit_tid']['vocabulary'] = 'os2web_cp_service_org_unit';
@@ -561,30 +561,6 @@ return TRUE; // If no exposed inputs, remove all results
   $handler->display->display_options['fields']['field_os2web_cp_service_casetype']['label'] = '';
   $handler->display->display_options['fields']['field_os2web_cp_service_casetype']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_cp_service_casetype']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Journalnummer */
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['id'] = 'field_os2web_cp_service_doc_id_1';
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['table'] = 'field_data_field_os2web_cp_service_doc_id';
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['field'] = 'field_os2web_cp_service_doc_id';
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['relationship'] = 'field_os2web_cp_service_doc_ref_target_id';
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_cp_service_doc_id_1']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Indholdsbeskrivelse */
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['id'] = 'field_os2web_cp_service_content_1';
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['table'] = 'field_data_field_os2web_cp_service_content';
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['field'] = 'field_os2web_cp_service_content';
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['label'] = '';
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_os2web_cp_service_content_1']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Titel */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_os2web_cp_service_doc_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Felt: Indhold: Dokumentdato */
   $handler->display->display_options['fields']['field_os2web_cp_service_date']['id'] = 'field_os2web_cp_service_date';
   $handler->display->display_options['fields']['field_os2web_cp_service_date']['table'] = 'field_data_field_os2web_cp_service_date';
@@ -731,6 +707,9 @@ return TRUE; // If no exposed inputs, remove all results
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['inherit_panels_path'] = '1';
   $translatables['os2web_cp_service_cp_case_search'] = array(
     t('Master'),
