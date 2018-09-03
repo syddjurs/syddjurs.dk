@@ -108,7 +108,7 @@ function os2web_acadre_esdh_mm_import_meeting($meeting) {
           'docfilename' => (string) array_shift($xml_item->xpath('field/@docfilename')),
           'type' => (int) array_shift($xml_item->xpath('field/@type')),
         );
-       
+
         if ($agendainfo['publish'] === 1 &&
             $agendainfo['access'] !== 'Lukket' &&
             $agendainfo['filesfolder'] != '') {
@@ -118,14 +118,14 @@ function os2web_acadre_esdh_mm_import_meeting($meeting) {
             $agendainfo['xmlfilename']));
           $agendainfo['agenda_uri'] = $agenda_uri;
           $imported = _os2web_acadre_esdh_import_meeting($agendainfo);
-         
+
           if (is_array($imported)) {
             $imported['publish'] = TRUE;
             $imported['meeting_sub_id'] = (int) array_shift($xml_item->xpath('field/@sysid'));
             $imported['agenda_xmlid'] = (int) array_shift($xml_item->xpath('field/@xmlFusionID'));
             $meetings[] = $imported;
           }
-           
+
         }
         else {
           $message = 'Meeting !id, agenda !sub_id, wasnt allowed to be published from xml !file. [publish]=!publish, [access]=!access, [filesfolder]=!filesfolder';
@@ -172,7 +172,7 @@ function _os2web_acadre_esdh_import_meeting($info) {
   // Debug bit set in os2web_esdh_provider settings.
   $debug = variable_get('os2web_esdh_provider_debug_info');
   $debug && error_log('MM Import - import meeting from XML - sysid=' . $info['sysid'] . ' - ' . timer_read('mm_import') . 'ms');
-  
+
   if (($real_path = _os2web_acadre_esdh_similar_file_exists(drupal_realpath($info['agenda_uri']))) !== FALSE) {
     $xml = simplexml_load_file($real_path);
     $meeting = array(
@@ -188,11 +188,16 @@ function _os2web_acadre_esdh_import_meeting($info) {
       'committee' => (string) array_shift($xml->xpath("//table[@name='committee']/fields/field[@name='name']")),
       'committee_id' => (string) array_shift($xml->xpath("//table[@name='committee']/fields/field[@name='sysid']")),
       'location' => (string) array_shift($xml->xpath("//table[@name='location']/fields/field[@name='name']")),
+      'agenda_name' => (string) array_shift($xml->xpath("//table[@name='agenda']/fields/field[@name='name']")),
       'items' => array(),
     );
     $publish_committee = array_map('trim', explode(',', variable_get('os2web_meetings_approved_committee', ACADRE_MM_DEFAULT_APPROVED)));
     if ($meeting['committee'] == '' || !in_array($meeting['committee_id'], $publish_committee)) {
       watchdog('acadre MM', 'Ignored agenda from %committee .', array('%committee' => $meeting['committee']));
+      return FALSE;
+    }
+    if ($meeting['agenda_name'] == 'Formøde') {
+      watchdog('acadre MM', '[XML_ID: %id ] Ignored Formøde agenda', array('%id' => $meeting['system_id']));
       return FALSE;
     }
 
