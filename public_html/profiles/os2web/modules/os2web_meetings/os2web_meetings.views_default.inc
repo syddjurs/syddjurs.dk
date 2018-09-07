@@ -721,11 +721,9 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['fields']['title']['ui_name'] = 'Bullet point title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title][field_os2web_meetings_bul_closed]';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<a class = "agenda-bullet-list"> [title][field_os2web_meetings_bul_closed]</a>
+<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>';
   $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]';
-  $handler->display->display_options['fields']['title']['alter']['link_class'] = 'agenda-bullet-list';
-  $handler->display->display_options['fields']['title']['alter']['suffix'] = '<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
@@ -1286,8 +1284,8 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
     t('Intet indhold til dette punkt.'),
     t('Bilag: [field_os2web_meetings_enclosures]'),
     t('<strong style="float: right;margin-left:1em">([field_os2web_meetings_bul_closed])</strong>'),
-    t('[title][field_os2web_meetings_bul_closed]'),
-    t('<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>'),
+    t('<a class = "agenda-bullet-list"> [title][field_os2web_meetings_bul_closed]</a>
+<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>'),
     t('Tillæg'),
     t('<h2 class="pane-title">Tillæg</h2>'),
     t('field_os2web_meetings_addendum'),
@@ -1295,6 +1293,7 @@ echo \'<img src="/profiles/os2web/themes/os2web_core_theme/images/icon-send-to-f
     t('Bullet points - Tillæg'),
     t('<div class="clearfix"><h2 class="pane-title" style="float:left">Tillægs[field_os2web_meetings_type]</h2><div style="float:right;margin: 10px 30px 0 0"><span>[field_os2web_meetings_full_doc]</span></div></div>'),
     t('[title] [field_os2web_meetings_bul_closed]'),
+    t('<div class="agenda-item">[field_os2web_meetings_enclosures][field_os2web_meetings_attach] </div>'),
     t('Samlet tillæg'),
     t('Bilag 4'),
     t('Tillægs møder'),
@@ -1977,7 +1976,7 @@ print("<div class=\\"indicator-has-notes\\"></div>");
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'allow_secondary' => 0,
-      'secondary_label' => 'Advanced options',
+      'secondary_label' => 'Avancerede indstillinger',
     ),
     'field_os2web_meetings_date_value' => array(
       'bef_format' => 'default',
@@ -2859,6 +2858,7 @@ return TRUE;
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
+    t('Avancerede indstillinger'),
     t('Antal elementer'),
     t('- Alle -'),
     t('Forskydning'),
