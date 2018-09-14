@@ -928,6 +928,8 @@ function os2web_esdh_provider_filter_html_tags($data) {
   $data =  _os2web_esdh_provider_remove_img_tags($data);
   //replace all <p></p> and <p>&nbsp;</p> tags with <br />
   $data = preg_replace('#(<p>((<span>)*?)(|&nbsp;)((<\/span>)*?)<\/p>\s*)+#i', '<br />', $data);
+  // Remove empty span tags.
+  $data = preg_replace('#(<span[^>]*(?:\/>|>)((<span>)*?)(&\#xa0;|&nbsp;| )*?((<\/span>)*?)<\/span>\s*)+#i', '', $data);
   //replace multiple &nbsp; tags with...
   $data = preg_replace('/(\x{00A0}|&nbsp;){2,}/u', variable_get('os2web_esdh_provider_tab_tag', '&nbsp;'), $data);
   return $data;
