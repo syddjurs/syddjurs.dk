@@ -267,8 +267,12 @@ function _os2web_ofir_job_cronbatch() {
     }*/
     $job_text = _os2web_ofir_job_parse_job_text($job);
     $job_ids[] = $job_text['os2web_ofir_job_mapping_field_os2web_ofir_job_ad_id'];
-    os2web_ofir_job_import_job($job_text);
-    $count++;
+    if (os2web_ofir_job_import_job($job_text) === FALSE) {
+      error_log('os2web_ofir_job: Skip job: ' . print_r((array)$job, 1));
+    }
+    else {
+      $count++;
+    }
   }
 
   //unpublish nodes which are not in feed
@@ -381,9 +385,13 @@ function os2web_ofir_job_import_job($job_text) {
 
     }
 
-   node_save($node);
-   return $node->nid;
+    if (empty($node->title)) {
+      return FALSE;
+    }
+    node_save($node);
+    return $node->nid;
   }
+  return FALSE;
 }
 
 function _os2web_ofir_job_insert_term($design, $vocab_name) {
