@@ -138,7 +138,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     os2web_esdh_provider_log('Importing meeting with ' . count($meeting['items']) . ' bullet points.');
     watchdog('acadre MM', '[XML_ID: !id] Start import agenda !meeting_sub_id with !number bullets, force: !force',
         array('!id' => $PROCESSING_MEETING_ID, '!meeting_sub_id' => $meeting['meeting_sub_id'], '!number' => count($meeting['items']), '!force' => intval($force)), WATCHDOG_DEBUG);
- 
+
     // Meeting already exist.
     // Either update, republish, delete or skip.
     if ($nid) {
@@ -170,7 +170,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
           $republish = TRUE;
           $reason = 'NEW REFERAT VERSION';
       }
-     
+
       // Republish.
       if ($republish) {
         watchdog('acadre MM', '[XML_ID: !id] Republishing into !nid. Reason: !reason', array('!id' => $PROCESSING_MEETING_ID, '!nid' => $nid, '!reason' => $reason), WATCHDOG_INFO);
@@ -280,9 +280,9 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
     if (module_exists('os2dagsorden_esdh_provider')){
       os2dagsorden_esdh_provider_committee_add_subid($committee_term, $meeting['committee_id']);
     }
-    
+
     os2web_esdh_provider_index_meeting_update_committee_tid($meeting_id['id'], $meeting['meeting_sub_id'], $committee_term->tid);
-     
+
     $node->field_os2web_meetings_location[LANGUAGE_NONE][0]['tid'] = _acadre_esdh_import_term($meeting['location'], 'os2web_meetings_tax_location')->tid;
     // Add QBrick info @FIXME This should be in a node_save hook in qbrick
     // module.
@@ -368,7 +368,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
  *   List of imported node ids
  */
 function _os2web_esdh_provider_import_items($items) {
-    
+
   global $PROCESSING_MEETING_ID, $PROCESSING_BP;
 
   $nids = array();
@@ -424,7 +424,7 @@ function _os2web_esdh_provider_import_items($items) {
            // watchdog('acadre MM', 'There was an error importing file %uri ', array('%uri' => $enclosure['uri']), WATCHDOG_ERROR);
            watchdog('acadre MM', '[XML_ID: !id] [BP: !sysid] There was an error importing file !uri ',
               array('!id' => $PROCESSING_MEETING_ID, '!sysid' => $PROCESSING_BP, '!uri' => $enclosure['uri']), WATCHDOG_ERROR);
-           
+
           }
         }
       }
@@ -448,7 +448,7 @@ function _os2web_esdh_provider_import_items($items) {
  *   List of imported node ids
  */
 function _os2web_esdh_provider_import_bullets($bullets) {
-    
+
   global $PROCESSING_MEETING_ID, $PROCESSING_BP;
 
   // Since we need to run this often,
@@ -883,44 +883,70 @@ function _os2web_esdh_provider_bpa_body_format() {
   return $cache;
 }
 
-function os2web_esdh_provider_filter_html_tags($data) {    
-    $tags = explode(',', variable_get('os2web_esdh_provider_filtered_tags', ''));
-    foreach ($tags as $tag) {
-        preg_match_all('#<' . $tag . '(.*?)>(.*?)</' . $tag . '>#is', $data, $matches);
-        foreach ($matches[0] as $match) {
-            $filtred_data = preg_replace('#style="(.*?)"#is', "", $match);
-            $data = str_replace($match, $filtred_data, $data);
+function os2web_esdh_provider_filter_html_tags($data) {
+  $tags = explode(',', variable_get('os2web_esdh_provider_filtered_tags', ''));
+  if (in_array('span', $tags) && !empty(variable_get('os2web_esdh_provider_allowed_span_styles', ''))) {
+  // We need to safen style for span.
+    $allowed_styles = explode(',', variable_get('os2web_esdh_provider_allowed_span_styles', ''));
+    preg_match_all('#<span(.*?)>(.*?)</span>#is', $data, $matches);
+    foreach ($matches[0] as $match) {
+      $style_to_safe = array();
+      preg_match_all('#style="(.*?)"#is', $match, $style_matches);
+      if (isset($style_matches[1]) && !empty($style_matches[1])) {
+        $styles = explode(';', array_shift($style_matches[1]));
+        foreach ($styles as $key => $style) {
+          if (in_array(trim($style), $allowed_styles)) {
+            $style_to_safe[] = $style;
+          }
         }
+      }
+      $style_str = "";
+      if (!empty($style_to_safe)) {
+        $style_str = 'style = "' . implode(";", $style_to_safe) . '"';
+      }
+      $filtred_data = preg_replace('#style="(.*?)"#is', $style_str, $match);
+      $data = str_replace($match, $filtred_data, $data);
     }
-           
-    while(preg_match('/(<a name=Acadre(.*?)>((.*?\\s*?))+<\\/a>\\s*)+/',$data, $aTags)>0){   
-       $str = _os2web_esdh_provider_strip_only($aTags[0],  'a');
-       $data = str_replace($aTags[0],$str, $data);
-     }
-    $stripped_tags = explode(',', variable_get('os2web_esdh_provider_stripped_tags', ''));
-    $data = _os2web_esdh_provider_strip_only($data,  $stripped_tags);
-       
-    //remove all img tags that link missing files
-    $data =  _os2web_esdh_provider_remove_img_tags($data);
-    //replace all <p></p> and <p>&nbsp;</p> tags with <br />  
-    $data = preg_replace('#(<p>((<span>)*?)(|&nbsp;)((<\/span>)*?)<\/p>\s*)+#i', '<br />', $data);
-    //replace multiple &nbsp; tags with...  
-    $data = preg_replace('/(\x{00A0}|&nbsp;){2,}/u', variable_get('os2web_esdh_provider_tab_tag', '&nbsp;'), $data);
-    return $data;
+    $tags = array_diff($tags, array('span'));
+  }
+  foreach ($tags as $tag) {
+    preg_match_all('#<' . $tag . '(.*?)>#is', $data, $matches);
+    foreach ($matches[0] as $match) {
+      $filtred_data = preg_replace('#style="(.*?)"#is', "", $match);
+      $data = str_replace($match, $filtred_data, $data);
+    }
+  }
+
+  while(preg_match('/(<a name=Acadre(.*?)>((.*?\\s*?))+<\\/a>\\s*)+/',$data, $aTags)>0){
+    $str = _os2web_esdh_provider_strip_only($aTags[0],  'a');
+    $data = str_replace($aTags[0],$str, $data);
+  }
+  $stripped_tags = explode(',', variable_get('os2web_esdh_provider_stripped_tags', ''));
+  $data = _os2web_esdh_provider_strip_only($data,  $stripped_tags);
+
+  //remove all img tags that link missing files
+  $data =  _os2web_esdh_provider_remove_img_tags($data);
+  //replace all <p></p> and <p>&nbsp;</p> tags with <br />
+  $data = preg_replace('#(<p>((<span>)*?)(|&nbsp;)((<\/span>)*?)<\/p>\s*)+#i', '<br />', $data);
+  // Remove empty span tags.
+  $data = preg_replace('#(<span[^>]*(?:\/>|>)((<span>)*?)(&\#xa0;|&nbsp;| )*?((<\/span>)*?)<\/span>\s*)+#i', '', $data);
+  //replace multiple &nbsp; tags with...
+  $data = preg_replace('/(\x{00A0}|&nbsp;){2,}/u', variable_get('os2web_esdh_provider_tab_tag', '&nbsp;'), $data);
+  return $data;
 }
 
 function _os2web_esdh_provider_remove_img_tags($data){
-  preg_match_all('/<img[^>]+>/i',$data, $imgTags); 
+  preg_match_all('/<img[^>]+>/i',$data, $imgTags);
   for ($i = 0; $i < count($imgTags[0]); $i++) {
     // get the source string
      preg_match('/src="([^"]+)/i',$imgTags[0][$i], $imgage);
-  
+
      $file_headers = @get_headers($imgage[0]);
      if($file_headers=== FALSE or $file_headers[0] == 'HTTP/1.0 404 Not Found')       {
          $data = str_replace($imgTags[0][$i], "",  $data);
-     }  
+     }
    }
-  
+
   return $data;
 }
 
