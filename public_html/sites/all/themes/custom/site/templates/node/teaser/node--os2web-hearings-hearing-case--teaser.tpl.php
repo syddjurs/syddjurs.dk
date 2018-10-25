@@ -33,7 +33,7 @@
       </div>
       <div class="pull-right">
         <?php if (strtotime($node->field_os2web_hearings_enddate['und'][0]['value']) > strtotime('yesterday')): ?>
-          <a class="btn btn-success">
+          <a href="<?php print $node_url;?>" class="btn btn-success">
             <?php print t("Open");?>
           </a>
         <?php else: ?>
