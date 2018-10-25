@@ -171,7 +171,7 @@ function os2web_hearings_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bilag',
-    'weight' => '26',
+    'weight' => '7',
     'children' => array(
       0 => 'field_os2web_hearings_attac_case',
       1 => 'field_os2web_hearings_attac_doc',
@@ -232,7 +232,7 @@ function os2web_hearings_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Høringssvar',
-    'weight' => '26',
+    'weight' => '6',
     'children' => array(
       0 => 'field_os2web_hearings_reply_case',
     ),
