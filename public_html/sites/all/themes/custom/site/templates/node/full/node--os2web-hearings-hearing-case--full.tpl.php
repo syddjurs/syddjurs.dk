@@ -82,7 +82,7 @@
         <div class="del">
           <?php print render($content['social_share']); ?>
         </div>
-        <div class="fandt-du"><a href="/contact?<?php print urlencode('edit[subject]=' . $node_url); ?>">Fandt du ikke det du søgte</a></div>
+        <div class="fandt-du"><a href="/om-kommunen/kontakt">Fandt du ikke det du søgte</a></div>
       </div>
 
     <?php endif; ?>
