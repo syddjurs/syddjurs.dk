@@ -527,3 +527,28 @@ function site_menu_link(array $variables) {
 
   return '<li' . drupal_attributes($attributes) . '>' . l($title, $href, $options) . $sub_menu . "</li>\n";
 }
+function site_file_link($variables) {
+    $file = $variables['file'];
+    $icon_directory = $variables['icon_directory'];
+    $url = file_create_url($file->uri);
+    $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
+
+    // Set options as per anchor format described at
+    $options = array(
+        'attributes' => array(
+            'type' => $file->filemime . '; length=' . $file->filesize,
+            'target' => '_blank'
+        ),
+    );
+    // Use the description as the link text if available.
+  if (empty($file->description)) {
+    $link_text = $file->filename;
+  }
+  else {
+    $link_text = $file->description;
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+
+    
+   return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
+}
