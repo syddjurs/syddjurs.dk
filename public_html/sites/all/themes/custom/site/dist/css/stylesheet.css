@@ -23008,6 +23008,7 @@ footer a {
 }
 .panel-body.panel-collapse.collapse.fade.collapsed {
   opacity: unset;
+  display: none;
 }
 @media screen and (max-width: 767px) {
   .front .view-os2web-kulturnaut-events-lists ul {
@@ -24963,4 +24964,3 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 }
 @media print {
 }
-/*# sourceMappingURL=./dist/css/stylesheet.css.map */
