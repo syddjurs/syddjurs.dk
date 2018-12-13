@@ -856,6 +856,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
   color: #000 !important;
   font-weight: bold;
 }
+.webform-component--GDPR .panel-body.panel-collapse.collapse.fade.collapsed {
+  display: none;
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -23008,7 +23011,6 @@ footer a {
 }
 .panel-body.panel-collapse.collapse.fade.collapsed {
   opacity: unset;
-  display: none;
 }
 @media screen and (max-width: 767px) {
   .front .view-os2web-kulturnaut-events-lists ul {
