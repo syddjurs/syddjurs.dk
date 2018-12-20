@@ -141,6 +141,16 @@ function os2web_esdh_provider_schema() {
         'type' => 'int',
         'unsigned' => TRUE,
       ),
+      'agenda_discovered' => array(
+        'description' => 'Timestamp of when agenda XML was first discovered on server',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'agenda_processed' => array(
+        'description' => 'Timestamp of when agenda XML was finished processing on server',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
       'committeed_id' => array(
         'description' => 'ID of the committee',
         'type' => 'int',
@@ -156,3 +166,27 @@ function os2web_esdh_provider_schema() {
   );
   return $schema;
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Adds agenda_discovered, agenda_processed columns.
+ */
+function os2web_esdh_provider_update_7101() {
+  // Column agenda_discovered.
+  $spec = array(
+    'description' => 'Timestamp of when agenda XML was first discovered on server',
+    'type' => 'int',
+    'unsigned' => TRUE,
+  );
+  db_add_field('os2web_esdh_provider_import', 'agenda_discovered', $spec);
+
+  // Column agenda_processed.
+  $spec = array(
+    'description' => 'Timestamp of when agenda XML was finished processing on server',
+    'type' => 'int',
+    'unsigned' => TRUE,
+  );
+  db_add_field('os2web_esdh_provider_import', 'agenda_processed', $spec);
+}
+

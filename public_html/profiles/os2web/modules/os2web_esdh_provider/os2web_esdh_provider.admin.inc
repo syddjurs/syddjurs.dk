@@ -294,6 +294,11 @@ function _os2web_esdh_provider_queue_status_form($form, &$form_state) {
       'type' => 'property',
       'field' => 'meeting_xml_changed',
     ),
+    'committee' => array(
+      'data' => t('Committee'),
+      'type' => 'property',
+      'field' => 'committeed_tid',
+    ),
     'agenda_id' => array(
       'data' => t('Agenda SYS ID / XML ID'),
       'type' => 'property',
@@ -309,10 +314,15 @@ function _os2web_esdh_provider_queue_status_form($form, &$form_state) {
       'type' => 'property',
       'field' => 'agenda_type',
     ),
-    'committee' => array(
-      'data' => t('Committee'),
+    'agenda_discovered' => array(
+      'data' => t('Agenda discovered'),
       'type' => 'property',
-      'field' => 'committeed_tid',
+      'field' => 'agenda_discovered',
+    ),
+    'agenda_processed' => array(
+      'data' => t('Agenda processed'),
+      'type' => 'property',
+      'field' => 'agenda_processed',
     ),
     'import_status' => array(
       'data' => t('Import status'),
@@ -340,11 +350,6 @@ function _os2web_esdh_provider_queue_status_form($form, &$form_state) {
     $start_date = date('Y-m-d H:i:s', strtotime($search_params['start_date_filter']));
     $query->condition('date.field_os2web_meetings_date_value', $start_date, '>=');
   }
-  else {
-    $start_date = date('Y-m-d H:i:s', (strtotime('-90 days 08:00')));
-    $query->condition('date.field_os2web_meetings_date_value', $start_date, '>=');
-  }
-
   if (!empty($_GET['end_date_filter'])) {
     $search_params['end_date_filter'] = implode(' ', $_GET['end_date_filter']);
     $end_date = date('Y-m-d H:i:s', strtotime($search_params['end_date_filter']));
@@ -378,10 +383,12 @@ function _os2web_esdh_provider_queue_status_form($form, &$form_state) {
       'meeting_node_updated' => ($node) ? format_date($node->changed, 'short') : '',
       'meeting_xmlid' => $entry->meeting_xmlid,
       'meeting_xml_changed' => format_date($entry->meeting_xml_changed, 'short'),
+      'committee' => ($committee) ? $committee->name : '',
       'agenda_id' => $entry->agenda_sysid . ' / ' . $entry->agenda_xmlid,
       'agenda_xml_changed' => format_date($entry->agenda_xml_changed, 'short'),
       'agenda_type' => $entry->agenda_type,
-      'committee' => ($committee) ? $committee->name : '',
+      'agenda_discovered' => format_date($entry->agenda_discovered, 'short'),
+      'agenda_processed' => format_date($entry->agenda_processed, 'short'),
       'import_status' => $entry->import_status,
     );
   }
@@ -413,7 +420,7 @@ function _os2web_esdh_provider_queue_status_form($form, &$form_state) {
   $form['search']['start_date_filter'] = array(
     '#type' => 'date_popup',
     '#title' => t('Start date filter'),
-    '#default_value' => isset($search_params['start_date_filter']) ? date('Y-m-d H:i:s', strtotime($search_params['start_date_filter'])) : date('Y-m-d H:i:s', strtotime('-90 days 08:00')),
+    '#default_value' => isset($search_params['start_date_filter']) ? date('Y-m-d H:i:s', strtotime($search_params['start_date_filter'])) : '',
   );
 
   $form['search']['end_date_filter'] = array(

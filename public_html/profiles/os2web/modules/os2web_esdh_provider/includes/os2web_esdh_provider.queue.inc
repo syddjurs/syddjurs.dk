@@ -35,6 +35,7 @@ function os2web_esdh_provider_index_meeting($nid, $manifest, $agenda){
       'agenda_publish' => ($agenda['publish']) ? 1 : 0,
       'agenda_type' => $agenda['type'],
       'agenda_xml_changed' => ($agenda['path'])? filemtime(drupal_realpath($agenda['path'])) : NULL,
+      'agenda_processed' => $_SERVER['REQUEST_TIME'],
       'committeed_id' => $agenda['committee_id'],
     ))
     ->condition('meeting_xmlid', $manifest['id'], '=')
@@ -56,6 +57,7 @@ function os2web_esdh_provider_index_meeting($nid, $manifest, $agenda){
         'agenda_publish' => ($agenda['publish']) ? 1 : 0,
         'agenda_type' => $agenda['type'],
         'agenda_xml_changed' => ($agenda['path'])? filemtime(drupal_realpath($agenda['path'])) : NULL,
+        'agenda_discovered' => $_SERVER['REQUEST_TIME'],
         'committeed_id' => $agenda['committee_id'],
         'committeed_tid' => 0,
       ))
@@ -106,6 +108,7 @@ function os2web_esdh_provider_index_meeting_update_status($meeting_xmlid, $agend
   $query = db_update('os2web_esdh_provider_import')
     ->fields(array(
       'import_status' => $status,
+      'agenda_processed' => $_SERVER['REQUEST_TIME'],
     ))
     ->condition('meeting_xmlid', $meeting_xmlid, '=');
   
@@ -119,6 +122,7 @@ function os2web_esdh_provider_index_meeting_update_nid($meeting_xmlid, $agenda_s
   $query = db_update('os2web_esdh_provider_import')
     ->fields(array(
       'nid' => $nid,
+      'agenda_processed' => $_SERVER['REQUEST_TIME'],
     ))
     ->condition('meeting_xmlid', $meeting_xmlid, '=');
     
