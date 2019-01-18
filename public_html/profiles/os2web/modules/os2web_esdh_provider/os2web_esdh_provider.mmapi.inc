@@ -239,7 +239,7 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       $node->path = $path_alias;
     }
 
-    $node->field_os2web_meetings_abbr[LANGUAGE_NONE][0]['value'] = substr($meeting['description'], 0, 49);
+    $node->field_os2web_meetings_abbr[LANGUAGE_NONE][0]['value'] = mb_substr($meeting['description'], 0, 49);
     // If field has a format, you need to define it. Here we define a default
     // filtered_html format for a body field.
     $node->field_os2web_meetings_abbr[LANGUAGE_NONE][0]['format'] = 'filtered_html';
@@ -379,7 +379,7 @@ function _os2web_esdh_provider_import_items($items) {
     $node->type = "os2web_meetings_bullet";
     $node->language = LANGUAGE_NONE;
     $node->uid = 1;
-    $node->title = substr($item['title'],0,255);
+    $node->title = mb_substr($item['title'],0,255);
     // Set some default values.
     node_object_prepare($node);
 
@@ -540,10 +540,10 @@ function _os2web_esdh_provider_import_file($file_meta) {
     if (strlen($uri_out) > 255) {
       $pi = pathinfo($uri_out);
       if (isset($pi['extension'])) {
-        $uri_out = $pi['dirname'] . '/' .  substr($pi['filename'], 0, len($pi['filename']) - (len($uri_out) - 255)) . '.' . $pi['extension'];
+        $uri_out = $pi['dirname'] . '/' .  mb_substr($pi['filename'], 0, len($pi['filename']) - (len($uri_out) - 255)) . '.' . $pi['extension'];
       }
       else {
-        $uri_out = $pi['dirname'] . '/' .  substr($pi['filename'], 0, len($pi['filename']) - (len($uri_out) - 255));
+        $uri_out = $pi['dirname'] . '/' .  mb_substr($pi['filename'], 0, len($pi['filename']) - (len($uri_out) - 255));
       }
     }
     if ($uri_in === FALSE || FALSE === file_unmanaged_copy($uri_in, $uri_out, FILE_EXISTS_REPLACE)) {
@@ -727,10 +727,10 @@ function _os2web_esdh_provider_sanetize_filename($filename) {
   // $filename = strtolower($filename);
   $pi = pathinfo($filename);
   if (isset($pi['extension'])) {
-    return substr(trim($pi['filename']), 0, 160) . '.' . $pi['extension'];
+    return mb_substr(trim($pi['filename']), 0, 160) . '.' . $pi['extension'];
   }
   else {
-    return substr(trim($pi['filename']), 0, 160);
+    return mb_substr(trim($pi['filename']), 0, 160);
   }
 }
 
