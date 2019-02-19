@@ -17,4 +17,12 @@ function os2web_base_panels_view_get_link_attributes($nid) {
   }
   print $link;
 }
- 
+
+function os2web_base_panels_show_related_links_block($nid) {
+  $node = node_load(arg(1));
+  if ($node->type == 'os2web_base_contentpage') {
+    return true;
+  }
+  $field = array_shift(array_shift(field_get_items('node',$node,'field_os2web_base_field_hidlinks')));
+  return ($field==1 || stripos(url('node/'.$data->nid),'noindex'))?true:false;
+}

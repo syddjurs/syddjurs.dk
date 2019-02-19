@@ -463,9 +463,7 @@ function os2web_base_panels_views_default_views() {
   $handler->display->display_options['filters']['php']['table'] = 'views';
   $handler->display->display_options['filters']['php']['field'] = 'php';
   $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['filters']['php']['php_filter'] = '$node = node_load(arg(1));
-$field = array_shift(array_shift(field_get_items(\'node\',$node,\'field_os2web_base_field_hidlinks\')));
-return ($field==1 || stripos(url(\'node/\'.$data->nid),\'noindex\'))?true:false;';
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return os2web_base_panels_show_related_links_block(arg(1));';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
