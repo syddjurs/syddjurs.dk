@@ -3,8 +3,11 @@
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
     <header class="content-header">
-        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>">Svarformular</a></h2>
+        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url ?>" title="<?php print $title ?>">Skriv høringssvar</a></h2>
     </header>
+
+    <div class="lead">Du afgiver høringssvar til <?php print $node->title; ?></div>
+
   <?php elseif ($page && $title): ?>
     <header class="content-header">
       <a class="print" href="/print/<?php print $nid; ?>"></a>

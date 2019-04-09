@@ -326,7 +326,7 @@ function os2web_hearings_node_webform_view($node) {
   // If there is a menu link to this node, the link becomes the last part
   // of the active trail, and the link name becomes the page title.
   // Thus, we must explicitly set the page title to be the node title.
-  drupal_set_title('Svarformular');
+  drupal_set_title('Skriv høringssvar');
 
   $uri = entity_uri('node', $node);
   // Set the node path as the canonical URL to prevent duplicate content.
