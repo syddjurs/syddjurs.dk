@@ -66,7 +66,9 @@ function os2web_hearings_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'os2web_esdh_field',
-    'settings' => array(),
+    'settings' => array(
+      'case_docs_filter' => 'høringssvar',
+    ),
     'translatable' => 0,
     'type' => 'os2web_esdh_field_case_ident',
   );
@@ -183,7 +185,9 @@ function os2web_hearings_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'os2web_esdh_field',
-    'settings' => array(),
+    'settings' => array(
+      'case_docs_filter' => '',
+    ),
     'translatable' => 0,
     'type' => 'os2web_esdh_field_case_ident',
   );
