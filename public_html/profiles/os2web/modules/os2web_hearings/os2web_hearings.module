@@ -116,6 +116,12 @@ function os2web_hearings_settings_form(){
     '#default_value' => variable_get('os2web_hearings_webform_from_email'),
   );
 
+  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_email_body'] = array(
+    '#title' => t('Email body'),
+    '#type' => 'textarea',
+    '#default_value' => variable_get('os2web_hearings_webform_email_body'),
+  );
+
   return system_settings_form($form);
 }
 
@@ -230,7 +236,7 @@ function os2web_hearings_node_presave($node) {
       'subject' => variable_get('os2web_hearings_webform_subject'),
       'from_name' => variable_get('os2web_hearings_webform_from_name'),
       'from_address' => variable_get('os2web_hearings_webform_from_email'),
-      'template' => theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node)),
+      'template' => variable_get('os2web_hearings_webform_email_body', theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node))),
       'excluded_components' => array(),
       'html' => 1,
       'attachments' => 1,
