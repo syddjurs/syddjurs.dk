@@ -19,6 +19,7 @@
   },
   "concat": {
     "jsApp": [
+      "src/js/modernizr.js",
       "src/vendor/bootstrap/dist/js/bootstrap.js",
       "src/vendor/appear/jquery.appear.js",
       "src/vendor/jquery-placeholder/jquery.placeholder.js",
