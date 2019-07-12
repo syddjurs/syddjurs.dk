@@ -345,3 +345,18 @@ function os2web_hearings_node_webform_view($node) {
   $rendered = drupal_render($view);
   return $rendered;
 }
+
+/**
+ * Implements hook_tokens_alter().
+ *
+ * Adds a raw text value into [node:field_os2web_hearings_reply_case] token,
+ * instead of rendered list of files.
+ */
+function os2web_hearings_tokens_alter(array &$replacements, array $context) {
+  if ($context['type'] == 'node') {
+    if (isset($replacements['[node:field_os2web_hearings_reply_case]'])) {
+      $value = $context['data']['node']->field_os2web_hearings_reply_case['und'][0]['os2web_esdh_field_case_ident'];
+      $replacements['[node:field_os2web_hearings_reply_case]'] = $value;
+    }
+  }
+}
