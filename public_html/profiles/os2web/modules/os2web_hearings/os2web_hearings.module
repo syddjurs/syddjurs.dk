@@ -325,7 +325,8 @@ function os2web_hearings_theme($existing, $type, $theme, $path) {
  * Renders the webform view of a single node.
  */
 function os2web_hearings_node_webform_view($node) {
-  if (!variable_get('os2web_hearings_reply_enabled', FALSE)) {
+  // Form is not accessible, other replies are disabled globally or per node.
+  if (!variable_get('os2web_hearings_reply_enabled', FALSE) || $node->field_os2web_hearings_hide_reply['und'][0]['value']) {
     drupal_goto('node/' . $node->nid);
   }
 

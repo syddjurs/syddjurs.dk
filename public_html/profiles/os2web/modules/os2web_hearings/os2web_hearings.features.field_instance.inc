@@ -452,7 +452,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -468,7 +468,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 15,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -514,7 +514,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 19,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -594,6 +594,7 @@ function os2web_hearings_field_default_field_instances() {
       'title_field' => 0,
       'title_field_required' => 0,
       'user_register_form' => FALSE,
+      'wysiwyg_insert' => 0,
     ),
     'widget' => array(
       'active' => 1,
@@ -614,9 +615,7 @@ function os2web_hearings_field_default_field_instances() {
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
           'upload' => 0,
-          'youtube' => 0,
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 4,
@@ -635,7 +634,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 16,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -681,7 +680,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 18,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -727,7 +726,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 13,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -773,7 +772,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 17,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -859,7 +858,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 20,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -888,7 +887,7 @@ function os2web_hearings_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -1117,6 +1116,55 @@ function os2web_hearings_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-os2web_hearings_hearing_case-field_os2web_hearings_hide_reply'.
+  $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_hide_reply'] = array(
+    'bundle' => 'os2web_hearings_hearing_case',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'node_webform' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_hearings_hide_reply',
+    'label' => 'Vis ikke “Skriv høringssvar” knap',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-os2web_hearings_hearing_case-field_os2web_hearings_meeting'.
   $field_instances['node-os2web_hearings_hearing_case-field_os2web_hearings_meeting'] = array(
     'bundle' => 'os2web_hearings_hearing_case',
@@ -1128,7 +1176,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'node_webform' => array(
         'label' => 'hidden',
@@ -1159,7 +1207,7 @@ function os2web_hearings_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -1193,8 +1241,8 @@ function os2web_hearings_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_hearings_reply_case',
-    'label' => 'Sagsnummer - Høringssvar',
-    'required' => 1,
+    'label' => 'Sagsnummer - Høringssvar (virker ikke endnu)',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1266,7 +1314,7 @@ function os2web_hearings_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 14,
       ),
       'node_webform' => array(
         'label' => 'above',
@@ -1293,7 +1341,7 @@ function os2web_hearings_field_default_field_instances() {
       'module' => 'piwik_stats',
       'settings' => array(),
       'type' => 'piwik_stats_hidden',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -1314,7 +1362,7 @@ function os2web_hearings_field_default_field_instances() {
   t('Primære billede');
   t('Resume (maks 2 linier!)');
   t('Sag');
-  t('Sagsnummer - Høringssvar');
+  t('Sagsnummer - Høringssvar (virker ikke endnu)');
   t('Sagsnummer - Kvittering for publicering');
   t('Send til Acadre ved publisering');
   t('Slutdato');
@@ -1322,6 +1370,7 @@ function os2web_hearings_field_default_field_instances() {
   t('Stikord');
   t('Type');
   t('URL');
+  t('Vis ikke “Skriv høringssvar” knap');
 
   return $field_instances;
 }
