@@ -85,6 +85,13 @@ function os2web_hearings_settings_form(){
     '#default_value' => variable_get('os2web_hearings_reply_enabled', FALSE),
   );
 
+  $os2web_hearings_reply_form_message = variable_get('os2web_hearings_reply_form_message');
+  $form['os2web_hearings_reply_form_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Hearing reply forms message'),
+    '#default_value' => !empty($os2web_hearings_reply_form_message)? $os2web_hearings_reply_form_message['value'] : '',
+  );
+
   $form['os2web_hearings_webform_fs'] = array(
     '#title' => t('Hearing case webform default values'),
     '#type' => 'fieldset',
@@ -190,9 +197,13 @@ function os2web_hearings_form_alter(&$form, &$form_state, $form_id) {
 
     $form['submitted']['city']['#prefix'] = '<div class="col-xs-9">';
     $form['submitted']['city']['#suffix'] = '</div></div>';
+
+    $os2web_hearings_reply_form_message = variable_get('os2web_hearings_reply_form_message');
+    if (!empty($os2web_hearings_reply_form_message)) {
+      $form['#os2web_hearings_reply_form_message'] = $os2web_hearings_reply_form_message['value'];
+    }
   }
 }
-
 
 /**
  * Implements hook_node_insert().
