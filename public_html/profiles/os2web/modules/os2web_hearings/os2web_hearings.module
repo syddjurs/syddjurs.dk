@@ -92,42 +92,52 @@ function os2web_hearings_settings_form(){
     '#default_value' => !empty($os2web_hearings_reply_form_message)? $os2web_hearings_reply_form_message['value'] : '',
   );
 
-  $form['os2web_hearings_webform_fs'] = array(
-    '#title' => t('Hearing case webform default values'),
+  $form['os2web_hearings_webform_emails'] = array(
+    '#title' => t('Default email texts'),
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_to_email'] = array(
-    '#title' => t('To email'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_to_email'),
-  );
+  // Max 2 emails.
+  for ($i = 1; $i <= 2; $i++) {
+    $form['os2web_hearings_webform_emails']["emails_$i"] = array(
+      '#title' => t('Email') . " $i",
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_subject'] = array(
-    '#title' => t('Email subject'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_subject'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_to_email_$i"] = array(
+      '#title' => t('To email'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_to_email_$i"),
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_name'] = array(
-    '#title' => t('From name'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_from_name'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_subject_$i"] = array(
+      '#title' => t('Email subject'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_subject_$i"),
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_email'] = array(
-    '#title' => t('From email'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_from_email'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_from_name_$i"] = array(
+      '#title' => t('From name'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_from_name_$i"),
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_email_body'] = array(
-    '#title' => t('Email body'),
-    '#type' => 'textarea',
-    '#default_value' => variable_get('os2web_hearings_webform_email_body'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_from_email_$i"] = array(
+      '#title' => t('From email'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_from_email_$i"),
+    );
+
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_email_body_$i"] = array(
+      '#title' => t('Email body'),
+      '#type' => 'textarea',
+      '#default_value' => variable_get("os2web_hearings_webform_email_body_$i"),
+    );
+  }
 
   return system_settings_form($form);
 }
@@ -242,16 +252,19 @@ function os2web_hearings_node_update($node) {
 function os2web_hearings_node_presave($node) {
   // Add a default e-mail configuration for new nodes.
   if (empty($node->nid) && $node->is_new && $node->type == 'os2web_hearings_hearing_case') {
-    $node->webform['emails'][] = array(
-      'email' => variable_get('os2web_hearings_webform_to_email'),
-      'subject' => variable_get('os2web_hearings_webform_subject'),
-      'from_name' => variable_get('os2web_hearings_webform_from_name'),
-      'from_address' => variable_get('os2web_hearings_webform_from_email'),
-      'template' => variable_get('os2web_hearings_webform_email_body', theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node))),
-      'excluded_components' => array(),
-      'html' => 1,
-      'attachments' => 1,
-    );
+    // Max 2 emails.
+    for ($i = 1; $i <= 2; $i++) {
+      $node->webform['emails'][] = array(
+        'email' => variable_get("os2web_hearings_webform_to_email_$i"),
+        'subject' => variable_get("os2web_hearings_webform_subject_$i"),
+        'from_name' => variable_get("os2web_hearings_webform_from_name_$i"),
+        'from_address' => variable_get("os2web_hearings_webform_from_email_$i"),
+        'template' => variable_get("os2web_hearings_webform_email_body_$i", theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node))),
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 1,
+      );
+    }
   }
 }
 
