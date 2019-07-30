@@ -11,7 +11,7 @@ function os2web_hearings_webform_default_fields_defaults() {
   $data = array(
     'os2web_hearings_hearing_case' => array(
       'nid' => 0,
-      'confirmation' => '<p><strong>Vi har modtager dit svar</strong></p>
+      'confirmation' => '<p><strong>Vi har modtaget&nbsp;dit svar</strong></p>
 
 <p>Der kan gå op til 2 dage før svaret vises på hjemmesiden</p>
 ',
@@ -118,7 +118,7 @@ function os2web_hearings_webform_default_fields_defaults() {
           'cid' => 3,
           'pid' => 0,
           'form_key' => 'company',
-          'name' => 'Virksomhed / Organization',
+          'name' => 'Virksomhed (Offentliggøres)',
           'type' => 'textfield',
           'value' => '',
           'extra' => array(
@@ -129,6 +129,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'css_classes' => '',
             'width' => '',
             'maxlength' => '',
+            'minlength' => '',
             'field_prefix' => '',
             'field_suffix' => '',
             'disabled' => 0,
@@ -137,7 +138,6 @@ function os2web_hearings_webform_default_fields_defaults() {
             'placeholder' => '',
             'attributes' => array(),
             'analysis' => FALSE,
-            'minlength' => '',
           ),
           'required' => 0,
           'weight' => 2,
@@ -178,7 +178,7 @@ function os2web_hearings_webform_default_fields_defaults() {
           'cid' => 5,
           'pid' => 0,
           'form_key' => 'zip',
-          'name' => 'Postnummer',
+          'name' => 'Postnummer (Offentliggøres)',
           'type' => 'textfield',
           'value' => '',
           'extra' => array(
@@ -189,6 +189,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'css_classes' => '',
             'width' => '',
             'maxlength' => '',
+            'minlength' => '',
             'field_prefix' => '',
             'field_suffix' => '',
             'disabled' => 0,
@@ -197,7 +198,6 @@ function os2web_hearings_webform_default_fields_defaults() {
             'placeholder' => '',
             'attributes' => array(),
             'analysis' => FALSE,
-            'minlength' => '',
           ),
           'required' => 1,
           'weight' => 4,
@@ -208,7 +208,7 @@ function os2web_hearings_webform_default_fields_defaults() {
           'cid' => 6,
           'pid' => 0,
           'form_key' => 'city',
-          'name' => 'By',
+          'name' => 'By (Offentliggøres)',
           'type' => 'textfield',
           'value' => '',
           'extra' => array(
@@ -219,6 +219,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'css_classes' => '',
             'width' => '',
             'maxlength' => '',
+            'minlength' => '',
             'field_prefix' => '',
             'field_suffix' => '',
             'disabled' => 0,
@@ -227,7 +228,6 @@ function os2web_hearings_webform_default_fields_defaults() {
             'placeholder' => '',
             'attributes' => array(),
             'analysis' => FALSE,
-            'minlength' => '',
           ),
           'required' => 1,
           'weight' => 5,
@@ -238,7 +238,7 @@ function os2web_hearings_webform_default_fields_defaults() {
           'cid' => 7,
           'pid' => 0,
           'form_key' => 'contact_info',
-          'name' => 'Andet kontakt information',
+          'name' => 'Anden kontaktinformation',
           'type' => 'textfield',
           'value' => '',
           'extra' => array(
@@ -249,6 +249,7 @@ function os2web_hearings_webform_default_fields_defaults() {
             'css_classes' => '',
             'width' => '',
             'maxlength' => '',
+            'minlength' => '',
             'field_prefix' => '',
             'field_suffix' => '',
             'disabled' => 0,
@@ -257,7 +258,6 @@ function os2web_hearings_webform_default_fields_defaults() {
             'placeholder' => '',
             'attributes' => array(),
             'analysis' => FALSE,
-            'minlength' => '',
           ),
           'required' => 0,
           'weight' => 6,

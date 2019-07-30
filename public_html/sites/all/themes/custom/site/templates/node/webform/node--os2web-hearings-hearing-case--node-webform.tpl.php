@@ -8,6 +8,10 @@
 
     <div class="lead">Du afgiver høringssvar til <?php print $node->title; ?></div>
 
+    <?php if (isset($content['webform']['#form']['#os2web_hearings_reply_form_message'])): ?>
+      <div><?php print $content['webform']['#form']['#os2web_hearings_reply_form_message']; ?></div>
+    <?php endif; ?>
+
   <?php elseif ($page && $title): ?>
     <header class="content-header">
       <a class="print" href="/print/<?php print $nid; ?>"></a>
