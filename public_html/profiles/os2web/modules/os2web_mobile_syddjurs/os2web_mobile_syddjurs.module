@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the OS2web mobile syddjurs feature.
- */
-
-include_once 'os2web_mobile_syddjurs.features.inc';
