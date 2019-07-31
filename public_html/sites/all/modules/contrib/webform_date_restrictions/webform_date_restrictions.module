@@ -1,0 +1,223 @@
+<?php
+
+/**
+ * @file
+ * Module file for webform_date_restrictions.
+ */
+
+/**
+ * Implements hook_form_webform_component_edit_form_alter().
+ */
+function webform_date_restrictions_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id) {
+  list(, $component) = $form_state['build_info']['args'];
+  if ($component['type'] !== 'date') {
+    return;
+  }
+
+  if (!isset($form_state['date_restrictions_total_dates'])) {
+    $form_state['date_restrictions_total_dates'] = !empty($component['extra']['date_restrictions']['dates']) ? (count($component['extra']['date_restrictions']['dates'])) : 0;
+    $form_state['date_remove_deltas'] = array();
+  }
+
+  $form['extra']['date_restrictions'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Date Restrictions'),
+    '#tree' => TRUE,
+  );
+  $form['extra']['date_restrictions']['days_of_week'] = array(
+    '#title' => t('Restricted days of the week'),
+    '#type' => 'checkboxes',
+    '#default_value' => !empty($component['extra']['date_restrictions']['days_of_week']) ? $component['extra']['date_restrictions']['days_of_week'] : array(),
+    '#options' => webform_date_restrictions_get_days(),
+  );
+  $form['extra']['date_restrictions']['dates'] = array(
+    '#type' => 'container',
+    '#prefix' => '<div id="date-restrictions-dates">',
+    '#suffix' => '</div>',
+  );
+  $form['extra']['date_restrictions']['dates']['description'] = array(
+    '#markup' => '<p>' . t('Select individual dates to restrict.') . '</p>',
+  );
+  if ($form_state['date_restrictions_total_dates'] > 0) {
+    foreach (range(1, $form_state['date_restrictions_total_dates']) as $delta) {
+      $form['extra']['date_restrictions']['dates'][$delta] = array(
+        '#title' => t('Restricted date'),
+        '#type' => 'date',
+        // Values stored on the component are keyed from zero, however in the
+        // form context, zero means no dates at all.
+        '#default_value' => !empty($component['extra']['date_restrictions']['dates'][$delta - 1]) ? $component['extra']['date_restrictions']['dates'][$delta - 1] : NULL,
+        '#datepicker' => TRUE,
+        '#attached' => array(
+          'library' => array(
+            array('system', 'ui.datepicker'),
+          ),
+        ),
+      );
+      $form['extra']['date_restrictions']['dates'][$delta . '_remove'] = array(
+        '#type' => 'submit',
+        '#value' => t('Remove'),
+        '#suffix' => '<br/>',
+        '#name' => $delta . '_remove',
+        '#validate' => array(),
+        '#submit' => array('webform_date_restrictions_form_webform_component_edit_form_add_day_remove_submit'),
+        '#remove_delta' => $delta,
+        '#ajax' => array(
+          'callback' => 'webform_date_restrictions_form_webform_component_edit_form_add_day',
+          'wrapper' => 'date-restrictions-dates',
+        )
+      );
+    }
+  }
+  // Remove all deltas that have been removed from the from, don't attempt to
+  // do any re-keying. This happens when the component is saved.
+  foreach ($form_state['date_remove_deltas'] as $remove_delta) {
+    unset($form['extra']['date_restrictions']['dates'][$remove_delta]);
+    unset($form['extra']['date_restrictions']['dates'][$remove_delta . '_remove']);
+  }
+
+  $form['extra']['date_restrictions']['dates']['add_another'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add Restricted Date'),
+    '#validate' => array(),
+    '#submit' => array('webform_date_restrictions_form_webform_component_edit_form_add_day_submit'),
+    '#ajax' => array(
+      'callback' => 'webform_date_restrictions_form_webform_component_edit_form_add_day',
+      'wrapper' => 'date-restrictions-dates',
+    ),
+  );
+
+  // Add some inline CSS to improve the layout.
+  drupal_add_css('#date-restrictions-dates .form-type-date { display:inline-block; }', 'inline');
+}
+
+/**
+ * Submit callback for the "add another" button.
+ */
+function webform_date_restrictions_form_webform_component_edit_form_add_day_submit($form, &$form_state) {
+  $form_state['date_restrictions_total_dates'] += 1;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Submit callback for the "add another" button.
+ */
+function webform_date_restrictions_form_webform_component_edit_form_add_day_remove_submit(&$form, &$form_state) {
+  $form_state['date_remove_deltas'][] = $form_state['triggering_element']['#remove_delta'];
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Ajax callback for the "add another" button.
+ */
+function webform_date_restrictions_form_webform_component_edit_form_add_day($form, &$form_state) {
+  return $form['extra']['date_restrictions']['dates'];
+}
+
+/**
+ * Get a list of days of the week.
+ *
+ * @return array
+ *   An array keyed by a machine name with values as labels.
+ */
+function webform_date_restrictions_get_days() {
+  return array(
+    'monday' => t('Monday'),
+    'tuesday' => t('Tuesday'),
+    'wednesday' => t('Wednesday'),
+    'thursday' => t('Thursday'),
+    'friday' => t('Friday'),
+    'saturday' => t('Saturday'),
+    'sunday' => t('Sunday'),
+  );
+}
+
+/**
+ * Implements hook_webform_component_presave().
+ */
+function webform_date_restrictions_webform_component_presave(&$component) {
+  if ($component['type'] !== 'date' || empty($component['extra']['date_restrictions']['dates'])) {
+    return;
+  }
+  foreach ($component['extra']['date_restrictions']['dates'] as $key => $value) {
+    // Only save numeric keys, other keys are buttons.
+    if (!is_numeric($key)) {
+      unset($component['extra']['date_restrictions']['dates'][$key]);
+    }
+  }
+  // Re-key all dates to start from zero again.
+  $component['extra']['date_restrictions']['dates'] = array_values($component['extra']['date_restrictions']['dates']);
+}
+
+/**
+ * Implements hook_preprocess_webform_element().
+ */
+function webform_date_restrictions_preprocess_webform_element(&$vars) {
+  $component = $vars['element']['#webform_component'];
+  if ($component['type'] !== 'date') {
+    return;
+  }
+  // Attach the JS to restrict dates.
+  $path = drupal_get_path('module', 'webform_date_restrictions');
+  drupal_add_js($path . '/js/webform_date_restrictions.restrict-calendar.min.js', array('weight' => 100));
+  // Add the data required to filter out the correct dates.
+  $vars['element']['#wrapper_attributes']['class'][] = 'webform-date-restrictions-restrict-dates';
+  $vars['element']['#wrapper_attributes']['data-restricted-days'] = json_encode(webform_date_restrictions_component_get_days_of_week($component['extra']));
+  $vars['element']['#wrapper_attributes']['data-restricted-dates'] = json_encode(webform_date_restrictions_component_get_dates($component['extra']));
+}
+
+/**
+ * Get the days which match the configuration.
+ */
+function webform_date_restrictions_component_get_days_of_week($configuration) {
+  if (!empty($configuration['date_restrictions']['days_of_week'])) {
+    $days = array_filter($configuration['date_restrictions']['days_of_week']);
+    return array_values($days);
+  }
+  return array();
+}
+
+/**
+ * Get the dates which match the configuration.
+ */
+function webform_date_restrictions_component_get_dates($configuration) {
+  $values = array();
+  if (!empty($configuration['date_restrictions']['dates'])) {
+    foreach ($configuration['date_restrictions']['dates'] as $date) {
+      if (empty($date['year'])) {
+        continue;
+      }
+      $values[] = sprintf('%d-%d-%d', $date['year'], $date['month'], $date['day']);
+    }
+  }
+  return $values;
+}
+
+/**
+ * Alter webform component rendering.
+ */
+function webform_date_restrictions_webform_component_render_alter(&$element, $component) {
+  if (!empty($component['extra']['date_restrictions'])) {
+    $element['#element_validate'][] = 'webform_date_restrictions_validate_component';
+  }
+}
+
+/**
+ * Validate webform date components according the restricted days.
+ */
+function webform_date_restrictions_validate_component($element) {
+  $component = $element['#webform_component'];
+  $excluded_days_of_week = webform_date_restrictions_component_get_days_of_week($component['extra']);
+  $excluded_dates = webform_date_restrictions_component_get_dates($component['extra']);
+
+  $has_date = !empty($element['year']['#value']) && !empty($element['month']['#value']) && !empty($element['day']['#value']);
+  if (!$has_date) {
+    return;
+  }
+
+  $selected_date = sprintf('%d-%d-%d', $element['year']['#value'], $element['month']['#value'], $element['day']['#value']);
+  $date_stamp = strtotime($selected_date);
+
+  if (in_array($selected_date, $excluded_dates) || in_array(strtolower(date('l', $date_stamp)), $excluded_days_of_week)) {
+    form_error($element, t("We're sorry, the date selected is not available. Please choose another."));
+  }
+}

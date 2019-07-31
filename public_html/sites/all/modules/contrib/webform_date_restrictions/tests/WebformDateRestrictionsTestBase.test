@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * A custom base class for webform testing.
+ */
+class WebformDateRestrictionsTestBase extends DrupalWebTestCase {
+
+  /**
+   * The profile to install as a basis for testing.
+   *
+   * @var string
+   */
+  protected $profile = 'testing';
+
+  /**
+   * Create a test webform node.
+   *
+   * @param array $settings
+   *   The settings.
+   * @param array $components
+   *   The components.
+   *
+   * @return stdClass
+   *   The node.
+   */
+  protected function createWebformNode($settings = array(), $components = array()) {
+    $node = array(
+      'type' => 'webform',
+      'language' => LANGUAGE_NONE,
+      'uid' => '1',
+      'status' => '1',
+      'title' => 'Test Webform',
+      'format' => '1',
+      'webform' => webform_node_defaults(),
+    );
+    $cid = 0;
+    foreach ($components as $key => $component_info) {
+      $cid++;
+      $node['webform']['components'][$cid] = $component_info['component'];
+      $node['webform']['components'][$cid]['cid'] = $cid;
+      $node['webform']['components'][$cid]['pid'] = 0;
+    }
+    return $this->drupalCreateNode($node + $settings);
+  }
+
+  /**
+   * Create a webform user with a set of permissions matching a role.
+   *
+   * @param string $role
+   *   The user role to create.
+   *
+   * @return stdClass
+   *   A user object.
+   */
+  protected function createWebformUser($role = 'admin') {
+    $permissions['userAccess'] = array(
+      'access content',
+      'access own webform submissions',
+    );
+    $permissions['userEdit'] = array(
+      'access content',
+      'edit own webform submissions',
+    );
+    $permissions['editor'] = array(
+      'access content',
+      'create webform content',
+      'edit own webform content',
+      'access all webform results',
+    );
+    $permissions['admin'] = array_keys(module_invoke_all('permission'));
+    return $this->drupalCreateUser($permissions[$role]);
+  }
+
+}

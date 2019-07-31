@@ -1,0 +1,17 @@
+name = Webform Date Restrictions
+core = 7.x
+package = Webform
+description = Allow you to restrict dates in webform date components.
+
+dependencies[] = webform
+test_dependencies[] = token
+
+files[] = tests/WebformDateRestrictionsTestBase.test
+files[] = tests/WebformDateRestrictionsTest.test
+
+; Information added by Drupal.org packaging script on 2017-11-20
+version = "7.x-1.0-rc2"
+core = "7.x"
+project = "webform_date_restrictions"
+datestamp = "1511146092"
+

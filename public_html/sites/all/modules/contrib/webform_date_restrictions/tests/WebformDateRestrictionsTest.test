@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * Test the webform date restrictions module.
+ */
+class WebformDateRestrictionsTest extends WebformDateRestrictionsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Webform Date Restrictions Test'),
+      'description' => t('Test the webform date restrictions module.'),
+      'group' => t('Webform Date Restrictions'),
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    return parent::setUp(array(
+      'webform',
+      'webform_date_restrictions',
+    ));
+  }
+
+  /**
+   * Test the date restrictions module.
+   */
+  public function testDateRestrictions() {
+    $node = $this->createWebformNode();
+
+    $this->drupalLogin($this->createWebformUser());
+    $this->drupalPost("node/{$node->nid}/webform/components", array(
+      'add[name]' => 'Test Component Name',
+      'add[type]' => 'date',
+    ), 'Add');
+
+    $this->drupalPostAJAX(NULL, array(), array('op' => 'Add Restricted Date'));
+    $this->drupalPostAJAX(NULL, array(), array('op' => 'Add Restricted Date'));
+
+    $this->drupalPost(NULL, array(
+      'extra[start_date]' => '-20 years',
+
+      // Exclude wednesdays.
+      'extra[date_restrictions][days_of_week][wednesday]' => TRUE,
+
+      // Exclude the 5th of may, 2017.
+      'extra[date_restrictions][dates][1][month]' => '5',
+      'extra[date_restrictions][dates][1][day]' => '5',
+      'extra[date_restrictions][dates][1][year]' => '2017',
+
+      // Exclude December 25th.
+      'extra[date_restrictions][dates][2][month]' => '12',
+      'extra[date_restrictions][dates][2][day]' => '25',
+      'extra[date_restrictions][dates][2][year]' => '2017',
+    ), 'Save component');
+
+    $this->drupalGet("node/{$node->nid}");
+
+    // Submit a wednesday.
+    $this->drupalPost(NULL, array(
+      'submitted[test_component_name][month]' => '7',
+      'submitted[test_component_name][day]' => '5',
+      'submitted[test_component_name][year]' => '2017',
+    ), 'Submit');
+    $this->assertText("We're sorry, the date selected is not available. Please choose another.");
+
+    // Submit the 5th.
+    $this->drupalPost(NULL, array(
+      'submitted[test_component_name][month]' => '5',
+      'submitted[test_component_name][day]' => '5',
+      'submitted[test_component_name][year]' => '2017',
+    ), 'Submit');
+    $this->assertText("We're sorry, the date selected is not available. Please choose another.");
+
+    // Submit the 25th.
+    $this->drupalPost(NULL, array(
+      'submitted[test_component_name][month]' => '12',
+      'submitted[test_component_name][day]' => '25',
+      'submitted[test_component_name][year]' => '2017',
+    ), 'Submit');
+    $this->assertText("We're sorry, the date selected is not available. Please choose another.");
+
+    // Submit a valid date.
+    $this->drupalPost(NULL, array(
+      'submitted[test_component_name][month]' => '7',
+      'submitted[test_component_name][day]' => '17',
+      'submitted[test_component_name][year]' => '2017',
+    ), 'Submit');
+    $this->assertText("Thank you, your submission has been received.");
+  }
+
+}
