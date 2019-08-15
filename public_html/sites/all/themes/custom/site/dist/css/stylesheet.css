@@ -24262,6 +24262,9 @@ fieldset[disabled] .view-id-os2web_ofir_job_header_image.view-display-id-block_2
 .webform-container-inline div.form-item {
   display: inline-block;
 }
+.webform-component-time .webform-container-inline div.form-item {
+  display: -ms-inline-flexbox;
+}
 .front .view-os2web-base-panels-view-newslist.view-display-id-block > .view-content {
   padding-top: 53px;
   padding-right: 10px;
