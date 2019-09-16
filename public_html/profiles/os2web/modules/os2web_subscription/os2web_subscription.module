@@ -81,7 +81,72 @@ function os2web_subscription_menu() {
     'access arguments' => array('administer site configuration'),
   );
 
+  $items['admin/config/os2web_subscription/test-email'] = array(
+    'page callback' => 'test_email_callback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('administer site configuration'),
+  );
+
   return $items;
+}
+
+
+/**
+ * Test email callback.
+ */
+function test_email_callback() {
+  $new_nodes = array(
+    array(
+      'nid' => 123,
+      'title' => 'demo',
+      'category' => 'os2web_meetings_meeting-type_10976',
+    ),
+  );
+
+  // Get enabled categories from all modules.
+  $categories = module_invoke_all('os2web_subscription_categories');
+  $categories_nodes = array();
+  // Create the links to new content.
+  foreach ($new_nodes as $node) {
+    if (isset($categories[$node['category']])) {
+      $url = url('node/' . $node['nid'], array('absolute' => TRUE));
+      $categories_nodes[$node['category']][$node['nid']] = l($node['title'], $url) . ' (' . l($url, $url) . ')';
+    }
+  }
+
+  // Go trough all types of content and send out an email per subscription.
+  foreach ($categories_nodes as $category_type => $nodes) {
+
+    // Get all subscriptions to this content type.
+    $users = os2web_subscription_get_subscriptions_by_category($category_type);
+
+    foreach ($users as $user) {
+      if (drupal_mail(
+        'os2web_subscription',
+        'subscription',
+        $user['email'],
+        language_default('language'),
+        array(
+          'nodes' => $nodes,
+          'email' => $user['email'],
+          'last_updated' => $user['last_updated'],
+          'code' => $user['code'],
+          'category' => $category_type,
+        )
+      )) {
+        watchdog('os2web_subscription', '%mail notified successfully.', array('%mail' => $user['email']), WATCHDOG_INFO);
+      }
+      else {
+        watchdog('os2web_subscription', '%mail could not be notified. Mail error.', array('%mail' => $user['email']), WATCHDOG_ERROR);
+      }
+    }
+
+    // Delete all nodes from this category's queue.
+    foreach ($nodes as $nid => $node) {
+      os2web_subscription_delete_from_queue($nid, $category_type);
+    }
+  }
 }
 
 /**
@@ -561,6 +626,7 @@ function os2web_subscription_cron() {
             array(
               'nodes' => $nodes,
               'email' => $user['email'],
+              'last_updated' => $user['last_updated'],
               'code' => $user['code'],
               'category' => $category_type,
             )
@@ -587,6 +653,7 @@ function os2web_subscription_cron() {
 function os2web_subscription_mail($key, &$message, $params) {
   $email = $params['email'];
   $sitename = variable_get('site_name', 'Drupal');
+  $updated = new DateTime($params['last_updated']);
 
   switch ($key) {
     case 'subscription':
@@ -621,6 +688,10 @@ function os2web_subscription_mail($key, &$message, $params) {
       $message['body'][] = t('Stop all emails from the subscription service by clicking:  <a href="!notify-url">!notify-url</a>', array(
         '!notify-url' => url('os2web-subscription/opt-out/' . $params['code'], array('absolute' => TRUE)),
       ));
+
+      $message['body'][] = t('You are receiving this, as you created a subscription on the website. The subscription has been active since !updated-at.', array(
+        '!updated-at' => $updated->format('d.m.Y'),
+      ));
       break;
 
     case 'confirm':
@@ -633,6 +704,7 @@ function os2web_subscription_mail($key, &$message, $params) {
         '!email' => $email,
         '!category' => variable_get('os2web_subscription_title_' . $params['category'], $params['category']),
       ));
+      // GDPR text.
       $message['body'][] = l(t('Confirm subscription'), 'os2web-subscription/confirm/' . $params['code'], array('absolute' => TRUE)) .
                           ' - ' . url('os2web-subscription/confirm/' . $params['code'], array('absolute' => TRUE));
 
@@ -786,7 +858,7 @@ function os2web_subscription_get_subscriptions_by_email($email, $status = TRUE) 
  */
 function os2web_subscription_get_subscriptions_by_category($category, $status = TRUE) {
   return db_select('os2web_subscription_subscriptions', 's')
-    ->fields('s', array('email', 'code'))
+    ->fields('s', array('email', 'code', 'last_updated'))
     ->condition('s.category', $category)
     ->condition('s.status', $status)
     ->execute()
