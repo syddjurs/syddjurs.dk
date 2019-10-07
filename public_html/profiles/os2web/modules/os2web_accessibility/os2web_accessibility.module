@@ -73,10 +73,10 @@ function os2web_accessibility_frontpage($nid = '') {
     $print_node_id = $nid_setting;
   }
 
-  $print = print_controller($print_node_id, $query, $cid, PRINT_HTML_FORMAT);
-
+  $print =  print_controller($query, PRINT_HTML_FORMAT, $cid);
+  $print = (array) $print;
   if ($print !== FALSE) {
-    $node = $print['node'];
+    $node = node_load($print_node_id);
     if ($print_node_id == $nid_setting) {
       $output = os2web_accessibility_site_map_menus($page = FALSE);
     }
@@ -85,6 +85,7 @@ function os2web_accessibility_frontpage($nid = '') {
     }
     // Change link href to handicap/
     $array = explode("<a",$print['content']);
+
     foreach($array as $key => $value) {
       preg_match('/href=["\']?([^"\'>]+)["\']?/', $value, $matches);
 
@@ -165,13 +166,14 @@ function os2web_accessibility_theme() {
       'variables' => array(),
     ),
     'os2web_accessibility' => array(
-      'variables' => array(
+      'arguments' => array(
         'handicap' => array(),
         'type' => PRINT_HTML_FORMAT,
         'node' => NULL,
         'menu' => NULL,
         'right_blocks' => NULL
       ),
+      'path' => drupal_get_path('module', 'os2web_accessibility'),
       'template' => 'os2web_accessibility',
     ),
   );
@@ -265,7 +267,7 @@ function os2web_accessibility_site_map_menus($true = FALSE) {
 function os2web_accessibility_menu_link_add_handicap($tree = array()){
   foreach ($tree as $i =>$link) {
     foreach ($link as $key => $value) {
-      foreach ($value as $name => $v) {
+      foreach (@$value as $name => $v) {
         if ($name == 'href') {
           $pos = substr($v,0,4);
           if($pos === 'node') {
