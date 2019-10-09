@@ -168,7 +168,7 @@ function os2web_accessibility_theme() {
     'os2web_accessibility' => array(
       'variables' => array(
         'handicap' => array(),
-        'type' => PRINT_HTML_FORMAT,
+        'type' => 'html',
         'node' => NULL,
         'menu' => NULL,
         'right_blocks' => NULL
