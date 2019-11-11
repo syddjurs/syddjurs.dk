@@ -73,10 +73,10 @@ function os2web_accessibility_frontpage($nid = '') {
     $print_node_id = $nid_setting;
   }
 
-  $print = print_controller($print_node_id, $query, $cid, PRINT_HTML_FORMAT);
-
+  $print =  print_controller($query, 'html');
+  $print = (array) $print;
   if ($print !== FALSE) {
-    $node = $print['node'];
+    $node = node_load($print_node_id);
     if ($print_node_id == $nid_setting) {
       $output = os2web_accessibility_site_map_menus($page = FALSE);
     }
@@ -85,6 +85,7 @@ function os2web_accessibility_frontpage($nid = '') {
     }
     // Change link href to handicap/
     $array = explode("<a",$print['content']);
+
     foreach($array as $key => $value) {
       preg_match('/href=["\']?([^"\'>]+)["\']?/', $value, $matches);
 
@@ -167,7 +168,7 @@ function os2web_accessibility_theme() {
     'os2web_accessibility' => array(
       'variables' => array(
         'handicap' => array(),
-        'type' => PRINT_HTML_FORMAT,
+        'type' => 'html',
         'node' => NULL,
         'menu' => NULL,
         'right_blocks' => NULL
@@ -265,6 +266,10 @@ function os2web_accessibility_site_map_menus($true = FALSE) {
 function os2web_accessibility_menu_link_add_handicap($tree = array()){
   foreach ($tree as $i =>$link) {
     foreach ($link as $key => $value) {
+
+      // Skip if value is not array
+      if(!is_array($value)) continue;
+
       foreach ($value as $name => $v) {
         if ($name == 'href') {
           $pos = substr($v,0,4);
@@ -293,10 +298,11 @@ function os2web_accessibility_menu_link_add_handicap($tree = array()){
           $tree[$i][$key][$name] = $link_value;
         }
       }
-      if($key == 'below' && !empty($key)) {
+      if($key == 'below' && !empty($value)) {
          $tree[$i][$key] = os2web_accessibility_menu_link_add_handicap($value);
       }
     }
+
   }
   return $tree;
 }

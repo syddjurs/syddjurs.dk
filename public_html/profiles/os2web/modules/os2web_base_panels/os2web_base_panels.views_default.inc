@@ -463,9 +463,7 @@ function os2web_base_panels_views_default_views() {
   $handler->display->display_options['filters']['php']['table'] = 'views';
   $handler->display->display_options['filters']['php']['field'] = 'php';
   $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['filters']['php']['php_filter'] = '$node = node_load(arg(1));
-$field = array_shift(array_shift(field_get_items(\'node\',$node,\'field_os2web_base_field_hidlinks\')));
-return ($field==1 || stripos(url(\'node/\'.$data->nid),\'noindex\'))?true:false;';
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return os2web_base_panels_show_related_links_block(arg(1));';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -1807,7 +1805,6 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'slideshow';
-  $handler->display->display_options['style_options']['wrapper_class'] = 'item-list ';
   $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
   $handler->display->display_options['style_options']['slideshow_skin'] = 'default';
   $handler->display->display_options['style_options']['skin_info'] = array(
@@ -2542,7 +2539,6 @@ os2web_base_panels_view_get_link_attributes($row->nid);
   $handler->display->display_options['footer']['area']['ui_name'] = '2 x1 links and 3 link and bottom';
   $handler->display->display_options['footer']['area']['content'] = '<div class="item-list" style="min-height: 40px; clear:both;">
 <div class="sb-block-left"><ul class=""><li><a href="/node/3171128">Digital Post</a></li></ul></div>
-<div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
 <div class="selbetjening-bund"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>
@@ -3799,7 +3795,6 @@ os2web_base_panels_view_get_link_attributes($row->nid);
     t('<div class="knapper"><a class="nemindsigt" href="/aaben-indsigt" tabindex="87"><strong>Åben Indsigt</strong> - søg i alle kommunens sager</a></div>'),
     t('<div class="item-list" style="min-height: 40px; clear:both;">
 <div class="sb-block-left"><ul class=""><li><a href="/node/3171128">Digital Post</a></li></ul></div>
-<div class="sb-block-right"><ul class=""><li><a href="https://www.nemid.nu/dk-da/privat/" tabindex="118">Bestil NemID</a></li></ul></div>
 </div>
 
 <div class="selbetjening-bund"><a class="nemid" href="https://www.nemid.nu/dk-da/privat/" title="NemID">NEMID</a><a class="borgerdk" href="https://www.borger.dk/Sider/default.aspx?KommuneId=706" title="Borger.dk">Borger.dk</a><a class="virkdk" href="http://virk.dk" title="Virk.dk">Virk.dk</a></div>

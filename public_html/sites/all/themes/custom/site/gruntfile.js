@@ -77,45 +77,6 @@ module.exports = function (grunt) {
       }
     },
 
-    modernizr: {
-      preprod: {
-        "cache"       : true,
-        "devFile"     : false,
-        "parseFiles"  : true,
-        "uglify"      : false,
-        "customTests" : [],
-        "tests"       : [],
-        "options"     : [
-          "setClasses"
-        ],
-        "excludeTests": [
-          'hidden',
-        ],
-        "files"       : {
-          "src": ['<%= config.directory.dist %>/js/app.js', '<%= config.directory.dist %>/js/ie9.js', '<%= config.directory.dist %>/css/stylesheet.css']
-        },
-        "dest"        : '<%= config.directory.dist %>/js/modernizr.js'
-      },
-      prod   : {
-        "cache"       : true,
-        "devFile"     : false,
-        "parseFiles"  : true,
-        "uglify"      : true,
-        "customTests" : [],
-        "tests"       : [],
-        "options"     : [
-          "setClasses"
-        ],
-        "excludeTests": [
-          'hidden',
-        ],
-        "files"       : {
-          "src": ['<%= config.directory.dist %>/js/app.js', '<%= config.directory.dist %>/js/ie9.js', '<%= config.directory.dist %>/css/stylesheet.css']
-        },
-        "dest"        : '<%= config.directory.dist %>/js/modernizr.js'
-      },
-    },
-
     csslint: {
       options: {
         csslintrc: '<%= config.directory.src %>/less/.csslintrc'
@@ -153,11 +114,11 @@ module.exports = function (grunt) {
       },
       less: {
         files: ['<%= config.directory.src %>/less/**/*.less'],
-        tasks: ['clean:css', 'less:preprod', 'modernizr:preprod']
+        tasks: ['clean:css', 'less:preprod']
       },
       js  : {
         files: '<%= config.directory.src %>/js/**/*.js',
-        tasks: ['clean:js', 'concat', 'modernizr:preprod']
+        tasks: ['clean:js', 'concat']
       }
     }
   });
@@ -165,7 +126,6 @@ module.exports = function (grunt) {
   // Load
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-modernizr');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-csslint');
@@ -176,14 +136,14 @@ module.exports = function (grunt) {
   // Register
   grunt.registerTask('default', ['watch']);
 
-  grunt.registerTask('build-preprod', ['clean', 'concat', 'less:preprod', 'modernizr:preprod']);
-  grunt.registerTask('build-prod', ['clean', 'concat', 'less:prod', 'autoprefixer', 'modernizr:prod']);
-  grunt.registerTask('build', ['clean', 'concat', 'less:prod', 'autoprefixer', 'modernizr:prod']);
+  grunt.registerTask('build-preprod', ['clean', 'concat', 'less:preprod']);
+  grunt.registerTask('build-prod', ['clean', 'concat', 'less:prod', 'autoprefixer']);
+  grunt.registerTask('build', ['clean', 'concat', 'less:prod', 'autoprefixer']);
 
-  grunt.registerTask('build-css', ['clean:css', 'less', 'autoprefixer', 'modernizr']);
-  grunt.registerTask('build-js', ['clean:js', 'concat', 'modernizr']);
+  grunt.registerTask('build-css', ['clean:css', 'less', 'autoprefixer']);
+  grunt.registerTask('build-js', ['clean:js', 'concat']);
 
-  grunt.registerTask('test', ['clean', 'concat', 'jscs', 'jshint', 'less', 'autoprefixer', 'csslint', 'modernizr']);
-  grunt.registerTask('test-css', ['clean:css', 'less', 'autoprefixer', 'csslint', 'modernizr']);
-  grunt.registerTask('test-js', ['clean:js', 'concat', 'jscs', 'jshint', 'modernizr']);
+  grunt.registerTask('test', ['clean', 'concat', 'jscs', 'jshint', 'less', 'autoprefixer', 'csslint']);
+  grunt.registerTask('test-css', ['clean:css', 'less', 'autoprefixer', 'csslint']);
+  grunt.registerTask('test-js', ['clean:js', 'concat', 'jscs', 'jshint']);
 };

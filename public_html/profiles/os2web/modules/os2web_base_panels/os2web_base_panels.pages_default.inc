@@ -11,7 +11,7 @@ function os2web_base_panels_default_page_manager_handlers() {
   $export = array();
 
   $handler = new stdClass();
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'os2web_base_panels_panel_content';
   $handler->task = 'node_view';
@@ -250,7 +250,7 @@ function os2web_base_panels_default_page_manager_handlers() {
   $export['os2web_base_panels_panel_content'] = $handler;
 
   $handler = new stdClass();
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'os2web_base_panels_panel_news';
   $handler->task = 'node_view';
@@ -343,7 +343,7 @@ function os2web_base_panels_default_page_manager_handlers() {
   $export['os2web_base_panels_panel_news'] = $handler;
 
   $handler = new stdClass();
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->disabled = TRUE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'os2web_base_panels_portal_front';
   $handler->task = 'term_view';

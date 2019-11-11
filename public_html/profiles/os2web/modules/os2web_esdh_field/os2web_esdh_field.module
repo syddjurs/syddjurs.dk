@@ -20,6 +20,9 @@ function os2web_esdh_field_field_info() {
       'description' => t('Sags-id skal være på formen år/nummer eller år-nummer. Kun én værdi er tilladte.'),
       'default_widget' => 'os2web_esdh_field_case_ident_wid',
       'default_formatter' => 'os2web_esdh_field_case_ident_for',
+      'settings' => array(
+        'case_docs_filter' => '',
+      ),
     ),
     'os2web_esdh_field_doc_ident' => array(
       'label' => t('ESDH Document'),
@@ -161,10 +164,11 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
   $element = array();
   switch ($display['type']) {
     case 'os2web_esdh_field_case_ident_for':
-      if ($field = field_get_items('node', $entity, 'field_os2web_base_field_casesort')) {
-        drupal_add_js(array('os2web_esdh_field' => array('sort' => $field[0]['value'])), 'setting');
+      if ($field_item = field_get_items('node', $entity, 'field_os2web_base_field_casesort')) {
+        drupal_add_js(array('os2web_esdh_field' => array('sort' => $field_item[0]['value'])), 'setting');
       }
 
+      $docs_filter = $field['settings']['case_docs_filter'];
       foreach ($items as $delta => $item) {
         if ($item['os2web_esdh_field_case_ident']) {
           $cases = array();
@@ -173,7 +177,7 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
             $cases[] = trim($id);
           }
 
-          $element[$delta]['#markup'] = '<div class="fullcaserender table-responsive">' . theme('os2web_esdh_case', array('id' => $cases)) . '</div>';
+          $element[$delta]['#markup'] = '<div class="fullcaserender table-responsive">' . theme('os2web_esdh_case', array('id' => $cases, 'docs_filter' => $docs_filter)) . '</div>';
         }
       }
       break;
@@ -201,7 +205,10 @@ function os2web_esdh_field_field_formatter_view($entity_type, $entity, $field, $
 function os2web_esdh_field_theme() {
   return array(
     'os2web_esdh_case' => array(
-      'variables' => array('id' => FALSE),
+      'variables' => array(
+        'id' => FALSE,
+        'docs_filter' => FALSE,
+      ),
     ),
     'os2web_esdh_document' => array(
       'variables' => array('id' => FALSE),
@@ -221,6 +228,10 @@ function theme_os2web_esdh_case($vars) {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'os2web_cp_service_cp_document')
     ->fieldCondition('field_os2web_cp_service_case_id', 'value', $vars['id'], 'IN');
+
+  if (!empty($vars['docs_filter'])) {
+    $query->propertyCondition('title', '%' . $vars['docs_filter'] . '%', 'LIKE');
+  }
   $result = $query->execute();
 
   if (count($result > 0)) {
@@ -309,4 +320,20 @@ function os2web_esdh_field_os2web_help($sections) {
   $sections['fields'] = t('<p><b>Link to cases and documents:</b> Many contenttypes has ability to link to cases and documents in the ESDH case system. When pages gets linked to cases and documents, links to them will automatically gets generated at the bottom of the page.</p>');
 
   return $sections;
+}
+
+/**
+ * Implements hook_field_settings_form().
+ */
+function os2web_esdh_field_field_settings_form($field, $instance, $has_data) {
+  if ($field['type'] == 'os2web_esdh_field_case_ident') {
+    $form['case_docs_filter'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Case documents filter'),
+      '#default_value' => $field['settings']['case_docs_filter'],
+      '#description' => t('Provide a string which document title must contain in order to be visible. Leave empty to show all case documents. Case insensitive'),
+    );
+
+    return $form;
+  }
 }

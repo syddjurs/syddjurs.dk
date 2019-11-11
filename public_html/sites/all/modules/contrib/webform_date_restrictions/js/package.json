@@ -1,0 +1,16 @@
+{
+  "name": "webform_date_restrictions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "jest",
+    "compile": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^20.0.4",
+    "webpack": "^3.3.0"
+  }
+}

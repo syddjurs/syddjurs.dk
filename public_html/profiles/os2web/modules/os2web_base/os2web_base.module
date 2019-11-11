@@ -106,19 +106,23 @@ function os2web_base_node_update($node) {
     $current_files = array();
     $original_files = array();
     // Get files that were attached to the original node (before update).
-    foreach ($original_wrapper->{$field}->value() as $file) {
-      if (is_array($file) && $file['fid']) {
-        $original_files[] = $file['fid'];
+    if (is_array($original_wrapper->{$field}->value())) {
+      foreach ($original_wrapper->{$field}->value() as $file) {
+        if (is_array($file) && $file['fid']) {
+          $original_files[] = $file['fid'];
+        }
       }
     }
     // Stop if there were no files previously attached.
     if (empty($original_files)) {
       continue;
     }
-    // Get files currently attached to the node (after update).
-    foreach ($wrapper->{$field}->value() as $file) {
-      if (is_array($file) && $file['fid']) {
-        $current_files[] = $file['fid'];
+    if (is_array($wrapper->{$field}->value())) {
+      // Get files currently attached to the node (after update).
+      foreach ($wrapper->{$field}->value() as $file) {
+        if (is_array($file) && $file['fid']) {
+          $current_files[] = $file['fid'];
+        }
       }
     }
     // Delete files that were in the original node but were removed during

@@ -58,6 +58,7 @@ function os2web_hearings_field_group_info() {
       4 => 'field_os2web_base_case_no',
       5 => 'field_os2web_base_send_to_acadre',
       6 => 'field_os2web_hearings_reply_case',
+      7 => 'field_os2web_hearings_hide_reply',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -171,7 +172,7 @@ function os2web_hearings_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bilag',
-    'weight' => '26',
+    'weight' => '7',
     'children' => array(
       0 => 'field_os2web_hearings_attac_case',
       1 => 'field_os2web_hearings_attac_doc',
@@ -232,7 +233,7 @@ function os2web_hearings_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Høringssvar',
-    'weight' => '26',
+    'weight' => '6',
     'children' => array(
       0 => 'field_os2web_hearings_reply_case',
     ),

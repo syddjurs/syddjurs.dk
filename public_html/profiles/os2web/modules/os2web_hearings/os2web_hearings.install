@@ -6,3 +6,14 @@
 function os2web_hearings_uninstall() {
   variable_del('os2web_hearings_email_to_acadre');
 }
+
+/**
+ * Enable creation of several emails to be send by default - data migration.
+ */
+function os2web_hearings_update_7101(&$sandbox) {
+  variable_set("os2web_hearings_webform_to_email_1", variable_get("os2web_hearings_webform_to_email"));
+  variable_set("os2web_hearings_webform_subject_1", variable_get("os2web_hearings_webform_subject"));
+  variable_set("os2web_hearings_webform_from_name_1", variable_get("os2web_hearings_webform_from_name"));
+  variable_set("os2web_hearings_webform_from_email_1", variable_get("os2web_hearings_webform_from_email"));
+  variable_set("os2web_hearings_webform_email_body_1", variable_get("os2web_hearings_webform_email_body"));
+}

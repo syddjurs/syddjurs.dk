@@ -2429,7 +2429,7 @@ return TRUE;
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['id'] = 'field_os2web_meetings_committee';
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['table'] = 'field_data_field_os2web_meetings_committee';
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['field'] = 'field_os2web_meetings_committee';
-  $handler->display->display_options['fields']['field_os2web_meetings_committee']['label'] = 'Kommende møder med publicerede dagsordner';
+  $handler->display->display_options['fields']['field_os2web_meetings_committee']['label'] = 'Møder med publicerede dagsordner';
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_os2web_meetings_committee']['element_label_colon'] = FALSE;
@@ -2880,7 +2880,7 @@ return TRUE;
     t('Vælg hvilket udvalg du vil se dagsordner og referater fra.'),
     t('Kommende'),
     t('<div class="help-button" title="Seneste møder i alle udvalg med publicerede referater"></div>'),
-    t('Kommende møder med publicerede dagsordner'),
+    t('Møder med publicerede dagsordner'),
     t('Seneste'),
     t('Seneste møder med publicerede referater'),
     t('Avanceret soegning'),

@@ -27,3 +27,7 @@ public_html/Portaler/
 public_html/custom/
 public_html/images/emailsignatur/*
 public_html/robots.txt
+public_html/robots.txt.changeme
+public_html/sites/all/vendor
+public_html/sites/default/settings.php.save
+public_html/*.html

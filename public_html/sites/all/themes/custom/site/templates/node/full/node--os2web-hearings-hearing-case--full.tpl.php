@@ -46,7 +46,7 @@
 
           <div class="col-sm-4">
             <?php
-            if (variable_get('os2web_hearings_reply_enabled', FALSE)):
+            if (variable_get('os2web_hearings_reply_enabled', FALSE) && !$node->field_os2web_hearings_hide_reply['und'][0]['value']):
               if (strtotime($node->field_os2web_hearings_enddate['und'][0]['value']) >= strtotime("midnight", time())): ?>
                 <a href="/node/<?php print $node->nid; ?>/formular" class="btn btn-success">
                   <?php print t('Write hearing reply'); ?>

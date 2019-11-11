@@ -85,36 +85,59 @@ function os2web_hearings_settings_form(){
     '#default_value' => variable_get('os2web_hearings_reply_enabled', FALSE),
   );
 
-  $form['os2web_hearings_webform_fs'] = array(
-    '#title' => t('Hearing case webform default values'),
+  $os2web_hearings_reply_form_message = variable_get('os2web_hearings_reply_form_message');
+  $form['os2web_hearings_reply_form_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Hearing reply forms message'),
+    '#default_value' => !empty($os2web_hearings_reply_form_message)? $os2web_hearings_reply_form_message['value'] : '',
+  );
+
+  $form['os2web_hearings_webform_emails'] = array(
+    '#title' => t('Default email texts'),
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_to_email'] = array(
-    '#title' => t('To email'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_to_email'),
-  );
+  // Max 2 emails.
+  for ($i = 1; $i <= 2; $i++) {
+    $form['os2web_hearings_webform_emails']["emails_$i"] = array(
+      '#title' => t('Email') . " $i",
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_subject'] = array(
-    '#title' => t('Email subject'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_subject'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_to_email_$i"] = array(
+      '#title' => t('To email'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_to_email_$i"),
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_name'] = array(
-    '#title' => t('From name'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_from_name'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_subject_$i"] = array(
+      '#title' => t('Email subject'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_subject_$i"),
+    );
 
-  $form['os2web_hearings_webform_fs']['os2web_hearings_webform_from_email'] = array(
-    '#title' => t('From email'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('os2web_hearings_webform_from_email'),
-  );
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_from_name_$i"] = array(
+      '#title' => t('From name'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_from_name_$i"),
+    );
+
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_from_email_$i"] = array(
+      '#title' => t('From email'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get("os2web_hearings_webform_from_email_$i"),
+    );
+
+    $form['os2web_hearings_webform_emails']["emails_$i"]["os2web_hearings_webform_email_body_$i"] = array(
+      '#title' => t('Email body'),
+      '#type' => 'textarea',
+      '#default_value' => variable_get("os2web_hearings_webform_email_body_$i"),
+    );
+  }
 
   return system_settings_form($form);
 }
@@ -184,9 +207,13 @@ function os2web_hearings_form_alter(&$form, &$form_state, $form_id) {
 
     $form['submitted']['city']['#prefix'] = '<div class="col-xs-9">';
     $form['submitted']['city']['#suffix'] = '</div></div>';
+
+    $os2web_hearings_reply_form_message = variable_get('os2web_hearings_reply_form_message');
+    if (!empty($os2web_hearings_reply_form_message)) {
+      $form['#os2web_hearings_reply_form_message'] = $os2web_hearings_reply_form_message['value'];
+    }
   }
 }
-
 
 /**
  * Implements hook_node_insert().
@@ -225,16 +252,19 @@ function os2web_hearings_node_update($node) {
 function os2web_hearings_node_presave($node) {
   // Add a default e-mail configuration for new nodes.
   if (empty($node->nid) && $node->is_new && $node->type == 'os2web_hearings_hearing_case') {
-    $node->webform['emails'][] = array(
-      'email' => variable_get('os2web_hearings_webform_to_email'),
-      'subject' => variable_get('os2web_hearings_webform_subject'),
-      'from_name' => variable_get('os2web_hearings_webform_from_name'),
-      'from_address' => variable_get('os2web_hearings_webform_from_email'),
-      'template' => theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node)),
-      'excluded_components' => array(),
-      'html' => 1,
-      'attachments' => 1,
-    );
+    // Max 2 emails.
+    for ($i = 1; $i <= 2; $i++) {
+      $node->webform['emails'][] = array(
+        'email' => variable_get("os2web_hearings_webform_to_email_$i"),
+        'subject' => variable_get("os2web_hearings_webform_subject_$i"),
+        'from_name' => variable_get("os2web_hearings_webform_from_name_$i"),
+        'from_address' => variable_get("os2web_hearings_webform_from_email_$i"),
+        'template' => variable_get("os2web_hearings_webform_email_body_$i", theme(array('webform_mail_' . $node->nid, 'os2web_hearings_webform_email'), array('node' => $node))),
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 1,
+      );
+    }
   }
 }
 
@@ -319,14 +349,15 @@ function os2web_hearings_theme($existing, $type, $theme, $path) {
  * Renders the webform view of a single node.
  */
 function os2web_hearings_node_webform_view($node) {
-  if (!variable_get('os2web_hearings_reply_enabled', FALSE)) {
+  // Form is not accessible, other replies are disabled globally or per node.
+  if (!variable_get('os2web_hearings_reply_enabled', FALSE) || $node->field_os2web_hearings_hide_reply['und'][0]['value']) {
     drupal_goto('node/' . $node->nid);
   }
 
   // If there is a menu link to this node, the link becomes the last part
   // of the active trail, and the link name becomes the page title.
   // Thus, we must explicitly set the page title to be the node title.
-  drupal_set_title('Svarformular');
+  drupal_set_title('Skriv høringssvar');
 
   $uri = entity_uri('node', $node);
   // Set the node path as the canonical URL to prevent duplicate content.
@@ -338,4 +369,19 @@ function os2web_hearings_node_webform_view($node) {
   $view = node_view($node, 'node_webform');
   $rendered = drupal_render($view);
   return $rendered;
+}
+
+/**
+ * Implements hook_tokens_alter().
+ *
+ * Adds a raw text value into [node:field_os2web_hearings_reply_case] token,
+ * instead of rendered list of files.
+ */
+function os2web_hearings_tokens_alter(array &$replacements, array $context) {
+  if ($context['type'] == 'node') {
+    if (isset($replacements['[node:field_os2web_hearings_reply_case]'])) {
+      $value = $context['data']['node']->field_os2web_hearings_reply_case['und'][0]['os2web_esdh_field_case_ident'];
+      $replacements['[node:field_os2web_hearings_reply_case]'] = $value;
+    }
+  }
 }
