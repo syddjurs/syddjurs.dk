@@ -232,6 +232,9 @@ function os2web_cp_service_handler() {
  * Callback for the file provider service.
  */
 function os2web_gf_service_handler($file_id) {
+  if (strpos($_SERVER['HTTP_REFERER'], 'google.com') !== FALSE) {
+    return drupal_not_found();
+  }
 
   // Mime Types which are disallowed to be downloaded.
   // People shouldn't be able to download special files.
