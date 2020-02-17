@@ -2477,12 +2477,6 @@ return TRUE;
   $handler->display->display_options['filters']['field_os2web_meetings_type_value']['value'] = array(
     'Dagsorden' => 'Dagsorden',
   );
-  /* Filterkriterie: Indhold: Date -  startdato (field_os2web_meetings_date) */
-  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['id'] = 'field_os2web_meetings_date_value';
-  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['table'] = 'field_data_field_os2web_meetings_date';
-  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['field'] = 'field_os2web_meetings_date_value';
-  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_os2web_meetings_date_value']['default_date'] = 'now';
 
   /* Display: Seneste */
   $handler = $view->new_display('block', 'Seneste', 'block_2');
