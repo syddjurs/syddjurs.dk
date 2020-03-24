@@ -9,10 +9,8 @@
  * Implements hook_form_FORM_ID_alter().
  */
 function syddjurs_menus_config_settings_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
-  var_dump($form['mlid']['#value']);
 
   $default = syddjurs_menus_config_settings_get_settings($form['mlid']['#value']);
-  var_dump($default);
   $form['syddjurs_menus_config_settings_show_only_child'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show only child menu items on this page'),
