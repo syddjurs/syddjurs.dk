@@ -1,0 +1,4 @@
+name=Syddjurs Menus config settings
+description=Provides additional settings for menu links
+core=7.x
+stylesheets[all][] = css/syddjurs_menus_config_settings.css

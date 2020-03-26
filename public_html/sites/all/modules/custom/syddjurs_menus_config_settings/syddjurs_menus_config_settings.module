@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * 
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function syddjurs_menus_config_settings_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
+
+  $default = syddjurs_menus_config_settings_get_settings($form['mlid']['#value']);
+  $form['syddjurs_menus_config_settings_show_only_child'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show only child menu items on this page'),
+    '#default_value' => $default,
+  );
+}
+
+/**
+ * Gets additional menu setting.
+ *
+ * @param int $mlid
+ *   The menu link id.
+ 
+ * @return
+ *   Setting value.
+ */
+function syddjurs_menus_config_settings_get_settings($mlid) {
+  $result = db_select('syddjurs_menus_config_settings', 'mcs')
+      ->fields('mcs')
+      ->condition('mlid', $mlid, '=')
+      ->execute()
+      ->fetchAll();
+
+  if (!empty($result)) {
+    $row = array_pop($result);
+    return (int) $row->show_only_child_items;  }
+
+  // Not defined, everyone has the right to use it.
+  return false;
+}
+
+/**
+ * Implements hook_menu_link_update().
+ */
+function syddjurs_menus_config_settings_menu_link_update($link) {
+  if (isset($link['syddjurs_menus_config_settings_show_only_child'])) {
+    // Hide but to those roles
+    // 
+    $fields['show_only_child_items'] = $link['syddjurs_menus_config_settings_show_only_child'];
+    $count = db_select('syddjurs_menus_config_settings')
+        ->condition('mlid', $link['mlid'])
+        ->countQuery()
+        ->execute()
+        ->fetchField();
+    if ($count == 0) {
+      $fields['mlid'] = $link['mlid'];
+      db_insert('syddjurs_menus_config_settings')
+          ->fields($fields)
+          ->execute();
+    }
+    else {
+      db_update('syddjurs_menus_config_settings')
+          ->fields($fields)
+          ->condition('mlid', $link['mlid'])
+          ->execute();
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_link_delete().
+ */
+function syddjurs_menus_config_settings_menu_link_delete($link) {
+  // Delete the record from our table.
+  db_delete('syddjurs_menus_config_settings_show_only_child')
+      ->condition('mlid', $link['mlid'])
+      ->execute();
+}
+
+/**
+ * Implements hook_menu_link_insert().
+ */
+function syddjurs_menus_config_settings_menu_link_insert($link) {
+  if (isset($link['syddjurs_menus_config_settings_show_only_child'])) {
+    // Hide but to those roles.
+
+    $fields = array(
+      'show_only_child_items' => $link['syddjurs_menus_config_settings_show_only_child'],
+      'mlid' => $link['mlid'],
+    );
+    drupal_write_record('syddjurs_menus_config_settings', $fields);
+  }
+}
+
+/**
+ * Implements hook_menu_preprocess_menu_link().
+ */
+function syddjurs_menus_config_settings_preprocess_menu_link(&$variables) {
+  $link = $variables['element']['#original_link'];
+  $menu_trail = menu_get_active_trail();
+  $curent_mlid = $menu_trail[2]["mlid"];
+  if (syddjurs_menus_config_settings_get_settings($curent_mlid)) {
+    $parent_link = _menu_link_find_parent($variables['element']['#original_link']);
+    $parent_link['mlid'];
+    if ($link["in_active_trail"] == false && $parent_link['mlid'] != $curent_mlid) {
+      $variables['element']['#attributes']['class'][] = 'region-sidebar-first-hidden';
+    }
+  }
+}
