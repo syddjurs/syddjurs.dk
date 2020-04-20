@@ -30,10 +30,11 @@ function os2web_acadre_esdh_cp_handle_request() {
     return os2web_acadre_esdh_cp_handle_request();
   }
 
-  global $HTTP_RAW_POST_DATA;
+  // Getting post data.
+  $postData = file_get_contents('php://input');
 
   // Remove illegal XML characters.
-  $data = preg_replace('/\&\#..F/', '', $HTTP_RAW_POST_DATA);
+  $data = preg_replace('/\&\#..F/', '', $postData);
 
   if (variable_get('os2web_esdh_cp_provider_save_request', FALSE)) {
     file_unmanaged_save_data($data, 'public://soap/request-' . time() . '-' . uniqid() . '.xml', FILE_EXISTS_REPLACE);
