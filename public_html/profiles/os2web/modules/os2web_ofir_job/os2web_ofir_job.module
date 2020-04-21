@@ -498,10 +498,10 @@ function _os2web_ofir_job_parse_job_text($xml) {
       $tag_parts = explode('-', $mapped_field);
       switch ($tag_parts[1]) {
         case 'tag':
-         $ofir_job['os2web_ofir_job_mapping_' . $field_name] = ($tag_parts[0] == 'project') ?(string) $xm->$tag_parts[2] : (string) $xml->$tag_parts[0]->$tag_parts[2];
+         $ofir_job['os2web_ofir_job_mapping_' . $field_name] = ($tag_parts[0] == 'project') ? (string) $xml->{$tag_parts[2]} : (string) $xml->{$tag_parts[0]}->{$tag_parts[2]};
          break;
         case 'attr':
-          $ofir_job['os2web_ofir_job_mapping_' . $field_name] =  ($tag_parts[0] == 'project') ? _os2web_ofir_job_xml_attribute($xml, $tag_parts[2]) : _os2web_ofir_job_xml_attribute($xml->$tag_parts[0], $tag_parts[2]);
+          $ofir_job['os2web_ofir_job_mapping_' . $field_name] =  ($tag_parts[0] == 'project') ? _os2web_ofir_job_xml_attribute($xml, $tag_parts[2]) : _os2web_ofir_job_xml_attribute($xml->{$tag_parts[0]}, $tag_parts[2]);
          break;
          case 'title':
            $ofir_job['os2web_ofir_job_mapping_' . $field_name] = $facts[$tag_parts[2]];
