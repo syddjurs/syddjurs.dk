@@ -38,11 +38,14 @@ function syddjurs_eu_cookie_compliance_strongarm() {
     ),
     'use_mobile_message' => 0,
     'mobile_popup_info' => array(
-      'value' => '<h2>We use cookies on this site to enhance your user experience</h2><p>By tapping the Accept button, you agree to us doing so.</p>',
+      'value' => '<h2>We use cookies on this site to enhance your user experience</h2>
+
+<p>By tapping the Accept button, you agree to us doing so.</p>
+',
       'format' => 'full_html',
     ),
     'mobile_breakpoint' => '768',
-    'popup_agree_button_message' => 'OK, I agree',
+    'popup_agree_button_message' => 'Ja, jeg accepterer',
     'show_disagree_button' => TRUE,
     'popup_disagree_button_message' => 'Nej, jeg ønsker at lære mere',
     'disagree_button_label' => 'Nej tak',
@@ -62,7 +65,10 @@ function syddjurs_eu_cookie_compliance_strongarm() {
     'popup_agreed_enabled' => 0,
     'popup_hide_agreed' => 0,
     'popup_agreed' => array(
-      'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
+      'value' => '<h2>Thank you for accepting cookies</h2>
+
+<p>You can now hide this message or find out more about cookies.</p>
+',
       'format' => 'full_html',
     ),
     'popup_find_more_button_message' => 'More info',
