@@ -73,7 +73,7 @@ function syddjurs_eu_cookie_compliance_strongarm() {
     ),
     'popup_find_more_button_message' => 'More info',
     'popup_hide_button_message' => 'Skjul',
-    'popup_link' => 'https://www.syddjurs.dk/eu-cookie',
+    'popup_link' => 'https://www.syddjurs.dk/om-kommunen/om-hjemmesiden',
     'popup_link_new_window' => 1,
     'popup_position' => FALSE,
     'use_bare_css' => 1,
