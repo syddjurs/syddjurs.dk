@@ -100,7 +100,7 @@ function os2web_hearings_settings_form(){
   );
 
   // Max 2 emails.
-  for ($i = 1; $i <= 2; $i++) {
+  for ($i = 1; $i <= 3; $i++) {
     $form['os2web_hearings_webform_emails']["emails_$i"] = array(
       '#title' => t('Email') . " $i",
       '#type' => 'fieldset',
@@ -252,8 +252,8 @@ function os2web_hearings_node_update($node) {
 function os2web_hearings_node_presave($node) {
   // Add a default e-mail configuration for new nodes.
   if (empty($node->nid) && $node->is_new && $node->type == 'os2web_hearings_hearing_case') {
-    // Max 2 emails.
-    for ($i = 1; $i <= 2; $i++) {
+    // Max 3 emails.
+    for ($i = 1; $i <= 3; $i++) {
       $node->webform['emails'][] = array(
         'email' => variable_get("os2web_hearings_webform_to_email_$i"),
         'subject' => variable_get("os2web_hearings_webform_subject_$i"),
