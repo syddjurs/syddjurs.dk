@@ -32,7 +32,7 @@ function syddjurs_eu_cookie_compliance_strongarm() {
     'popup_info' => array(
       'value' => '<h2>Vi bruger cookies.</h2>
 
-<p>Nogle sikrer at sitet virker, andre samler statistik ind til forbedring af din brugeroplevelse.</p>
+<p>Nogle sikrer at sitet virker, andre samler statistik ind til forbedring af din brugeroplevelse. Din accept er gyldig i 100 dage.</p>
 ',
       'format' => 'full_html',
     ),
