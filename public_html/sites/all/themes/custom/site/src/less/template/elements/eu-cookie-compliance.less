@@ -17,26 +17,11 @@
 // EU cookie compliance
 .os2-eu-cookie-compliance {}
 
-//
 #sliding-popup {
-
-  .popup-content {
-    padding: 30px 0;
-  }
-
-  &.sliding-popup-bottom {
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0.96);
-  }
 
   .popup-content {
     max-width: none;
     .container;
-
-    #popup-text,
-    #popup-buttons {
-      display: block;
-    }
 
     #popup-text {
 
@@ -51,65 +36,6 @@
         font-weight: @font-weight;
         font-size: @font-size-base;
         color: @text-color !important;
-      }
-    }
-
-    #popup-buttons {
-
-      button,
-      .agree-button,
-      .find-more-button {
-
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-          .btn;
-        }
-      }
-
-      .agree-button {
-
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-          .btn-quaternary;
-        }
-      }
-
-      .find-more-button {
-
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-          .btn-primary;
-        }
-      }
-    }
-  }
-}
-
-// Reset (remove existing styling)
-#sliding-popup {
-  z-index: 0;
-
-  .popup-content {
-
-    #popup-text {
-      max-width: none;
-      float: none;
-    }
-
-    #popup-buttons {
-      max-width: none;
-
-      button,
-      .agree-button,
-      .find-more-button {
-        text-shadow: none;
-        .box-shadow(none);
       }
     }
   }
