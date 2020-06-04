@@ -332,6 +332,7 @@ function os2web_cp_service_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1113,7 +1114,7 @@ function os2web_cp_service_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_cp_service_edited',
-    'label' => 'RedigeringsDato',
+    'label' => 'Redigeringsdato',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -1130,6 +1131,7 @@ function os2web_cp_service_field_default_field_instances() {
         'input_format' => 'Y-m-d H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
@@ -1493,7 +1495,7 @@ function os2web_cp_service_field_default_field_instances() {
   t('Indholdsbeskrivelse');
   t('Journalnummer');
   t('KL emnenummer - KL emnenummer og beskrivelse');
-  t('RedigeringsDato');
+  t('Redigeringsdato');
   t('Sag SystemID');
   t('SagsID');
   t('Sagsansvarlig enhed - Administrativ enhed');
