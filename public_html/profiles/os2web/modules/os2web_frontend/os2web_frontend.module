@@ -16,6 +16,9 @@ function os2web_frontend_init() {
   drupal_add_js(drupal_get_path('module', 'os2web_frontend') . '/js/jquery.yaselect.min.js', array('scope' => 'header', 'weight' => 102));
   drupal_add_js(drupal_get_path('module', 'os2web_frontend') . '/js/jquery.sbselect.js', array('scope' => 'footer', 'weight' => 102));
   drupal_add_js(drupal_get_path('module', 'os2web_frontend') . '/js/jquery.tabindex.js', array('scope' => 'footer', 'weight' => 102));
+  if (arg(0) == 'was') {
+    drupal_goto('https://www.was.digst.dk/syddjurs-dk');
+  }
 }
 
 /**
