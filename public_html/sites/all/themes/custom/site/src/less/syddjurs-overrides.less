@@ -105,10 +105,14 @@ div.node--os2web_base_iframe--full {
 
 
 .region-preface-first {
+
   ul.nice-menu,
   ul.nice-menu-down {
     float: right;
+
     li {
+      width: auto;
+
       span {
         cursor: pointer;
         display: inline;
@@ -126,6 +130,7 @@ div.node--os2web_base_iframe--full {
         padding: 5px 19px 5px 5px;
 
       }
+
       &.menuparent {
         background: #FFF url(../img/arrow-down.png) right center no-repeat;
         color: #6d6e6d;
@@ -134,9 +139,13 @@ div.node--os2web_base_iframe--full {
           margin-left: 0;
         }
       }
+
       ul {
+        min-width: 15em;
+
         background-color: @brand-primary;
         z-index: 9999;
+
         li {
           background-color: transparent;
           padding-left: 5px;
