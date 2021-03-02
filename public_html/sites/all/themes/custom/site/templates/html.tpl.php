@@ -58,6 +58,27 @@
 
 <!-- Begin - load javascript files -->
 <?php print $scripts; ?>
+<script type="text/javascript">
+    window._monsido = window._monsido || {
+        token: "K1H3vHkB55G7bYDOpFSIFg",
+        statistics: {
+            enabled: true,
+            documentTracking: {
+                enabled: true,
+                documentCls: "monsido_download",
+                documentIgnoreCls: "monsido_ignore_download",
+                documentExt: [],
+            },
+        },
+        heatmap: {
+            enabled: true,
+        },
+        pageCorrect: {
+            enabled: true,
+        },
+    };
+</script>
+<script type="text/javascript" async src="https://app-script.monsido.com/v2/monsido-script.js"></script>
 <!-- End - load javascript files -->
 
 <?php print $page_bottom; ?>
