@@ -332,7 +332,8 @@ function os2web_ofir_job_import_job($job_text) {
     // Insert default value of a new node.
       $node->type = 'os2web_ofir_job';
     }
-      $node_fields = os2web_ofir_job_get_os2web_ofir_job_fields();
+    $node->status = 1;
+    $node_fields = os2web_ofir_job_get_os2web_ofir_job_fields();
     foreach($node_fields as $field_name => $label) {
       switch ($field_name) {
         case 'title' :
