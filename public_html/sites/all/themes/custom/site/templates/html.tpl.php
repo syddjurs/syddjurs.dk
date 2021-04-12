@@ -58,6 +58,9 @@
 
 <!-- Begin - load javascript files -->
 <?php print $scripts; ?>
+<?php
+  // If GDPR Consent is not given we should no set statistic cookies.
+  if (empty($_COOKIE['cookie-agreed'])): ?>
 <script type="text/javascript">
     window._monsido = window._monsido || {
         token: "K1H3vHkB55G7bYDOpFSIFg",
@@ -78,6 +81,7 @@
         },
     };
 </script>
+<?php endif; ?>
 <script type="text/javascript" async src="https://app-script.monsido.com/v2/monsido-script.js"></script>
 <!-- End - load javascript files -->
 
