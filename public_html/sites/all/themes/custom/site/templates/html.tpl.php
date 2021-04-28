@@ -60,7 +60,7 @@
 <?php print $scripts; ?>
 <?php
   // If GDPR Consent is not given we should no set statistic cookies.
-  if (empty($_COOKIE['cookie-agreed'])): ?>
+  if (!empty($_COOKIE['cookie-agreed'])): ?>
 <script type="text/javascript">
     window._monsido = window._monsido || {
         token: "K1H3vHkB55G7bYDOpFSIFg",
