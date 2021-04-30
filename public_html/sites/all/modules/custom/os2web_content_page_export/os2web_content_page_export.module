@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Code for the Os2web сontent page export feature.
+ */
+
+include_once 'os2web_content_page_export.features.inc';
+
+
+function os2web_content_page_export_generate_node_url($nid) {
+  global $base_url;  
+  print  $base_url . '/' .drupal_get_path_alias("node/$nid");  
+}
+
+function os2web_content_page_export_generate_menu_item($nid) {
+  
+ $url = drupal_get_path_alias("node/$nid");  
+ $menu_items = explode('/',$url );
+ print $menu_items[0];
+}
+
+function os2web_content_page_export_generate_kle($nid) {
+ $node = node_load($nid);
+ 
+$tid = ($node->field_os2web_base_field_kle_ref['und'][0]['tid']);
+$term = taxonomy_term_load($tid);
+print $term->name;
+}
