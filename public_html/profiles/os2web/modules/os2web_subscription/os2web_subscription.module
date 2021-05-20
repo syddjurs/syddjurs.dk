@@ -975,6 +975,24 @@ function os2web_subscription_node_insert($node) {
   }
 }
 
+/* Hooks for unpublished content handling. */
+
+/**
+ * Implements hook_node_update ().
+ *
+ * Add any newly created published nodes to the queue with category as the
+ * node type.
+ * Remove new nodes which arent published.
+ */
+function os2web_subscription_node_update($node) {
+  if ($node->status == 1 && $node->original->status == 0) {
+    $enabled_node_types = os2web_subscription_get_node_types();
+    if (in_array($node->type, $enabled_node_types)) {
+      os2web_subscription_add_to_queue($node->nid, $node->type);
+    }
+  }
+}
+
 /**
  * Implements hook_node_delete().
  *
