@@ -10,6 +10,11 @@
           box-shadow: @shadow;
 }
 
+/* WDY-125-82298 */
+ul.nice-menu, ul.nice-menu ul {
+  z-index: 1000 !important;
+}
+
 html {
   &.overlay-open .navbar-fixed-top {
     z-index: 400;
@@ -857,9 +862,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
               width: 80%;
              &.open {
              display: block;
-            } 
-            } 
-            
+            }
+            }
+
           &,
             &:first-child,
             &:last-child {
@@ -887,9 +892,9 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
               width: 80%;
              &.open {
              display: block;
-            } 
-            } 
-            
+            }
+            }
+
           &,
             &:first-child,
             &:last-child {
