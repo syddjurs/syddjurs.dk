@@ -268,14 +268,16 @@ function _os2web_esdh_provider_import_meeting($meeting_id, $force = FALSE, &$con
       $node->field_os2web_meetings_particcanl[LANGUAGE_NONE][0]['format'] ='filtered_html';
     }
 
-     //Adding comments
-   if (isset($meeting['description'])){
+    //Adding comments
+    if (isset($meeting['description'])) {
       $node->field_os2web_meetings_comments[LANGUAGE_NONE][0]['value'] = $meeting['comments'];
     }
 
     // Make sure the committee term is created and get the term.
-    if (!$committee_term)
-      $committee_term = _acadre_esdh_import_term($meeting['committee'], 'os2web_meetings_tax_committee');
+    if (!$committee_term) {
+      $committee_term = _os2web_esdh_provider_import_or_return_committee($meeting['committee_id'], $meeting['committee']);
+    }
+
     $node->field_os2web_meetings_committee[LANGUAGE_NONE][0]['tid'] = $committee_term->tid;
     if (module_exists('os2dagsorden_esdh_provider')){
       os2dagsorden_esdh_provider_committee_add_subid($committee_term, $meeting['committee_id']);
@@ -606,6 +608,55 @@ function _os2web_esdh_provider_import_file($file_meta) {
   os2web_esdh_provider_log('File imported.');
   os2web_esdh_provider_log('End Import of file');
   return $file;
+}
+
+/**
+ * This function will either returns the existing committee or create a new one.
+ *
+ * @param int $id
+ *   The committee subID.
+ * @param string $name
+ *   The name of commitee.
+ *
+ * @return object
+ *   The committee term.
+ */
+function _os2web_esdh_provider_import_or_return_committee($id, $name) {
+  // Attempt finding by ID.
+  $vid = db_select('taxonomy_vocabulary', 'tv')
+    ->fields('tv', array('vid'))
+    ->condition('machine_name', 'os2web_meetings_tax_committee')
+    ->execute()
+    ->fetchField();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $vid)
+    ->fieldCondition('field_os2web_meetings_commiteeid', 'value', intval($id), '=');
+  $result = $query->execute();
+
+  if (isset($result['taxonomy_term'])) {
+    $tids = array_keys($result['taxonomy_term']);
+    $tid = reset($tids);
+    $term = taxonomy_term_load($tid);
+  }
+  // Attempt finding Name.
+  elseif ($name) {
+    $term = taxonomy_get_term_by_name($name, 'os2web_meetings_tax_committee');
+    if (!empty($term)) {
+      if (is_array($term)) {
+        $term = array_pop($term);
+      }
+      $term->field_os2web_meetings_commiteeid['und'][0]['value'] = $id;
+      taxonomy_term_save($term);
+    }
+  }
+
+  // Term cannot be found, create new.
+  if (!$term) {
+    $term = _acadre_esdh_import_term($name, 'os2web_meetings_tax_committee');
+  }
+
+  return $term;
 }
 
 /**
